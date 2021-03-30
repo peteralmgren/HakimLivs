@@ -62,5 +62,61 @@
         "image": "fruit-images/kiwifruit-400143_640.jpg",
         "price": 34.90,
         "category": "friut"
+    },
+    {
+        "id": 9,
+        "title": "Smör",
+        "description": "Så naturligt och så gott. Bregott Extrasaltat har varit en favorit på den svenska smörgåsen sedan 1971. Smöret kärnas av grädde som sedan blandas med rapsolja och en extra nypa salt. ",
+        "image": "mejeri-images/smör.jpg",
+        "price": 39.90,
+        "category": "mejeri"
+    },
+    {
+        "id": 10,
+        "title": "Ost",
+        "description": "Västerbottensost® är en svensk grynpipig hårdost gjord på norrländsk komjölk och tillverkad vid det lilla mejeriet i Burträsk i Västerbotten. Den har en karaktäristisk, fyllig smak och en lagringstid om minst 14 månader. Svårskivad, men ändå älskad till såväl smörgåsen som riven i matlagningen till paj, tacos eller gra ...",
+        "image": "mejeri-images/ost.jpg",
+        "price": 79,
+        "category": "mejeri"
+    },
+    {
+        "id": 11,
+        "title": "Yougurt",
+        "description": "",
+        "image": "mejeri-images/yougurt.jpg",
+        "price": 25,
+        "category": "mejeri"
+    },
+    {
+        "id": 12,
+        "title": "Vispgrädde",
+        "description": "Arla Köket® Vispgrädde 36% har en behagligt frisk smak av grädde och mjuk, krämig och len konsistens. Vispgrädde både förstärker och rundar av smaken vilket gör den idealisk till vardagsmatlagning, bakning och desserter. Även en liten mängd grädde i mat gör stor skillnad för smaken.",
+        "image": "mejeri-images/vispgrädde.jpg",
+        "price": 49.90,
+        "category": "mejeri"
+    },
+    {
+        "id": 13,
+        "title": "Skinkost",
+        "description": "Svensk varmrökt skinka är ingrediensen som höjer smaken på vår skinkost. Använd osten för att göra en supersnabb toast. Bred mjukosten på vitt bröd lägg på tomat och valfria kryddor. Grilla i smörgåsgrill.",
+        "image": "mejeri-images/skinkost.jpg",
+        "price": 40,
+        "category": "mejeri"
+    },
+    {
+        "id": 14,
+        "title": "Hallomi",
+        "description": "Halloumi är en ost som traditionellt tillverkas på Cypern av en blandning av ko-, får- och getmjölk. Den har en speciell, lite gummiaktig karaktär och kan stekas, grillas eller ätas naturell. Förvaras max + 8 C. Öppnad förpackning hållbar 3 dagar.",
+        "image": "mejeri-images/hallomi.jpg",
+        "price": 24.90,
+        "category": "mejeri"
+    },
+    {
+        "id": 15,
+        "title": "Gräddfil",
+        "description": "Gräddfil är en syrad grädde som har en lätt, krämig konsistens och passar bäst i kalla rätter. Arla gräddfil görs på Svenska naturliga råvaror.",
+        "image": "mejeri-images/gräddfil.jpg",
+        "price": 12.90,
+        "category": "mejeri"
     }
 ]
