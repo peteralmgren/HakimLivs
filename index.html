@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="style.css">
     <title>HakimLivs</title>
     
     <link
@@ -14,9 +16,103 @@
 </head>
 
 <body>
-    <h1>HakimLivs</h1>
-    <p>Test</p>
-    <h2>test 2 </h2>
+
+    
+    <header>      
+        <div class="shadow p-3 mb-5 bg-white rounded">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                
+            <div class="container">
+                <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>  
+            
+              <form class="form-group">
+                <input class="form-control input-lg" id="inputlg" type="text" placeholder="Sök">
+                <button type="button" class="btn-sm btn-outline-primary">Sök</button>
+              </form>
+
+            <div id="button-shadow">
+                <button type="button" class="btn btn-primary btn-lg hover-shadow">Logga in</button>
+            </div>
+            
+            <div id="button-shadow">
+            <button type="button" class="btn btn-primary btn-lg">Modul</button>
+            </div>
+
+            <div id="button-shadow">
+                <a href="Cart.html"><button type="button" class="btn btn-primary btn-lg">Till kassan: <span>0kr</span></button></a>
+            </div>
+        
+
+            </div>
+            
+          </nav></div>    
+
+    </header>
+    <div class="container">
+        <h1>HakimLivs</h1>
+        <p>Test</p>
+        <h2>test 2 </h2>
+    </div>
+    
+    
+  <nav class="navbar navbar-light bg-light">
+    <form class="container-fluid justify-content-center">
+        <button type="button" class="btn outline btn-success" data-bs-toggle="modal"
+            data-bs-target="#shopping-cart">Varukorg</button>
+    </form>
+</nav>
+<div class="modal fade" id="shopping-cart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Varukorg</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row border bg-white mx-1 my-1 align-items-center" id="${product.id}">
+                    <div class="col-lg-1 p-1">
+                        <img class="img-fluid" src="./axa_havregryn_750g_ny.jpg" width="60px" height="60px" alt="Produktbild">
+                    </div>
+                    <div class="col-lg-6">
+                        <div>
+                            <p class="m-0 brand">AXA</p>
+                            <h5 class="fw-bold m-0 title">Havregryn</h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 text-end">
+                        <div>
+                            <img class="minus" src="./minus.png" alt="minus" width="20px">
+                            <button class="d-inline border border-secondary bg-white px-2 rounded"
+                                id="amount-of-product">1</button>
+                            <img class="plus" src="./plus.png" alt="plus" width="20px">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 m-auto text-center">
+                        <span class="price fw-bold">15</span> <span>kr</span>
+                    </div>
+                    <div class="col-lg-1 m-auto text-end" id="trash">
+                        <img class="trashcan" src="./delete.png" alt="Soptunna"
+                            width="25px">
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Till kassan</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+    
 
     <!-- Footer -->
 <footer class="bg-dark text-center text-white">
@@ -94,61 +190,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="index.js"></script>
     
+    
   
-  <nav class="navbar navbar-light bg-light">
-        <form class="container-fluid justify-content-center">
-            <button type="button" class="btn outline btn-success" data-bs-toggle="modal"
-                data-bs-target="#shopping-cart">Varukorg</button>
-        </form>
-    </nav>
-    <div class="modal fade" id="shopping-cart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Varukorg</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                    <div class="row border bg-white mx-1 my-1 align-items-center" id="${product.id}">
-                        <div class="col-lg-1 p-1">
-                            <img class="img-fluid" src="./axa_havregryn_750g_ny.jpg" width="60px" height="60px" alt="Produktbild">
-                        </div>
-                        <div class="col-lg-6">
-                            <div>
-                                <p class="m-0 brand">AXA</p>
-                                <h5 class="fw-bold m-0 title">Havregryn</h5>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 text-end">
-                            <div>
-                                <img class="minus" src="./minus.png" alt="minus" width="20px">
-                                <button class="d-inline border border-secondary bg-white px-2 rounded"
-                                    id="amount-of-product">1</button>
-                                <img class="plus" src="./plus.png" alt="plus" width="20px">
-                            </div>
-                        </div>
-                        <div class="col-lg-2 m-auto text-center">
-                            <span class="price fw-bold">15</span> <span>kr</span>
-                        </div>
-                        <div class="col-lg-1 m-auto text-end" id="trash">
-                            <img class="trashcan" src="./delete.png" alt="Soptunna"
-                                width="25px">
-                        </div>
-                    </div>
-
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Till kassan</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>
