@@ -14,7 +14,7 @@
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
-  <link rel="stylesheet" href="./modal-shopping-cart.css">
+  <link rel="stylesheet" href="./css/modal-shopping-cart.css">
 </head>
 
 <body>
@@ -63,38 +63,57 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="row border bg-white mx-1 my-1 align-items-center" id="${product.id}">
-            <div class="col-lg-1 p-1">
-              <img class="img-fluid" src="./axa_havregryn_750g_ny.jpg" width="60px" height="60px" alt="Produktbild">
-            </div>
-            <div class="col-lg-6">
-              <div>
-                <p class="m-0 brand">AXA</p>
-                <h5 class="fw-bold m-0 title">Havregryn</h5>
+          <div class="container-fluid">
+            <div class="row border bg-white mx-1 my-1 align-items-center rounded" id="${product.id}">
+              <div class="col-md-1 col-lg-1 p-1">
+                <img class="img-fluid" src="./img/axa_havregryn_750g_ny.jpg" alt="Produktbild">
+              </div>
+              <div class="col-md-11 col-lg-5">
+                <div>
+                  <p class="brand m-0">AXA</p>
+                  <h5 class="fw-bold m-0 title">Havregryn</h5>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 text-end">
+                <div>
+                  <img class="minus" src="./icons/minus.png" alt="minus" width="20px">
+                  <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">1</button>
+                  <img class="plus" src="./icons/plus.png" alt="plus" width="20px">
+                </div>
+              </div>
+              <div class="col-md-3 col-lg-2 m-auto text-center">
+                <span class="price fw-bold">15</span> <span>kr</span>
+              </div>
+              <div class="col-md-3 col-lg-1 m-auto text-end" id="trash">
+                <img class="trashcan" src="./icons/delete.png" alt="Soptunna" width="25px">
               </div>
             </div>
-            <div class="col-lg-2 text-end">
-              <div>
-                <img class="minus" src="icons/minus.png" alt="minus" width="20px">
-                <button class="d-inline border border-secondary bg-white px-2 rounded" id="amount-of-product">1</button>
-                <img class="plus" src="icons/plus.png" alt="plus" width="20px">
+            <div class="row bg-white mx-1 my-1  p-1 align-items-center">
+              <div class="col-lg-1 p-1"></div>
+              <div class="col-lg-6"></div>
+              <div class="col-lg-2 text-end">
+                <div>
+                  <span class="text-end fw-bold">Summa:</span>
+                </div>
               </div>
-            </div>
-            <div class="col-lg-2 m-auto text-center">
-              <span class="price fw-bold">15</span> <span>kr</span>
-            </div>
-            <div class="col-lg-1 m-auto text-end" id="trash">
-              <img class="trashcan" src="icons/delete.png" alt="Soptunna" width="25px">
+              <div class="col-lg-2 m-auto text-center">
+                <span class="fw-bold" id="total-sum">15</span> <span>kr</span>
+              </div>
+              <div class="col-lg-1 m-auto text-end" id="trash">
+              </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Till kassan</button>
+          <div class="container-fluid">
+            <div class="row">
+              <button type="button" class="btn btn-success" data-bs-dismiss="modal">Till kassan</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
 
 
   <!-- login -->
@@ -209,7 +228,7 @@
   <!-- Footer -->
 
 
-  <<<<<<< HEAD <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -241,67 +260,15 @@
     <div class="modal-footer d-flex justify-content-center">
       <div class="signup-section">Not a member yet? <a href="#a" class="text-info"> Sign Up</a>.</div>
     </div>
-    </div>
-    </div>
-
-    <div class="container-fluid">
-      <div class="row border bg-white mx-1 my-1 align-items-center rounded" id="${product.id}">
-        <div class="col-md-1 col-lg-1 p-1">
-          <img class="img-fluid" src="./img/axa_havregryn_750g_ny.jpg" alt="Produktbild">
-        </div>
-        <div class="col-md-11 col-lg-5">
-          <div>
-            <p class="brand m-0">AXA</p>
-            <h5 class="fw-bold m-0 title">Havregryn</h5>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3 text-end">
-          <div>
-            <img class="minus" src="./icons/minus.png" alt="minus" width="20px">
-            <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">1</button>
-            <img class="plus" src="./icons/plus.png" alt="plus" width="20px">
-          </div>
-        </div>
-        <div class="col-md-3 col-lg-2 m-auto text-center">
-          <span class="price fw-bold">15</span> <span>kr</span>
-        </div>
-        <div class="col-md-3 col-lg-1 m-auto text-end" id="trash">
-          <img class="trashcan" src="./icons/delete.png" alt="Soptunna" width="25px">
-        </div>
-      </div>
-      <div class="row bg-white mx-1 my-1  p-1 align-items-center">
-        <div class="col-lg-1 p-1"></div>
-        <div class="col-lg-6"></div>
-        <div class="col-lg-2 text-end">
-          <div>
-            <span class="text-end fw-bold">Summa:</span>
-          </div>
-        </div>
-        <div class="col-lg-2 m-auto text-center">
-          <span class="fw-bold" id="total-sum">15</span> <span>kr</span>
-        </div>
-        <div class="col-lg-1 m-auto text-end" id="trash">
-        </div>
-      </div>
-    </div>
-    </div>
-    <div class="modal-footer">
-      <div class="container-fluid">
-        <div class="row">
-          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Till kassan</button>
-        </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-      crossorigin="anonymous"></script>
-    <script src="./modal-shopping-cart.js"></script>
-    <script src="index.js"></script>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+  <script src="./js/modal-shopping-cart.js"></script>
+  <script src="index.js"></script>
 
 </body>
 
