@@ -3,7 +3,7 @@
 /* selektor: klass ----------------------------------------------- Sorterat i bokstavsordning */
 .brand {
   font-weight: bold;
-  font-size: smaller;
+  font-size: 10px;
 }
 
 .btn-round {
@@ -18,9 +18,9 @@
   margin: -2rem 0rem 2rem;
 }
 
-.modal-header .close {
+/* .modal-header .close {
   margin-top: -1.5rem;
-}
+} */
 
 .signup-section {
   padding: 0.3rem 0rem;
@@ -43,11 +43,11 @@
   box-shadow: 4px 5px gray;
 }
 
-@media (min-width: 576px) {
+/* @media (min-width: 576px) {
   .modal-dialog {
     max-width: 400px;
   }
   .modal-dialog .modal-content {
     padding: 1rem;
   }
-}
+} */
