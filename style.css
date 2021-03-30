@@ -1,0 +1,45 @@
+.container {
+    padding: 20rem 0rem;
+  }
+
+  @media (min-width: 576px) {
+    .modal-dialog {
+      max-width: 400px;
+    }
+    .modal-dialog .modal-content {
+      padding: 1rem;
+    }
+  }
+ 
+
+  /*   NINA lagt till, start */
+  .modal-body2 { 
+      width: 1em;
+      height: 2 em;
+  }
+  /*   NINA lagt till, slut */
+
+
+  .modal-header .close {
+    margin-top: -1.5rem;
+  }
+   
+  .form-title {
+    margin: -2rem 0rem 2rem;
+  }
+   
+  .btn-round {
+    border-radius: 3rem;
+  }
+   
+  .delimiter {
+    padding: 1rem;
+  }
+   
+  .social-buttons .btn {
+    margin: 0 0.5rem 1rem;
+  }
+   
+  .signup-section {
+    padding: 0.3rem 0rem;
+  }
