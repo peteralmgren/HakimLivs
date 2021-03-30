@@ -48,25 +48,18 @@
     </div>
   </header>
 
-  <div class="container">
-    <h1>HakimLivs</h1>
-    <p>Test</p>
-    <h2>test 2 </h2>
-  </div>
-
-
-  <div class="modal fade" id="shopping-cart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Varukorg</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
-          <div class="container-fluid">
+          <div class="container-fluid" id="shopping-cart" >
             <div class="row border bg-white mx-1 my-1 align-items-center rounded" id="${product.id}">
               <div class="col-md-1 col-lg-1 p-1">
-                <img class="img-fluid" src="./img/axa_havregryn_750g_ny.jpg" alt="Produktbild">
+                <img class="img-fluid" src="./fruit-images/apples-490474_640.jpg" alt="Produktbild" width="60px" height="60px">
               </div>
               <div class="col-md-11 col-lg-5">
                 <div>
@@ -261,7 +254,7 @@
       <div class="signup-section">Not a member yet? <a href="#a" class="text-info"> Sign Up</a>.</div>
     </div>
   </div>
-  
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
