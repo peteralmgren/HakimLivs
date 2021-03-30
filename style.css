@@ -11,6 +11,7 @@
 
 #button-shadow button:hover{
     border-radius: 5px;
-    width: 110%;
+    width: 105%;
     height: auto;
+    box-shadow: 4px 5px gray;
 }
