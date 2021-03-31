@@ -3,6 +3,11 @@ const plusSignNodes = document.querySelectorAll('.plus');
 const minusSignNodes = document.querySelectorAll('.minus');
 let totalSum = parseFloat(document.getElementById('total-sum').textContent);
 
+/** This for loop assigns event listeners to all plus sign icons. The anonymous function will do three things:
+ *  1. increase the number of items in the basket with one
+ *  2. increase the order row sum with the price of one unit
+ *  3. increase the total sum with the price of one unit */
+
 for (let i = 0; i < plusSignNodes.length; i++) {
   plusSignNodes[i].addEventListener('click', (e) => {
 
@@ -24,6 +29,11 @@ for (let i = 0; i < plusSignNodes.length; i++) {
   });
 
 }
+
+/** This for loop assigns event listeners to all minus sign icons. The anonymous function will do three things:
+ *  1. decrease the number of items in the basket with one
+ *  2. decrease the order row sum with the price of one unit
+ *  3. decrease the total sum with the price of one unit */
 
 for (let i = 0; i < minusSignNodes.length; i++) {
   minusSignNodes[i].addEventListener('click', (e) => {
@@ -49,6 +59,10 @@ for (let i = 0; i < minusSignNodes.length; i++) {
 
   });
 }
+
+/** This for loop assigns event listeners to all trashcan icons. The anonymous function will do two things:
+ *  1. decrease the total sum with the order row sum
+ *  2. delete the order row from det shopping cart */
 
 for (let i = 0; i < trashCanNodes.length; i++) {
   trashCanNodes[i].addEventListener('click', (e) => {
