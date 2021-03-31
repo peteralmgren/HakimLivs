@@ -1,70 +1,71 @@
-let totalSum = parseFloat($('#total-sum').text()); 
+let totalSum = parseFloat(document.getElementById('total-sum').textContent);
 
+const plusSignNodes = document.querySelectorAll('.plus');
 
-const plusSign = document.getElementsByClassName(plus);
+for (let i = 0; i < plusSignNodes.length; i++) {
+  plusSignNodes[i].addEventListener('click', (e) => {
 
+    /* Ökar innehållet i varukorgen med 1 */
+    const numberOfItemsNode = e.target.previousElementSibling;
+    const oldNrOfItems = parseInt(numberOfItemsNode.textContent);
+    numberOfItemsNode.textContent = oldNrOfItems + 1;
 
+    /* Ökar orderradssumman med priset för en enhet */
+    const orderRowSumElement = e.target.parentNode.parentNode.nextElementSibling.children[0].children[0];
+    const oldOrderRowSum = parseInt(orderRowSumElement.textContent);
+    const pricePerUnit = oldOrderRowSum / oldNrOfItems;
+    const newOrderRowSum = oldOrderRowSum + pricePerUnit;
 
-$(document).ready(function () {
-  $(document).on('click', '.plus', function () {
-
-    const oldNrOfItems = parseInt($(this).prev().text());
-    $(this).prev().text(oldNrOfItems + 1);
-    
-    const priceHtml = $(this).parent().parent().next().children('span.price');
-    const oldPrice = parseInt(priceHtml.text());
-    const newPrice = oldPrice + (oldPrice / oldNrOfItems);
-    priceHtml.text(newPrice);
-
-    totalSum = totalSum + (oldPrice / oldNrOfItems);
-    $('#total-sum').text(totalSum);
-
-    // const id = parseInt($(this).parent().parent().parent().attr('id'));
-    // adjustAmountOfProductsInCartInLS(id, 'plus');
-
+    /* Ökar totalsumman med priset för en enhet */
+    orderRowSumElement.textContent = newOrderRowSum;
+    totalSum = totalSum + pricePerUnit;
+    document.getElementById('total-sum').textContent = totalSum;
   });
-});
 
-$(document).ready(function () {
-  $(document).on('click', '.minus', function () {
-    
-    const oldNrOfItems = parseInt($(this).next().text());
+}
 
-    if (oldNrOfItems === 1) {
-      // alertMessage('Oj! Nu blev det lite fel...', 'Klicka på soptunnan om du vill ta bort produkten helt från beställningen.');
-      return;
-    }
+const minusSignNodes = document.querySelectorAll('.minus');
 
-    $(this).next().text(oldNrOfItems - 1);
+for (let i = 0; i < minusSignNodes.length; i++) {
+  minusSignNodes[i].addEventListener('click', (e) => {
 
-    const priceHtml = $(this).parent().parent().next().children('span.price');
-    const oldPrice = parseInt(priceHtml.text());
-    const pricePerUnit = oldPrice / oldNrOfItems;
-    const newPrice = oldPrice - pricePerUnit;
+    /* Minskar innehållet i varukorgen med 1 */
+    const numberOfItemsNode = e.target.nextElementSibling;
+    const oldNrOfItems = parseInt(numberOfItemsNode.textContent);
+
+    if (oldNrOfItems === 1) { return; }
+
+    numberOfItemsNode.textContent = oldNrOfItems - 1;
+
+    /* Minskar orderradssumman med priset för en enhet */
+    const orderRowSumElement = e.target.parentNode.parentNode.nextElementSibling.children[0].children[0];
+    const oldOrderRowSum = parseInt(orderRowSumElement.textContent);
+    const pricePerUnit = oldOrderRowSum / oldNrOfItems;
+    const newOrderRowSum = oldOrderRowSum - pricePerUnit;
+
+    /* Minskar totalsumman med priset för en enhet */
+    orderRowSumElement.textContent = newOrderRowSum;
     totalSum = totalSum - pricePerUnit;
-    priceHtml.text(newPrice);
-    $('#total-sum').text(totalSum);
-
-    // const id = parseInt($(this).parent().parent().parent().attr('id'));
-    // adjustAmountOfProductsInCartInLS(id, 'minus');
+    document.getElementById('total-sum').textContent = totalSum;
 
   });
-});
+}
 
-$(document).ready(function () {
-  $(document).on('click', '.trashcan', function () {
-    // korrigera orderns totalsumma med att ta bort orderradssumman från totalsumman
-    const orderRowSum = parseFloat($(this).parent().prev().text());
+const trashCanNodes = document.querySelectorAll('.trashcan');
+
+for (let i = 0; i < trashCanNodes.length; i++) {
+  trashCanNodes[i].addEventListener('click', (e) => {
+    /* Korrigerar orderns totalsumma med att ta bort orderradssumman från totalsumman */
+    const orderRowSum = parseFloat(e.target.parentNode.previousElementSibling.children[0].children[0].textContent);
+    console.log(orderRowSum);
     totalSum = totalSum - orderRowSum;
-    $('#total-sum').text(totalSum);
+    document.getElementById('total-sum').textContent = totalSum;
 
-    // const id = parseInt($(this).parent().parent().attr('id'));
-    // cart.delete(id);
-    // localStorage.setItem('cart', JSON.stringify(Array.from(cart)));
-
-    $(this).parent().parent().remove();
+    e.target.parentNode.parentNode.remove();
   });
-});
+
+}
+
 
 function alertMessage(aHeadLine, aMessage) {
   const modal = ` <div class="modal-dialog modal-dialog-centered">
