@@ -1,5 +1,10 @@
 let totalSum = parseFloat($('#total-sum').text()); 
 
+
+const plusSign = document.getElementsByClassName(plus);
+
+
+
 $(document).ready(function () {
   $(document).on('click', '.plus', function () {
 
