@@ -127,8 +127,8 @@ function showAllProductsInCategory(category){
             output +=
             `<div class="col-md-3">`
             + "<hr> <img src=" + allProductsArray[index].image + " width=\"100\"> <br>"
-            + "<h6>" + allProductsArray[index].title + "</h6><br>"
             + allProductsArray[index].price + " kr <br>"
+            + "<h6>" + allProductsArray[index].title + "</h6><br>"
             + `<button id="product${allProductsArray[index].id}" >Köp</button> <br>`
             + "</div>"; 
             
@@ -203,9 +203,54 @@ function showProducts (){
  */
 
 
+
+//detta visar upp produkterna fungerande men utan cards. Fungerar
 showProducts();
 
 function showProducts(){
+   
+    let randomProductsArray = [];
+    randomProductsArray = randomizer();
+
+    let output = "";
+    let counter = 1;
+
+    for (let index = 0; index < 15; index++) {
+        if (counter == 5){
+            counter = 1;
+            console.log(counter)
+        }
+           
+
+        let index2 = 0;
+        index2 = randomProductsArray[index]
+
+
+            if (counter==1) {
+            output += `<div class="row">`};
+        
+            output +=
+            `<div class="col-md-3">`
+            + "<hr><img src=" + allProductsArray[index2].image + " width=\"100\"> <br>"
+            + allProductsArray[index2].price + " kr <br>"
+            + " <h6>" + allProductsArray[index2].title + "</h6><br>"
+            + `<button id="product${allProductsArray[index2].id}" >Köp</button> <br>`
+            + "</div>"; 
+            
+            if (counter==4) {
+                output += "</div>"};
+            counter += 1;
+
+
+    }
+    console.log(output)
+    document.getElementById("products").innerHTML = output;
+}  
+
+/* 
+showProducts2();
+
+function showProducts2(){
    
     let randomProductsArray = [];
     randomProductsArray = randomizer();
@@ -239,71 +284,15 @@ function showProducts(){
                 output += "</div>"};
             counter += 1;
 
-        
-       
 
     }
     console.log(output)
     document.getElementById("products").innerHTML = output;
 }  
 
-
-
-
-
-
-
-
-/* 
-showProducts();
-
-function showProducts (){
-   
-    let randomProductsArray = [];
-    randomProductsArray = randomizer();
-
-    let output = "";
-    let counter = 1;
-
-    output += `<div class="card w-100">`
-    for (let index = 0; index < 15; index++) {
-        if (counter == 5){
-            counter = 1;
-            console.log(counter)
-        }
-        
-        let index2 = 0;
-        index2 = randomProductsArray[index]
-        console.log(index2);
-
-
-        
-        if (counter==1) {
-        output += `<div class="row">`};
-    
-        output +=
-        `<div class="col-md-3">`
-        
-        + `<img class="card-img-top" src=` + allProductsArray[index2].image + " width=\"100\"> <br>"
-        + `<div class="card-body">`
-        + `<h6 class="card-title">` + allProductsArray[index2].title + `</h6><br>`
-        + `<p class="card-text">` + allProductsArray[index2].price + " kr </p> <br>"
-        + `<button class="card-button" 
-        id="product${allProductsArray[index2].id}" >Köp</button> <br>`
-        + "</div>"
-        + "</div>"; 
-        
-        if (counter==4) {
-            output += "</div>"};
-        
-        counter += 1;
-
-    }
-    output += `</div>`
-    console.log(output)
-    document.getElementById("products").innerHTML = output;
-}
  */
+
+
 
 
 
