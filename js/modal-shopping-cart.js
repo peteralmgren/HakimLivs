@@ -1,6 +1,7 @@
-let totalSum = parseFloat(document.getElementById('total-sum').textContent);
-
+const trashCanNodes = document.querySelectorAll('.trashcan');
 const plusSignNodes = document.querySelectorAll('.plus');
+const minusSignNodes = document.querySelectorAll('.minus');
+let totalSum = parseFloat(document.getElementById('total-sum').textContent);
 
 for (let i = 0; i < plusSignNodes.length; i++) {
   plusSignNodes[i].addEventListener('click', (e) => {
@@ -23,8 +24,6 @@ for (let i = 0; i < plusSignNodes.length; i++) {
   });
 
 }
-
-const minusSignNodes = document.querySelectorAll('.minus');
 
 for (let i = 0; i < minusSignNodes.length; i++) {
   minusSignNodes[i].addEventListener('click', (e) => {
@@ -51,8 +50,6 @@ for (let i = 0; i < minusSignNodes.length; i++) {
   });
 }
 
-const trashCanNodes = document.querySelectorAll('.trashcan');
-
 for (let i = 0; i < trashCanNodes.length; i++) {
   trashCanNodes[i].addEventListener('click', (e) => {
     /* Korrigerar orderns totalsumma med att ta bort orderradssumman från totalsumman */
@@ -65,7 +62,6 @@ for (let i = 0; i < trashCanNodes.length; i++) {
   });
 
 }
-
 
 function alertMessage(aHeadLine, aMessage) {
   const modal = ` <div class="modal-dialog modal-dialog-centered">
