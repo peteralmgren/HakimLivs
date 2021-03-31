@@ -16,19 +16,30 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">          
-      <!-- <form class="search-form d-flex ml-auto mt-1 mb-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
+    <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">  
+        <a class="navbar-brand" href="#">
+            <img src="images/logo.png" alt="logo" class="logo" />
+          </a>
+        <form class="search-form d-flex ml-auto mt-1 mb-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Sök vara" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Sök</button>
+      </form>
+          <a class="nav-link active" aria-current="page" href="index.html">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.5 10.995V14.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5V11c0-.25-.25-.5-.5-.5H7c-.25 0-.5.25-.5.495z"/>
+            <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+            </svg>
+          </a>
+        
+
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Hello Admin
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <!-- <a class="dropdown-item" href="#">User Settings</a>
-            <a class="dropdown-item" href="#">Create New Account</a> -->
+            <a class="dropdown-item" href="#">Kundlistor</a>
+            <a class="dropdown-item" href="#">Kontoinställningar</a>
           </div>
         </li>
         <li class="nav-item">
@@ -41,61 +52,8 @@
 
 
 <body>
-    <div class="row">
-        <!-- Sidebar -->
-        <div class="col-1">
-          <nav id="sidebar" class="col sidebar">
-            <a class="navbar-brand" href="#">
-              <img src="images/logo.png" alt="logo" class="logo" />
-            </a>
-            <ul class="nav flex-column vertical-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6.5 10.995V14.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5V11c0-.25-.25-.5-.5-.5H7c-.25 0-.5.25-.5.495z"/>
-                  <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-                  </svg>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-post" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M4 1h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H4z"/>
-                    <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7z"/>
-                    <path fill-rule="evenodd" d="M4 3.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
-                  </svg>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
-                    <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
-                  </svg>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bar-chart-line-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="4" height="5" x="1" y="10" rx="1"/>
-                  <rect width="4" height="9" x="6" y="6" rx="1"/>
-                  <rect width="4" height="14" x="11" y="1" rx="1"/>
-                  <path fill-rule="evenodd" d="M0 14.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-                  </svg>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chat-left-dots" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v11.586l2-2A2 2 0 0 1 4.414 11H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                    <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                  </svg>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <!-- End Sidebar  -->
+    <!-- <div class="row"> -->
+        
         <div class="main col-11">
             <div class="row first-row">
               <div class="col-4">
@@ -105,71 +63,21 @@
                       Kontrollpanel 
                     </div>
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item">
-                        <div class="row g-0">
-                          <!-- <div class="col-md-3">
-                            <img src="./assets/post1.jpeg"  alt="Post One Photo" class="img-fluid rounded-lg">
-                          </div> -->
-                          <!-- <div class="col-md-9">
-                            <div class="card-body">
-                              <h6 class="card-title">Lägga till ny produkt</h6>
-                              <p class="card-text">Test test</p>
-                              <p class="card-text"><small class="text-muted">Added 3 days ago</small></p>
-                            </div>
-                          </div> -->
-                        </div>
-                      </li>
-                      <div class="card">
-                        <div class="card-header">
-                          Info att addera till ny produkt/ ändra öppettider, kontaktinfo m.m
-                        </div>
-    
-                                <div class="card" style="width: 18rem;">
-                                    <a>Exempelbild här</a>
-                                    <img class="card-img-top" src="mejeri-images/ost.jpg" alt="Card image cap">
+                      
+                        <div class="card" style="width: auto;">
+                            <a>Exempelbild här</a>
+                                <img class="card-img-top" src="images/mejeri/ost.jpg" alt="Card image cap">
                                     <div class="card-body">
-                                      <h5 class="card-title">Produktnamn här</h5>
-                                      <br class="card-text">Produktinfo här</p>
-                                      
-                                      <a href="#" class="btn btn-primary">Lägg i varukorg</a>
-                                    </div>
-                                    
-                                </div>
-                                
-                              
-                    </div>
-                      
-                      
-                    </ul>
+                                        <h5 class="card-title">Produktnamn här</h5>
+                                    <br class="card-text">Produktinfo här</p>
+                                <a class="btn btn-primary">Lägg i varukorg</a>
+                            </div>
+                         </div>
+                     </ul>
                   </div>
                 </section>
               </div>
-              <!-- <div class="row">
-              <div class="row col-6">
-                <section id="site-changes">
-                    
-                  <div class="card">
-                    <div class="card-header">
-                      Info att addera till ny produkt/ ändra öppettider, kontaktinfo m.m
-                    </div>
-
-                            <div class="card" style="width: 18rem;">
-                                <a>Exempelbild här</a>
-                                <img class="card-img-top" src="mejeri-images/ost.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                  <h5 class="card-title">Produktnamn här</h5>
-                                  <br class="card-text">Produktinfo här</p>
-                                  
-                                  <a href="#" class="btn btn-primary">Lägg i varukorg</a>
-                                </div>
-                                
-                            </div>
-                            
-                          
-                </div>
-                        </section>
-            </div> -->
-                    
+              
             <div class="col-md-8">
                 <div class="card">
                   <div class="card-header text-secondary">
@@ -180,14 +88,12 @@
                       <div class="col-md-6 text-left">
                         <form class="form-inline">
                           <div class="form-group">
-                            <label for="showRows">Showing &nbsp;</label>
-                            <select class="form-control">
-                              <option>10</option>
-                              <option>25</option>
-                              <option>50</option>
-                              <option>100</option>
-                            </select>
-                            <label>&nbsp; entries</label>
+                            <label for="exampleFormControlTextarea1">Skriv varukategori</label>
+                            <textarea class="form-control" id="productnameinput" rows="1"></textarea>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Skriv produktnamn</label>
+                            <textarea class="form-control" id="productnameinput" rows="1"></textarea>
                           </div>
                         </form>
                       </div>
@@ -195,15 +101,15 @@
                         <form class="form-inline pull-right">
                           <div class="form-group">
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Skapa produkt
+                                <button class="btn btn-inline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Skapa innehåll
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">Välj
-                                  <a class="dropdown-item" href="#">Kategori</a>
-                                  <a class="dropdown-item" href="#">Produktnamn</a>
-                                  <a class="dropdown-item" href="#">Produktinfo</a>
-                                  <a class="dropdown-item" href="#">Bild</a>
-                                  <a class="dropdown-item" href="#">Pris</a>
+                                  <a class="dropdown-item" href="#">Ändra "Om oss"</a>
+                                  <a class="dropdown-item" href="#">Kunderbjudanden</a>
+                                  <a class="dropdown-item" href="#">Ändra ?</a>
+                                  <a class="dropdown-item" href="#">Ändra ?</a>
+                                  <a class="dropdown-item" href="#">Ändra ?</a>
                                 </div>
                               </div>
                           </div>
@@ -212,142 +118,82 @@
                     </div>
                     <form>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Produktnamn/Produktinfo</label>
+                        <label for="exampleFormControlTextarea1">Produktinfo</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                       </div>
                     </form>
                     <div class="col-md-6 mb-4">
 
-
                         <form class="md-form">
                           <div class="file-field">
                             <div class="mb-4">
                             </div>
-                            <div class="d-flex justify-content-center">
+                            <div class="d-flex justify-content-left">
                               <div class="btn btn-mdb-color btn-rounded float-left">
                                 
                                 <input type="file">
                               </div>
                             </div>
                           </div>
+                          <button type="button" class="btn btn-success mt-5">Lägg till vara</button>
                         </form>
                 
                       </div>
-
-                    <!-- <table class="table table-bordered table-sm border border-top-0">
-                      <thead class="bg-light text-secondary">
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Company</th>
-                        <th>Date</th>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Cocomax</td>
-                          <td>Minuman</td>
-                          <td>PT. Asiatic Agro Industry</td>
-                          <td>Published, 2017/08/12</td>
-                        </tr>
-                      </tbody>
-                    </table> -->
                   </div>
                   <div class="card-footer text-muted">
-        
-                  </div>
+                </div>
                 </div>
               </div>
-
-
-
-            
-                    
-
-
-
-                
 
               <div class="row second-row">
-                <div class="col-4">
-                  <section id="recently-commented">
+                <div class="col-12">
+                  <section id="customers">
                     <div class="card">
                       <div class="card-header">
-                        Latest comments
+                        Kundlista ? erbjudanden
+                        <div class="form-check" style="align-content: center;">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Rabatt 5%
+                            </label>
+                          </div>
+                          <div class="form-check" style="align-content: center;">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Rabatt 10%
+                            </label>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-xs-1 col-sm-1">
+                              <label for="ex1">Rabatt</label>
+                              <input class="form-control" id="ex1" type="number-float"step="any" min="0" max="100">
+                            </div>
+                        </div>
                       </div>
-                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                          <div class="row g-0">
-                            <div class="col">
-                              <div class="card-body">
-                                <h6 class="card-title">Username</h6>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. <small class="text-muted">Added 3 days ago</small></p>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
-                          <div class="row g-0">
-                            <div class="col">
-                              <div class="card-body">
-                                <h6 class="card-title">Username</h6>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. <small class="text-muted">Added 3 days ago</small></p>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
-                          <div class="row g-0">
-                            <div class="col">
-                              <div class="card-body">
-                                <h6 class="card-title">Username</h6>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. <small class="text-muted">Added 3 days ago</small></p>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </section>
+                      
+                      <table class="table table-bordered table-sm border border-top-0">
+                        <thead class="bg-light text-secondary">
+                          <th>#</th>
+                          <th>Kundnummer</th>
+                          <th>Namn</th>
+                          <th>Rabatt</th>
+                          <th>Epost</th>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td>1234</td>
+                            <td>Kalle Andersson</td>
+                            <td>5%</td>
+                            <td>kalle@kalle.com</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                    </section>
                 </div>
               </div>
-
-              <div class="col-5">
-                <section id="notes-form">
-                  <div class="card">
-                    <div class="card-header">
-                      Write a note
-                    </div>
-                    <div class="card-body px-4">
-                      <form>
-                        <div class="mb-3">
-                          <label for="exampleInputPassword1" class="form-label">Your Note</label>
-                          <textarea rows=7 class="form-control"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                      </form>
-                    </div>
-                  </div>
-                </section>
-              </div>
-              <div class="col">
-                <section id="active-user">
-                  <div class="card mt-2">
-                    <div class="card-header">
-                      Most Active User
-                    </div>
-                    <div class="card-body text-center">
-                      <div class="img-container mb-4">
-                        <img src="./assets/user.jpeg" class="card-img-top" alt="User">
-                      </div>
-                      <h6 class="card-title mb-4">John Doe</h6>
-                      <p class="card-text">Commented <span class="badge bg-light text-dark">198</span> times</p>
-                      <p class="card-text">Posted <span class="badge bg-light text-dark">12</span> articles</p>
-                    </div>
-                  </div>
-                </section>
-              </div>
+                    
           
-    
 </body>
 </html>
