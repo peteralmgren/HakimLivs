@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="admin.css" />
     <!-- JavaScript and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
@@ -46,7 +46,7 @@
         <div class="col-1">
           <nav id="sidebar" class="col sidebar">
             <a class="navbar-brand" href="#">
-              <img src="./assets/logo.png" alt="logo" class="logo" />
+              <img src="images/logo.png" alt="logo" class="logo" />
             </a>
             <ul class="nav flex-column vertical-nav">
               <li class="nav-item">
@@ -102,91 +102,171 @@
                 <section id="recently-posted">
                   <div class="card">
                     <div class="card-header">
-                      Recently Published Posts 
+                      Kontrollpanel 
                     </div>
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item">
                         <div class="row g-0">
-                          <div class="col-md-3">
+                          <!-- <div class="col-md-3">
                             <img src="./assets/post1.jpeg"  alt="Post One Photo" class="img-fluid rounded-lg">
-                          </div>
-                          <div class="col-md-9">
+                          </div> -->
+                          <!-- <div class="col-md-9">
                             <div class="card-body">
-                              <h6 class="card-title">Lorem ipsum dolor sit amet...</h6>
-                              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                              <h6 class="card-title">Lägga till ny produkt</h6>
+                              <p class="card-text">Test test</p>
                               <p class="card-text"><small class="text-muted">Added 3 days ago</small></p>
                             </div>
-                          </div>
+                          </div> -->
                         </div>
                       </li>
-                      <li class="list-group-item">
-                        <div class="row g-0">
-                          <div class="col-md-3">
-                            <img src="./assets/post1.jpeg"  alt="Post One Photo" class="img-fluid rounded-lg">
-                          </div>
-                          <div class="col-md-9">
-                            <div class="card-body">
-                              <h6 class="card-title">Lorem ipsum dolor sit amet...</h6>
-                              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                              <p class="card-text"><small class="text-muted">Added 3 days ago</small></p>
-                            </div>
-                          </div>
+                      <div class="card">
+                        <div class="card-header">
+                          Info att addera till ny produkt/ ändra öppettider, kontaktinfo m.m
                         </div>
-                      </li>
-                      <li class="list-group-item">
-                        <div class="row g-0">
-                          <div class="col-md-3">
-                            <img src="./assets/post1.jpeg"  alt="Post One Photo" class="img-fluid rounded-lg">
-                          </div>
-                          <div class="col-md-9">
-                            <div class="card-body">
-                              <h6 class="card-title">Lorem ipsum dolor sit amet...</h6>
-                              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                              <p class="card-text"><small class="text-muted">Added 3 days ago</small></p>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
+    
+                                <div class="card" style="width: 18rem;">
+                                    <a>Exempelbild här</a>
+                                    <img class="card-img-top" src="mejeri-images/ost.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Produktnamn här</h5>
+                                      <br class="card-text">Produktinfo här</p>
+                                      
+                                      <a href="#" class="btn btn-primary">Lägg i varukorg</a>
+                                    </div>
+                                    
+                                </div>
+                                
+                              
+                    </div>
+                      
+                      
                     </ul>
                   </div>
                 </section>
               </div>
-
-              <div class="col-8">
-                <section id="statistics">
+              <!-- <div class="row">
+              <div class="row col-6">
+                <section id="site-changes">
+                    
                   <div class="card">
                     <div class="card-header">
-                      Statisctics
+                      Info att addera till ny produkt/ ändra öppettider, kontaktinfo m.m
                     </div>
-                      <div class="stats py-3 px-4">
-                        <div class="py-4">
-                          <div class="progress">
-                            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                          <p class="card-text">Visited the blog</p>
-                        </div>
-                        <div class="py-4">
-                          <div class="progress">
-                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                          <p class="card-text">Read posts</p>
-                        </div>
-                        <div class="py-4">
-                          <div class="progress">
-                            <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                          <p class="card-text">Subscribed to the newsletter</p>
-                        </div>
-                        <div class="py-4">
-                          <div class="progress">
-                            <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                          <p class="card-text">Subscribed to the newsletter</p>
-                        </div>
-                      </div>
+
+                            <div class="card" style="width: 18rem;">
+                                <a>Exempelbild här</a>
+                                <img class="card-img-top" src="mejeri-images/ost.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                  <h5 class="card-title">Produktnamn här</h5>
+                                  <br class="card-text">Produktinfo här</p>
+                                  
+                                  <a href="#" class="btn btn-primary">Lägg i varukorg</a>
+                                </div>
+                                
+                            </div>
+                            
+                          
+                </div>
+                        </section>
+            </div> -->
+                    
+            <div class="col-md-8">
+                <div class="card">
+                  <div class="card-header text-secondary">
+                    <h6><i class="fa fa-table"></i> Admin skapa produkt formulär</h6>
                   </div>
-                </section>
+                  <div class="card-body">
+                    <div class="row mb-2 text-muted">
+                      <div class="col-md-6 text-left">
+                        <form class="form-inline">
+                          <div class="form-group">
+                            <label for="showRows">Showing &nbsp;</label>
+                            <select class="form-control">
+                              <option>10</option>
+                              <option>25</option>
+                              <option>50</option>
+                              <option>100</option>
+                            </select>
+                            <label>&nbsp; entries</label>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="col-md-6 text-right">
+                        <form class="form-inline pull-right">
+                          <div class="form-group">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Skapa produkt
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">Välj
+                                  <a class="dropdown-item" href="#">Kategori</a>
+                                  <a class="dropdown-item" href="#">Produktnamn</a>
+                                  <a class="dropdown-item" href="#">Produktinfo</a>
+                                  <a class="dropdown-item" href="#">Bild</a>
+                                  <a class="dropdown-item" href="#">Pris</a>
+                                </div>
+                              </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Produktnamn/Produktinfo</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+                    </form>
+                    <div class="col-md-6 mb-4">
+
+
+                        <form class="md-form">
+                          <div class="file-field">
+                            <div class="mb-4">
+                            </div>
+                            <div class="d-flex justify-content-center">
+                              <div class="btn btn-mdb-color btn-rounded float-left">
+                                
+                                <input type="file">
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                
+                      </div>
+
+                    <!-- <table class="table table-bordered table-sm border border-top-0">
+                      <thead class="bg-light text-secondary">
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Company</th>
+                        <th>Date</th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Cocomax</td>
+                          <td>Minuman</td>
+                          <td>PT. Asiatic Agro Industry</td>
+                          <td>Published, 2017/08/12</td>
+                        </tr>
+                      </tbody>
+                    </table> -->
+                  </div>
+                  <div class="card-footer text-muted">
+        
+                  </div>
+                </div>
               </div>
+
+
+
+            
+                    
+
+
+
+                
 
               <div class="row second-row">
                 <div class="col-4">
