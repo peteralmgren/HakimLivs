@@ -126,8 +126,8 @@ function showAllProductsInCategory(category){
         
             output +=
             `<div class="col-md-3">`
-            + "<hr> <h6>" + allProductsArray[index].title + "</h6><br>"
-            + "<img src=" + allProductsArray[index].image + " width=\"100\"> <br>"
+            + "<hr> <img src=" + allProductsArray[index].image + " width=\"100\"> <br>"
+            + "<h6>" + allProductsArray[index].title + "</h6><br>"
             + allProductsArray[index].price + " kr <br>"
             + `<button id="product${allProductsArray[index].id}" >Köp</button> <br>`
             + "</div>"; 
@@ -156,7 +156,105 @@ function showAllProductsInCategory(category){
 
 
 //localStorage.clear();
+/* 
+showProducts();
 
+function showProducts (){
+   
+    let randomProductsArray = [];
+    randomProductsArray = randomizer();
+
+    let output = "";
+    let counter = 1;
+
+    for (let index = 0; index < 15; index++) {
+        if (counter == 5){
+            counter = 1;
+            console.log(counter)
+        }
+        
+        let index2 = 0;
+        index2 = randomProductsArray[index]
+        console.log(index2);
+
+
+        
+ 
+    
+        output +=
+        `<div class="col-lg-3 col-md-3 mb-3">`
+        + `<div class="card h-100"`
+        + `<img class="card-img-top" src=` + allProductsArray[index2].image + " width=\"100\"> "
+        + `<div class="card-body">`
+        + `<h6 class="card-title">` + allProductsArray[index2].title + `</h6>`
+        + `<p class="card-text">` + allProductsArray[index2].price + " kr </p>"
+        + `<button class="card-button" 
+        id="product${allProductsArray[index2].id}" >Köp</button>`
+        + "</div>"
+        + "</div>"
+        + "</div>"; 
+        
+    
+
+    }
+    console.log(output)
+    document.getElementById("products").innerHTML = output;
+}
+ */
+
+
+showProducts();
+
+function showProducts(){
+   
+    let randomProductsArray = [];
+    randomProductsArray = randomizer();
+
+    let output = "";
+    let counter = 1;
+
+    for (let index = 0; index < 15; index++) {
+        if (counter == 5){
+            counter = 1;
+            console.log(counter)
+        }
+           
+
+        let index2 = 0;
+        index2 = randomProductsArray[index]
+
+
+            if (counter==1) {
+            output += `<div class="row">`};
+        
+            output +=
+            `<div class="col-md-3">`
+            + "<hr><img src=" + allProductsArray[index2].image + " width=\"100\"> <br>"
+            + " <h6>" + allProductsArray[index2].title + "</h6><br>"
+            + allProductsArray[index2].price + " kr <br>"
+            + `<button id="product${allProductsArray[index2].id}" >Köp</button> <br>`
+            + "</div>"; 
+            
+            if (counter==4) {
+                output += "</div>"};
+            counter += 1;
+
+        
+       
+
+    }
+    console.log(output)
+    document.getElementById("products").innerHTML = output;
+}  
+
+
+
+
+
+
+
+
+/* 
 showProducts();
 
 function showProducts (){
@@ -205,6 +303,9 @@ function showProducts (){
     console.log(output)
     document.getElementById("products").innerHTML = output;
 }
+ */
+
+
 
 
 
