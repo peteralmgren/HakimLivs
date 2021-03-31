@@ -1,0 +1,53 @@
+/* selektor: htmltagg -------------------------------------------- Sorterat i bokstavsordning */
+
+/* selektor: klass ----------------------------------------------- Sorterat i bokstavsordning */
+.brand {
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.btn-round {
+  border-radius: 3rem;
+}
+
+.delimiter {
+  padding: 1rem;
+}
+
+.form-title {
+  margin: -2rem 0rem 2rem;
+}
+
+/* .modal-header .close {
+  margin-top: -1.5rem;
+} */
+
+.signup-section {
+  padding: 0.3rem 0rem;
+}
+
+.social-buttons .btn {
+  margin: 0 0.5rem 1rem;
+}
+
+/* selektor: id -------------------------------------------------- Sorterat i bokstavsordning */
+#button-shadow {
+  border-radius: 5px;
+  box-shadow: 2px 3px gray;
+}
+
+#button-shadow button:hover {
+  border-radius: 5px;
+  width: 105%;
+  height: auto;
+  box-shadow: 4px 5px gray;
+}
+
+/* @media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 400px;
+  }
+  .modal-dialog .modal-content {
+    padding: 1rem;
+  }
+} */

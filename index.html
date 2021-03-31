@@ -2,111 +2,109 @@
 <html lang="sv">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>HakimLivs</title>
-    
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
-    />
-    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
-    
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Hakims Livs</title>
+  <!-- CSS filer nedan. Kom ihåg specificitet!! (Den understa filen trumfar de ovanstående) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
 
-
   <header>
     <div class="shadow p-3 mb-5 bg-white rounded">
       <nav class="navbar navbar-expand-lg navbar-light">
-
         <div class="container">
           <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt=""></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-
           <form class="form-group">
             <input class="form-control input-lg" id="inputlg" type="text" placeholder="Sök">
           </form>
-
           <div id="button-shadow">
-            <button type="button" class="btn btn-primary btn-lg hover-shadow" data-toggle="modal"
+            <button type="button" class="btn btn-primary btn-lg hover-shadow" data-bs-toggle="modal"
               data-target="#loginModal">Logga in</button>
           </div>
-
           <div id="button-shadow">
-            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
-              data-bs-target="#shopping-cart">Varukorg</button>
+            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#shopping-cart">Varukorg</button>
           </div>
-
           <div id="button-shadow">
-            <a href="Cart.html"><button type="button" class="btn btn-primary btn-lg">Till kassan:
+            <a href="cart.html"><button type="button" class="btn btn-primary btn-lg">Till kassan:
                 <span>0kr</span></button></a>
           </div>
-
-
         </div>
-
       </nav>
     </div>
-
   </header>
-  <div class="container">
-    <h1>HakimLivs</h1>
-    <p>Test</p>
-    <h2>test 2 </h2>
-  </div>
 
-  <!-- modal -->
-
-  <div class="modal fade" id="shopping-cart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="shopping-cart" tabindex="-1"> <!-- Modal, varukorg START -->
     <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Varukorg</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-        <div class="modal-body">
-          <div class="row border bg-white mx-1 my-1 align-items-center" id="${product.id}">
-            <div class="col-lg-1 p-1">
-              <img class="img-fluid" src="./axa_havregryn_750g_ny.jpg" width="60px" height="60px" alt="Produktbild">
-            </div>
-            <div class="col-lg-6">
-              <div>
-                <p class="m-0 brand">AXA</p>
-                <h5 class="fw-bold m-0 title">Havregryn</h5>
+        <div class="modal-body bg-light">
+          <div class="container-fluid" >
+
+            <div class="row bg-white mt-1 py-2 align-items-center border rounded" id="${product.id}"> <!-- Modal, orderrad START -->
+              <div class="col-md-1 col-lg-1 p-1">
+                <img class="img-fluid" src="./images/fruit/apples-490474_640.jpg" alt="Produktbild" width="60px" height="60px">
+              </div>
+              <div class="col-md-11 col-lg-5">
+                <div>
+                  <p class="brand m-0">AXA</p>
+                  <h5 class="fw-bold m-0 title">Havregryn</h5>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 text-end">
+                <div>
+                  <img class="minus" src="./icons/minus.png" alt="minus" width="20px">
+                  <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">1</button>
+                  <img class="plus" src="./icons/plus.png" alt="plus" width="20px">
+                </div>
+              </div>
+              <div class="col-md-3 col-lg-2 m-auto text-center">
+                <span class="price fw-bold">15</span> <span>kr</span>
+              </div>
+              <div class="col-md-3 col-lg-1 m-auto text-end" id="trash">
+                <img class="trashcan pe-1" src="./icons/delete.png" alt="Soptunna" width="25px">
               </div>
             </div>
-            <div class="col-lg-2 text-end">
-              <div>
-                <img class="minus" src="icons/minus.png" alt="minus" width="20px">
-                <button class="d-inline border border-secondary bg-white px-2 rounded" id="amount-of-product">1</button>
-                <img class="plus" src="icons/plus.png" alt="plus" width="20px">
+            <div class="row bg-white mb-1 p-1 align-items-center border rounded">
+              <div class="col-lg-1 p-1"></div>
+              <div class="col-lg-6"></div>
+              <div class="col-lg-2 text-end">
+                <div>
+                  <span class="text-end fw-bold">Summa:</span>
+                </div>
               </div>
-            </div>
-            <div class="col-lg-2 m-auto text-center">
-              <span class="price fw-bold">15</span> <span>kr</span>
-            </div>
-            <div class="col-lg-1 m-auto text-end" id="trash">
-              <img class="trashcan" src="icons/delete.png" alt="Soptunna" width="25px">
-            </div>
+              <div class="col-lg-2 m-auto text-center">
+                <span class="fw-bold" id="total-sum">15</span> <span>kr</span>
+              </div>
+              <div class="col-lg-1 m-auto text-end" id="trash">
+              </div>
+            </div> <!-- Modal, orderrad SLUT -->
+
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Till kassan</button>
+          <div class="container-fluid">
+            <div class="row">
+              <button type="button" class="btn btn-success" data-bs-dismiss="modal">Till kassan</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-    crossorigin="anonymous"></script>
+  </div> <!-- Modal, varukorg SLUT -->
 
 
   <!-- login -->
@@ -115,9 +113,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header border-bottom-0">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <!--<div class="modal-body2">-->
@@ -143,11 +139,15 @@
       <div class="signup-section">Not a member yet? <a href="#a" class="text-info"> Sign Up</a>.</div>
     </div>
   </div>
-  </div>
 
 
+<<<<<<< HEAD
     <!-- Footer -->
 <footer class="bg-dark text-center text-white fixed-bottom">
+=======
+  <!-- Footer -->
+  <footer class="bg-dark text-center text-white sticky-bottom">
+>>>>>>> 631a1398cf2cafafef4632d589dd69170a630db7
     <!-- Grid container -->
     <div class="container p-4">
       <!-- Section: Links -->
@@ -219,17 +219,49 @@
     <!-- Copyright -->
   </footer>
   <!-- Footer -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="index.js"></script>
 
 
-<!-- jQuery -->
-<script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
-<!-- Popper JS -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
-<!-- Bootstrap JS -->
-<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!--<div class="modal-body2">-->
+          <div class="form-title text-center">
+            <h4>Logga in</h4>
+          </div>
+          <div class="d-flex flex-column text-center">
+            <form>
+              <div class="form-group">
+                <input type="email" class="form-control" id="email1" placeholder="Ange email...">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" id="password1" placeholder="Ange lösenord...">
+              </div>
+              <!--funktionen validateUser() nedan är inte skapad-->
+              <button type="button" onclick="validateUser()" class="btn btn-info btn-block btn-round">Logga in</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer d-flex justify-content-center">
+      <div class="signup-section">Not a member yet? <a href="#a" class="text-info"> Sign Up</a>.</div>
+    </div>
+  </div>
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+  <script src="./js/modal-shopping-cart.js"></script>
+  <script src="./js/index.js"></script>
 
 </body>
 
