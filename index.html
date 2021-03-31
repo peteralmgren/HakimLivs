@@ -33,7 +33,8 @@
               data-target="#loginModal">Logga in</button>
           </div>
           <div id="button-shadow">
-            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#shopping-cart">Varukorg</button>
+            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
+              data-bs-target="#shopping-cart">Varukorg</button>
           </div>
           <div id="button-shadow">
             <a href="cart.html"><button type="button" class="btn btn-primary btn-lg">Till kassan:
@@ -44,7 +45,8 @@
     </div>
   </header>
 
-  <div class="modal fade" id="shopping-cart" tabindex="-1"> <!-- Modal, varukorg START -->
+  <div class="modal fade" id="shopping-cart" tabindex="-1">
+    <!-- Modal, varukorg START -->
     <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
@@ -52,45 +54,52 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body bg-light">
-          <div class="container-fluid" >
+          <div class="container-fluid">
 
-            <div class="row bg-white mt-1 py-2 align-items-center border rounded" id="${product.id}"> <!-- Modal, orderrad START -->
-              <div class="col-md-1 col-lg-1 p-1">
-                <img class="img-fluid" src="./images/fruit/apples-490474_640.jpg" alt="Produktbild" width="60px" height="60px">
+            <div class="row bg-white mt-1 py-2 align-items-center border rounded" id="${product.id}">  <!-- Modal, orderrad START -->
+              <div class="col-1 p-1">
+                <img class="img-fluid" src="./images/fruit/apples-490474_640.jpg" alt="Produktbild">
               </div>
-              <div class="col-md-11 col-lg-5">
+
+              <div class="col-4">
                 <div>
                   <p class="brand m-0">AXA</p>
                   <h5 class="fw-bold m-0 title">Havregryn</h5>
                 </div>
               </div>
-              <div class="col-md-6 col-lg-3 text-end">
-                <div>
-                  <img class="minus" src="./icons/minus.png" alt="minus" width="20px">
-                  <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">1</button>
-                  <img class="plus" src="./icons/plus.png" alt="plus" width="20px">
+
+              <div class="col-3 text-end px-0">
+                <div class="flex">
+                  <img class="minus" src="./icons/minus.png" alt="minus" width="20px"> <button
+                    class="border border-secondary bg-white px-2 rounded" id="amount-of-product">1</button> <img
+                    class="plus" src="./icons/plus.png" alt="plus" width="20px">
                 </div>
-              </div> 
-              <div class="col-md-3 col-lg-2 m-auto text-center"> 
-                <span class="price fw-bold">15</span> <span>kr</span>
               </div>
-              <div class="col-md-3 col-lg-1 m-auto text-end" id="trash">
+
+              <div class="col-3 px-0">
+                <div class="d-flex justify-content-end">
+                  <div class="price fw-bold px-0 mx-0">15</div><div class="px-0 ms-1">kr</div>
+                </div>
+              </div>
+
+              <div class="col-1 m-auto text-end px-0" id="trash">
                 <img class="trashcan pe-1" src="./icons/delete.png" alt="Soptunna" width="25px">
               </div>
             </div> <!-- Modal, orderrad SLUT -->
 
-            <div class="row bg-white mb-1 p-1 align-items-center border rounded"> <!-- Modal, totalsumma START -->
-              <div class="col-lg-1 p-1"></div>
-              <div class="col-lg-6"></div>
-              <div class="col-lg-2 text-end">
+            <div class="row bg-white mb-1 p-1 align-items-center border rounded">  <!-- Modal, totalsumma START -->
+              <div class="col-1 p-1"></div>
+              <div class="col-4"></div>
+              <div class="col-3 text-end">
                 <div>
-                  <span class="text-end fw-bold">Summa:</span>
+                  <span class="fw-bold px-0 mx-0">Summa:</span>
                 </div>
               </div>
-              <div class="col-lg-2 m-auto text-center">
-                <span class="fw-bold" id="total-sum">15</span> <span>kr</span>
+              <div class="col-3 m-auto text-center">
+                <div class="d-flex justify-content-end">
+                  <div class="fw-bold px-0 mx-0" id="total-sum">15</div> <div class="px-0 ms-1">kr</div>
               </div>
-              <div class="col-lg-1 m-auto text-end" id="trash">
+              <div class="col-1 m-auto text-end px-0" id="trash">
               </div>
             </div> <!-- Modal, totalsumma SLUT -->
 
@@ -99,14 +108,14 @@
         <div class="modal-footer">
           <div class="container-fluid">
             <div class="row">
-              <button type="button" class="btn btn-success"><a class="text-decoration-none text-white" href="cart.html">Till kassan</a></button>
+              <button type="button" class="btn btn-success"><a class="text-decoration-none text-white"
+                  href="cart.html">Till kassan</a></button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div> <!-- Modal, varukorg SLUT -->
-
 
 
   <!-- login -->
