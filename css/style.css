@@ -43,6 +43,12 @@
   box-shadow: 4px 5px gray;
 }
 
+.card-img-top {
+  max-height: 100px;
+  max-width: 100px;
+}
+
+
 /* @media (min-width: 576px) {
   .modal-dialog {
     max-width: 400px;

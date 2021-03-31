@@ -3,7 +3,7 @@
         "id": 1,
         "title": "Tomater",
         "description": "Runda och fina tomater. Skölj och ha i salladen eller på smörgåsen. Observera att ursprungsland för denna produkt kan variera beroende på säsong och tillgång.",
-        "image": "fruit-images/tomatoes-1238255_640.jpg",
+        "image": "/images/fruit/tomatoes-1238255_640.jpg",
         "price": 39.90,
         "category": "fruit"
     },
@@ -11,7 +11,7 @@
         "id": 2,
         "title": "Bananer",
         "description": "En ekologiskt odlad banan. Bananer passar bra som mellanmål. Bananen är temperaturkänslig, mycket känslig för uttorkning, etylen och kylskador. Förvaras i rumstemperatur eller svalt, aldrig i kylskåp. Observera att ursprungsland för denna produkt kan variera beroende på säsong och tillgång.",
-        "image": "fruit-images/banana-2449019_640.jpg",
+        "image": "/images/fruit/banana-2449019_640.jpg",
         "price": 15,
         "category": "fruit"
     },
@@ -19,7 +19,7 @@
         "id": 3,
         "title": "Morötter",
         "description": "Morotens orangeröda färg kommer från det höga innehållet av betakaroten, vilket i kroppen omvandlas till A-vitamin. Smakmässigt är moroten söt, med en knaprig konsistens. Morötter kan ätas råa, och används även i grytor, gratänger, soppor och wok.",
-        "image": "fruit-images/carrots-2387394_640.jpg",
+        "image": "/images/fruit/carrots-2387394_640.jpg",
         "price": 12,
         "category": "fruit"
     },
@@ -67,7 +67,7 @@
         "id": 9,
         "title": "Smör",
         "description": "Så naturligt och så gott. Bregott Extrasaltat har varit en favorit på den svenska smörgåsen sedan 1971. Smöret kärnas av grädde som sedan blandas med rapsolja och en extra nypa salt. ",
-        "image": "mejeri-images/smör.jpg",
+        "image": "/smör.jpg",
         "price": 39.90,
         "category": "mejeri"
     },
