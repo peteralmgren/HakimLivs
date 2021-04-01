@@ -73,6 +73,10 @@ nav a{
   font-weight: bold;
 }
 
+.card-img-top{
+  object-fit: cover;
+}
+
 
 
 /* @media (min-width: 576px) {
