@@ -41,7 +41,7 @@ export default class UI {
     }
 
     readStorage(slot) {
-        return JSON.parse(localStorage.getItem(slo));
+        return JSON.parse(localStorage.getItem(slot));
     }
 
     writeStore(slot, data) {

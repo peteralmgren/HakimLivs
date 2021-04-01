@@ -74,6 +74,7 @@ nav a{
 }
 
 .card-img-top{
+  height: 14vw;
   object-fit: cover;
 }
 

@@ -78,18 +78,17 @@ export default class Products extends UI {
         output += `<div class="row">`;
       }
 
-      output +=`
-        <div class="col-lg-3 col-md-3 mb-3">
-        <div class="card">
-        <div class="card-body text-center">
-        <img class="card-img-top" src="${allProductsArray[index2].image}">
-        <p class="card-text">Pris ${allProductsArray[index2].price} kr</p>
-        <h6 class="card-title">${allProductsArray[index2].title}</h6>
-        <a class="btn btn-primary" id="product${allProductsArray[index2].id}">Köp</a>
-        </div>
-        </div>
-        </div>
-        `;
+      output +=
+      `<div class="col-lg-3 col-md-3 mb-3">
+          <div class="card h-100 rounded">
+            <div class="card-body text-center">
+              <img class="card-img-top" src="${allProductsArray[index2].image}">
+              <p class="card-text">Pris ${allProductsArray[index2].price} kr</p>
+              <h6 class="card-title">${allProductsArray[index2].title}</h6>
+              <button class="btn btn-primary" id="product${allProductsArray[index2].id}">Köp</button>
+            </div>
+          </div>
+        </div>`;
 
       if (counter == 4) {
         output += "</div>";
