@@ -5,7 +5,7 @@ export default class Footer extends UI {
         super(appendTo);
         this.html=`
         <!-- Footer -->
-        <footer class="bg-dark text-center text-white fixed-bottom">
+        <footer class="bg-dark text-center text-white sticky-bottom">
           <!-- Grid container -->
           <div class="container p-4">
             <!-- Section: Links -->

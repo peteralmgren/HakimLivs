@@ -1,6 +1,18 @@
 /* selektor: htmltagg -------------------------------------------- Sorterat i bokstavsordning */
+body{
+  background-color: rgb(243, 242, 239) !important;
+}
+
+nav a{
+  text-decoration: none;
+}
+
+
 
 /* selektor: klass ----------------------------------------------- Sorterat i bokstavsordning */
+
+
+
 .brand {
   font-weight: bold;
   font-size: 10px;
@@ -8,6 +20,15 @@
 
 .btn-round {
   border-radius: 3rem;
+}
+
+.btn-space{
+  margin-left: 20px;
+}
+
+.card span{
+  float: right;
+  font-weight: bold;
 }
 
 .delimiter {
@@ -22,6 +43,7 @@
   margin-top: -1.5rem;
 } */
 
+
 .signup-section {
   padding: 0.3rem 0rem;
 }
@@ -31,17 +53,27 @@
 }
 
 /* selektor: id -------------------------------------------------- Sorterat i bokstavsordning */
-#button-shadow {
-  border-radius: 5px;
-  box-shadow: 2px 3px gray;
+#carousel-container {
+  height: 70%;
+  width: auto;
+  padding-bottom: 10rem;
 }
 
-#button-shadow button:hover {
-  border-radius: 5px;
-  width: 105%;
-  height: auto;
-  box-shadow: 4px 5px gray;
+#carousel-container img {
+  margin-left: auto;
+  margin-right: auto;
 }
+
+#Cart-body{
+  border-radius: 10px;
+  padding-bottom: 5rem;
+}
+
+#Total-summa{
+  font-weight: bold;
+}
+
+
 
 /* @media (min-width: 576px) {
   .modal-dialog {
@@ -51,3 +83,5 @@
     padding: 1rem;
   }
 } */
+
+

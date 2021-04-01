@@ -1,6 +1,6 @@
 import UI from "../ui.js";
 
-export default class Carousel extends UI {
+export default class Products extends UI {
     constructor(appendTo) {
         super(appendTo);
         this.html=`
@@ -23,7 +23,7 @@ export default class Carousel extends UI {
                   <button class="btn btn-dark" id="carouselbtn">Köp Nu!</button>
                 </div>
               </div>
-              <div class="carousel-item  ">
+              <div class="carousel-item ">
                       <img src="/images/mejeri/ost.jpg" class="d-block" alt="Slide 2">
                 <div class="carousel-caption d-none d-md-block text-dark">
                   <h1>Pris: 0</h1>
@@ -61,7 +61,6 @@ export default class Carousel extends UI {
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
-
         </div>
         `;
         super.container.innerHTML = this.html;
