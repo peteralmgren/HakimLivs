@@ -64,11 +64,6 @@ export default class Carousel extends UI {
             </div>
         </div>
         `;
-        console.log(super.container);
-        super.container.innerHTML = this.html
-/*         for (let i = 0; i < super.container.length; i++) {
-            super.container[i].innerHTML = this.html;
-        } */
-        
+        super.container.innerHTML = this.html;
     }
 }
