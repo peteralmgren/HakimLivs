@@ -47,7 +47,7 @@ body {
     padding: 20px;
   }
   .card-body {
-    padding: 0.5rem;
+    padding: 1rem;
     font-size: 12px;
   }
   #recently-posted .card img {
@@ -78,6 +78,17 @@ body {
   }
   #site-changes{
     width: 120%;
+  }
+  /* #add-btn {
+    position: bottom;
+    right: 15px;
+    bottom: 15px;
+  } */
+  #order{
+    text-align: center;
+  }
+  #order-end{
+    color: bold;
   }
   
   
