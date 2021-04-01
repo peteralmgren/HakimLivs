@@ -107,20 +107,21 @@ function showAllProductsInCategory(category){
     let output = "";
     let counter = 1;
 
+    output += `<div class="container">`
+
     for (let index = 0; index < allProductsArray.length; index++) {
         if (counter == 5){
             counter = 1;
             console.log(counter)
         }
-           
-
+        
         if (allProductsArray[index].category == category){
             if (counter==1) {
                 output += `<div class="row">`};
             
                 output +=
                 `<div class="col-lg-3 col-md-3 mb-3">`
-                    +`<div class="card" style="width:150px">`
+                    +`<div class="card">`
                         + `<div class="card-body text-center">`
                             + `<img class="card-img-top" src=` + allProductsArray[index].image + `>`
                             + `<p class="card-text">Pris `+ allProductsArray[index].price +` kr</p>`
@@ -135,6 +136,8 @@ function showAllProductsInCategory(category){
                 counter += 1;
         } 
     }
+    output += "</div>"
+
     console.log(output)
     document.getElementById("products").innerHTML = output;
 }  
@@ -167,7 +170,7 @@ function showProducts(){
         
             output +=
             `<div class="col-lg-3 col-md-3 mb-3">`
-                +`<div class="card" style="width:150px">`
+                +`<div class="card">`
                     + `<div class="card-body text-center">`
                         + `<img class="card-img-top" src=` + allProductsArray[index2].image + `>`
                         + `<p class="card-text">Pris `+ allProductsArray[index2].price +` kr</p>`
@@ -187,6 +190,7 @@ function showProducts(){
     console.log(output)
     document.getElementById("products").innerHTML = output;
 }  
+
 
 
 
