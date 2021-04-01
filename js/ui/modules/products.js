@@ -9,29 +9,9 @@ export default class Products extends UI {
 
   // jag kan göra en array med kategorier. En for-loop skapar upp nya event-
   // listeners och lägger
-  //document.getElementById("fruit").addEventListener("click", showCategory1);
-  //document.getElementById("mejeri").addEventListener("click", showCategory2);
-  /* document.getElementById("").addEventListener("click", showCategory3);
-document.getElementById("").addEventListener("click", showCategory4);
-document.getElementById("").addEventListener("click", showCategory5);
-document.getElementById("").addEventListener("click", showCategory6);
-document.getElementById("").addEventListener("click", showCategory7);
-document.getElementById("").addEventListener("click", showCategory8);
-document.getElementById("").addEventListener("click", showCategory9);
-document.getElementById("").addEventListener("click", showCategory10);
-document.getElementById("").addEventListener("click", showCategory11);
-document.getElementById("").addEventListener("click", showCategory12);
-document.getElementById("").addEventListener("click", showCategory13);
-document.getElementById("").addEventListener("click", showCategory14);
-document.getElementById("").addEventListener("click", showCategory15);
-document.getElementById("").addEventListener("click", showCategory16); */
 
-  showCategory1() {
-    this.showAllProductsInCategory("fruit");
-  }
-
-  showCategory2() {
-    this.showAllProductsInCategory("mejeri");
+  showCategory(index) {
+    this.showAllProductsInCategory(index);
   }
 
   async showAllProductsInCategory(category) {
@@ -123,13 +103,11 @@ document.getElementById("").addEventListener("click", showCategory16); */
 
   randomizer() {
     let randomProducts = [];
-
     //random number 1-15 into an array
     while (randomProducts.length < 15) {
       let r = Math.floor(Math.random() * 15);
       if (randomProducts.indexOf(r) === -1) randomProducts.push(r);
     }
-
     return randomProducts;
   }
 }

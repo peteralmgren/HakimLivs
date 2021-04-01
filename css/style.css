@@ -77,7 +77,11 @@ nav a{
   object-fit: cover;
 }
 
-
+.cat-selector:hover{
+  text-decoration: underline;
+  color: grey;
+  cursor: pointer;
+}
 
 /* @media (min-width: 576px) {
   .modal-dialog {
