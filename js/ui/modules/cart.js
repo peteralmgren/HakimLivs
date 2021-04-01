@@ -75,5 +75,65 @@ export default class Cart extends UI {
           </div><!-- Modal, varukorg SLUT --></div>
           `;
           super.container.innerHTML = this.html;
+          window.addEventListener("click", async (e) => {
+            if (e.target.className == "trashcan pe-1") deleteRowInCart(e);
+            if (e.target.className == "minus") decreaseItemsInCartWithOne(e);
+            if (e.target.className == "plus") increaseItemsInCartWithOne(e);
+        });
     }
   }
+
+/** This function will do two things:
+ *  decrease the total sum with the order row sum and delete the order row from det shopping cart */
+ function deleteRowInCart(e) {
+  const totalSumElement = document.getElementById('total-sum');
+  let totalSum = parseFloat(totalSumElement.textContent);
+  const orderRowSum = parseFloat(e.target.parentNode.previousElementSibling.children[0].children[0].textContent);
+  totalSum = totalSum - orderRowSum;
+  totalSumElement.textContent = totalSum;
+
+  e.target.parentNode.parentNode.remove();
+}
+
+/** This for loop assigns event listeners to all minus sign icons. The anonymous function will do three things:
+*  decrease the number of items in the basket with one, decrease the order row sum with the price of one unit and decrease the total sum with the price of one unit */
+function decreaseItemsInCartWithOne(e) {
+  const totalSumElement = document.getElementById('total-sum');
+  let totalSum = parseFloat(totalSumElement.textContent);
+  const numberOfItemsNode = e.target.nextElementSibling;
+  const oldNrOfItems = parseInt(numberOfItemsNode.textContent);
+
+  if (oldNrOfItems === 1) { return; }
+
+  numberOfItemsNode.textContent = oldNrOfItems - 1;
+
+  const orderRowSumElement = e.target.parentNode.parentNode.nextElementSibling.children[0].children[0];
+  const oldOrderRowSum = parseInt(orderRowSumElement.textContent);
+  const pricePerUnit = oldOrderRowSum / oldNrOfItems;
+  const newOrderRowSum = oldOrderRowSum - pricePerUnit;
+
+  orderRowSumElement.textContent = newOrderRowSum;
+  totalSum = totalSum - pricePerUnit;
+  totalSumElement.textContent = totalSum;
+}
+
+/** This function will do three things:
+*  increase the number of items in the basket with one, increase the order row sum with the price of one unit and increase the total sum with the price of one unit */
+function increaseItemsInCartWithOne(e) {
+  const totalSumElement = document.getElementById('total-sum');
+  let totalSum = parseFloat(totalSumElement.textContent);
+
+  const numberOfItemsNode = e.target.previousElementSibling;
+  const oldNrOfItems = parseInt(numberOfItemsNode.textContent);
+  numberOfItemsNode.textContent = oldNrOfItems + 1;
+
+  const orderRowSumElement = e.target.parentNode.parentNode.nextElementSibling.children[0].children[0];
+  const oldOrderRowSum = parseInt(orderRowSumElement.textContent);
+  const pricePerUnit = oldOrderRowSum / oldNrOfItems;
+  const newOrderRowSum = oldOrderRowSum + pricePerUnit;
+
+  orderRowSumElement.textContent = newOrderRowSum;
+  totalSum = totalSum + pricePerUnit;
+  totalSumElement.textContent = totalSum;
+}
+
