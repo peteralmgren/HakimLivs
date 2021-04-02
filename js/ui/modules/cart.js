@@ -3,7 +3,7 @@ import UI from "../ui.js";
 export default class Cart extends UI {
   constructor(appendTo) {
     super(appendTo);
-    this.getAllProducts();
+    // this.getAllProducts();
     this.html = `
         <div class="modal fade" id="shopping-cart" tabindex="-1">
             <!-- Modal, varukorg START -->
@@ -15,8 +15,10 @@ export default class Cart extends UI {
                 </div>
                 <div class="modal-body bg-light">
                   <div class="container-fluid">
+
+                  <!-- Modal, orderrad START -->
+
                     <div class="row bg-white mt-1 py-2 align-items-center border rounded" id="">
-                      <!-- Modal, orderrad START -->
                       <div class="col-1 p-1">
                         <img class="img-fluid" src="./images/fruit/apples-490474_640.jpg" alt="Produktbild">
                       </div>
@@ -42,7 +44,10 @@ export default class Cart extends UI {
                       <div class="col-1 m-auto text-end px-0" id="trash">
                         <img class="trashcan pe-1" src="./icons/delete.png" alt="Soptunna" width="25px">
                       </div>
-                    </div><!-- Modal, orderrad SLUT -->
+                    </div>
+                    
+                    <!-- Modal, orderrad SLUT -->
+
                     <div class="row bg-white mb-1 p-1 align-items-center border rounded">
                       <!-- Modal, totalsumma START -->
                       <div class="col-1 p-1"></div>
@@ -82,13 +87,16 @@ export default class Cart extends UI {
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
     });
   }
+
+async injectRowItemsInCart() {
+    let allProducts = await super.loadData("GET", "./data/produkter.JSON");
+    allProducts = JSON.parse(allProducts);
+
+  let row = '';
+
+} 
+
   
-  /* This function will get all products from the "server" and then return them in a map with the productID as the key */
-  async getAllProducts() {
-    let allProductsArray = await super.loadData("GET", "./data/produkter.JSON");
-    allProductsArray = new Map(JSON.parse(allProductsArray));
-    console.log(allProductsArray);
-  }
 
   /** This function will do two things:
    *  decrease the total sum with the order row sum and delete the order row from det shopping cart */

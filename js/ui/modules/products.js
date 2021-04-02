@@ -57,6 +57,7 @@ export default class Products extends UI {
   async showProducts() {
     let allProductsArray = await super.loadData("GET", "./data/produkter.JSON");
     allProductsArray = JSON.parse(allProductsArray);
+    // console.log(allProducts);
     let randomProductsArray = [];
     randomProductsArray = this.randomizer();
 
@@ -68,7 +69,6 @@ export default class Products extends UI {
     for (let index = 0; index < 15; index++) {
       if (counter == 5) {
         counter = 1;
-        console.log(counter);
       }
 
       let index2 = 0;
@@ -79,13 +79,13 @@ export default class Products extends UI {
       }
 
       output +=
-      `<div class="col-lg-3 col-md-3 mb-3">
+        `<div class="col-lg-3 col-md-3 mb-3">
           <div class="card h-100 rounded">
             <div class="card-body text-center">
               <img class="card-img-top" src="${allProductsArray[index2].image}">
               <p class="card-text">Pris ${allProductsArray[index2].price} kr</p>
               <h6 class="card-title">${allProductsArray[index2].title}</h6>
-              <button class="btn btn-primary" id="product${allProductsArray[index2].id}">Köp</button>
+              <button class="buy-btn btn btn-primary" id="product${allProductsArray[index2].id}">Köp</button>
             </div>
           </div>
         </div>`;
@@ -109,4 +109,20 @@ export default class Products extends UI {
     }
     return randomProducts;
   }
+
+    // /* This function will get all products from the "server" and then return them in a map with the productID as the key */
+  // static getSpecificProduct(id) {
+  //   console.log(allProducts);
+  //   allProducts.forEach((product) => {
+  //     if (product.id === id) return product;
+  //   });
+  // }
+
+  getBuyButtons() {
+    const buyBtns = [...document.querySelectorAll('.buy-btn')];
+    console.log(buyBtns);
+  }
+
+
+
 }
