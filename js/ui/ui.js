@@ -44,7 +44,34 @@ export default class UI {
         return JSON.parse(localStorage.getItem(slot));
     }
 
-    writeStore(slot, data) {
+    writeStorage(slot, data) {
         localStorage.setItem(slot, JSON.stringify(data));
     }
+
+    addToCart(data) {
+        let slot = "cart";
+        let loaded = this.readStorage(slot);
+        if(loaded == null) loaded = {};
+        else if (loaded && !loaded[data]) loaded[data] = 1;
+        else if (loaded && loaded[data]) loaded[data] += 1;
+        this.writeStorage(slot, loaded);
+    }
+
+    removeFromCart(data) {
+        let slot = "cart";
+        let loaded = this.readStorage(slot);
+        if(loaded == null) loaded = {};
+        else if(loaded && loaded[data] == 1) delete loaded[data];
+        else if (loaded && loaded[data]) loaded[data] -= 1;
+        this.writeStorage(slot, loaded);
+    }
+
+    clearFromCart(data) {
+        console.log("hello there", data);
+        let slot = "cart";
+        let loaded = this.readStorage(slot);
+        if(loaded && loaded[data]) delete loaded[data];
+        this.writeStorage(slot, loaded);
+    }
+
 }
