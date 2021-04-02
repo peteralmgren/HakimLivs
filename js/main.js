@@ -13,7 +13,7 @@ window.addEventListener("load", async (e) => {
     new Carousel(".carousel");
     new Login(".login");
     new Sidebar(".sidebar");
-    new Products(".products");
+    new Products(".products").showProducts();
 });
 
 
