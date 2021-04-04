@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
     <title>Admin page</title>
+    <!-- <script src="admin.js"></script> -->
 </head>
 <!-- Top Nav -->
 <nav class="py-3 px-4 navbar navbar-expand-lg auto-hiding-navbar fixed-top">
@@ -17,8 +18,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">  
-        <a class="navbar-brand" href="#">
-            <img src="images/logo.png" alt="logo" class="logo" />
+        <a class="navbar-brand" href="index.html">
+            <img  src="images/logo.png" alt="logo" class="logo"/>
           </a>
         <form class="search-form d-flex ml-auto mt-1 mb-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Sök vara" aria-label="Search">
@@ -91,7 +92,7 @@
                         <form class="form-inline">
                           <div class="form-group">
                             <label for="exampleFormControlTextarea1">Skriv varukategori</label>
-                            <textarea class="form-control" id="productnameinput" rows="1"></textarea>
+                            <textarea class="form-control" id="productcategoryinput" rows="1"></textarea>
                           </div>
                           <div class="form-group">
                             <label for="exampleFormControlTextarea1">Skriv produktnamn</label>
@@ -147,43 +148,64 @@
                 </div>
               </div>
 
+
+
               <!-- Formulär för kundorder begin-->
               
               <div class="second-row">
                 
-                <div class="col-12">
+                <div class="col-md-12">
                   
-                  <section id="customers" class="border border-dark">
+                  <section id="order" class="border border-dark">
                     
-                    <div class="card">
-                      <div id="order" class="card-header">
-                        Order
-                        <div class="form-check" style="align-content: center;">
+                    
+                    <div class="card" >
+                      
+                      
+                      <div id="card-header" class="card-header">
+                        <label id="order-number" class="label label-info" >Ordernr:</label>
+                        <label id="order-date" class="label label-info" style="padding-left: 10rem; padding-right:10rem;">Orderdatum:</label>
+                        <input class="form-check-input" type="checkbox"  value=""  id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1" >Order plockad</label>
+                      </input>
+                        <div class="form-check"></div>
+                        
+                        </div>
+                        <!-- <div class="form" style="align-content: center;">
+                          </div> -->
+                        
                           </div>
-                          
-                          </div>
-                      </div>
+                        
+                      <!-- </div> -->
+                    
                                         
                       <table class="table table-bordered table-sm border border-top-0">
                         <thead class="bg-light text-black">
-                          <th>Ordernr</th>
                           <th>Kundnr</th>
+                          <th>ProduktId</th>
                           <th>Produktnamn</th>
                           <th>Antal</th>
                         </thead>
                         <tbody>
+                          <!-- inject cart order -->
                           <tr>
-                            <td>997423</td>
-                            <td>14</td>
-                            <td>Gräddfil</td>
-                            <td>3</td>
+                            <td id="kund-id">14</td>
+                            <td id="product-id">33123</td>
+                            <td  id="product-name">Gräddfil</td>
+                            <td id="product-amount">3</td>
+                          </tr>
+                          <tr>
+                            <td id="kund-id">14</td>
+                            <td id="product-id">33211</td>
+                            <td  id="product-name">Kiwi</td>
+                            <td id="product-amount">1</td>
                           </tr>
                           <thead id="order-end" class="bg-light text-bold">
-                            <th>Orinal summa</th>
-                            <th>Efter rabatt</th>
-                            <th>Att betala</th>
+                            <th id="org-amount">Orinal summa:</th>
+                            <th >Efter rabatt:<label id="after-discount"><!-- inject summa efter rabatt --></label></th>
+                            <th id="total-sum">Att betala:</th>
                             <td>
-                              <button id="print-btn" type="button" class="btn btn-primary" >
+                              <button id="print-btn" type="button" class="btn btn-primary" onclick="printDiv('order')" >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
                                   <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
                                   <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
@@ -191,20 +213,24 @@
                                 Utskrift
                               </button>
                               
-                            </td>
+                            </td>                           
                           </thead>
 
                         </table>
+
+                        <div id="shipping-info" class="container d-none">
+                          
+                          </div>
+                          </div>
+                          <hr>
+                          
+                        </div>
                      
                         </section>
-                      
                       </div>
                     
                     </div>
-                  
-                
-                  
-                  
+              
               <!-- Formulär för kundorder end-->
               
               <div class="row second-row">
@@ -268,6 +294,6 @@
               </div>
             
              
-          
+              <script src="admin.js"></script>
 </body>
 </html>

@@ -1,0 +1,20 @@
+[
+    {
+        "id": 14,
+        "firstname": "Kalle",
+        "lastname": "Andersson",
+        "address": "Storgatan 1",
+        "zipcode": 12245,
+        "county": "Enskede",
+        "email": "kalle@kalle.com"
+    },
+    {
+        "id": 15,
+        "firstname": "Peter",
+        "lastname": "Almgren",
+        "address": "Pumpstigen 9",
+        "zipcode": 38737,
+        "county": "Borgholm",
+        "email": "peter@peter.com"
+    }
+]    
