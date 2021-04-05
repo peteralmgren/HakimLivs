@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
     <link rel="stylesheet" href="css/admin.css" />
     <!-- JavaScript and dependencies -->
+    
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
     <title>Admin page</title>
@@ -39,9 +41,11 @@
             Hello Admin
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Kundlistor</a>
+            <a class="dropdown-item" href="#customers">Kundlistor</a>
             <a class="dropdown-item" href="#">Kontoinställningar</a>
-            <a class="dropdown-item" href="#">Kundordrar</a>
+            <a class="dropdown-item" href="#order">Kundordrar</a>
+            <a class="dropdown-item" href="#">Skapa ny produkt</a>
+            <a class="dropdown-item" href="#footer">Ändra footer</a>
           </div>
         </li>
         <li class="nav-item">
@@ -56,116 +60,142 @@
 <body>
     <!-- <div class="row"> -->
         
-        <div class="main col-11">
+        <div class="main col-10">
             <div class="row first-row">
               <div class="col-4">
                 <section id="recently-posted">
                   <div class="card">
-                    <div class="card-header">
+                    <div class="card-header" style="text-align: center; color:black;">
                       Kontrollpanel för produkt
                     </div>
                     <ul class="list-group list-group-flush">
                       
-                        <div class="card" style="width: auto;">
-                            <a>Exempelbild här</a>
-                                <img class="card-img-top" src="images/mejeri/ost.jpg" alt="Card image cap">
+                        <div class="card" style="width: auto;text-align: center;">Kategori
+                            <label id="cat-example" for="exampeltext" style="text-align: center; color:black;"></label>
+                            <div class="col text-center">
+                                <img class="card-img-top" src="images/mejeri/ost.jpg" style=" width:75%;" alt="Card image cap">
+                              </div>
                                     <div class="card-body">
-                                        <h5 class="card-title">Produktnamn här</h5>
-                                    <br class="card-text">Produktinfo här</p>
-                                <a class="btn btn-primary">Lägg i varukorg</a>
+                                      <h5 class="card-title"style="text-align: center; color:black;">Pris här</h5><br>
+                                        <h5 class="card-title"style="text-align: center; color:black;">Produktnamn här</h5>
+                                    <h5 class="card-text"style="text-align: center; color:black;">Produktinfo här</h5>
+                                    <div class="col text-center">
+                                <button class="btn btn-primary">Lägg i varukorg</button>
+                              </div>
                             </div>
                          </div>
                      </ul>
                   </div>
                 </section>
               </div>
+
               
               
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <div class="card">
+
+                  
+
+
                   <div class="card-header text-secondary">
-                    <label class="bg-light text-bold">Admin skapa produkt formulär</label>
+                    <label class="bg-white" style="color:black;">Admin skapa produkt formulär
+
+                      
+
+                    </label>
+
+                    <!-- <div class="col-md-6 text-right">
+                      <form class="form-inline pull-right">
+                        <div class="form-group">
+                          <div class="dropdown">
+                              <button class="btn btn-inline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Skapa innehåll
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">Välj
+                                <a class="dropdown-item" href="#">Ändra "Om oss"</a>
+                                <a class="dropdown-item" href="#">Kunderbjudanden</a>
+                                <a class="dropdown-item" href="#">Ändra ?</a>
+                                <a class="dropdown-item" href="#">Ändra ?</a>
+                                <a class="dropdown-item" href="#">Ändra ?</a>
+                              </div>
+                            </div>
+                        </div>
+                      </form>
+                    </div> -->
+
+
                   </div>
+                  <form id="myform" type="post">
                   <div class="card-body">
                     <div class="row mb-2 text-muted">
                       <div class="col-md-6 text-left">
                         <form class="form-inline">
                           <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Skriv varukategori</label>
-                            <textarea class="form-control" id="productcategoryinput" rows="1"></textarea>
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Skriv produktnamn</label>
-                            <textarea class="form-control" id="productnameinput" rows="1"></textarea>
+                            <div class="elements">
+                              <label for="id">Skriv i artikelnr</label>
+                              <input  required="required" type="number"  value="" name="id"  size="10"  />
+                            </div>
+                            <div class="elements">
+                              <label for="category">Skriv i kategori</label>
+                              <input id="cat-input" required="required" type="text"  value="" name="category"  size="20" onkeydown="return exampelInput(event)" />
+                            </div>
+                            <div class="elements">
+                              <label for="title">Skriv i produktnamn</label>
+                              <input required="required" type="text"  value="" name="title"  size="40"  />
+                            </div>
+                            <div class="elements">
+                              
+                              <label for="description">Skriv produktinfo</label>
+                              <textarea class="form-control" rows="3" required="required" type="text" value=""
+                               id="description" name="product-info"  size="40" ></textarea>
+                            </div>	
+                            <div class="elements">
+                              <label for="price">Skriv i pris</label>
+                              <input  required="required" type="number"  value="" name="price"  size="10"  />
+                            </div>
+                            <div class="elements">
+                              <label for="image">Skriv i sökväg till bild</label>
+                              <input required="required" value="" name="image" type="text" size="40"  />
+                            </div>
                           </div>
                         </form>
-                      </div>
-                      <div class="col-md-6 text-right">
-                        <form class="form-inline pull-right">
-                          <div class="form-group">
-                            <div class="dropdown">
-                                <button class="btn btn-inline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Skapa innehåll
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">Välj
-                                  <a class="dropdown-item" href="#">Ändra "Om oss"</a>
-                                  <a class="dropdown-item" href="#">Kunderbjudanden</a>
-                                  <a class="dropdown-item" href="#">Ändra ?</a>
-                                  <a class="dropdown-item" href="#">Ändra ?</a>
-                                  <a class="dropdown-item" href="#">Ändra ?</a>
-                                </div>
-                              </div>
-                          </div>
-                        </form>
-                      </div>
+                      </div> 
                     </div>
-                    <form>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Produktinfo</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                      </div>
-                    </form>
-                    <div class="col-md-6 mb-4">
 
+                    <div class="col-md-7 mb-1">
                         <form class="md-form">
-                          <div class="file-field">
-                            <div class="mb-4">
-                            </div>
-                            <div class="d-flex justify-content-left">
-                              <div class="btn btn-mdb-color btn-rounded float-left">
-                                
-                                <input type="file">
-                              </div>
-                            </div>
-                          </div>
-                          <button type="button" class="btn btn-success mt-5">Lägg till vara</button>
-                        </form>
-                
+                          <button type="submit" id="add-btn" class="btn btn-success mt-5">Lägg till vara</button>                   
+                          <button type="button" id="cancel-btn" class="btn btn-success mt-5" >Avbryt</button>                      
+                        </form>       
                       </div>
                   </div>
-                  <div class="card-footer text-muted">
-                </div>
+                </form>
+
+                  <!-- <div class="card-footer text-muted">
+                </div> -->
                 </div>
               </div>
 
-
+              <div>
+                <h2 style="text-align: center; padding-top:5rem">Kundorder</h2>
+              </div> 
 
               <!-- Formulär för kundorder begin-->
               
               <div class="second-row">
                 
-                <div class="col-md-12">
+                <div id="order" class="col-md-12">
                   
-                  <section id="order" class="border border-dark">
+                  <div class="border border-dark">
                     
                     
                     <div class="card" >
                       
                       
-                      <div id="card-header" class="card-header">
+                      <div id="order-card" class="card-header">
                         <label id="order-number" class="label label-info" >Ordernr:</label>
                         <label id="order-date" class="label label-info" style="padding-left: 10rem; padding-right:10rem;">Orderdatum:</label>
-                        <input class="form-check-input" type="checkbox"  value=""  id="defaultCheck1">
+                        <input class="form-check-input" type="checkbox" checked="checked"  value=""  id="defaultCheck1" style="border-radius: 5px; border-color: black; border-width: thin;" >
                         <label class="form-check-label" for="defaultCheck1" >Order plockad</label>
                       </input>
                         <div class="form-check"></div>
@@ -217,55 +247,101 @@
                           </thead>
 
                         </table>
-
+                          
                         <div id="shipping-info" class="container d-none">
+
+                          <h1>Leveransinfo</h1>
+                          <div class="form">
+                            
+                          <div class="fields fields--2">
+                            <label class="form-control"style="color:black; border-color: black;">
+                              <span  class="field__label" for="firstname">Förnamn</span>  
+                              <label id="shipping-firstname" class="field__input" for="firstname"
+                                style="color:black; border-color: black;"></label>
+                            </label>
+                            <label class="form-control"style="color:black; border-color: black;" >
+                              <span class="field__label" for="lastname">Efternamn</span>
+                              <label id="shipping-lastname" class="field__input" type="text"style="color:black;"></label>
+                            </label>
+                          </div>
+                          <label class="form-control"style="color:black; border-color: black;">
+                            <span class="field__label" for="address">Adress</span>
+                            <label id="shipping-address" class="field__input" type="text"style="color:black;"></label>
+                          </label>
+                          
+                          <div class="fields fields--3">
+                            <label class="form-control"style="color:black; border-color: black;">
+                              <span class="field__label" for="zipcode">Postnr</span>
+                              <label id="shipping-zipcode" class="field__input" type="number"style="color:black;"></label>
+                            </label>
+                            <label class="form-control"style="color:black; border-color: black;">
+                              <span class="field__label" for="city">Ort</span>
+                              <label id="shipping-county" class="field__input" type="text"style="color:black;"></label>
+                            </label>
+                            <label class="form-control"style="color:black; border-color: black;">
+                              <span class="field__label" for="email">Epost</span>
+                              <label id="shipping-email" class="field__input" type="email"style="color:black;"></label>
+                               
+                              </input>
+                            </label>
+
                           
                           </div>
-                          </div>
-                          <hr>
+                          <!-- </div> -->
+                          <!-- <hr> -->
                           
-                        </div>
+                        <!-- </div> -->
                      
-                        </section>
+                        </div>
                       </div>
                     
-                    </div>
-              
-              <!-- Formulär för kundorder end-->
-              
+                    </div>  
+                  </div>
+                </div>  
+
+                <div>
+                  <h2 style="text-align: center;">Kundlistor</h2>
+                </div>  
+
               <div class="row second-row">
                 <div class="col-12">
                   <section id="customers" class="border border-dark">
                     <div class="card">
                       <div class="card-header">
-                        Kundlista ? erbjudanden
-                        <div class="form-check" style="align-content: center;">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        
+                        <!-- <div class="form-check" style="align-content: center;"> -->
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="border-radius: 5px; border-color: black; border-width: thin;">
                             <label class="form-check-label" for="flexCheckDefault">
                               Rabatt 5%
                             </label>
-                          </div>
-                          <div class="form-check" style="align-content: center;">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                          <!-- </div> -->
+                          <!-- <div class="form-check" style="align-content: center;"> -->
+                            <label class="form-check-label active" for="flexCheckDefault" style="padding-left: 5rem; padding-right:5rem;">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style=" border-radius: 5px; border-color: black; border-width: thin;">
+                            
                               Rabatt 10%
                             </label>
-                          </div>
-                          <div class="form-group">
-                            <div class="col-xs-1 col-sm-1">
-                              <label for="ex1">Rabatt</label>
-                              <input class="form-control" id="ex1" type="number-float"step="any" min="0" max="100">
-                            </div>
-                        </div>
+                          <!-- </div> -->
+                          <!-- <div class="form-group"> -->
+                            <!-- <div class="col-xs-1 col-sm-1"> -->
+                              <label for="ex1">Rabatt valfri
+                              <input class="col-xs-2 col-sm-2" id="disount-free" type="number-float"step="any" min="0" max="100"
+                              style=" border-radius: 5px; border-color:black; border-width: thin;" onkeypress="return isNumber(event)">
+                            </label>
+                            
+                            <!-- </div> -->
+                        <!-- </div> -->
                       </div>
                       
                       
                       <table class="table table-bordered table-sm border border-top-0">
-                        <thead class="bg-light text-secondary">
+                        <thead class="bg-light text-black">
                           <th>#</th>
                           <th>Kundnr</th>
                           <th>Namn</th>
-                          <th>Rabatt</th>
+                          <th>Rabattsats</th>
+                          <th>Ordersumma</th>
+                          <th>Period/Datum</th>
                           <th>Epost</th>
                         </thead>
                         <tbody>
@@ -277,6 +353,8 @@
                             <td>1234</td>
                             <td>Kalle Andersson</td>
                             <td>5%</td>
+                            <td>8432 SEK</td>
+                            <td>Feb2021-April2021</td>
                             <td>kalle@kalle.com</td>
                           </tr>
                           <tr>
@@ -284,6 +362,8 @@
                             <td>1234</td>
                             <td>Kalle Andersson</td>
                             <td>5%</td>
+                            <td>3540 SEK</td>
+                            <td>Jan2021-April2021</td>
                             <td>kalle@kalle.com</td>
                           </tr>
                         </tbody>
@@ -292,8 +372,107 @@
                     </section>
                 </div>
               </div>
-            
-             
-              <script src="js/admin.js"></script>
+
+              <!-- nytt test -->
+              <div>
+                <h2 style="text-align: center;">Ändra footer</h2>
+              </div>
+
+              <!-- Footer -->
+         <div id="footer" class="card" style="width: 100%; height: 200px;">    
+        <!-- <footer id="footer" class="bg-dark text-center text-white"> -->
+          <!-- Grid container -->
+          
+          <!-- </div> -->
+          <div class="card-body mh-50">
+            <!-- Section: Links -->
+            <section class="">
+              <!--Grid row-->
+              <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                  <h5 class="text-uppercase">Hitta hit</h5>
+      
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#!" class="text-white">Link 1</a>
+                    </li>
+                  </ul>
+                </div>
+                <!--Grid column-->
+      
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                  <h6 class="text">Öppettider</h6>
+                  <h6 class="text">Vardagar 10-19</h6>
+                  <h6 class="text">Helger 10-18</h6>
+
+                  <div class="elements">
+                              
+                    <label for="description">Ändra öppettider</label>
+                    <textarea class="form-control" rows="2" required="required" type="text" value=""
+                     id="description" name="product-info"  size="40" ></textarea>
+                  </div>
+      
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#!" class="text-white">Link 1</a>
+                    </li>
+      
+                  </ul>
+                </div>
+                <!--Grid column-->
+      
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                  <h5 class="text-uppercase">Om oss</h5>
+      
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#!" class="text-white">Link 1</a>
+                    </li>
+      
+                  </ul>
+                </div>
+                <!--Grid column-->
+      
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                  <h5 class="text-uppercase">Kontakt</h5>
+      
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#!" class="text-white">Link 1</a>
+                    </li>
+      
+                  </ul>
+                </div>
+                <!--Grid column-->
+              </div>
+              <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+          </div>
+          <!-- Grid container -->
+      
+          <!-- Copyright -->
+          <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2021 Copyright: Hakim Dev Team!
+      
+          </div>
+          <!-- Copyright -->
+        <!-- </footer> -->
+      </div> 
+     
+       
+
+                 
+
+      
+
+   
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+              <script src="./js/admin.js"></script>
+              <script src="./js/addProduct.js"></script>
 </body>
 </html>

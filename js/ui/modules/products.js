@@ -19,7 +19,17 @@ export default class Products extends UI {
 
   async showAllProductsInCategory(category) {
     let allProductsArray = await super.loadData("GET", "./data/produkter.JSON");
+    
     allProductsArray = JSON.parse(allProductsArray);
+    let newProducts = JSON.parse(localStorage.getItem('newproduct'))
+
+    newProducts.forEach(element => {
+      console.log(element);
+      allProductsArray.push(element);
+    })
+    
+    console.log(allProductsArray);
+    console.log("newproduct: "+newProducts);
     let output = ``;
     let counter = 1;
 
@@ -58,14 +68,15 @@ export default class Products extends UI {
   async showProducts() {
     let allProductsArray = await super.loadData("GET", "./data/produkter.JSON");
     allProductsArray = JSON.parse(allProductsArray);
-    // console.log(allProducts);
+    
+    console.log(allProductsArray);
     let randomProductsArray = [];
     randomProductsArray = this.randomizer();
 
     let output = "";
     let counter = 1;
 
-    for (let index = 0; index < 15; index++) {
+    for (let index = 0; index < allProductsArray.length; index++) {
       if (counter == 5) {
         counter = 1;
       }

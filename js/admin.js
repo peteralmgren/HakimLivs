@@ -1,5 +1,5 @@
 
-class Product {
+/* class Product {
     constructor(id, title, description, image, price) {
       this.id = id;
       this.title = title;
@@ -8,12 +8,12 @@ class Product {
       this.price = price;
       
     }
-  } 
+  }  */
 
-let customer= []
+let customer= [];
 let customerIndex = 0;
 customer = JSON.parse(localStorage.getItem("customer"));
-addCustomerShippingInfo(14);
+addCustomerShippingInfo(15);
 
 
 if (!customer) {
@@ -54,16 +54,14 @@ function addCustomerShippingInfo(customerId){
             customerIndex = i;
         }
     }
-
-    let firstname = customer[customerIndex].firstname;
-    let lastname = customer[customerIndex].lastname;
-    let address = customer[customerIndex].address;
-    let zipcode = customer[customerIndex].zipcode;
-    let county = customer[customerIndex].county;
-    let email = customer[customerIndex].email;
-
+    document.getElementById('shipping-firstname').innerHTML= customer[customerIndex].firstname;
+    document.getElementById('shipping-lastname').innerHTML = customer[customerIndex].lastname;
+    document.getElementById('shipping-address').innerHTML = customer[customerIndex].address;
+    document.getElementById('shipping-zipcode').innerHTML = customer[customerIndex].zipcode;
+    document.getElementById('shipping-county').innerHTML = customer[customerIndex].county;
+    document.getElementById('shipping-email').innerHTML = customer[customerIndex].email;
     
-    shippingOutput +=`<h1>Leveransinfo</h1>
+    /* shippingOutput +=`<h1>Leveransinfo</h1>
     <hr />
     <div class="form">
       
@@ -97,11 +95,101 @@ function addCustomerShippingInfo(customerId){
         <label id="shipping-email" class="field__input" type="email"> ${email} </label>
          
         </input>
-      </label>`
+      </label>` */
 
-      document.getElementById("shipping-info").innerHTML = shippingOutput;
+      /* document.getElementById("shipping-info").innerHTML = shippingOutput; */
     
 }
+var inputNumber=0;
+keypressAmount=1;
+function isNumber(evt) {
+
+  /* inputNumber +=evt.key */
+
+  evt = (evt) ? evt : window.event;
+  var charCode = (evt.which) ? evt.which : evt.keyCode;
+  
+  if (charCode > 31 &&(charCode < 46 || charCode >57)) {
+      return false;
+  /* }else if (charCode ==46){
+    keypressAmount++
+    if(keypressAmount >1){
+      return false;} */
+  }
+  return true;
+  
+}
+function addProduct(){
+  var data = JSON.parse(txt);  //parse the JSON
+data.employees.push({        //add the employee
+    firstName:"Mike",
+    lastName:"Rut",
+    time:"10:00 am",
+    email:"rut@bah.com",
+    phone:"800-888-8888",
+    image:"images/mike.jpg"
+});
+txt = JSON.stringify(data);
+}
+function exampelInput(event){
+  console.log(event);
+  
+  /* document.getElementById('cat-example').innerHTML += event.key; */
+
+}
+function output(str) {
+  $('#output').text(str);
+}
+
+$.fn.getCursorPosition = function() {
+  var el = $(this).get(0);
+  var pos = 0;
+  var posEnd = 0;
+  if('selectionStart' in el) {
+      pos = el.selectionStart;
+      posEnd = el.selectionEnd;
+  } else if('selection' in document) {
+      el.focus();
+      var Sel = document.selection.createRange();
+      var SelLength = document.selection.createRange().text.length;
+      Sel.moveStart('character', -el.value.length);
+      pos = Sel.text.length - SelLength;
+      posEnd = Sel.text.length;
+  }
+  return [pos, posEnd];
+};
+
+$('#cat-example').keydown(function (e) {
+  var position = $(this).getCursorPosition();
+  var deleted = '';
+  var val = $(this).val();
+  if (e.which == 8) {
+      if (position[0] == position[1]) {
+          if (position[0] == 0)
+              deleted = '';
+          else
+              deleted = val.substr(position[0] - 1, 1);
+      }
+      else {
+          deleted = val.substring(position[0], position[1]);
+      }
+  }
+  else if (e.which == 46) {
+      var val = $(this).val();
+      if (position[0] == position[1]) {
+          
+          if (position[0] === val.length)
+              deleted = '';
+          else
+              deleted = val.substr(position[0], 1);
+      }
+      else {
+          deleted = val.substring(position[0], position[1]);
+      }
+  }
+  output(/* document.getElementById('cat-example').innerHTML */);
+});
+
 
 
 
