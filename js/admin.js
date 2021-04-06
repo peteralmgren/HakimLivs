@@ -1,19 +1,9 @@
 
-/* class Product {
-    constructor(id, title, description, image, price) {
-      this.id = id;
-      this.title = title;
-      this.description = description;
-      this.image = image;
-      this.price = price;
-      
-    }
-  }  */
 
 let customer= [];
 let customerIndex = 0;
 customer = JSON.parse(localStorage.getItem("customer"));
-addCustomerShippingInfo(15);
+
 
 
 if (!customer) {
@@ -22,8 +12,9 @@ if (!customer) {
   xhr.send();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      let customer = JSON.parse(xhr.responseText);
+      customer = JSON.parse(xhr.responseText);
       localStorage.setItem("customer", JSON.stringify(customer));
+      addCustomerShippingInfo(15)
       console.log(customer);
     }
   };
@@ -47,8 +38,7 @@ function printDiv(divName) {
 
 function addCustomerShippingInfo(customerId){
 
-    shippingOutput = "";
-
+    
     for (var i=0; i <customer.length; i++){
         if(customerId == customer[i].id){
             customerIndex = i;
@@ -61,60 +51,18 @@ function addCustomerShippingInfo(customerId){
     document.getElementById('shipping-county').innerHTML = customer[customerIndex].county;
     document.getElementById('shipping-email').innerHTML = customer[customerIndex].email;
     
-    /* shippingOutput +=`<h1>Leveransinfo</h1>
-    <hr />
-    <div class="form">
-      
-    <div class="fields fields--2">
-      <label class="field">
-        <span  class="field__label" for="firstname">Förnamn</span>
-        <!-- <input id="shipping-firstname" class="shipping-firstname" type="text" value="" /> -->
-        <label id="shipping-firstname" class="field__input" for="firstname">${firstname}</label>
-      </label>
-      <label class="field">
-        <span class="field__label" for="lastname">Efternamn</span>
-        <label id="shipping-lastname" class="field__input" type="text"> ${lastname} </label>
-      </label>
-    </div>
-    <label class="field">
-      <span class="field__label" for="address">Adress</span>
-      <label id="shipping-address" class="field__input" type="text"> ${address} </label>
-    </label>
-    
-    <div class="fields fields--3">
-      <label class="field">
-        <span class="field__label" for="zipcode">Postnr</span>
-        <label id="shipping-zipcode" class="field__input" type="number"> ${zipcode} </label>
-      </label>
-      <label class="field">
-        <span class="field__label" for="city">Ort</span>
-        <label id="shipping-county" class="field__input" type="text"> ${county} </label>
-      </label>
-      <label class="field">
-        <span class="field__label" for="email">Epost</span>
-        <label id="shipping-email" class="field__input" type="email"> ${email} </label>
-         
-        </input>
-      </label>` */
-
-      /* document.getElementById("shipping-info").innerHTML = shippingOutput; */
     
 }
 var inputNumber=0;
 keypressAmount=1;
 function isNumber(evt) {
 
-  /* inputNumber +=evt.key */
-
   evt = (evt) ? evt : window.event;
   var charCode = (evt.which) ? evt.which : evt.keyCode;
   
   if (charCode > 31 &&(charCode < 46 || charCode >57)) {
       return false;
-  /* }else if (charCode ==46){
-    keypressAmount++
-    if(keypressAmount >1){
-      return false;} */
+  
   }
   return true;
   
@@ -122,8 +70,6 @@ function isNumber(evt) {
 
 function exampelInput(event){
   console.log(event);
-  
-  /* document.getElementById('cat-example').innerHTML += event.key; */
 
 }
 function output(str) {
