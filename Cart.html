@@ -6,235 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Utcheckning</title>
     <!-- CSS filer nedan. Kom ihåg specificitet!! (Den understa filen trumfar de ovanstående) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-  integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
-<link rel="stylesheet" href="./css/style.css"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="module" src="./cartjs/main.js"></script>
+    <script src="./js/scripts.js"></script>
+  
+
 </head>
 
   <body>
     <header>
-      <div class="shadow p-2 bg-white rounded">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="container">
-            <a class="navbar-brand" href="index.html"
-              ><img src="images/logo.png" alt=""
-            /></a>
-
-            <button
-              type="button"
-              id="Log-in-button"
-              class="btn btn-secondary btn-lg text-nowrap t-1 mr-5 hover-shadow"
-              data-bs-toggle="modal"
-              data-bs-target="#loginModal"
-            >
-              Logga in
-            </button>
-
-            <a href="index.html" class="link-dark mr-2"
-              >Fortsätt handla &#x2716;</a
-            >
-          </div>
-        </nav>
-      </div>
+      
     </header>
 
-    <div class="container">
-      <div class="row mr-3 p-2">
-        <div class="col-9">
-          <div class="card" id="Cart-body">
-            <div class="card-body">
-              <h3>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="30"
-                  height="30"
-                  fill="currentColor"
-                  class="bi bi-basket-fill"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717L5.07 1.243zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3z"
-                  />
-                </svg>
-                DINA VAROR
-              </h3>
-              <hr />
-              //Fyll ut med produkter via javascript
-              <hr />
-              <button
-                type="button"
-                id="Purchase"
-                class="btn btn-primary btn-lg t-1 hover-shadow"
-              >
-                Bekräfta beställning
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="card">
-            <div class="card-body p-2 mr-3">
-              <p class="text-start" id="Summa-varor">
-                Totalsumma <span>0 kr</span>
-              </p>
-              <hr />
-              <p class="text-start" id="Leverans">Leverans <span>0 kr</span></p>
-              <hr />
-              <p class="text-start" id="Total-summa">
-                Totalsumma <span>0 kr</span>
-              </p>
-              <hr />
-              <p class="text-start" id="Moms">Varav moms <span>0 kr</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <main>
+      <div class="checkout"></div>
+      <div class="login"></div>
+    </main>
 
-    <!-- login -->
-    <div
-      class="modal fade"
-      id="loginModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header border-bottom-0">
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <!--<div class="modal-body2">-->
-            <div class="form-title text-center">
-              <h4>Logga in</h4>
-            </div>
-            <div class="d-flex flex-column text-center">
-              <form>
-                <div class="form-group">
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="email1"
-                    placeholder="Ange email..."
-                  />
-                </div>
-                <div class="form-group">
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="password1"
-                    placeholder="Ange lösenord..."
-                  />
-                </div>
+    <footer>
 
-                <button
-                  type="button"
-                  onclick="validateUser()"
-                  class="btn btn-info btn-block btn-round"
-                >
-                  Logga in
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <div class="signup-section">
-          Not a member yet? <a href="#a" class="text-info"> Sign Up</a>.
-        </div>
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-center text-white sticky-bottom">
-      <!-- Grid container -->
-      <div class="container p-4">
-        <!-- Section: Links -->
-        <section class="">
-          <!--Grid row-->
-          <div class="row">
-            <!--Grid column-->
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Hitta hit</h5>
-
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#!" class="text-white">Link 1</a>
-                </li>
-              </ul>
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Öppettider</h5>
-
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#!" class="text-white">Link 1</a>
-                </li>
-              </ul>
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Om oss</h5>
-
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#!" class="text-white">Link 1</a>
-                </li>
-              </ul>
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">Kontakt</h5>
-
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#!" class="text-white">Link 1</a>
-                </li>
-              </ul>
-            </div>
-            <!--Grid column-->
-          </div>
-          <!--Grid row-->
-        </section>
-        <!-- Section: Links -->
-      </div>
-      <!-- Grid container -->
-
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-        © 2021 Copyright: Hakim Dev Team!
-      </div>
-      <!-- Copyright -->
     </footer>
-    <!-- Footer -->
-    <script
-    src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-    crossorigin="anonymous"
-  ></script>
-  <script src="./js/modal-shopping-cart.js"></script>
-  <script src="./js/index.js"></script>
-  <script src="./js/scripts.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  
   </body>
 </html>
