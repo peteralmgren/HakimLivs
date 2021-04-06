@@ -104,26 +104,7 @@
 
                     </label>
 
-                    <!-- <div class="col-md-6 text-right">
-                      <form class="form-inline pull-right">
-                        <div class="form-group">
-                          <div class="dropdown">
-                              <button class="btn btn-inline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Skapa innehåll
-                              </button>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">Välj
-                                <a class="dropdown-item" href="#">Ändra "Om oss"</a>
-                                <a class="dropdown-item" href="#">Kunderbjudanden</a>
-                                <a class="dropdown-item" href="#">Ändra ?</a>
-                                <a class="dropdown-item" href="#">Ändra ?</a>
-                                <a class="dropdown-item" href="#">Ändra ?</a>
-                              </div>
-                            </div>
-                        </div>
-                      </form>
-                    </div> -->
-
-
+                    
                   </div>
                   <form id="myform" type="post">
                   <div class="card-body">
@@ -133,7 +114,7 @@
                           <div class="form-group">
                             <div class="elements">
                               <label for="id">Skriv i artikelnr</label>
-                              <input  required="required" type="number"  value="" name="id"  size="10"  />
+                              <input  required="required" type="number"  value="" name="id"  size=""  />
                             </div>
                             <div class="elements">
                               <label for="category">Skriv i kategori</label>
@@ -141,7 +122,7 @@
                             </div>
                             <div class="elements">
                               <label for="title">Skriv i produktnamn</label>
-                              <input required="required" type="text"  value="" name="title"  size="40"  />
+                              <input required="required" type="text"  value="" name="title"  size="30"  />
                             </div>
                             <div class="elements">
                               
@@ -251,7 +232,7 @@
                         <div id="shipping-info" class="container d-none">
 
                           <h1>Leveransinfo</h1>
-                          <div class="form">
+                        <div class="form">
                             
                           <div class="fields fields--2">
                             <label class="form-control"style="color:black; border-color: black;">
@@ -284,14 +265,10 @@
                                
                               </input>
                             </label>
-
+                          </div>  
                           
-                          </div>
-                          <!-- </div> -->
-                          <!-- <hr> -->
                           
-                        <!-- </div> -->
-                     
+                        
                         </div>
                       </div>
                     
@@ -392,6 +369,17 @@
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
                   <h5 class="text-uppercase">Hitta hit</h5>
+                  <div class="map">
+                    <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2040.08524602615!2d18.229802415806603!3d59.248016124582044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f7edbc0553321%3A0x8e387ad4dddd3cbf!2zU2lrdsOkZ2VuIDUsIDEzNSA0MSBUeXJlc8O2!5e0!3m2!1ssv!2sse!4v1615047531478!5m2!1ssv!2sse"
+                    width="125"
+                    height="125"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy">
+                  </iframe>
+          
+                  </div>
       
                   <ul class="list-unstyled mb-0">
                     <li>
@@ -407,12 +395,18 @@
                   <h6 class="text">Vardagar 10-19</h6>
                   <h6 class="text">Helger 10-18</h6>
 
-                  <div class="elements">
+                  <section class="row col-12">
+                    <div>
+                      <label for="description">Ändra öppettider</label>
+                    <textarea class="form-control" rows="2" required="required" type="text" value=""
+                     id="description" name="product-info"  size="35" ></textarea>
+                    </div>
+                  <!-- <div class="elements">
                               
                     <label for="description">Ändra öppettider</label>
                     <textarea class="form-control" rows="2" required="required" type="text" value=""
                      id="description" name="product-info"  size="40" ></textarea>
-                  </div>
+                  </div> -->
       
                   <ul class="list-unstyled mb-0">
                     <li>
@@ -426,6 +420,13 @@
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
                   <h5 class="text-uppercase">Om oss</h5>
+
+                  <div class="elements">
+                              
+                    <label for="description">Ändra Om oss</label>
+                    <textarea class="form-control" rows="2" required="required" type="text" value=""
+                     id="description" name="product-info"  size="40" ></textarea>
+                  </div>
       
                   <ul class="list-unstyled mb-0">
                     <li>
@@ -446,10 +447,18 @@
                     </li>
       
                   </ul>
+                  <section class="row col-12">
+                    <div>
+                      <h1>test</h1>
+                    </div>
                 </div>
+                
                 <!--Grid column-->
               </div>
               <!--Grid row-->
+            </section>
+            
+
             </section>
             <!-- Section: Links -->
           </div>
