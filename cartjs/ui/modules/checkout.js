@@ -42,7 +42,7 @@ export default class Checkout extends UI {
           <div class="card">
             <div class="card-body p-2 mr-3">
               <p class="summa-varor" id="Summa-varor">
-                Summa varor <span></span>
+                Summa varor <span>0 kr</span>
               </p>
               <hr />
               <p class="text-start" id="Leverans">Leverans <span>50 kr</span></p>
@@ -59,7 +59,6 @@ export default class Checkout extends UI {
     </div>     
     `;
     
-    this.checkOutBtnText = document.getElementById("Cart-button").childNodes[3];
     super.container.innerHTML = this.html;
     super.container.addEventListener("click", async (e) => {
       if (e.target.className == "trashcan pe-1") this.deleteRowInCart(e);
@@ -70,6 +69,7 @@ export default class Checkout extends UI {
     
     this.injectRowItemsInCart();
     this.sum = 0;
+    
   }
 
 async injectRowItemsInCart() {
@@ -134,10 +134,10 @@ async injectRowItemsInCart() {
     </div>
     `;
 
+    this.updatePrice();
     document.getElementsByClassName("container-fluid")[0].innerHTML = row;
     this.checkOutBtnText.innerText = this.sum.toFixed(2);
-    document.querySelector('.summa-varor span').textContent = this.sum + " kr";
-    document.querySelector('.totalsumma span').textContent = this.sum + 50 +" kr"
+    
 } 
 
   
@@ -153,6 +153,8 @@ async injectRowItemsInCart() {
     e.target.parentNode.parentNode.remove();
     this.sum = totalSum;
     super.clearFromCart(e.target.dataset.productId);
+    this.updatePrice();
+   
     
   }
 
@@ -179,6 +181,7 @@ async injectRowItemsInCart() {
     totalSumElement.textContent = totalSum;
     this.sum = totalSum;
     super.removeFromCart(e.target.dataset.productId);
+    this.updatePrice();
   }
 
   /** This function will do three things:
@@ -201,6 +204,12 @@ async injectRowItemsInCart() {
     totalSumElement.textContent = totalSum;
     this.sum = totalSum;
     super.addToCart(e.target.dataset.productId);
+    this.updatePrice();
+  }
+
+  updatePrice(){
+    document.querySelector('.summa-varor span').textContent = this.sum + " kr";
+    document.querySelector('.totalsumma span').textContent = this.sum*1 + 50 +" kr"
   }
 
 }
