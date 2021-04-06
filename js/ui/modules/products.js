@@ -23,13 +23,13 @@ export default class Products extends UI {
     allProductsArray = JSON.parse(allProductsArray);
     let newProducts = JSON.parse(localStorage.getItem('newproduct'))
 
+    if(newProducts){
     newProducts.forEach(element => {
       console.log(element);
       allProductsArray.push(element);
     })
+  }
     
-    console.log(allProductsArray);
-    console.log("newproduct: "+newProducts);
     let output = ``;
     let counter = 1;
 
