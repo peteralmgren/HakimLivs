@@ -1,10 +1,15 @@
 import UI from "../ui.js";
+import Cart from "./cart.js";
 
 export default class Products extends UI {
   constructor(appendTo) {
     super(appendTo);
     super.container.addEventListener("click", async (e) => {
-      if(e.target.classList.contains("btn") && e.target.dataset.productId) super.addToCart(e.target.dataset.productId);
+      if(e.target.classList.contains("btn") && e.target.dataset.productId) {
+        super.addToCart(e.target.dataset.productId);
+        window.location.reload(); 
+      };
+
     });
 
     //this.showAllProductsInCategory("mejeri");
@@ -25,7 +30,6 @@ export default class Products extends UI {
 
     if(newProducts){
     newProducts.forEach(element => {
-      console.log(element);
       allProductsArray.push(element);
     })
   }
@@ -36,7 +40,6 @@ export default class Products extends UI {
     for (let index = 0; index < allProductsArray.length; index++) {
       if (counter == 5) {
         counter = 1;
-        console.log(counter);
       }
 
       if (allProductsArray[index].category == category) {
@@ -69,7 +72,6 @@ export default class Products extends UI {
     let allProductsArray = await super.loadData("GET", "./data/produkter.JSON");
     allProductsArray = JSON.parse(allProductsArray);
     
-    console.log(allProductsArray);
     let randomProductsArray = [];
     randomProductsArray = this.randomizer();
 
@@ -131,7 +133,4 @@ export default class Products extends UI {
     const buyBtns = [...document.querySelectorAll('.buy-btn')];
     console.log(buyBtns);
   }
-
-
-
 }
