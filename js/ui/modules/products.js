@@ -1,10 +1,15 @@
 import UI from "../ui.js";
+import Cart from "./cart.js";
 
 export default class Products extends UI {
   constructor(appendTo) {
     super(appendTo);
     super.container.addEventListener("click", async (e) => {
-      if(e.target.classList.contains("btn") && e.target.dataset.productId) super.addToCart(e.target.dataset.productId);
+      if(e.target.classList.contains("btn") && e.target.dataset.productId) {
+        super.addToCart(e.target.dataset.productId);
+        window.location.reload(); 
+      };
+
     });
 
     //this.showAllProductsInCategory("mejeri");
@@ -19,14 +24,22 @@ export default class Products extends UI {
 
   async showAllProductsInCategory(category) {
     let allProductsArray = await super.loadData("GET", "./data/produkter.JSON");
+    
     allProductsArray = JSON.parse(allProductsArray);
+    let newProducts = JSON.parse(localStorage.getItem('newproduct'))
+
+    if(newProducts){
+    newProducts.forEach(element => {
+      allProductsArray.push(element);
+    })
+  }
+    
     let output = ``;
     let counter = 1;
 
     for (let index = 0; index < allProductsArray.length; index++) {
       if (counter == 5) {
         counter = 1;
-        console.log(counter);
       }
 
       if (allProductsArray[index].category == category) {
@@ -58,14 +71,14 @@ export default class Products extends UI {
   async showProducts() {
     let allProductsArray = await super.loadData("GET", "./data/produkter.JSON");
     allProductsArray = JSON.parse(allProductsArray);
-    // console.log(allProducts);
+    
     let randomProductsArray = [];
     randomProductsArray = this.randomizer();
 
     let output = "";
     let counter = 1;
 
-    for (let index = 0; index < 15; index++) {
+    for (let index = 0; index < allProductsArray.length; index++) {
       if (counter == 5) {
         counter = 1;
       }
@@ -120,7 +133,4 @@ export default class Products extends UI {
     const buyBtns = [...document.querySelectorAll('.buy-btn')];
     console.log(buyBtns);
   }
-
-
-
 }
