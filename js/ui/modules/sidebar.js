@@ -18,3 +18,4 @@ export default class Sidebar extends UI {
         super.container.innerHTML = this.html;
     }
 }
+
