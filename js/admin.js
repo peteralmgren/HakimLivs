@@ -119,18 +119,7 @@ function isNumber(evt) {
   return true;
   
 }
-function addProduct(){
-  var data = JSON.parse(txt);  //parse the JSON
-data.employees.push({        //add the employee
-    firstName:"Mike",
-    lastName:"Rut",
-    time:"10:00 am",
-    email:"rut@bah.com",
-    phone:"800-888-8888",
-    image:"images/mike.jpg"
-});
-txt = JSON.stringify(data);
-}
+
 function exampelInput(event){
   console.log(event);
   
@@ -189,6 +178,20 @@ $('#cat-example').keydown(function (e) {
   }
   output(/* document.getElementById('cat-example').innerHTML */);
 });
+function initMap() {
+  // The location of Uluru
+  const uluru = { lat: -25.344, lng: 131.036 };
+  // The map, centered at Uluru
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 4,
+    center: uluru,
+  });
+  // The marker, positioned at Uluru
+  const marker = new google.maps.Marker({
+    position: uluru,
+    map: map,
+  });
+}
 
 
 
