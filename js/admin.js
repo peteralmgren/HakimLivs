@@ -3,7 +3,7 @@
 let customer= [];
 let customerIndex = 0;
 customer = JSON.parse(localStorage.getItem("customer"));
-
+addCustomerShippingInfo(15)
 
 
 if (!customer) {
@@ -14,7 +14,6 @@ if (!customer) {
     if (xhr.readyState === 4 && xhr.status === 200) {
       customer = JSON.parse(xhr.responseText);
       localStorage.setItem("customer", JSON.stringify(customer));
-      addCustomerShippingInfo(15)
       console.log(customer);
     }
   };
