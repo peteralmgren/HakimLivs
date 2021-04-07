@@ -34,8 +34,6 @@ $(document).ready(function() {
             "category": formData[1].value 
             }
         
-        
-        
      });
      newProductArray.push(newProduct);
      localStorage.setItem("newproduct", JSON.stringify(newProductArray));

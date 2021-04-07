@@ -52,7 +52,7 @@ export default class Products extends UI {
           <div class="card">
           <div class="card-body text-center">
           <img class="card-img-top" src="${allProductsArray[index].image}">
-          <p class="card-text">Pris ${allProductsArray[index].price} kr</p>
+          <p class="card-text">Pris ${allProductsArray[index].price.toFixed(2)} kr</p>
           <h6 class="card-title">${allProductsArray[index].title}</h6>
           <a class="btn btn-primary" data-product-id="${allProductsArray[index].id}">Lägg till varukorg</a>
           </div>
@@ -95,7 +95,7 @@ export default class Products extends UI {
           <div class="card h-100 rounded">
             <div class="card-body text-center">
               <img class="card-img-top" src="${allProductsArray[index2].image}">
-              <p class="card-text">Pris ${allProductsArray[index2].price} kr</p>
+              <p class="card-text">Pris ${allProductsArray[index2].price.toFixed(2)} kr</p>
               <h6 class="card-title">${allProductsArray[index2].title}</h6>
               <button class="buy-btn btn btn-primary" data-product-id="${allProductsArray[index2].id}">Lägg till varukorg</button>
             </div>
