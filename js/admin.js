@@ -3,7 +3,7 @@
 let customer= [];
 let customerIndex = 0;
 customer = JSON.parse(localStorage.getItem("customer"));
-
+addCustomerShippingInfo(15)
 
 
 if (!customer) {
