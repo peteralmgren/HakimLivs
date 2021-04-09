@@ -147,7 +147,7 @@ async injectRowItemsInCart() {
     </div>
     <div class="col-3 m-auto text-center">
       <div class="d-flex justify-content-end">
-        <div class="fw-bold px-0 mx-0" id="total-sum">${this.sum}</div>
+        <div class="fw-bold px-0 mx-0" id="total-sum">${this.sum.toFixed(2)}</div>
         <div class="px-0 ms-1">kr</div>
       </div>
       <div class="col-1 m-auto text-end px-0" id="trash">
