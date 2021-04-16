@@ -1,18 +1,8 @@
-$(document).ready(function() {
+ $(document).ready(function() {
     $("#add-btn").click(function(e){
        var jsonData = {};
-       
-       
+        
      var formData = $("#myform").serializeArray();
-     let newProduct = "";
-     let newProductArray = [];
-     
-         if(JSON.parse(localStorage.getItem("newproduct"))){
-            newProductArray = JSON.parse(localStorage.getItem("newproduct"));
-          }else{
-            newProductArray= [];
-            
-          }
      
      $.each(formData, function() {
           if (jsonData[this.name]) {
@@ -23,30 +13,24 @@ $(document).ready(function() {
          } else {
              jsonData[this.name] = this.value || '';
          }
-         
-
-            newProduct = {
-            "id": formData[0].value,
-            "title": formData[2].value,
-            "description": formData[3].value,
-            "image": formData[5].value,
-            "price": formData[4].value,
-            "category": formData[1].value 
-            }
         
      });
-     newProductArray.push(newProduct);
-     localStorage.setItem("newproduct", JSON.stringify(newProductArray));
-     
-
      
       $.ajax(
       {
-          url : "action.php",
+          url : 'https://grupp5hakimlivs.herokuapp.com/addproduct',
           type: "POST",
+          crossDomain: true,
+          dataType: 'jsonp',
           data : jsonData,
+          headers: {
+            accept: "application/json",
+            "Access-Control-Allow-Origin":"*"
+            
+        }
           
       });
-      e.preventDefault();    
+      e.preventDefault();   
   }); 
-  });
+  }); 
+

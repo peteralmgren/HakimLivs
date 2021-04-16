@@ -107,46 +107,53 @@
                     <div class="row mb-2 text-muted">
                       <div class="col-md-6 text-left">
                         <form class="form-inline">
+                          <!-- <form action="#" th:action="@{/addproduct}" th:object="${addproduct}" method="post"> -->
                           <div class="form-group">
-                            <div class="elements">
-                              <label for="id">Skriv i artikelnr</label>
-                              <input  required="required" type="number"  value="" name="id"  size=""  />
-                            </div>
+                            
                             <div class="elements">
                               <label for="category">Skriv i kategori</label>
-                              <input id="cat-input" required="required" type="text"  value="" name="category"  size="20" onkeydown="return exampelInput(event)" />
+                              <input id="category" required="required" type="number"  value="" name="category"  size="20" />
+                              <!-- <input type="text" th:field="*{id}" /> -->
                             </div>
                             <div class="elements">
                               <label for="title">Skriv i produktnamn</label>
-                              <input required="required" type="text"  value="" name="title"  size="30"  />
+                              <!-- <input type="text" th:field="*{title}" /> -->
+                              <input id="title" required="required" type="text"  value="" name="title"  size="30"  />
                             </div>
                             <div class="elements">
                               
                               <label for="description">Skriv produktinfo</label>
                               <textarea class="form-control" rows="3" required="required" type="text" value=""
-                               id="description" name="product-info"  size="40" ></textarea>
+                               id="description" name="description"  size="40" ></textarea>
                             </div>	
                             <div class="elements">
                               <label for="price">Skriv i pris</label>
-                              <input  required="required" type="number"  value="" name="price"  size="10"  />
+                              <input id="price" required="required" type="number"  value="" name="price"  size="10"  />
                             </div>
                             <div class="elements">
                               <label for="image">Skriv i sökväg till bild</label>
-                              <input required="required" value="" name="image" type="text" size="40"  />
+                              <input id="image" required="required" value="" name="image" type="text"  size="40"  />
                             </div>
+                            <p><input id="add-btn" type="submit" value="Submit" /> 
+                              <input type="reset" value="Reset" /></p>
                           </div>
                         </form>
                       </div> 
                     </div>
 
-                    <div class="col-md-7 mb-1">
-                        <form class="md-form">
-                          <button type="submit" id="add-btn" class="btn btn-success mt-5">Lägg till vara</button>                   
-                          <button type="button" id="cancel-btn" class="btn btn-success mt-5" >Avbryt</button>                      
-                        </form>       
-                      </div>
+                    <!-- onclick=SaveProduct() -->
+
+                    <!-- <div class="col-md-7 mb-1">
+                        <form class="md-form"> -->
+                          <!-- id="add-btn" -->
+                          
+                          <!-- <button type="submit" id="add-btn" class="btn btn-success mt-5">Lägg till vara</button>                   
+                          <button type="button" id="cancel-btn" class="btn btn-success mt-5" >Avbryt</button>  -->                     
+                        <!-- </form>       
+                      </div> -->
                   </div>
                 </form>
+                
 
                   <!-- <div class="card-footer text-muted">
                 </div> -->

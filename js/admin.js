@@ -3,21 +3,23 @@
 let customer= [];
 let customerIndex = 0;
 customer = JSON.parse(localStorage.getItem("customer"));
-addCustomerShippingInfo(15)
+
 
 
 if (!customer) {
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "data/kunder.JSON");
+  xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/customers");
   xhr.send();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
       customer = JSON.parse(xhr.responseText);
       localStorage.setItem("customer", JSON.stringify(customer));
-      addCustomerShippingInfo(15)
-      console.log(customer);
+      addCustomerShippingInfo(2)
     }
   };
+
+}else{
+  addCustomerShippingInfo(2)
 }
 
 function printDiv(divName) {
@@ -46,9 +48,9 @@ function addCustomerShippingInfo(customerId){
     }
     document.getElementById('shipping-firstname').innerHTML= customer[customerIndex].firstname;
     document.getElementById('shipping-lastname').innerHTML = customer[customerIndex].lastname;
-    document.getElementById('shipping-address').innerHTML = customer[customerIndex].address;
-    document.getElementById('shipping-zipcode').innerHTML = customer[customerIndex].zipcode;
-    document.getElementById('shipping-county').innerHTML = customer[customerIndex].county;
+    document.getElementById('shipping-address').innerHTML = customer[customerIndex].adress.street;
+    document.getElementById('shipping-zipcode').innerHTML = customer[customerIndex].adress.zipcode;
+    document.getElementById('shipping-county').innerHTML = customer[customerIndex].adress.city;
     document.getElementById('shipping-email').innerHTML = customer[customerIndex].email;
     
     
