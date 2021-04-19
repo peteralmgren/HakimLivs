@@ -206,8 +206,12 @@ async injectRowItemsInCart() {
     const totalSumElement = document.getElementById('total-sum');
     let totalSum = parseFloat(totalSumElement.textContent);
 
+  
     const numberOfItemsNode = e.target.previousElementSibling;
     const oldNrOfItems = parseInt(numberOfItemsNode.textContent);
+    if (oldNrOfItems === 20) { return; }
+
+
     numberOfItemsNode.textContent = oldNrOfItems + 1;
 
     const orderRowSumElement = e.target.parentNode.parentNode.nextElementSibling.children[0].children[0];
