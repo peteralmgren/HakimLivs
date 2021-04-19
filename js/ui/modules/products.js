@@ -98,7 +98,7 @@ export default class Products extends UI {
               <p class="card-text">Pris ${(allProductsArray[index2].price.toFixed(2)).replace(".", ",")} kr</p>
               <h6 class="card-title">${allProductsArray[index2].title}</h6>
               <button class="buy-btn btn btn-primary" data-product-id="${allProductsArray[index2].id}">Lägg till varukorg</button>
-              <a class="btn btn-primary" data-bs-toggle="modal" href="#modal${index2}" role="button">Open modal</a>
+              <a class="btn btn-primary" data-bs-toggle="modal" href="#modal${index2}" role="button">Info</a>
             </div>
           </div>
         </div>
