@@ -67,7 +67,8 @@ nav a{
 
 #Cart-body{
   border-radius: 10px;
-  padding-bottom: 5rem;
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 #Total-summa{

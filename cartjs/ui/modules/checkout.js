@@ -6,8 +6,33 @@ export default class Checkout extends UI {
     // this.getAllProducts();
     this.html = `
     <div class="container">
-      <div class="row mr-3 p-2">
-        <div class="col-9">
+    <div class="row mr-2 p-3">
+      <div class="card" id="Cart-body">
+      <div class="card-body">
+        <h3>Kundinformation</h3>
+        <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="firstname">Förnamn</label>
+                        <input type="text" id="firstname" class="form-control" placeholder="Förnamn" readonly/>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="lastname">Efternamn</label>
+                        <input type="text" id="lastname" class="form-control" placeholder="Efternamn" readonly/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="exempel@adress.se" readonly/>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress5">Adress</label>
+                    <input type="text" class="form-control" id="inputAddress5" placeholder="Adress" readonly/>
+                </div>
+          </div>
+          </div>
+        </div>
+      <div class="row mr-2 p-2">
+        <div class="col-md-9">
           <div class="card" id="Cart-body">
             <div class="card-body">
               <h3>
@@ -38,20 +63,20 @@ export default class Checkout extends UI {
             </div>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-md-3">
           <div class="card">
             <div class="card-body p-2 mr-3">
               <p class="summa-varor" id="Summa-varor">
                 Summa varor <span>0 kr</span>
               </p>
               <hr />
-              <p class="text-start" id="Leverans">Leverans <span>50 kr</span></p>
+              <p class="text-start" id="Leverans">Leverans <span>50,00 kr</span></p>
               <hr />
               <p class="totalsumma" id="Total-summa">
                 Totalsumma <span>0 kr</span>
               </p>
               <hr />
-              <p class="text-start" id="Moms">Varav moms <span>0 kr</span></p>
+              <p class="moms" id="Moms">Varav moms <span>0 kr</span></p>
             </div>
           </div>
         </div>
@@ -208,8 +233,16 @@ async injectRowItemsInCart() {
   }
 
   updatePrice(){
-    document.querySelector('.summa-varor span').textContent = this.sum + " kr";
-    document.querySelector('.totalsumma span').textContent = this.sum*1 + 50 +" kr"
+    let moms = (this.sum * 0.12).toFixed(2); 
+    moms = moms.replace(".", ",");
+    let totalsum = (this.sum*1.12+50).toFixed(2);
+    totalsum = totalsum.replace(".", ",");
+
+  
+    document.querySelector('.moms span').textContent = moms+ " kr";
+    document.querySelector('.summa-varor span').textContent = this.sum.toFixed(2).replace(".", ",") + " kr";
+    document.querySelector('.totalsumma span').textContent = totalsum +" kr";
+    
   }
 
 }
