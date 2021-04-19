@@ -1,5 +1,9 @@
 import UI from "../ui.js";
 
+let numberOfProducts = JSON.parse(localStorage.getItem("numberInCart"));
+if (numberOfProducts == null)
+    numberOfProducts = "";
+
 export default class Header extends UI {
     constructor(appendTo) {
         super(appendTo);
@@ -52,7 +56,7 @@ export default class Header extends UI {
                     data-bs-toggle="modal"
                     data-bs-target="#shopping-cart"
                   >
-                    Varukorg
+                    Varukorg <span id="productCounter">${numberOfProducts}</span>
                 </button>
               </li>
               <li>
