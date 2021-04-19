@@ -156,7 +156,7 @@ async injectRowItemsInCart() {
     `;
 
     document.getElementsByClassName("container-fluid")[0].innerHTML = row;
-    this.checkOutBtnText.innerText = this.sum.toFixed(2);
+    this.checkOutBtnText.innerText = this.sum.toFixed(2).replace(".", ",") +" kr";
 } 
 
   
