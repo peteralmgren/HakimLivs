@@ -52,7 +52,7 @@ export default class Products extends UI {
           <div class="card">
           <div class="card-body text-center">
           <img class="card-img-top" src="${allProductsArray[index].image}">
-          <p class="card-text">Pris ${allProductsArray[index].price.toFixed(2)} kr</p>
+          <p class="card-text">Pris ${(allProductsArray[index].price.toFixed(2)).replace(".", ",")} kr</p>
           <h6 class="card-title">${allProductsArray[index].title}</h6>
           <a class="btn btn-primary" data-product-id="${allProductsArray[index].id}">Lägg till varukorg</a>
           </div>
@@ -95,12 +95,34 @@ export default class Products extends UI {
           <div class="card h-100 rounded">
             <div class="card-body text-center">
               <img class="card-img-top" src="${allProductsArray[index2].image}">
-              <p class="card-text">Pris ${allProductsArray[index2].price.toFixed(2)} kr</p>
+              <p class="card-text">Pris ${(allProductsArray[index2].price.toFixed(2)).replace(".", ",")} kr</p>
               <h6 class="card-title">${allProductsArray[index2].title}</h6>
+              <button class="buy-btn btn btn-primary" data-product-id="${allProductsArray[index2].id}">Lägg till varukorg</button>
+              <a class="btn btn-primary" data-bs-toggle="modal" href="#modal${index2}" role="button">Open modal</a>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="modal${index2}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="card h-100 rounded">
+            <div class="card-body text-center">
+            <h6 class="card-title">${allProductsArray[index2].title}</h6>
+              <img class="card-img-top" src="${allProductsArray[index2].image}">
+              <h6>Pris: ${(allProductsArray[index2].price.toFixed(2)).replace(".", ",")} kr</h6>
+              <p class="card-text"><br>
+              ${allProductsArray[index2].description}"              
+              </p>
+                            
               <button class="buy-btn btn btn-primary" data-product-id="${allProductsArray[index2].id}">Lägg till varukorg</button>
             </div>
           </div>
-        </div>`;
+          <div class="modal-footer">
+            
+          </div>
+        </div>
+      </div>
+    </div>`;
 
       if (counter == 4) {
         output += "</div>";
