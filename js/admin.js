@@ -14,12 +14,12 @@ if (!customer) {
     if (xhr.readyState === 4 && xhr.status === 200) {
       customer = JSON.parse(xhr.responseText);
       localStorage.setItem("customer", JSON.stringify(customer));
-      addCustomerShippingInfo(2)
+      addCustomerShippingInfo(12)
     }
   };
 
 }else{
-  addCustomerShippingInfo(2)
+  addCustomerShippingInfo(12)
 }
 
 function printDiv(divName) {
@@ -48,9 +48,9 @@ function addCustomerShippingInfo(customerId){
     }
     document.getElementById('shipping-firstname').innerHTML= customer[customerIndex].firstname;
     document.getElementById('shipping-lastname').innerHTML = customer[customerIndex].lastname;
-    document.getElementById('shipping-address').innerHTML = customer[customerIndex].adress.street;
-    document.getElementById('shipping-zipcode').innerHTML = customer[customerIndex].adress.zipcode;
-    document.getElementById('shipping-county').innerHTML = customer[customerIndex].adress.city;
+    document.getElementById('shipping-address').innerHTML = customer[customerIndex].street;
+    document.getElementById('shipping-zipcode').innerHTML = customer[customerIndex].zipcode;
+    document.getElementById('shipping-county').innerHTML = customer[customerIndex].city;
     document.getElementById('shipping-email').innerHTML = customer[customerIndex].email;
     
     
@@ -140,6 +140,36 @@ function initMap() {
     map: map,
   });
 }
+$('#customer-list').click(function (e) {
+
+  let output = ``;
+
+  customer.forEach(customer =>{
+    id = customer.id;
+    firstname = customer.firstname;
+    lastname = customer.lastname;
+    email= customer.email;
+    
+    output += `
+    <tr>
+    <td></td>
+  <td>${id}</td>
+  <td>${firstname+" "+lastname}</td>
+  <td>${customer.street}</td>
+  <td>5%</td>
+  <td>8432 SEK</td>
+  <td>Feb2021-April2021</td>
+  <td>${email}</td>
+  </tr>
+  `;
+  
+  })
+  document.getElementById("DB-cursomers").innerHTML=output;
+    
+
+});
+
+
 
 
 

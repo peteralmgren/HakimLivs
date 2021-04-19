@@ -37,7 +37,7 @@
             Hello Admin
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#customers">Kundlistor</a>
+            <a id="customer-list" class="dropdown-item" href="#customers">Kundlistor</a>
             <a class="dropdown-item" href="#">Kontoinställningar</a>
             <a class="dropdown-item" href="#order">Kundordrar</a>
             <a class="dropdown-item" href="#">Skapa ny produkt</a>
@@ -111,10 +111,38 @@
                           <div class="form-group">
                             
                             <div class="elements">
-                              <label for="category">Skriv i kategori</label>
-                              <input id="category" required="required" type="number"  value="" name="category"  size="20" />
-                              <!-- <input type="text" th:field="*{id}" /> -->
+                              
+                              <label for="category">Välj kategori</label>
+                              <select class="custom-select custom-select-sm" name="category_id">
+                                <option value="1">Frukt</option>
+                                <option value="2">Mejeri</option>
+                                
+                              </select>
+                            
                             </div>
+                              
+                            <!-- </div> -->
+                            <!-- <div class="dropdown">
+                              <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Kategori
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" value="1" href="#">Frukt</a>
+                                <a class="dropdown-item" value="2" href="#">Mejeri</a>
+                              </div>
+                            </div> -->
+                            <!-- <div class="btn-group">
+                              <a id="category" name="category" value="" class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                Kategori <span class="caret"></span>
+                              </a>
+                              
+                              <ul class="dropdown-menu">
+                                <input type="label"/>frukt
+                                <li id="frukt" value="1"><a href="#">Frukt</a></li>
+                                <li id="mejeri" value="2"><a href="#">Mejeri</a></li>
+                              </ul>
+                            </div> -->
+
                             <div class="elements">
                               <label for="title">Skriv i produktnamn</label>
                               <!-- <input type="text" th:field="*{title}" /> -->
@@ -328,33 +356,16 @@
                           <th>#</th>
                           <th>Kundnr</th>
                           <th>Namn</th>
+                          <th>Adress</th>
                           <th>Rabattsats</th>
                           <th>Ordersumma</th>
                           <th>Period/Datum</th>
                           <th>Epost</th>
                         </thead>
-                        <tbody>
+                        <tbody id="DB-cursomers">
                           
                             <!--addera kundlista från JS output-->
-
-                          <tr>
-                            <td>1</td>
-                            <td>1234</td>
-                            <td>Kalle Andersson</td>
-                            <td>5%</td>
-                            <td>8432 SEK</td>
-                            <td>Feb2021-April2021</td>
-                            <td>kalle@kalle.com</td>
-                          </tr>
-                          <tr>
-                            <td>1</td>
-                            <td>1234</td>
-                            <td>Kalle Andersson</td>
-                            <td>5%</td>
-                            <td>3540 SEK</td>
-                            <td>Jan2021-April2021</td>
-                            <td>kalle@kalle.com</td>
-                          </tr>
+                        
                         </tbody>
                       </table>
 
