@@ -1,127 +1,65 @@
-
-$(document).ready(function() {
+ $(document).ready(function() {
     $("#add-btn").click(function(e){
        var jsonData = {};
+       /* let categoryValue=0; */
        
-       
-     var formData = $("#myform").serializeArray();
-     let newProduct = "";
-     let newProductArray = [];
-     
-         if(JSON.parse(localStorage.getItem("newproduct"))){
-            newProductArray = JSON.parse(localStorage.getItem("newproduct"));
-          }else{
-            newProductArray= [];
-            
-          }
-        /* console.log(formData);
-        console.log(jsonData); */
-     
+
+       var formData = $("#myform").serializeArray();
+       /* var categoryData = document.getElementById("#category"); */
+       //jsonData[0]=categoryData.name+":"+categoryValue;
+       /* categoryData.value=categoryValue;
+       console.log(categoryData.value+" "+ category.id); */
+       /* console.log(categoryData.name); */
+ 
+      
      $.each(formData, function() {
           if (jsonData[this.name]) {
+            
              if (!jsonData[this.name].push) {
+              
                  jsonData[this.name] = [jsonData[this.name]];
+                 //jsonData[categoryData] = [jsonData[categoryData]];
              }
              jsonData[this.name].push(this.value || '');
+             //jsonData[categoryData].push(categoryData || '');
          } else {
              jsonData[this.name] = this.value || '';
+             //jsonData[categoryData.value] = categoryValue || '';
          }
-         console.log(formData[0].value);
-
-         
-
-         /* newProductArray= JSON.parse(localStorage.getItem("newProducts")) */
-         console.log(newProductArray);
-
-            newProduct = {
-            "id": formData[0].value,
-            "title": formData[2].value,
-            "description": formData[3].value,
-            "image": formData[5].value,
-            "price": formData[4].value,
-            "category": formData[1].value 
-            }
-        console.log(newProduct);
-        
-        
-        
-        
-        
-        /* newProduct.array.forEach(element => {
-            console.log("ny produkt: " + element);
-        }); */
-             
-         
-         
-
-         /* const fs = require("fs");
-         let usersjson = fs.readFileSync("data/produkter.json","utf-8");
-
-         let products = JSON.parse(usersjson);
-
-         product.push(newProduct);
-
-         usersjson = JSON.stringify(products);
-
-         fs.writeFileSync("produkter.json",usersjson,"utf-8"); */
-
-
+        console.log(jsonData)
      });
-     newProductArray.push(newProduct);
-     localStorage.setItem("newproduct", JSON.stringify(newProductArray));
-     /* jsonData.forEach(element => {
-         console.log("Element: " + element);
-     }) */
+
      
-
-     /* for (let i = 0; i < jsonData.length; i++) {
-        let element = jsonData[i];
-        console.log("element i jsonarray: "+element);
-        
-    } */
-
      
       $.ajax(
       {
-          url : "action.php",
+          url : 'https://grupp5hakimlivs.herokuapp.com/addproduct',
           type: "POST",
+          crossDomain: true,
+          dataType: 'jsonp',
           data : jsonData,
+          headers: {
+            accept: "application/json",
+            "Access-Control-Allow-Origin":"*"
+            
+        }
           
       });
-      e.preventDefault();	
+      e.preventDefault();   
   }); 
-  });
+  }); 
+
+  /* $(".dropdown-menu li a").click(function(e){
+
+    let categoryValue= 0;
+    
+    $(".btn:first-child").html($(this).text()+' <span class="caret"></span>');
   
-
-
-  function export2txt() {
-      console.log("i export 2 file");
-    const originalData = {
-      members: [{
-          name: "cliff",
-          age: "34"
-        },
-        {
-          name: "ted",
-          age: "42"
-        },
-        {
-          name: "bob",
-          age: "12"
-        }
-      ]
-    };
+    if(e.delegateTarget.innerHTML==="Frukt"){
+      categoryValue=1;      
+    }else{
+      categoryValue=2;
+      
+    }
     
-    let oldProdukter = JSON.parse(localStorage.getItem("products"));
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(new Blob([JSON.stringify(originalData, null, 2)], {
-      type: "text/plain"
-    }));
-    
-    a.setAttribute("nyfil", "data");
-    document.body.appendChild(a);
-
-    /* a.save("./data"); */
-    a.click();
-    document.body.removeChild(a);
-  }
+  }); */

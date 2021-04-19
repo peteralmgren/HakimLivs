@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js"> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/admin.css" />
-    <!-- JavaScript and dependencies -->
-    
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-    <title>Admin page</title>
-    <!-- <script src="admin.js"></script> -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/admin.css" />
+  <script   src="https://code.jquery.com/jquery-3.6.0.min.js"   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="   crossorigin="anonymous"></script>
+  <script src=https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js></script>
+  <title>Admin page</title>
 </head>
 <!-- Top Nav -->
 <nav class="py-3 px-4 navbar navbar-expand-lg auto-hiding-navbar fixed-top">
@@ -41,7 +37,7 @@
             Hello Admin
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#customers">Kundlistor</a>
+            <a id="customer-list" class="dropdown-item" href="#customers">Kundlistor</a>
             <a class="dropdown-item" href="#">Kontoinställningar</a>
             <a class="dropdown-item" href="#order">Kundordrar</a>
             <a class="dropdown-item" href="#">Skapa ny produkt</a>
@@ -111,46 +107,81 @@
                     <div class="row mb-2 text-muted">
                       <div class="col-md-6 text-left">
                         <form class="form-inline">
+                          <!-- <form action="#" th:action="@{/addproduct}" th:object="${addproduct}" method="post"> -->
                           <div class="form-group">
+                            
                             <div class="elements">
-                              <label for="id">Skriv i artikelnr</label>
-                              <input  required="required" type="number"  value="" name="id"  size=""  />
+                              
+                              <label for="category">Välj kategori</label>
+                              <select class="custom-select custom-select-sm" name="category_id">
+                                <option value="1">Frukt</option>
+                                <option value="2">Mejeri</option>
+                                
+                              </select>
+                            
                             </div>
-                            <div class="elements">
-                              <label for="category">Skriv i kategori</label>
-                              <input id="cat-input" required="required" type="text"  value="" name="category"  size="20" onkeydown="return exampelInput(event)" />
-                            </div>
+                              
+                            <!-- </div> -->
+                            <!-- <div class="dropdown">
+                              <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Kategori
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" value="1" href="#">Frukt</a>
+                                <a class="dropdown-item" value="2" href="#">Mejeri</a>
+                              </div>
+                            </div> -->
+                            <!-- <div class="btn-group">
+                              <a id="category" name="category" value="" class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                Kategori <span class="caret"></span>
+                              </a>
+                              
+                              <ul class="dropdown-menu">
+                                <input type="label"/>frukt
+                                <li id="frukt" value="1"><a href="#">Frukt</a></li>
+                                <li id="mejeri" value="2"><a href="#">Mejeri</a></li>
+                              </ul>
+                            </div> -->
+
                             <div class="elements">
                               <label for="title">Skriv i produktnamn</label>
-                              <input required="required" type="text"  value="" name="title"  size="30"  />
+                              <!-- <input type="text" th:field="*{title}" /> -->
+                              <input id="title" required="required" type="text"  value="" name="title"  size="30"  />
                             </div>
                             <div class="elements">
                               
                               <label for="description">Skriv produktinfo</label>
                               <textarea class="form-control" rows="3" required="required" type="text" value=""
-                               id="description" name="product-info"  size="40" ></textarea>
+                               id="description" name="description"  size="40" ></textarea>
                             </div>	
                             <div class="elements">
                               <label for="price">Skriv i pris</label>
-                              <input  required="required" type="number"  value="" name="price"  size="10"  />
+                              <input id="price" required="required" type="number"  value="" name="price"  size="10"  />
                             </div>
                             <div class="elements">
                               <label for="image">Skriv i sökväg till bild</label>
-                              <input required="required" value="" name="image" type="text" size="40"  />
+                              <input id="image" required="required" value="" name="image" type="text"  size="40"  />
                             </div>
+                            <p><input id="add-btn" type="submit" value="Submit" /> 
+                              <input type="reset" value="Reset" /></p>
                           </div>
                         </form>
                       </div> 
                     </div>
 
-                    <div class="col-md-7 mb-1">
-                        <form class="md-form">
-                          <button type="submit" id="add-btn" class="btn btn-success mt-5">Lägg till vara</button>                   
-                          <button type="button" id="cancel-btn" class="btn btn-success mt-5" >Avbryt</button>                      
-                        </form>       
-                      </div>
+                    <!-- onclick=SaveProduct() -->
+
+                    <!-- <div class="col-md-7 mb-1">
+                        <form class="md-form"> -->
+                          <!-- id="add-btn" -->
+                          
+                          <!-- <button type="submit" id="add-btn" class="btn btn-success mt-5">Lägg till vara</button>                   
+                          <button type="button" id="cancel-btn" class="btn btn-success mt-5" >Avbryt</button>  -->                     
+                        <!-- </form>       
+                      </div> -->
                   </div>
                 </form>
+                
 
                   <!-- <div class="card-footer text-muted">
                 </div> -->
@@ -229,7 +260,7 @@
 
                         </table>
                           
-                        <div id="shipping-info" class="container d-none">
+                        <div id="shipping-info" class="container">
 
                           <h1>Leveransinfo</h1>
                         <div class="form">
@@ -245,12 +276,13 @@
                               <label id="shipping-lastname" class="field__input" type="text"style="color:black;"></label>
                             </label>
                           </div>
+                          
                           <label class="form-control"style="color:black; border-color: black;">
                             <span class="field__label" for="address">Adress</span>
                             <label id="shipping-address" class="field__input" type="text"style="color:black;"></label>
                           </label>
                           
-                          <div class="fields fields--3">
+                          <div class="fields fields--2">
                             <label class="form-control"style="color:black; border-color: black;">
                               <span class="field__label" for="zipcode">Postnr</span>
                               <label id="shipping-zipcode" class="field__input" type="number"style="color:black;"></label>
@@ -267,13 +299,21 @@
                             </label>
                           </div>  
                           
+                          <div>
+                            <h2 class="display-6">Tack för att du handlat på</h2>
+                            <br>
+                            <a class="brand" href="index.html"
+                            ><img src="images/logo.png" alt=""
+                            /></a>
+                          </div>
                           
-                        
                         </div>
-                      </div>
-                    
+                      <!-- </div> -->
+                      
                     </div>  
+                    
                   </div>
+                  
                 </div>  
 
                 <div>
@@ -316,33 +356,16 @@
                           <th>#</th>
                           <th>Kundnr</th>
                           <th>Namn</th>
+                          <th>Adress</th>
                           <th>Rabattsats</th>
                           <th>Ordersumma</th>
                           <th>Period/Datum</th>
                           <th>Epost</th>
                         </thead>
-                        <tbody>
+                        <tbody id="DB-cursomers">
                           
                             <!--addera kundlista från JS output-->
-
-                          <tr>
-                            <td>1</td>
-                            <td>1234</td>
-                            <td>Kalle Andersson</td>
-                            <td>5%</td>
-                            <td>8432 SEK</td>
-                            <td>Feb2021-April2021</td>
-                            <td>kalle@kalle.com</td>
-                          </tr>
-                          <tr>
-                            <td>1</td>
-                            <td>1234</td>
-                            <td>Kalle Andersson</td>
-                            <td>5%</td>
-                            <td>3540 SEK</td>
-                            <td>Jan2021-April2021</td>
-                            <td>kalle@kalle.com</td>
-                          </tr>
+                        
                         </tbody>
                       </table>
 
