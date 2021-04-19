@@ -60,6 +60,7 @@ export default class UI {
            numberOfProducts += item[index];
         }
         localStorage.setItem("numberInCart", JSON.stringify(numberOfProducts));
+        document.querySelector(".nav-item #productCounter").textContent = numberOfProducts;
     }
 
     addToCart(data) {
