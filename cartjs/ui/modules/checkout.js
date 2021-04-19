@@ -22,17 +22,21 @@ export default class Checkout extends UI {
                 </div>
                 <div class="form-group">
                     <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="exempel@adress.se" readonly/>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="exempel@adress.se" readonly/>
                 </div>
                 <div class="form-group">
                     <label for="inputAddress5">Adress</label>
-                    <input type="text" class="form-control" id="inputAddress5" placeholder="Adress" readonly/>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Adress" readonly/>
+                </div>
+                <div class="form-group">
+                    <label for="inputPhone">Phone</label>
+                    <input type="text" class="form-control" id="inputPhone" placeholder="Phone" readonly/>
                 </div>
           </div>
           </div>
         </div>
       <div class="row mr-2 p-2">
-        <div class="col-md-9">
+        <div class="col-lg-9">
           <div class="card" id="Cart-body">
             <div class="card-body">
               <h3>
@@ -63,7 +67,7 @@ export default class Checkout extends UI {
             </div>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-lg-3">
           <div class="card">
             <div class="card-body p-2 mr-3">
               <p class="summa-varor" id="Summa-varor">
@@ -93,6 +97,7 @@ export default class Checkout extends UI {
     });
     
     this.injectRowItemsInCart();
+    this.printUser();
     this.sum = 0;
     
   }
@@ -127,7 +132,7 @@ async injectRowItemsInCart() {
         </div>
         <div class="col-3 px-0">
           <div class="d-flex justify-content-end">
-            <div class="price fw-bold px-0 mx-0">${(allProducts[i].price * cart[allProducts[i].id]).toFixed(2)}</div>
+            <div class="price fw-bold px-0 mx-0">${(allProducts[i].price * cart[allProducts[i].id]).toFixed(2).replace(".", ",")}</div>
             <div class="px-0 ms-1">kr</div>
           </div>
         </div>
@@ -151,7 +156,7 @@ async injectRowItemsInCart() {
     </div>
     <div class="col-3 m-auto text-center">
       <div class="d-flex justify-content-end">
-        <div class="fw-bold px-0 mx-0" id="total-sum">${this.sum}</div>
+        <div class="fw-bold px-0 mx-0" id="total-sum">${this.sum.toFixed(2).replace(".", ",")}</div>
         <div class="px-0 ms-1">kr</div>
       </div>
       <div class="col-1 m-auto text-end px-0" id="trash">
@@ -242,6 +247,27 @@ async injectRowItemsInCart() {
     document.querySelector('.moms span').textContent = moms+ " kr";
     document.querySelector('.summa-varor span').textContent = this.sum.toFixed(2).replace(".", ",") + " kr";
     document.querySelector('.totalsumma span').textContent = totalsum +" kr";
+    
+  }
+
+  printUser(){
+    let userInfo = JSON.parse(localStorage.getItem("customer"));
+
+    console.log(userInfo);
+
+    
+    for (let i in userInfo){
+      if(userInfo[i].id == 12){
+        document.getElementById('firstname').value = userInfo[i].firstname;
+        document.getElementById('lastname').value = userInfo[i].lastname;
+        document.getElementById('inputEmail').value = userInfo[i].email;
+        document.getElementById('inputAddress').value = userInfo[i].street;
+        document.getElementById('inputPhone').value = userInfo[i].phone;
+      }
+    }
+  
+    
+    
     
   }
 

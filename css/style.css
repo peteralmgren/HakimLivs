@@ -71,13 +71,22 @@ nav a{
   margin-bottom: 1rem;
 }
 
+.list-group-item{
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.list-group-item:hover{
+  background-color: rgb(226, 218, 218);
+}
+
 #Total-summa{
   font-weight: bold;
 }
 
 .card-img-top{
   height: 14vw;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .cat-selector{

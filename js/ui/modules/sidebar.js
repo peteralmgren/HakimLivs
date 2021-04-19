@@ -15,7 +15,7 @@ export default class Sidebar extends UI {
       let html = `
       <div class="card">
         <div class="card-body p-2 mr-3">
-          <ul class="list-group">`;
+          <ul class="list-group list-group-horizontal">`;
       
       let categories = await super.loadData("GET", "./data/produkter.JSON");
       categories = JSON.parse(categories);
@@ -26,7 +26,7 @@ export default class Sidebar extends UI {
       uniqueCat = uniqueCat.filter((value, index, categoryArray) => categoryArray.indexOf(value) === index);
 
       for (let cat in uniqueCat) {
-        html += `<li class="list-group-item cat-selector" data-category-name="${uniqueCat[cat]}">${uniqueCat[cat]}</li>`;
+        html += `<li class="list-group-item cat-selector" id="categorylinks" data-category-name="${uniqueCat[cat]}">${uniqueCat[cat]}</li>`;
       }
 
       html +=`

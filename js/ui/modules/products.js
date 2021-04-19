@@ -113,10 +113,11 @@ export default class Products extends UI {
 
   randomizer() {
     let randomProducts = [];
+    let r = 0;
     //random number 1-15 into an array
     while (randomProducts.length < 15) {
-      let r = Math.floor(Math.random() * 15);
       if (randomProducts.indexOf(r) === -1) randomProducts.push(r);
+      r++;
     }
     return randomProducts;
   }
