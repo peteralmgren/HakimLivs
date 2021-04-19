@@ -1,3 +1,5 @@
+
+
 export default class UI {
     constructor(appendTo) {
         if(this.constructor === UI) throw new Error("This class is meant to be abstract!");
@@ -48,6 +50,19 @@ export default class UI {
         localStorage.setItem(slot, JSON.stringify(data));
     }
 
+    // Shows the number of products in the cart.
+    countProductsInCart(){
+        let numberOfProducts = 0;
+        let theCart = JSON.parse(localStorage.getItem("cart"));
+        let item = Object.values(theCart);
+        console.log(item);
+        for (let index = 0; index < item.length; index++) {
+           numberOfProducts += item[index];
+        }
+        localStorage.setItem("numberInCart", JSON.stringify(numberOfProducts));
+        document.querySelector(".nav-item #productCounter").textContent = numberOfProducts;
+    }
+
     addToCart(data) {
         let slot = "cart";
         let loaded = this.readStorage(slot);
@@ -55,6 +70,7 @@ export default class UI {
         else if (loaded && !loaded[data]) loaded[data] = 1;
         else if (loaded && loaded[data]) loaded[data] += 1;
         this.writeStorage(slot, loaded);
+        this.countProductsInCart();
     }
 
     removeFromCart(data) {
@@ -64,6 +80,7 @@ export default class UI {
         else if(loaded && loaded[data] == 1) delete loaded[data];
         else if (loaded && loaded[data]) loaded[data] -= 1;
         this.writeStorage(slot, loaded);
+        this.countProductsInCart();
     }
 
     clearFromCart(data) {
@@ -72,6 +89,7 @@ export default class UI {
         let loaded = this.readStorage(slot);
         if(loaded && loaded[data]) delete loaded[data];
         this.writeStorage(slot, loaded);
+        this.countProductsInCart();
     }
 
 }
