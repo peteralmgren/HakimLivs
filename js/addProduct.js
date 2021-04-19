@@ -45,21 +45,11 @@
         }
           
       });
-      e.preventDefault();   
-  }); 
-  }); 
-
-  /* $(".dropdown-menu li a").click(function(e){
-
-    let categoryValue= 0;
-    
-    $(".btn:first-child").html($(this).text()+' <span class="caret"></span>');
-  
-    if(e.delegateTarget.innerHTML==="Frukt"){
-      categoryValue=1;      
-    }else{
-      categoryValue=2;
       
-    }
-    
-  }); */
+      e.preventDefault();   
+
+
+
+      
+  }); 
+  }); 
