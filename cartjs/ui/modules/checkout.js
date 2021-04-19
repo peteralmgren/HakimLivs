@@ -117,10 +117,16 @@ async injectRowItemsInCart() {
         <div class="col-1 p-1">
           <img class="img-fluid" src="${allProducts[i].image}" alt="Produktbild">
         </div>
-        <div class="col-4">
+        <div class="col-3">
           <div>
             <p class="brand m-0">AXA</p>
             <h5 class="fw-bold m-0 title">${allProducts[i].title}</h5>
+          </div>
+        </div>
+        <div class="col-2 px-0">
+          <div class="d-flex justify-content-end">
+            <div class="single-price fw-bold px-0 mx-0">${(allProducts[i].price).toFixed(2)}</div>
+            <div class="px-0 ms-1">kr</div>
           </div>
         </div>
         <div class="col-3 text-end px-0">
@@ -130,9 +136,10 @@ async injectRowItemsInCart() {
             <img class="plus" data-product-id="${allProducts[i].id}" src="./icons/plus.png" alt="plus" width="20px">
           </div>
         </div>
-        <div class="col-3 px-0">
+
+        <div class="col-2 px-0">
           <div class="d-flex justify-content-end">
-            <div class="price fw-bold px-0 mx-0">${(allProducts[i].price * cart[allProducts[i].id]).toFixed(2).replace(".", ",")}</div>
+            <div class="price fw-bold px-0 mx-0">${(allProducts[i].price * cart[allProducts[i].id]).toFixed(2)}</div>
             <div class="px-0 ms-1">kr</div>
           </div>
         </div>
@@ -156,7 +163,7 @@ async injectRowItemsInCart() {
     </div>
     <div class="col-3 m-auto text-center">
       <div class="d-flex justify-content-end">
-        <div class="fw-bold px-0 mx-0" id="total-sum">${this.sum.toFixed(2).replace(".", ",")}</div>
+        <div class="fw-bold px-0 mx-0" id="total-sum">${this.sum.toFixed(2)}</div>
         <div class="px-0 ms-1">kr</div>
       </div>
       <div class="col-1 m-auto text-end px-0" id="trash">
@@ -238,6 +245,7 @@ async injectRowItemsInCart() {
   }
 
   updatePrice(){
+    console.log(this.sum);
     let moms = (this.sum * 0.12).toFixed(2); 
     moms = moms.replace(".", ",");
     let totalsum = (this.sum*1.12+50).toFixed(2);
@@ -245,7 +253,7 @@ async injectRowItemsInCart() {
 
   
     document.querySelector('.moms span').textContent = moms+ " kr";
-    document.querySelector('.summa-varor span').textContent = this.sum.toFixed(2).replace(".", ",") + " kr";
+    document.querySelector('.summa-varor span').textContent = this.sum + " kr";
     document.querySelector('.totalsumma span').textContent = totalsum +" kr";
     
   }

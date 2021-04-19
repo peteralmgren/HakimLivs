@@ -5,7 +5,7 @@
         "description": "Runda och fina tomater. Skölj och ha i salladen eller på smörgåsen. Observera att ursprungsland för denna produkt kan variera beroende på säsong och tillgång.",
         "image": "/images/fruit/tomatoes-1238255_640.jpg",
         "price": 39.90,
-        "category": "fruit"
+        "category": "frukt"
     },
     {
         "id": 2,
@@ -13,15 +13,15 @@
         "description": "En ekologiskt odlad banan. Bananer passar bra som mellanmål. Bananen är temperaturkänslig, mycket känslig för uttorkning, etylen och kylskador. Förvaras i rumstemperatur eller svalt, aldrig i kylskåp. Observera att ursprungsland för denna produkt kan variera beroende på säsong och tillgång.",
         "image": "/images/fruit/banana-2449019_640.jpg",
         "price": 15,
-        "category": "fruit"
+        "category": "frukt"
     },
     {
         "id": 3,
-        "title": "Morötter",
-        "description": "Morotens orangeröda färg kommer från det höga innehållet av betakaroten, vilket i kroppen omvandlas till A-vitamin. Smakmässigt är moroten söt, med en knaprig konsistens. Morötter kan ätas råa, och används även i grytor, gratänger, soppor och wok.",
-        "image": "/images/fruit/carrots-2387394_640.jpg",
-        "price": 12,
-        "category": "fruit"
+        "title": "Ost",
+        "description": "Västerbottensost® är en svensk grynpipig hårdost gjord på norrländsk komjölk och tillverkad vid det lilla mejeriet i Burträsk i Västerbotten. Den har en karaktäristisk, fyllig smak och en lagringstid om minst 14 månader. Svårskivad, men ändå älskad till såväl smörgåsen som riven i matlagningen till paj, tacos eller gra ...",
+        "image": "/images/mejeri/ost.jpg",
+        "price": 79,
+        "category": "mejeri"
     },
     {
         "id": 4,
@@ -29,15 +29,15 @@
         "description": "Pink Lady påminner om Royal Gala, fast är ett ännu sötare och krispigare äpple. ",
         "image": "/images/fruit/apples-490474_640.jpg",
         "price": 49.90,
-        "category": "fruit"
+        "category": "frukt"
     },
     {
         "id": 5,
-        "title": "Gurka",
-        "description": "Färsk gurka. Passar bra i salladen eller på smörgåsen.",
-        "image": "/images/fruit/cucumbers-1799262_640.jpg",
-        "price": 25,
-        "category": "fruit"
+        "title": "Skinkost",
+        "description": "Svensk varmrökt skinka är ingrediensen som höjer smaken på vår skinkost. Använd osten för att göra en supersnabb toast. Bred mjukosten på vitt bröd lägg på tomat och valfria kryddor. Grilla i smörgåsgrill.",
+        "image": "/images/mejeri/skinkost.jpg",
+        "price": 40,
+        "category": "mejeri"
     },
     {
         "id": 6,
@@ -45,7 +45,7 @@
         "description": "Conference är ett medelstort päron med långsmal flasklik form och rundad underdel. Till färgen är Conferencepäronet ljust gröngult med guldbruna fläckar. Päron smakar som mest när de är riktigt mogna. Passar till efterrätter, ostbricka eller att äta som det är.",
         "image": "/images/fruit/food-2280_640.jpg",
         "price": 29.90,
-        "category": "fruit"
+        "category": "frukt"
     },
     {
         "id": 7,
@@ -53,15 +53,15 @@
         "description": "Mangon har en frisk, kraftig och söt smak, men en speciell exotisk nyans. Inuti finns en stor, oval kärna som fruktköttet är fastvuxet i. Detta gör att bästa sättet att skära upp mango är med skalet på. Dela frukten genom att skära längs med på båda sidor om kärnan. Mango kan ätas naturell eller i desserter, förrätter ...",
         "image": "/images/fruit/food-1239241_640.jpg",
         "price": 34.90,
-        "category": "fruit"
+        "category": "frukt"
     },
     {
         "id": 8,
-        "title": "Kiwi",
-        "description": "Kiwi, eller kinesiskt krusbär som det också kallas, har en söt smak med tydlig syrlighet. Frukten är rik på C-vitaminer.",
-        "image": "/images/fruit/kiwifruit-400143_640.jpg",
-        "price": 34.90,
-        "category": "fruit"
+        "title": "Yougurt",
+        "description": "",
+        "image": "/images/mejeri/yougurt.jpg",
+        "price": 25,
+        "category": "mejeri"
     },
     {
         "id": 9,
@@ -73,19 +73,19 @@
     },
     {
         "id": 10,
-        "title": "Ost",
-        "description": "Västerbottensost® är en svensk grynpipig hårdost gjord på norrländsk komjölk och tillverkad vid det lilla mejeriet i Burträsk i Västerbotten. Den har en karaktäristisk, fyllig smak och en lagringstid om minst 14 månader. Svårskivad, men ändå älskad till såväl smörgåsen som riven i matlagningen till paj, tacos eller gra ...",
-        "image": "/images/mejeri/ost.jpg",
-        "price": 79,
-        "category": "mejeri"
+        "title": "Morötter",
+        "description": "Morotens orangeröda färg kommer från det höga innehållet av betakaroten, vilket i kroppen omvandlas till A-vitamin. Smakmässigt är moroten söt, med en knaprig konsistens. Morötter kan ätas råa, och används även i grytor, gratänger, soppor och wok.",
+        "image": "/images/fruit/carrots-2387394_640.jpg",
+        "price": 12,
+        "category": "frukt"
     },
     {
         "id": 11,
-        "title": "Yougurt",
-        "description": "",
-        "image": "/images/mejeri/yougurt.jpg",
-        "price": 25,
-        "category": "mejeri"
+        "title": "Kiwi",
+        "description": "Kiwi, eller kinesiskt krusbär som det också kallas, har en söt smak med tydlig syrlighet. Frukten är rik på C-vitaminer.",
+        "image": "/images/fruit/kiwifruit-400143_640.jpg",
+        "price": 34.90,
+        "category": "frukt"
     },
     {
         "id": 12,
@@ -97,11 +97,11 @@
     },
     {
         "id": 13,
-        "title": "Skinkost",
-        "description": "Svensk varmrökt skinka är ingrediensen som höjer smaken på vår skinkost. Använd osten för att göra en supersnabb toast. Bred mjukosten på vitt bröd lägg på tomat och valfria kryddor. Grilla i smörgåsgrill.",
-        "image": "/images/mejeri/skinkost.jpg",
-        "price": 40,
-        "category": "mejeri"
+        "title": "Gurka",
+        "description": "Färsk gurka. Passar bra i salladen eller på smörgåsen.",
+        "image": "/images/fruit/cucumbers-1799262_640.jpg",
+        "price": 25,
+        "category": "frukt" 
     },
     {
         "id": 14,
