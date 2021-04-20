@@ -42,7 +42,7 @@ export default class Header extends UI {
                   <button
                     type="button"
                     id="Log-in-button"
-                    class="btn btn-secondary btn-lg btn-block text-nowrap t-1 btn-space hover-shadow"
+                    class="btn btn-primary btn-lg btn-block text-nowrap t-1 btn-space hover-shadow"
                     data-bs-toggle="modal"
                     data-bs-target="#loginModal"
                   >
@@ -60,7 +60,7 @@ export default class Header extends UI {
                     Varukorg <span id="productCounter">${numberOfProducts}</span>
                 </button>
               </li>
-              <li>
+              <li class="nav-item">
                   <a href="Cart.html">
                     <button
                       type="button"

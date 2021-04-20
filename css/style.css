@@ -80,6 +80,10 @@ nav a{
   background-color: rgb(226, 218, 218);
 }
 
+.list-group-item:active{
+ background-color: rgb(92, 32, 10);
+}
+
 #Total-summa{
   font-weight: bold;
 }
