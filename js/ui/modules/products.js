@@ -155,6 +155,84 @@ export default class Products extends UI {
     super.container.innerHTML = output;
   }
 
+  async showAllProductsInSearch(value){
+    let allProductsArray = await super.loadData("GET", "./data/produkter.JSON");
+    allProductsArray = JSON.parse(allProductsArray);
+
+    let newProductArray = [];
+
+    if(value.length > 2){
+      for(let i in allProductsArray){
+        if(allProductsArray[i].title.toUpperCase() === value.toUpperCase() || allProductsArray[i].category.toUpperCase() === value.toUpperCase()){
+          newProductArray.push(allProductsArray[i]);
+          console.log(allProductsArray[i]);     
+        }
+      }  
+
+      let output = ``;
+    let counter = 1;
+
+    for (let index = 0; index < newProductArray.length; index++) {
+      if (counter == 5) {
+        counter = 1;
+      }
+
+      if (newProductArray[index].title.toUpperCase() === value.toUpperCase() || newProductArray[index].category.toUpperCase() === value.toUpperCase()) {
+        if (counter == 1) {
+          output += `<div class="row">`;
+        }
+
+        output +=
+          `<div class="col-lg-3 col-md-3 mb-3">
+          <div class="card h-100 rounded">
+            <div class="card-body text-center">
+              <img class="card-img-top" src="${newProductArray[index].image}">
+              <p class="card-text">Pris ${(newProductArray[index].price.toFixed(2)).replace(".", ",")} kr</p>
+              <h6 class="card-title">${newProductArray[index].title}</h6>
+              <button class="buy-btn btn btn-primary" data-product-id="${newProductArray[index].id}">Lägg till varukorg</button>
+              <a class="btn btn-primary" data-bs-toggle="modal" href="#modal${index}" role="button">Info</a>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="modal${index}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="card h-100 rounded">
+            <div class="card-body text-center">
+            <h6 class="card-title">${newProductArray[index].title}</h6>
+              <img class="card-img-top" src="${newProductArray[index].image}">
+              <h6>Pris: ${(newProductArray[index].price.toFixed(2)).replace(".", ",")} kr</h6>
+              <p class="card-text"><br>
+              ${newProductArray[index].description}"              
+              </p>
+                            
+              <button class="buy-btn btn btn-primary" data-product-id="${newProductArray[index].id}">Lägg till varukorg</button>
+            </div>
+          </div>
+          <div class="modal-footer">
+            
+          </div>
+        </div>
+      </div>
+      </div>`;
+
+        if (counter == 4) {
+          output += "</div>";
+        }
+        counter += 1;
+      }
+    }
+    super.container.innerHTML = output;
+    }
+    else{
+      this.showProducts();
+    }
+
+    
+    
+
+  }
+
   randomizer() {
     let randomProducts = [];
     let r = 0;
