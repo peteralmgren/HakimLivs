@@ -42,7 +42,7 @@ export default class Header extends UI {
                   <button
                     type="button"
                     id="Log-in-button"
-                    class="btn btn-primary btn-lg btn-block text-nowrap t-1 btn-space hover-shadow"
+                    class="btn btn-secondary btn-lg btn-block text-nowrap t-1 btn-space hover-shadow"
                     data-bs-toggle="modal"
                     data-bs-target="#loginModal"
                   >

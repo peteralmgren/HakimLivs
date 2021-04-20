@@ -71,6 +71,10 @@ nav a{
   margin-bottom: 1rem;
 }
 
+#Cart-button{
+  background-color: rgb(110, 44, 20);
+}
+
 .list-group-item{
   padding-left: 4rem;
   padding-right: 4rem;
