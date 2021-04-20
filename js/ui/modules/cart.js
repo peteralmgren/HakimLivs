@@ -94,7 +94,7 @@ export default class Cart extends UI {
   }
 
 async injectRowItemsInCart() {
-    let allProducts = await super.loadData("GET", "./data/produkter.JSON");
+    let allProducts = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
     allProducts = JSON.parse(allProducts);
     let cart = super.readStorage("cart");
     //let sum = 0;
