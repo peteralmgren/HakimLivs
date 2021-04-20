@@ -1,11 +1,20 @@
 import UI from "../ui.js";
-import Cart from "./cart.js";
 
 export default class Products extends UI {
   constructor(appendTo) {
     super(appendTo);
     super.container.addEventListener("click", async (e) => {
+      if (e.target.className == "minus"){
+        this.decreaseItemsInCartWithOne(e);
+        location.reload();
+      } 
+      if (e.target.className == "plus"){
+        this.increaseItemsInCartWithOne(e);
+        location.reload();
+      
+      }
       if(e.target.classList.contains("btn") && e.target.dataset.productId) {
+        
         super.addToCart(e.target.dataset.productId);
         window.location.reload(); 
       };
@@ -93,6 +102,7 @@ export default class Products extends UI {
   async showProducts() {
     let allProductsArray = await super.loadData("GET", "./data/produkter.JSON");
     allProductsArray = JSON.parse(allProductsArray);
+    let cart = super.readStorage("cart");
     
     let randomProductsArray = [];
     randomProductsArray = this.randomizer();
@@ -140,6 +150,13 @@ export default class Products extends UI {
             </div>
           </div>
           <div class="modal-footer">
+          <div class="col-3 text-end px-0">
+          <div class="flex">
+            <img class="minus" data-product-id="${allProductsArray[index2].id}" src="./icons/minus.png" alt="minus" width="20px"> 
+            <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${cart[allProductsArray[index2].id]}</button>
+            <img class="plus" data-product-id="${allProductsArray[index2].id}" src="./icons/plus.png" alt="plus" width="20px">
+          </div>
+        </div>
             
           </div>
         </div>
@@ -255,5 +272,36 @@ export default class Products extends UI {
   getBuyButtons() {
     const buyBtns = [...document.querySelectorAll('.buy-btn')];
     console.log(buyBtns);
+  }
+
+
+  /** This for loop assigns event listeners to all minus sign icons. The anonymous function will do three things:
+  *  decrease the number of items in the basket with one, decrease the order row sum with the price of one unit and decrease the total sum with the price of one unit */
+  decreaseItemsInCartWithOne(e) {
+    const numberOfItemsNode = e.target.nextElementSibling;
+    const oldNrOfItems = parseInt(numberOfItemsNode.textContent);
+
+    /* This if statement makes sure that the minimum amount of items in the cart is 1. If the users wants to delete all items they has to click on the trashcan */
+    if (oldNrOfItems === 1) { return; }
+
+    numberOfItemsNode.textContent = oldNrOfItems - 1;
+
+    super.removeFromCart(e.target.dataset.productId);
+  }
+
+  /** This function will do three things:
+  *  increase the number of items in the basket with one, increase the order row sum with the price of one unit and increase the total sum with the price of one unit */
+  increaseItemsInCartWithOne(e) {
+    console.log("lägger till")
+  
+    const numberOfItemsNode = e.target.previousElementSibling;
+    const oldNrOfItems = parseInt(numberOfItemsNode.textContent);
+    if (oldNrOfItems === 20) { return; }
+
+
+    numberOfItemsNode.textContent = oldNrOfItems + 1;
+
+    
+    super.addToCart(e.target.dataset.productId);
   }
 }
