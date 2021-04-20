@@ -189,7 +189,7 @@ async injectRowItemsInCart() {
     numberOfItemsNode.textContent = oldNrOfItems - 1;
 
     const orderRowSumElement = e.target.parentNode.parentNode.nextElementSibling.children[0].children[0];
-    const oldOrderRowSum = parseInt(orderRowSumElement.textContent);
+    const oldOrderRowSum = parseFloat(orderRowSumElement.textContent);
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum - pricePerUnit).toFixed(2);
 
@@ -215,7 +215,7 @@ async injectRowItemsInCart() {
     numberOfItemsNode.textContent = oldNrOfItems + 1;
 
     const orderRowSumElement = e.target.parentNode.parentNode.nextElementSibling.children[0].children[0];
-    const oldOrderRowSum = parseInt(orderRowSumElement.textContent);
+    const oldOrderRowSum = parseFloat(orderRowSumElement.textContent);
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum + pricePerUnit).toFixed(2);
 
