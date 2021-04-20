@@ -207,7 +207,7 @@ async injectRowItemsInCart() {
     numberOfItemsNode.textContent = oldNrOfItems - 1;
 
     const orderRowSumElement = e.target.parentNode.parentNode.nextElementSibling.children[0].children[0];
-    const oldOrderRowSum = parseInt(orderRowSumElement.textContent);
+    const oldOrderRowSum = parseFloat(orderRowSumElement.textContent);
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum - pricePerUnit).toFixed(2);
 
@@ -232,7 +232,7 @@ async injectRowItemsInCart() {
     numberOfItemsNode.textContent = oldNrOfItems + 1;
 
     const orderRowSumElement = e.target.parentNode.parentNode.nextElementSibling.children[0].children[0];
-    const oldOrderRowSum = parseInt(orderRowSumElement.textContent);
+    const oldOrderRowSum = parseFloat(orderRowSumElement.textContent);
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum + pricePerUnit).toFixed(2);
 
@@ -249,13 +249,14 @@ async injectRowItemsInCart() {
     console.log(this.sum);
     let moms = (this.sum * 0.12).toFixed(2); 
     moms = moms.replace(".", ",");
-    let totalsum = (this.sum*1.12+50).toFixed(2);
+    let totalsum = (this.sum*1+50).toFixed(2);
     totalsum = totalsum.replace(".", ",");
+    let summavaror = +this.sum;
     
 
   
     document.querySelector('.moms span').textContent = moms+ " kr";
-    document.querySelector('.summa-varor span').textContent = this.sum + " kr";
+    document.querySelector('.summa-varor span').textContent = summavaror.toFixed(2)  + " kr";
     document.querySelector('.totalsumma span').textContent = totalsum +" kr";
     
   }
