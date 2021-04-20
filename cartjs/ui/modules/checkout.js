@@ -93,7 +93,6 @@ export default class Checkout extends UI {
       if (e.target.className == "trashcan pe-1") this.deleteRowInCart(e);
       if (e.target.className == "minus") this.decreaseItemsInCartWithOne(e);
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
-      this.checkOutBtnText.innerText = this.sum;
     });
     
     this.injectRowItemsInCart();
@@ -173,7 +172,6 @@ async injectRowItemsInCart() {
 
     this.updatePrice();
     document.getElementsByClassName("container-fluid")[0].innerHTML = row;
-    this.checkOutBtnText.innerText = this.sum.toFixed(2);
     
 } 
 
@@ -209,7 +207,7 @@ async injectRowItemsInCart() {
     numberOfItemsNode.textContent = oldNrOfItems - 1;
 
     const orderRowSumElement = e.target.parentNode.parentNode.nextElementSibling.children[0].children[0];
-    const oldOrderRowSum = parseInt(orderRowSumElement.textContent);
+    const oldOrderRowSum = parseFloat(orderRowSumElement.textContent);
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum - pricePerUnit).toFixed(2);
 
@@ -234,7 +232,7 @@ async injectRowItemsInCart() {
     numberOfItemsNode.textContent = oldNrOfItems + 1;
 
     const orderRowSumElement = e.target.parentNode.parentNode.nextElementSibling.children[0].children[0];
-    const oldOrderRowSum = parseInt(orderRowSumElement.textContent);
+    const oldOrderRowSum = parseFloat(orderRowSumElement.textContent);
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum + pricePerUnit).toFixed(2);
 
@@ -253,10 +251,12 @@ async injectRowItemsInCart() {
     moms = moms.replace(".", ",");
     let totalsum = (this.sum*1.12+50).toFixed(2);
     totalsum = totalsum.replace(".", ",");
+    let summavaror = +this.sum;
+    
 
   
     document.querySelector('.moms span').textContent = moms+ " kr";
-    document.querySelector('.summa-varor span').textContent = this.sum + " kr";
+    document.querySelector('.summa-varor span').textContent = summavaror.toFixed(2)  + " kr";
     document.querySelector('.totalsumma span').textContent = totalsum +" kr";
     
   }
@@ -290,7 +290,6 @@ async injectRowItemsInCart() {
        numberOfProducts += item[index];
     }
     localStorage.setItem("numberInCart", JSON.stringify(numberOfProducts));
-    document.querySelector(".nav-item #productCounter").textContent = numberOfProducts;
 }
 
 }

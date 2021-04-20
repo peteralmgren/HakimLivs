@@ -6,6 +6,7 @@ export default class Sidebar extends UI {
         super(appendTo);
         this.container.addEventListener("click", async (e) => {
           if(e.target.className == "list-group-item cat-selector") await new Products(".products").showAllProductsInCategory(e.target.dataset.categoryName);
+          if(e.target.className == "show-all list-group-item cat-selector") await new Products(".products").showProducts();
         });
         this.showCategories();
     }
@@ -15,7 +16,9 @@ export default class Sidebar extends UI {
       let html = `
       <div class="card">
         <div class="card-body p-2 mr-3">
-          <ul class="list-group list-group-horizontal">`;
+          <ul class="list-group list-group-horizontal">
+          <li class="show-all list-group-item cat-selector" id="categorylinks" data-category-name="Visa alla">Visa alla</li>
+          `;
       
       let categories = await super.loadData("GET", "./data/produkter.JSON");
       categories = JSON.parse(categories);

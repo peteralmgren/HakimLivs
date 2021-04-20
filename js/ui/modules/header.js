@@ -1,10 +1,11 @@
 import UI from "../ui.js";
+import Products from "./products.js";
 
 let numberOfProducts = JSON.parse(localStorage.getItem("numberInCart"));
 if (numberOfProducts == null)
     numberOfProducts = "";
 
-export default class Header extends UI {
+export default class Header extends UI { 
     constructor(appendTo) {
         super(appendTo);
         this.html = `
@@ -30,7 +31,7 @@ export default class Header extends UI {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <form class="form-group mr-5 p-4">
               <input
-                class="form-control input-lg mr-5 p2"
+                class="searchform form-control search input-lg mr-5 p2"
                 id="inputlg"
                 type="text"
                 placeholder="Sök"
@@ -59,7 +60,7 @@ export default class Header extends UI {
                     Varukorg <span id="productCounter">${numberOfProducts}</span>
                 </button>
               </li>
-              <li>
+              <li class="nav-item">
                   <a href="Cart.html">
                     <button
                       type="button"
@@ -90,7 +91,13 @@ export default class Header extends UI {
   </header>
         `;
         super.container.innerHTML = this.html;
-    }
+        let input = document.getElementById("inputlg")
+          input.addEventListener("keyup", async (e) =>{
+            if(input.value != null) await new Products(".products").showAllProductsInSearch(input.value);
+    });
+  } /**/;
+
+  
 
    
 }
