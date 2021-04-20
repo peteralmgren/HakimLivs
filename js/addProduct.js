@@ -38,6 +38,12 @@
           crossDomain: true,
           dataType: 'jsonp',
           data : jsonData,
+          complete: function(data) {
+            console.log(data.responseText);
+        },
+        success: function(data){
+          console.log(data);
+      },
           headers: {
             accept: "application/json",
             "Access-Control-Allow-Origin":"*"

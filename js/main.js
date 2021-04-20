@@ -6,6 +6,11 @@ import Carousel from "./ui/modules/carousel.js";
 import Sidebar from "./ui/modules/sidebar.js";
 import Products from "./ui/modules/products.js";
 
+let cart = JSON.parse(localStorage.getItem('cart'))
+if(!cart) {
+    JSON.stringify(localStorage.setItem('cart'))
+}
+
 
 window.addEventListener("load", async (e) => {
     new Header("header");
