@@ -93,7 +93,6 @@ export default class Checkout extends UI {
       if (e.target.className == "trashcan pe-1") this.deleteRowInCart(e);
       if (e.target.className == "minus") this.decreaseItemsInCartWithOne(e);
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
-      this.checkOutBtnText.innerText = this.sum;
     });
     
     this.injectRowItemsInCart();
@@ -173,7 +172,6 @@ async injectRowItemsInCart() {
 
     this.updatePrice();
     document.getElementsByClassName("container-fluid")[0].innerHTML = row;
-    this.checkOutBtnText.innerText = this.sum.toFixed(2);
     
 } 
 
@@ -253,6 +251,7 @@ async injectRowItemsInCart() {
     moms = moms.replace(".", ",");
     let totalsum = (this.sum*1.12+50).toFixed(2);
     totalsum = totalsum.replace(".", ",");
+    
 
   
     document.querySelector('.moms span').textContent = moms+ " kr";
@@ -290,7 +289,6 @@ async injectRowItemsInCart() {
        numberOfProducts += item[index];
     }
     localStorage.setItem("numberInCart", JSON.stringify(numberOfProducts));
-    document.querySelector(".nav-item #productCounter").textContent = numberOfProducts;
 }
 
 }
