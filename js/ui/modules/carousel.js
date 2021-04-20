@@ -19,37 +19,27 @@ export default class Carousel extends UI {
               <div class="carousel-item active">
                 <img src="images/fruit/banana-2449019_640.jpg" class="d-block" alt="Slide 1">
                 <div class="carousel-caption d-none d-md-block text-dark">
-                  <h1>Pris: 0</h1>
-                  <button class="btn btn-dark" id="carouselbtn">Köp Nu!</button>
                 </div>
               </div>
               <div class="carousel-item  ">
                       <img src="/images/mejeri/ost.jpg" class="d-block" alt="Slide 2">
                 <div class="carousel-caption d-none d-md-block text-dark">
-                  <h1>Pris: 0</h1>
-                  <button class="btn btn-dark">Köp Nu!</button>
                 </div>
               </div>
 
               <div class="carousel-item ">
                 <img src="/images/mejeri/smör.jpg" class="d-block" alt="Slide 3">
                 <div class="carousel-caption d-none d-md-block text-dark">
-                    <h1>Pris: 0</h1>
-                    <button class="btn btn-dark">Köp Nu!</button>
                 </div>
                 </div>
                 <div class="carousel-item ">
                 <img src="/images/mejeri/gräddfil.jpg" class="d-block" alt="Slide 4">
                 <div class="carousel-caption d-none d-md-block text-dark">
-                    <h1>Pris: 0</h1>
-                    <button class="btn btn-dark">Köp Nu!</button>
                 </div>
                 </div>
                 <div class="carousel-item ">
                 <img src="/images/fruit/apples-490474_640.jpg" class="d-block" alt="Slide 5">
                 <div class="carousel-caption d-none d-md-block text-dark">
-                    <h1>Pris: 0</h1>
-                    <button class="btn btn-dark">Köp Nu!</button>
                 </div>
                 </div>
             </div>

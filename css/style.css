@@ -71,6 +71,10 @@ nav a{
   margin-bottom: 1rem;
 }
 
+#Cart-button{
+  background-color: rgb(110, 44, 20);
+}
+
 .list-group-item{
   padding-left: 4rem;
   padding-right: 4rem;
@@ -78,6 +82,10 @@ nav a{
 
 .list-group-item:hover{
   background-color: rgb(226, 218, 218);
+}
+
+.list-group-item:active{
+ background-color: rgb(92, 32, 10);
 }
 
 #Total-summa{

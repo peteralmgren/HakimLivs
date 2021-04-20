@@ -11,7 +11,7 @@ export default class Cart extends UI {
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">Varukorg</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="window.location.reload()"></button>
                 </div>
                 <div class="modal-body bg-light">
                   <div class="container-fluid">
@@ -94,7 +94,7 @@ export default class Cart extends UI {
   }
 
 async injectRowItemsInCart() {
-    let allProducts = await super.loadData("GET", "./data/produkter.JSON");
+    let allProducts = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
     allProducts = JSON.parse(allProducts);
     let cart = super.readStorage("cart");
     //let sum = 0;
@@ -189,7 +189,7 @@ async injectRowItemsInCart() {
     numberOfItemsNode.textContent = oldNrOfItems - 1;
 
     const orderRowSumElement = e.target.parentNode.parentNode.nextElementSibling.children[0].children[0];
-    const oldOrderRowSum = parseInt(orderRowSumElement.textContent);
+    const oldOrderRowSum = parseFloat(orderRowSumElement.textContent);
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum - pricePerUnit).toFixed(2);
 
@@ -215,7 +215,7 @@ async injectRowItemsInCart() {
     numberOfItemsNode.textContent = oldNrOfItems + 1;
 
     const orderRowSumElement = e.target.parentNode.parentNode.nextElementSibling.children[0].children[0];
-    const oldOrderRowSum = parseInt(orderRowSumElement.textContent);
+    const oldOrderRowSum = parseFloat(orderRowSumElement.textContent);
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum + pricePerUnit).toFixed(2);
 

@@ -111,7 +111,7 @@ export default class Checkout extends UI {
   }
 
 async injectRowItemsInCart() {
-    let allProducts = await super.loadData("GET", "./data/produkter.JSON");
+    let allProducts = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
     allProducts = JSON.parse(allProducts);
     let cart = super.readStorage("cart");
     //let sum = 0;
@@ -182,7 +182,6 @@ async injectRowItemsInCart() {
     this.updatePrice();
     document.getElementsByClassName("container-fluid")[0].innerHTML = row;
     
-    
 } 
 
   
@@ -199,7 +198,7 @@ async injectRowItemsInCart() {
     this.sum = totalSum;
     super.clearFromCart(e.target.dataset.productId);
     this.updatePrice();
-   
+    this.countProductsInCart();
     
   }
 
@@ -217,7 +216,7 @@ async injectRowItemsInCart() {
     numberOfItemsNode.textContent = oldNrOfItems - 1;
 
     const orderRowSumElement = e.target.parentNode.parentNode.nextElementSibling.children[0].children[0];
-    const oldOrderRowSum = parseInt(orderRowSumElement.textContent);
+    const oldOrderRowSum = parseFloat(orderRowSumElement.textContent);
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum - pricePerUnit).toFixed(2);
 
@@ -227,6 +226,7 @@ async injectRowItemsInCart() {
     this.sum = totalSum;
     super.removeFromCart(e.target.dataset.productId);
     this.updatePrice();
+    this.countProductsInCart();
   }
 
   /** This function will do three things:
@@ -241,7 +241,7 @@ async injectRowItemsInCart() {
     numberOfItemsNode.textContent = oldNrOfItems + 1;
 
     const orderRowSumElement = e.target.parentNode.parentNode.nextElementSibling.children[0].children[0];
-    const oldOrderRowSum = parseInt(orderRowSumElement.textContent);
+    const oldOrderRowSum = parseFloat(orderRowSumElement.textContent);
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum + pricePerUnit).toFixed(2);
 
@@ -251,18 +251,21 @@ async injectRowItemsInCart() {
     this.sum = totalSum;
     super.addToCart(e.target.dataset.productId);
     this.updatePrice();
+    this.countProductsInCart();
   }
 
   updatePrice(){
     console.log(this.sum);
     let moms = (this.sum * 0.12).toFixed(2); 
     moms = moms.replace(".", ",");
-    let totalsum = (this.sum*1.12+50).toFixed(2);
+    let totalsum = (this.sum*1+50).toFixed(2);
     totalsum = totalsum.replace(".", ",");
+    let summavaror = +this.sum;
+    
 
   
     document.querySelector('.moms span').textContent = moms+ " kr";
-    document.querySelector('.summa-varor span').textContent = this.sum + " kr";
+    document.querySelector('.summa-varor span').textContent = summavaror.toFixed(2)  + " kr";
     document.querySelector('.totalsumma span').textContent = totalsum +" kr";
     
   }
