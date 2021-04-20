@@ -30,7 +30,7 @@ export default class Header extends UI {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <form class="form-group mr-5 p-4">
               <input
-                class="form-control input-lg mr-5 p2"
+                class="form-control search input-lg mr-5 p2"
                 id="inputlg"
                 type="text"
                 placeholder="Sök"
@@ -91,6 +91,8 @@ export default class Header extends UI {
         `;
         super.container.innerHTML = this.html;
     }
+
+  
 
    
 }
