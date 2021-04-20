@@ -32,7 +32,7 @@ export default class Products extends UI {
   }
 
   async showAllProductsInCategory(category) {
-    let allProductsArray = await super.loadData("GET", "./data/produkter.JSON");
+    let allProductsArray = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
     let cart = super.readStorage("cart");
     
     allProductsArray = JSON.parse(allProductsArray);
@@ -47,7 +47,7 @@ export default class Products extends UI {
     let output = ``;
     let counter = 1;
 
-    for (let index = 0; index < allProductsArray.length; index++) {
+    for (let index = 0; index < 14; index++) {
       let value = cart[allProductsArray[index].id];
       if(value == undefined){
         value = 0;
@@ -56,7 +56,7 @@ export default class Products extends UI {
         counter = 1;
       }
 
-      if (allProductsArray[index].category == category) {
+      if (allProductsArray[index].category.categoryName == category) {
         if (counter == 1) {
           output += `<div class="row">`;
         }
@@ -117,8 +117,9 @@ export default class Products extends UI {
   }
 
   async showProducts() {
-    let allProductsArray = await super.loadData("GET", "./data/produkter.JSON");
+    let allProductsArray = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
     allProductsArray = JSON.parse(allProductsArray);
+    console.log(allProductsArray);
     let cart = super.readStorage("cart");
     
     let randomProductsArray = [];
@@ -127,11 +128,11 @@ export default class Products extends UI {
     let output = "";
     let counter = 1;
 
-    for (let index = 0; index < allProductsArray.length; index++) {
-      let value = cart[allProductsArray[index].id];
+    for (let index = 0; index < 14; index++) {
+      /*let value = cart[allProductsArray[index].id];
       if(value == undefined){
         value = 0;
-      }
+      }*/
       if (counter == 5) {
         counter = 1;
       }
@@ -155,7 +156,7 @@ export default class Products extends UI {
               <br>
               <br>
               <img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="20px"> 
-              <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${value}</button>
+              <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${0}</button>
               <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="20px">
       
               
@@ -181,7 +182,7 @@ export default class Products extends UI {
           <div class="col-3 text-end px-0">
           <div class="flex">
           <img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="20px"> 
-          <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${value}</button>
+          <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${0}</button>
           <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="20px">
           </div>
         </div>
@@ -201,26 +202,31 @@ export default class Products extends UI {
   }
 
   async showAllProductsInSearch(value){
-    let allProductsArray = await super.loadData("GET", "./data/produkter.JSON");
+    let allProductsArray = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
     allProductsArray = JSON.parse(allProductsArray);
     let cart = super.readStorage("cart");
 
-
+    let tempArray = [];
     let newProductArray = [];
 
+    for(let i = 0; i<14; i++){
+      tempArray.push(allProductsArray[i]);
+      console.log(allProductsArray[i]);
+    }
+
     if(value.length > 2){
-      for(let i in allProductsArray){
-        if(allProductsArray[i].title.toUpperCase() === value.toUpperCase() || allProductsArray[i].category.toUpperCase() === value.toUpperCase()){
-          newProductArray.push(allProductsArray[i]);
-          console.log(allProductsArray[i]);     
+      for(let i in tempArray){
+        if(tempArray[i].title.toUpperCase() === value.toUpperCase() || tempArray[i].category.categoryName.toUpperCase() === value.toUpperCase()){
+          newProductArray.push(tempArray[i]);
+          console.log(tempArray[i]);     
         }
       }  
 
       let output = ``;
     let counter = 1;
 
-    for (let index = 0; index < newProductArray.length; index++) {
-      let number = cart[allProductsArray[index].id];
+    for (let index = 0; index < 14; index++) {
+      let number = cart[tempArray[index].id];
       if(number == undefined){
         number = 0;
       }
@@ -228,7 +234,7 @@ export default class Products extends UI {
         counter = 1;
       }
 
-      if (newProductArray[index].title.toUpperCase() === value.toUpperCase() || newProductArray[index].category.toUpperCase() === value.toUpperCase()) {
+      if (tempArray[index].title.toUpperCase() === value.toUpperCase() || tempArray[index].category.categoryName.toUpperCase() === value.toUpperCase()) {
         if (counter == 1) {
           output += `<div class="row">`;
         }
@@ -237,16 +243,16 @@ export default class Products extends UI {
           `<div class="col-lg-3 col-md-3 mb-3">
           <div class="card h-100 rounded">
             <div class="card-body text-center">
-              <img class="card-img-top" src="${newProductArray[index].image}">
-              <p class="card-text">Pris ${(newProductArray[index].price.toFixed(2)).replace(".", ",")} kr</p>
-              <h6 class="card-title">${newProductArray[index].title}</h6>
-              <button class="buy-btn btn btn-primary" data-product-id="${newProductArray[index].id}">Lägg till varukorg</button>
+              <img class="card-img-top" src="${tempArray[index].image}">
+              <p class="card-text">Pris ${(tempArray[index].price.toFixed(2)).replace(".", ",")} kr</p>
+              <h6 class="card-title">${tempArray[index].title}</h6>
+              <button class="buy-btn btn btn-primary" data-product-id="${tempArray[index].id}">Lägg till varukorg</button>
               <a class="btn btn-outline-secondary" data-bs-toggle="modal" href="#modal${index}" role="button">Info</a>
               <br>
               <br>
-              <img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="20px"> 
+              <img class="minus" data-product-id="${tempArray[index].id}" src="./icons/minus.png" alt="minus" width="20px"> 
               <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${number}</button>
-              <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="20px">
+              <img class="plus" data-product-id="${tempArray[index].id}" src="./icons/plus.png" alt="plus" width="20px">
             </div>
           </div>
         </div>
@@ -255,22 +261,22 @@ export default class Products extends UI {
         <div class="modal-content">
         <div class="card h-100 rounded">
             <div class="card-body text-center">
-            <h6 class="card-title">${newProductArray[index].title}</h6>
-              <img class="card-img-top" src="${newProductArray[index].image}">
-              <h6>Pris: ${(newProductArray[index].price.toFixed(2)).replace(".", ",")} kr</h6>
+            <h6 class="card-title">${tempArray[index].title}</h6>
+              <img class="card-img-top" src="${tempArray[index].image}">
+              <h6>Pris: ${(tempArray[index].price.toFixed(2)).replace(".", ",")} kr</h6>
               <p class="card-text"><br>
-              ${newProductArray[index].description}"              
+              ${tempArray[index].description}"              
               </p>
                             
-              <button class="buy-btn btn btn-primary" data-product-id="${newProductArray[index].id}">Lägg till varukorg</button>
+              <button class="buy-btn btn btn-primary" data-product-id="${tempArray[index].id}">Lägg till varukorg</button>
             </div>
           </div>
           <div class="modal-footer">
           <div class="col-3 text-end px-0">
           <div class="flex">
-          <img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="20px"> 
+          <img class="minus" data-product-id="${tempArray[index].id}" src="./icons/minus.png" alt="minus" width="20px"> 
           <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${number}</button>
-          <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="20px">
+          <img class="plus" data-product-id="${tempArray[index].id}" src="./icons/plus.png" alt="plus" width="20px">
           </div>
         </div>
             

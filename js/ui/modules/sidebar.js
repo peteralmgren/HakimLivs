@@ -13,6 +13,7 @@ export default class Sidebar extends UI {
 
     async showCategories() {
       let uniqueCat = []; 
+      let tempArray = [];
       let html = `
       <div class="card">
         <div class="card-body p-2 mr-3">
@@ -20,10 +21,18 @@ export default class Sidebar extends UI {
           <li class="show-all list-group-item cat-selector" id="categorylinks" data-category-name="Visa alla">Visa alla</li>
           `;
       
-      let categories = await super.loadData("GET", "./data/produkter.JSON");
+      let categories = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
       categories = JSON.parse(categories);
-      for (let cat in categories) {
-          uniqueCat.push(categories[cat].category);
+      for(let i = 0; i<14; i++){
+        tempArray.push(categories[i]);
+      }
+      
+      
+      for (let cat in tempArray) {
+        console.log(tempArray[cat].category.categoryName);
+        uniqueCat.push(tempArray[cat].category.categoryName);
+        
+          
       }
 
       uniqueCat = uniqueCat.filter((value, index, categoryArray) => categoryArray.indexOf(value) === index);

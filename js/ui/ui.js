@@ -9,6 +9,8 @@ export default class UI {
         if(appendTo.match("/\./g")) this._container = document.querySelectorAll(appendTo);
         else this._container = document.querySelectorAll(appendTo)[0];
         if(!this._container) throw new Error ("Target container was not found!");
+        
+        
 
     }
 
