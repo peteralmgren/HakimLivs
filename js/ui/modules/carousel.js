@@ -19,27 +19,47 @@ export default class Carousel extends UI {
               <div class="carousel-item active">
                 <img src="images/fruit/banana-2449019_640.jpg" class="d-block" alt="Slide 1">
                 <div class="carousel-caption d-none d-md-block text-dark">
+<<<<<<< HEAD
+=======
+                 
+>>>>>>> 0bb42af6a76fd8ff793c419d5949c7c4a3b79da7
                 </div>
               </div>
               <div class="carousel-item  ">
                       <img src="/images/mejeri/ost.jpg" class="d-block" alt="Slide 2">
                 <div class="carousel-caption d-none d-md-block text-dark">
+<<<<<<< HEAD
+=======
+                 
+>>>>>>> 0bb42af6a76fd8ff793c419d5949c7c4a3b79da7
                 </div>
               </div>
 
               <div class="carousel-item ">
                 <img src="/images/mejeri/smör.jpg" class="d-block" alt="Slide 3">
                 <div class="carousel-caption d-none d-md-block text-dark">
+<<<<<<< HEAD
+=======
+                   
+>>>>>>> 0bb42af6a76fd8ff793c419d5949c7c4a3b79da7
                 </div>
                 </div>
                 <div class="carousel-item ">
                 <img src="/images/mejeri/gräddfil.jpg" class="d-block" alt="Slide 4">
                 <div class="carousel-caption d-none d-md-block text-dark">
+<<<<<<< HEAD
+=======
+                    
+>>>>>>> 0bb42af6a76fd8ff793c419d5949c7c4a3b79da7
                 </div>
                 </div>
                 <div class="carousel-item ">
                 <img src="/images/fruit/apples-490474_640.jpg" class="d-block" alt="Slide 5">
                 <div class="carousel-caption d-none d-md-block text-dark">
+<<<<<<< HEAD
+=======
+                   
+>>>>>>> 0bb42af6a76fd8ff793c419d5949c7c4a3b79da7
                 </div>
                 </div>
             </div>
