@@ -33,6 +33,7 @@ export default class Products extends UI {
 
   async showAllProductsInCategory(category) {
     let allProductsArray = await super.loadData("GET", "./data/produkter.JSON");
+    let cart = super.readStorage("cart");
     
     allProductsArray = JSON.parse(allProductsArray);
     let newProducts = JSON.parse(localStorage.getItem('newproduct'))
@@ -47,6 +48,10 @@ export default class Products extends UI {
     let counter = 1;
 
     for (let index = 0; index < allProductsArray.length; index++) {
+      let value = cart[allProductsArray[index].id];
+      if(value == undefined){
+        value = 0;
+      }
       if (counter == 5) {
         counter = 1;
       }
@@ -64,7 +69,12 @@ export default class Products extends UI {
               <p class="card-text">Pris ${(allProductsArray[index].price.toFixed(2)).replace(".", ",")} kr</p>
               <h6 class="card-title">${allProductsArray[index].title}</h6>
               <button class="buy-btn btn btn-primary" data-product-id="${allProductsArray[index].id}">Lägg till varukorg</button>
-              <a class="btn btn-primary" data-bs-toggle="modal" href="#modal${index}" role="button">Info</a>
+              <a class="btn btn-outline-secondary" data-bs-toggle="modal" href="#modal${index}" role="button">Info</a>
+              <br>
+              <br>
+              <img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="20px"> 
+              <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${value}</button>
+              <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="20px">
             </div>
           </div>
         </div>
@@ -84,6 +94,13 @@ export default class Products extends UI {
             </div>
           </div>
           <div class="modal-footer">
+          <div class="col-3 text-end px-0">
+          <div class="flex">
+          <img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="20px"> 
+          <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${value}</button>
+          <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="20px">
+          </div>
+        </div>
             
           </div>
         </div>
@@ -111,6 +128,10 @@ export default class Products extends UI {
     let counter = 1;
 
     for (let index = 0; index < allProductsArray.length; index++) {
+      let value = cart[allProductsArray[index].id];
+      if(value == undefined){
+        value = 0;
+      }
       if (counter == 5) {
         counter = 1;
       }
@@ -130,7 +151,14 @@ export default class Products extends UI {
               <p class="card-text">Pris ${(allProductsArray[index2].price.toFixed(2)).replace(".", ",")} kr</p>
               <h6 class="card-title">${allProductsArray[index2].title}</h6>
               <button class="buy-btn btn btn-primary" data-product-id="${allProductsArray[index2].id}">Lägg till varukorg</button>
-              <a class="btn btn-primary" data-bs-toggle="modal" href="#modal${index2}" role="button">Info</a>
+              <a class="btn btn-outline-secondary" data-bs-toggle="modal" href="#modal${index2}" role="button">Info</a>
+              <br>
+              <br>
+              <img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="20px"> 
+              <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${value}</button>
+              <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="20px">
+      
+              
             </div>
           </div>
         </div>
@@ -152,9 +180,9 @@ export default class Products extends UI {
           <div class="modal-footer">
           <div class="col-3 text-end px-0">
           <div class="flex">
-            <img class="minus" data-product-id="${allProductsArray[index2].id}" src="./icons/minus.png" alt="minus" width="20px"> 
-            <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${cart[allProductsArray[index2].id]}</button>
-            <img class="plus" data-product-id="${allProductsArray[index2].id}" src="./icons/plus.png" alt="plus" width="20px">
+          <img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="20px"> 
+          <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${value}</button>
+          <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="20px">
           </div>
         </div>
             
@@ -175,6 +203,8 @@ export default class Products extends UI {
   async showAllProductsInSearch(value){
     let allProductsArray = await super.loadData("GET", "./data/produkter.JSON");
     allProductsArray = JSON.parse(allProductsArray);
+    let cart = super.readStorage("cart");
+
 
     let newProductArray = [];
 
@@ -190,6 +220,10 @@ export default class Products extends UI {
     let counter = 1;
 
     for (let index = 0; index < newProductArray.length; index++) {
+      let number = cart[allProductsArray[index].id];
+      if(number == undefined){
+        number = 0;
+      }
       if (counter == 5) {
         counter = 1;
       }
@@ -207,7 +241,12 @@ export default class Products extends UI {
               <p class="card-text">Pris ${(newProductArray[index].price.toFixed(2)).replace(".", ",")} kr</p>
               <h6 class="card-title">${newProductArray[index].title}</h6>
               <button class="buy-btn btn btn-primary" data-product-id="${newProductArray[index].id}">Lägg till varukorg</button>
-              <a class="btn btn-primary" data-bs-toggle="modal" href="#modal${index}" role="button">Info</a>
+              <a class="btn btn-outline-secondary" data-bs-toggle="modal" href="#modal${index}" role="button">Info</a>
+              <br>
+              <br>
+              <img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="20px"> 
+              <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${number}</button>
+              <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="20px">
             </div>
           </div>
         </div>
@@ -227,6 +266,13 @@ export default class Products extends UI {
             </div>
           </div>
           <div class="modal-footer">
+          <div class="col-3 text-end px-0">
+          <div class="flex">
+          <img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="20px"> 
+          <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${number}</button>
+          <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="20px">
+          </div>
+        </div>
             
           </div>
         </div>
