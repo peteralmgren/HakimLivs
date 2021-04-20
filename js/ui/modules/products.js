@@ -21,6 +21,12 @@ export default class Products extends UI {
 
     });
 
+    if(!localStorage.getItem("cart")){
+      this.addToCart(0);
+    }
+
+
+
     //this.showAllProductsInCategory("mejeri");
   }
 
@@ -129,10 +135,10 @@ export default class Products extends UI {
     let counter = 1;
 
     for (let index = 0; index < 14; index++) {
-      /*let value = cart[allProductsArray[index].id];
+      let value = cart[allProductsArray[index].id];
       if(value == undefined){
         value = 0;
-      }*/
+      }
       if (counter == 5) {
         counter = 1;
       }
@@ -156,7 +162,7 @@ export default class Products extends UI {
               <br>
               <br>
               <img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="20px"> 
-              <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${0}</button>
+              <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${value}</button>
               <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="20px">
       
               
@@ -182,7 +188,7 @@ export default class Products extends UI {
           <div class="col-3 text-end px-0">
           <div class="flex">
           <img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="20px"> 
-          <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${0}</button>
+          <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${value}</button>
           <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="20px">
           </div>
         </div>
