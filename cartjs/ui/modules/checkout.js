@@ -191,7 +191,7 @@ async injectRowItemsInCart() {
     this.sum = totalSum;
     super.clearFromCart(e.target.dataset.productId);
     this.updatePrice();
-   
+    this.countProductsInCart();
     
   }
 
@@ -219,6 +219,7 @@ async injectRowItemsInCart() {
     this.sum = totalSum;
     super.removeFromCart(e.target.dataset.productId);
     this.updatePrice();
+    this.countProductsInCart();
   }
 
   /** This function will do three things:
@@ -243,6 +244,7 @@ async injectRowItemsInCart() {
     this.sum = totalSum;
     super.addToCart(e.target.dataset.productId);
     this.updatePrice();
+    this.countProductsInCart();
   }
 
   updatePrice(){
@@ -279,6 +281,17 @@ async injectRowItemsInCart() {
     
     
   }
+  countProductsInCart(){
+    let numberOfProducts = 0;
+    let theCart = JSON.parse(localStorage.getItem("cart"));
+    let item = Object.values(theCart);
+    console.log(item);
+    for (let index = 0; index < item.length; index++) {
+       numberOfProducts += item[index];
+    }
+    localStorage.setItem("numberInCart", JSON.stringify(numberOfProducts));
+    document.querySelector(".nav-item #productCounter").textContent = numberOfProducts;
+}
 
 }
 
