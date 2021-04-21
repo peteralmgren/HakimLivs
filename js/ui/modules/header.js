@@ -101,12 +101,12 @@ export default class Header extends UI {
     super.container.innerHTML = this.html;
     let input = document.getElementById("inputlg")
     input.addEventListener("keyup", async (e) =>{
-      if(input.value != null) await new Products(".products").showAllProductsInSearch(input.value);
+      if(input.value != null) await new Products(".products").showProducts(input.value);
     });
 
     let searchbutton = document.getElementById("search-button");
     searchbutton.addEventListener("click", async(e) =>{
-      if(input.value != null) await new Products(".products").showAllProductsInSearch(input.value);
+      if(input.value != null) await new Products(".products").showProducts(input.value);
     });
   }
 
