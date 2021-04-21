@@ -60,11 +60,7 @@ export default class Checkout extends UI {
               <button
                 type="button"
                 id="Purchase"
-<<<<<<< HEAD
                 class="purchase-button btn btn-primary btn-lg t-1 hover-shadow"
-=======
-                class="purchase-btn btn btn-primary btn-lg t-1 hover-shadow"
->>>>>>> d50ed2395fe367303fe4f7e83055140572e31b04
               >
                 Bekräfta beställning
               </button>
@@ -97,24 +93,12 @@ export default class Checkout extends UI {
       if (e.target.className == "trashcan pe-1") this.deleteRowInCart(e);
       if (e.target.className == "minus") this.decreaseItemsInCartWithOne(e);
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
-<<<<<<< HEAD
       if (e.target.className == "purchase-button btn btn-primary btn-lg t-1 hover-shadow") this.sendOrder(e);
-=======
-      if (e.target.className == "purchase-btn") this.sendOrder(e);
-      
-    
->>>>>>> d50ed2395fe367303fe4f7e83055140572e31b04
     });
     
     this.injectRowItemsInCart();
     this.printUser();
-    this.sum = 0;
-    document.getElementById("Purchase").addEventListener("click", async (e) =>{
-      this.sendOrder(e)
-    });
-    
-    
-    
+    this.sum = 0;         
     
   }
 
@@ -298,7 +282,7 @@ async injectRowItemsInCart() {
     
     
   }
-  /* async */ sendOrder (e){
+  /*sendOrder (e){
     console.log(e);
     
     
@@ -396,10 +380,12 @@ async injectRowItemsInCart() {
         }
           
       });
-      e.preventDefault(); */
+      e.preventDefault(); 
 
     
   }
+  */
+
 
 sendOrder(e){
   alert("Tack för din order!");
