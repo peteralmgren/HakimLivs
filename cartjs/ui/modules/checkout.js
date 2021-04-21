@@ -291,6 +291,18 @@ async injectRowItemsInCart() {
     
   }
   /* async */ sendOrder (e){
+    console.log(e);
+    
+    
+
+    const getData = () => {
+      axios.get('https://grupp5hakimlivs.herokuapp.com/all').then(response =>{
+        console.log(response);
+      });
+    };
+    getData()
+
+
     /* console.log(e.target);
 
     let cartTosend = [] */
