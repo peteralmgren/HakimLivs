@@ -6,7 +6,6 @@ import Carousel from "./ui/modules/carousel.js";
 import Sidebar from "./ui/modules/sidebar.js";
 import Products from "./ui/modules/products.js";
 
-
 window.addEventListener("load", async (e) => {
     new Header("header");
     new Footer("footer");

@@ -1,13 +1,16 @@
 import Header from "./ui/modules/header.js";
 import Footer from "./ui/modules/footer.js";
 import Login from "./ui/modules/login.js";
-import Checkout from "./ui/modules/checkout.js"
+import Checkout from "./ui/modules/checkout.js";
+
+
 
 window.addEventListener("load", async (e) => {
     new Header("header");
     new Footer("footer");
     new Checkout(".checkout");
-    new Login(".login");    
+    new Login(".login");
+     
 });
 
 window.addEventListener("click", async (e) => {
