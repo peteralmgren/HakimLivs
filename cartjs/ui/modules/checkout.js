@@ -60,7 +60,7 @@ export default class Checkout extends UI {
               <button
                 type="button"
                 id="Purchase"
-                class="purchase-btn btn btn-primary btn-lg t-1 hover-shadow"
+                class="purchase-button btn btn-primary btn-lg t-1 hover-shadow"
               >
                 Bekräfta beställning
               </button>
@@ -93,20 +93,12 @@ export default class Checkout extends UI {
       if (e.target.className == "trashcan pe-1") this.deleteRowInCart(e);
       if (e.target.className == "minus") this.decreaseItemsInCartWithOne(e);
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
-      if (e.target.className == "purchase-btn") this.sendOrder(e);
-      
-    
+      if (e.target.className == "purchase-button btn btn-primary btn-lg t-1 hover-shadow") this.sendOrder(e);
     });
     
     this.injectRowItemsInCart();
     this.printUser();
-    this.sum = 0;
-    document.getElementById("Purchase").addEventListener("click", async (e) =>{
-      this.sendOrder(e)
-    });
-    
-    
-    
+    this.sum = 0;         
     
   }
 
@@ -290,189 +282,197 @@ async injectRowItemsInCart() {
     
     
   }
-  /* async */ sendOrder (e){
+  // /* async */ sendOrder (e){
     
        
-      var jsonData = {}
+  //     var jsonData = {}
 
        
 
-      var test = {'title':'jsontest','description':'json', 'price':4, 'image':'json', 'category_id':2}
+  //     var test = {'title':'jsontest','description':'json', 'price':4, 'image':'json', 'category_id':2}
 
       
 
       
 
      
-      /* $.each(formData, function() {
-         if (jsonData[this.name]) {
+  //     /* $.each(formData, function() {
+  //        if (jsonData[this.name]) {
            
-            if (!jsonData[this.name].push) {
+  //           if (!jsonData[this.name].push) {
              
-                jsonData[this.name] = [jsonData[this.name]];
+  //               jsonData[this.name] = [jsonData[this.name]];
                 
-            }
-            jsonData[this.name].push(this.value || '');
+  //           }
+  //           jsonData[this.name].push(this.value || '');
             
-        } else {
-            jsonData[this.name] = this.value || '';
+  //       } else {
+  //           jsonData[this.name] = this.value || '';
             
-        }
-       console.log(jsonData)
-    }); */ 
+  //       }
+  //      console.log(jsonData)
+  //   }); */ 
 
-    console.log(test2)
+  //   console.log(test2)
 
-    let cartarray = {}
+  //   let cartarray = {}
 
-    let cart = JSON.parse(localStorage.getItem('cart'))
-    console.log(cart)
+  //   let cart = JSON.parse(localStorage.getItem('cart'))
+  //   console.log(cart)
 
-    let cartkeys = Object.keys(cart);
-    let cartentries = Object.values(cart);
-    console.log(cartkeys);
-    console.log(cartentries);
+  //   let cartkeys = Object.keys(cart);
+  //   let cartentries = Object.values(cart);
+  //   console.log(cartkeys);
+  //   console.log(cartentries);
 
-    var test2 = {'customer_id':12,'product_id':cartkeys[0], 'quantity':cartentries[0]}
-    console.log(test2);
+  //   var test2 = {'customer_id':12,'product_id':cartkeys[0], 'quantity':cartentries[0]}
+  //   console.log(test2);
 
     
 
   
-    console.log("här är vi "+cartarray);
+  //   console.log("här är vi "+cartarray);
     
-    /* cart.map((currentValue) => {'' } ) */
+  //   /* cart.map((currentValue) => {'' } ) */
 
 
     
-     /* $.ajax(
-     {
-         url : 'https://grupp5hakimlivs.herokuapp.com/order',
-         type: "POST",
-         crossDomain: true,
-         dataType: 'jsonp',
-         data : test2,
-         complete: function(data) {
-           console.log(data.responseText);
-       },
-       success: function(data){
-         console.log(data);
-     },
-          headers: {
-           accept: "application/json",
-           "Access-Control-Allow-Origin":"*"
+  //    /* $.ajax(
+  //    {
+  //        url : 'https://grupp5hakimlivs.herokuapp.com/order',
+  //        type: "POST",
+  //        crossDomain: true,
+  //        dataType: 'jsonp',
+  //        data : test2,
+  //        complete: function(data) {
+  //          console.log(data.responseText);
+  //      },
+  //      success: function(data){
+  //        console.log(data);
+  //    },
+  //         headers: {
+  //          accept: "application/json",
+  //          "Access-Control-Allow-Origin":"*"
            
-       }
+  //      }
          
-     });
+  //    });
      
-     e.preventDefault();  */  
+  //    e.preventDefault();  */  
 
 
 
      
  
-     /* console.log(e); */
+  //    /* console.log(e); */
     
     
 
-    /* const getData = () => {
-      axios.get('https://grupp5hakimlivs.herokuapp.com/all').then(response =>{
-        console.log(response);
-      });
-    };
-    getData() */ 
+  //   /* const getData = () => {
+  //     axios.get('https://grupp5hakimlivs.herokuapp.com/all').then(response =>{
+  //       console.log(response);
+  //     });
+  //   };
+  //   getData() */ 
 
 
-    /* console.log(e.target);
+  //   /* console.log(e.target);
 
-    let cartTosend = [] */
-    /* let jsonData = [{"id":1,"quantity":3},{"id":4 , "quantity":5}]
-    let cartTosend = []
+  //   let cartTosend = [] */
+  //   /* let jsonData = [{"id":1,"quantity":3},{"id":4 , "quantity":5}]
+  //   let cartTosend = []
 
-    let customer = {}
-    let cart =[]
-    let customerId=0;
-    customer = JSON.parse(localStorage.getItem("customer"))
-    cart = JSON.parse(localStorage.getItem("cart"))
-    cartTosend = localStorage.getItem("cart")
+  //   let customer = {}
+  //   let cart =[]
+  //   let customerId=0;
+  //   customer = JSON.parse(localStorage.getItem("customer"))
+  //   cart = JSON.parse(localStorage.getItem("cart"))
+  //   cartTosend = localStorage.getItem("cart")
 
-    for (let index = 0; index < cart.length; index++) {
-      const element = cart[index];
-      console.log(cart[0]);
+  //   for (let index = 0; index < cart.length; index++) {
+  //     const element = cart[index];
+  //     console.log(cart[0]);
       
-    } */
-    /* let allProductsincart = await super.loadData("GET", "./data/produkter.JSON");
-    allProductsincart = JSON.parse(allProductsincart);
-    let cart = super.readStorage("cart");
+  //   } */
+  //   /* let allProductsincart = await super.loadData("GET", "./data/produkter.JSON");
+  //   allProductsincart = JSON.parse(allProductsincart);
+  //   let cart = super.readStorage("cart");
 
-    for (let i = 0; i < cart.length; i++) {
-      cartTosend.push("id"+":"+cart[allProductsincart[i].id])
-      cartTosend.push("quantity"+":"+cart[1])
-    }
-    console.log(cartTosend); */
-    /* var formData = $(cart).serializeArray(); */
+  //   for (let i = 0; i < cart.length; i++) {
+  //     cartTosend.push("id"+":"+cart[allProductsincart[i].id])
+  //     cartTosend.push("quantity"+":"+cart[1])
+  //   }
+  //   console.log(cartTosend); */
+  //   /* var formData = $(cart).serializeArray(); */
        
  
-     /* $.each(formData, function() {
-          if (jsonData[this.id]) {
+  //    /* $.each(formData, function() {
+  //         if (jsonData[this.id]) {
             
-             if (!jsonData[this.id].push) {
+  //            if (!jsonData[this.id].push) {
               
-                 jsonData[this.id] = [jsonData[this.id]];
-                 //jsonData[categoryData] = [jsonData[categoryData]];
-             }
-             jsonData[this.id].push(this.id || '');
-             //jsonData[categoryData].push(categoryData || '');
-         } else {
-             jsonData[this.id] = this.id || '';
-             //jsonData[categoryData.value] = categoryValue || '';
-         }
-        console.log(jsonData)
-     }); */
+  //                jsonData[this.id] = [jsonData[this.id]];
+  //                //jsonData[categoryData] = [jsonData[categoryData]];
+  //            }
+  //            jsonData[this.id].push(this.id || '');
+  //            //jsonData[categoryData].push(categoryData || '');
+  //        } else {
+  //            jsonData[this.id] = this.id || '';
+  //            //jsonData[categoryData.value] = categoryValue || '';
+  //        }
+  //       console.log(jsonData)
+  //    }); */
 
 
-    /* customer.forEach(element => {
-      if(element.firstname === "Maja"){
-        customerToSend.push(element.id)
-        customerId=element.id
-      }
-    }) */
-    /* cart.forEach(element => {
-      if(element.firstname === "Maja"){
-        customerId=element.id
-      }
-    }) */
-    //console.log("customerid "+customerId);
-    /* customerToSend = JSON.stringify(customerToSend) */
-    /* console.log(cart);
-    console.log(cartTosend); */
-    //console.log("CustomerToSend " + customerToSend);
+  //   /* customer.forEach(element => {
+  //     if(element.firstname === "Maja"){
+  //       customerToSend.push(element.id)
+  //       customerId=element.id
+  //     }
+  //   }) */
+  //   /* cart.forEach(element => {
+  //     if(element.firstname === "Maja"){
+  //       customerId=element.id
+  //     }
+  //   }) */
+  //   //console.log("customerid "+customerId);
+  //   /* customerToSend = JSON.stringify(customerToSend) */
+  //   /* console.log(cart);
+  //   console.log(cartTosend); */
+  //   //console.log("CustomerToSend " + customerToSend);
 
-    /* $.ajax(
-      {
-          url : 'https://grupp5hakimlivs.herokuapp.com/addproduct',
-          type: "POST",
-          crossDomain: true,
-          dataType: 'jsonp',
-          data : jsonData,
-          complete: function(data) {
-            console.log(data.responseText);
-        },
-        success: function(data){
-          console.log(data);
-      },
-          headers: {
-            accept: "application/json",
-            "Access-Control-Allow-Origin":"*"
+  //   /* $.ajax(
+  //     {
+  //         url : 'https://grupp5hakimlivs.herokuapp.com/addproduct',
+  //         type: "POST",
+  //         crossDomain: true,
+  //         dataType: 'jsonp',
+  //         data : jsonData,
+  //         complete: function(data) {
+  //           console.log(data.responseText);
+  //       },
+  //       success: function(data){
+  //         console.log(data);
+  //     },
+  //         headers: {
+  //           accept: "application/json",
+  //           "Access-Control-Allow-Origin":"*"
             
-        }
+  //       }
           
-      });
-      e.preventDefault(); */
+  //     });
+  //     e.preventDefault(); 
 
     
-  }
+  // }
+  // */
+
+
+sendOrder(e){
+  alert("Tack för din order!");
+  localStorage.clear();
+  location.replace("index.html");
+}
 
 }
 
