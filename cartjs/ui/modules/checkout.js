@@ -60,7 +60,7 @@ export default class Checkout extends UI {
               <button
                 type="button"
                 id="Purchase"
-                class="btn btn-primary btn-lg t-1 hover-shadow"
+                class="purchase-button btn btn-primary btn-lg t-1 hover-shadow"
               >
                 Bekräfta beställning
               </button>
@@ -93,6 +93,7 @@ export default class Checkout extends UI {
       if (e.target.className == "trashcan pe-1") this.deleteRowInCart(e);
       if (e.target.className == "minus") this.decreaseItemsInCartWithOne(e);
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
+      if (e.target.className == "purchase-button btn btn-primary btn-lg t-1 hover-shadow") this.sendOrder(e);
     });
     
     this.injectRowItemsInCart();
@@ -290,6 +291,12 @@ async injectRowItemsInCart() {
        numberOfProducts += item[index];
     }
     localStorage.setItem("numberInCart", JSON.stringify(numberOfProducts));
+}
+
+sendOrder(e){
+  alert("Tack för din order!");
+  localStorage.clear();
+  location.replace("index.html");
 }
 
 }
