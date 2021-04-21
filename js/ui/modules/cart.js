@@ -71,7 +71,7 @@ export default class Cart extends UI {
                     <div class="container-fluid">
                       <div class="row">
                         <button type="button" class="btn btn-success"><a class="text-decoration-none text-white"
-                            href="cart.html">Till kassan</a></button>
+                            href="Cart.html">Till kassan</a></button>
                       </div>
                     </div>
                   </div>

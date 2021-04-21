@@ -29,14 +29,22 @@ export default class Header extends UI {
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="form-group mr-5 p-4">
+          <div class="input-group">
+            <div class="form-outline">
               <input
                 class="searchform form-control search input-lg mr-5 p2"
                 id="inputlg"
                 type="text"
                 placeholder="Sök"
               />
-            </form>
+              </div>
+              <button
+              id="search-button"
+              type="button"
+              class="btn btn-secondary text-nowrap t-1 btn-space hover-shadow">
+              <i class="fa fa-search"></i>
+              </button>
+            </div>
             <ul class="navbar-nav mr-auto mr-4 mt-lg-0">
               <li class="nav-item">
                   <button
@@ -89,13 +97,18 @@ export default class Header extends UI {
       </nav>
     </div>
   </header>
-        `;
-        super.container.innerHTML = this.html;
-        let input = document.getElementById("inputlg")
-          input.addEventListener("keyup", async (e) =>{
-            if(input.value != null) await new Products(".products").showAllProductsInSearch(input.value);
+  `;
+    super.container.innerHTML = this.html;
+    let input = document.getElementById("inputlg")
+    input.addEventListener("keyup", async (e) =>{
+      if(input.value != null) await new Products(".products").showAllProductsInSearch(input.value);
     });
-  } /**/;
+
+    let searchbutton = document.getElementById("search-button");
+    searchbutton.addEventListener("click", async(e) =>{
+      if(input.value != null) await new Products(".products").showAllProductsInSearch(input.value);
+    });
+  }
 
   
 

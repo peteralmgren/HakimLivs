@@ -5,8 +5,8 @@ export default class Sidebar extends UI {
     constructor(appendTo) {
         super(appendTo);
         this.container.addEventListener("click", async (e) => {
-          if(e.target.className == "list-group-item cat-selector") await new Products(".products").showAllProductsInCategory(e.target.dataset.categoryName);
-          if(e.target.className == "show-all list-group-item cat-selector") await new Products(".products").showProducts();
+          if(e.target.className == "list-group-item cat-selector px-3") await new Products(".products").showAllProductsInCategory(e.target.dataset.categoryName);
+          if(e.target.className == "show-all list-group-item cat-selector px-3") await new Products(".products").showProducts();
         });
         this.showCategories();
     }
@@ -15,10 +15,13 @@ export default class Sidebar extends UI {
       let uniqueCat = []; 
       let tempArray = [];
       let html = `
-      <div class="card">
-        <div class="card-body p-2 mr-3">
+      <div class="container-fluid">
+          <div class="row flex-nowrap">
           <ul class="list-group list-group-horizontal">
-          <li class="show-all list-group-item cat-selector" id="categorylinks" data-category-name="Visa alla">Visa alla</li>
+          <div class="col-4">
+            <li class="show-all list-group-item cat-selector px-3" id="categorylinks" data-category-name="Visa alla">Alla</li>
+          </div>
+          
           `;
       
       let categories = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
@@ -38,11 +41,14 @@ export default class Sidebar extends UI {
       uniqueCat = uniqueCat.filter((value, index, categoryArray) => categoryArray.indexOf(value) === index);
 
       for (let cat in uniqueCat) {
-        html += `<li class="list-group-item cat-selector" id="categorylinks" data-category-name="${uniqueCat[cat]}">${uniqueCat[cat]}</li>`;
+        html += `<div class="col-4">
+        <li class="list-group-item cat-selector px-3" id="categorylinks" data-category-name="${uniqueCat[cat]}">${uniqueCat[cat]}</li>
+        </div>`;
       }
 
       html +=`
       </ul>
+      </div>
         </div>`;
       
       super.container.innerHTML += html;
