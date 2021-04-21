@@ -30,7 +30,7 @@ customer = JSON.parse(localStorage.getItem("customer"));
 
 if (!customer) {
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/customers");
+  xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/getcustomers");
   xhr.send();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
