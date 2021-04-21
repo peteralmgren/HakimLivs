@@ -1,13 +1,16 @@
- $(document).ready(function() {
-    $("#add-btn").click(function(e){
-       var jsonData = {};
+$(document).ready(function() {
+    $("#send-order").click(function(e){
        
-       var formData = $("#myform").serializeArray();
+       var jsonData = {}
 
-       
-       
+        
+
+       var test = {'title':'jsontest','description':'json', 'price':4, 'image':'json', 'category_id':2}
+
+       var test2 = {'customer_id':12,'product_id':3, 'quantity':4}
+
       
-     $.each(formData, function() {
+       /* $.each(formData, function() {
           if (jsonData[this.name]) {
             
              if (!jsonData[this.name].push) {
@@ -22,23 +25,23 @@
              
          }
         console.log(jsonData)
-     });
-
-     
+     }); */ 
+ 
+     console.log(test2)
      
       $.ajax(
       {
-          url : 'https://grupp5hakimlivs.herokuapp.com/addproduct',
+          url : 'https://grupp5hakimlivs.herokuapp.com/order',
           type: "POST",
           crossDomain: true,
           dataType: 'jsonp',
-          data : jsonData,
-          complete: function(data) {
+          data : test2,
+          /* complete: function(data) {
             console.log(data.responseText);
         },
         success: function(data){
           console.log(data);
-      },
+      }, */
           headers: {
             accept: "application/json",
             "Access-Control-Allow-Origin":"*"

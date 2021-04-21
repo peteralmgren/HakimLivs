@@ -291,16 +291,97 @@ async injectRowItemsInCart() {
     
   }
   /* async */ sendOrder (e){
-    console.log(e);
+    
+       
+      var jsonData = {}
+
+       
+
+      var test = {'title':'jsontest','description':'json', 'price':4, 'image':'json', 'category_id':2}
+
+      
+
+      
+
+     
+      /* $.each(formData, function() {
+         if (jsonData[this.name]) {
+           
+            if (!jsonData[this.name].push) {
+             
+                jsonData[this.name] = [jsonData[this.name]];
+                
+            }
+            jsonData[this.name].push(this.value || '');
+            
+        } else {
+            jsonData[this.name] = this.value || '';
+            
+        }
+       console.log(jsonData)
+    }); */ 
+
+    console.log(test2)
+
+    let cartarray = {}
+
+    let cart = JSON.parse(localStorage.getItem('cart'))
+    console.log(cart)
+
+    let cartkeys = Object.keys(cart);
+    let cartentries = Object.values(cart);
+    console.log(cartkeys);
+    console.log(cartentries);
+
+    var test2 = {'customer_id':12,'product_id':cartkeys[0], 'quantity':cartentries[0]}
+    console.log(test2);
+
+    
+
+  
+    console.log("här är vi "+cartarray);
+    
+    /* cart.map((currentValue) => {'' } ) */
+
+
+    
+     /* $.ajax(
+     {
+         url : 'https://grupp5hakimlivs.herokuapp.com/order',
+         type: "POST",
+         crossDomain: true,
+         dataType: 'jsonp',
+         data : test2,
+         complete: function(data) {
+           console.log(data.responseText);
+       },
+       success: function(data){
+         console.log(data);
+     },
+          headers: {
+           accept: "application/json",
+           "Access-Control-Allow-Origin":"*"
+           
+       }
+         
+     });
+     
+     e.preventDefault();  */  
+
+
+
+     
+ 
+     /* console.log(e); */
     
     
 
-    const getData = () => {
+    /* const getData = () => {
       axios.get('https://grupp5hakimlivs.herokuapp.com/all').then(response =>{
         console.log(response);
       });
     };
-    getData()
+    getData() */ 
 
 
     /* console.log(e.target);
