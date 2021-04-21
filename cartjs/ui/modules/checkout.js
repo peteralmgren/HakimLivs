@@ -60,7 +60,11 @@ export default class Checkout extends UI {
               <button
                 type="button"
                 id="Purchase"
+<<<<<<< HEAD
                 class="purchase-button btn btn-primary btn-lg t-1 hover-shadow"
+=======
+                class="purchase-btn btn btn-primary btn-lg t-1 hover-shadow"
+>>>>>>> d50ed2395fe367303fe4f7e83055140572e31b04
               >
                 Bekräfta beställning
               </button>
@@ -93,12 +97,24 @@ export default class Checkout extends UI {
       if (e.target.className == "trashcan pe-1") this.deleteRowInCart(e);
       if (e.target.className == "minus") this.decreaseItemsInCartWithOne(e);
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
+<<<<<<< HEAD
       if (e.target.className == "purchase-button btn btn-primary btn-lg t-1 hover-shadow") this.sendOrder(e);
+=======
+      if (e.target.className == "purchase-btn") this.sendOrder(e);
+      
+    
+>>>>>>> d50ed2395fe367303fe4f7e83055140572e31b04
     });
     
     this.injectRowItemsInCart();
     this.printUser();
     this.sum = 0;
+    document.getElementById("Purchase").addEventListener("click", async (e) =>{
+      this.sendOrder(e)
+    });
+    
+    
+    
     
   }
 
@@ -282,16 +298,108 @@ async injectRowItemsInCart() {
     
     
   }
-  countProductsInCart(){
-    let numberOfProducts = 0;
-    let theCart = JSON.parse(localStorage.getItem("cart"));
-    let item = Object.values(theCart);
-    console.log(item);
-    for (let index = 0; index < item.length; index++) {
-       numberOfProducts += item[index];
+  /* async */ sendOrder (e){
+    console.log(e);
+    
+    
+
+    const getData = () => {
+      axios.get('https://grupp5hakimlivs.herokuapp.com/all').then(response =>{
+        console.log(response);
+      });
+    };
+    getData()
+
+
+    /* console.log(e.target);
+
+    let cartTosend = [] */
+    /* let jsonData = [{"id":1,"quantity":3},{"id":4 , "quantity":5}]
+    let cartTosend = []
+
+    let customer = {}
+    let cart =[]
+    let customerId=0;
+    customer = JSON.parse(localStorage.getItem("customer"))
+    cart = JSON.parse(localStorage.getItem("cart"))
+    cartTosend = localStorage.getItem("cart")
+
+    for (let index = 0; index < cart.length; index++) {
+      const element = cart[index];
+      console.log(cart[0]);
+      
+    } */
+    /* let allProductsincart = await super.loadData("GET", "./data/produkter.JSON");
+    allProductsincart = JSON.parse(allProductsincart);
+    let cart = super.readStorage("cart");
+
+    for (let i = 0; i < cart.length; i++) {
+      cartTosend.push("id"+":"+cart[allProductsincart[i].id])
+      cartTosend.push("quantity"+":"+cart[1])
     }
-    localStorage.setItem("numberInCart", JSON.stringify(numberOfProducts));
-}
+    console.log(cartTosend); */
+    /* var formData = $(cart).serializeArray(); */
+       
+ 
+     /* $.each(formData, function() {
+          if (jsonData[this.id]) {
+            
+             if (!jsonData[this.id].push) {
+              
+                 jsonData[this.id] = [jsonData[this.id]];
+                 //jsonData[categoryData] = [jsonData[categoryData]];
+             }
+             jsonData[this.id].push(this.id || '');
+             //jsonData[categoryData].push(categoryData || '');
+         } else {
+             jsonData[this.id] = this.id || '';
+             //jsonData[categoryData.value] = categoryValue || '';
+         }
+        console.log(jsonData)
+     }); */
+
+
+    /* customer.forEach(element => {
+      if(element.firstname === "Maja"){
+        customerToSend.push(element.id)
+        customerId=element.id
+      }
+    }) */
+    /* cart.forEach(element => {
+      if(element.firstname === "Maja"){
+        customerId=element.id
+      }
+    }) */
+    //console.log("customerid "+customerId);
+    /* customerToSend = JSON.stringify(customerToSend) */
+    /* console.log(cart);
+    console.log(cartTosend); */
+    //console.log("CustomerToSend " + customerToSend);
+
+    /* $.ajax(
+      {
+          url : 'https://grupp5hakimlivs.herokuapp.com/addproduct',
+          type: "POST",
+          crossDomain: true,
+          dataType: 'jsonp',
+          data : jsonData,
+          complete: function(data) {
+            console.log(data.responseText);
+        },
+        success: function(data){
+          console.log(data);
+      },
+          headers: {
+            accept: "application/json",
+            "Access-Control-Allow-Origin":"*"
+            
+        }
+          
+      });
+      e.preventDefault(); */
+
+    
+  }
 
 sendOrder(e){
   alert("Tack för din order!");

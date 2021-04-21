@@ -1,14 +1,25 @@
 
 
+let testData = {"1":1,"5":4}
 let customer= [];
 let customerIndex = 0;
 customer = JSON.parse(localStorage.getItem("customer"));
 
 
+  /* const xhr = new XMLHttpRequest();
+  xhr.open("POST", "http://localhost:8080/response/postbody");
+  
+  xhr.send("{\"firstName\" : \"John\", \"lastName\" : \"Smith\"}"); */
+  /* xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.send(JSON.stringify({ "email": "hello@user.com", "response": { "name": "Tester" } })); */
+
+
+
+
 
 if (!customer) {
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/customers");
+  xhr.open("POST", "https://grupp5hakimlivs.herokuapp.com/getcustomers");
   xhr.send();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
