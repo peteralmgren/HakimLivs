@@ -1,8 +1,65 @@
 import UI from "../ui.js";
 
+let products = [];
+let productIndex = 0;
+products = JSON.parse(localStorage.getItem("products"));
+
+
+  /* const xhr = new XMLHttpRequest();
+  xhr.open("POST", "http://localhost:8080/response/postbody");
+  
+  xhr.send("{\"firstName\" : \"John\", \"lastName\" : \"Smith\"}"); */
+  /* xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.send(JSON.stringify({ "email": "hello@user.com", "response": { "name": "Tester" } })); */
+
+
+
+
+
+if (!products) {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/all");
+  xhr.send();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      products = JSON.parse(xhr.responseText);
+      localStorage.setItem("products", JSON.stringify(products));
+      
+    }
+  };
+
+}
+
+
+
+
+
 export default class Carousel extends UI {
+
+
     constructor(appendTo) {
         super(appendTo);
+
+        (function($) {
+          $.rand = function(arg) {
+              if ($.isArray(arg)) {
+                  return arg[$.rand(arg.length)];
+              } else if (typeof arg == "number") {
+                  return Math.floor(Math.random() * arg);
+              } else {
+                  return 44;  // chosen by fair dice roll
+              }
+          };
+        })(jQuery);
+        
+        console.log($.rand(products));
+        let random1= $.rand(products)
+        let random2= $.rand(products)
+        let random3= $.rand(products)
+        let random4= $.rand(products)
+        let random5= $.rand(products)
+        //console.log($.rand());
+
         this.html=`
         <!--carousel-->
 
@@ -17,28 +74,28 @@ export default class Carousel extends UI {
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="images/fruit/banana-2449019_640.jpg" class="d-block" alt="Slide 1">
+                <img src="${random1.image}" class="d-block" alt="Slide 1">
                 <div class="carousel-caption d-none d-md-block text-dark">
                 </div>
               </div>
               <div class="carousel-item  ">
-                      <img src="/images/mejeri/ost.jpg" class="d-block" alt="Slide 2">
+                      <img src="${random2.image}">
                 <div class="carousel-caption d-none d-md-block text-dark">
                 </div>
               </div>
 
               <div class="carousel-item ">
-                <img src="/images/mejeri/smör.jpg" class="d-block" alt="Slide 3">
+                <img src="${random3.image}">
                 <div class="carousel-caption d-none d-md-block text-dark">
                 </div>
                 </div>
                 <div class="carousel-item ">
-                <img src="/images/mejeri/gräddfil.jpg" class="d-block" alt="Slide 4">
+                <img src="${random4.image}" class="d-block" alt="Slide 4">
                 <div class="carousel-caption d-none d-md-block text-dark">
                 </div>
                 </div>
                 <div class="carousel-item ">
-                <img src="/images/fruit/apples-490474_640.jpg" class="d-block" alt="Slide 5">
+                <img src="${random5.image}" class="d-block" alt="Slide 5">
                 <div class="carousel-caption d-none d-md-block text-dark">
                 </div>
                 </div>
@@ -54,5 +111,8 @@ export default class Carousel extends UI {
 
         `;
         super.container.innerHTML = this.html;
+
+        
     }
+    
 }

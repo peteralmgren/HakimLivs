@@ -1,5 +1,6 @@
  $(document).ready(function() {
     $("#add-btn").click(function(e){
+        
        var jsonData = {};
        
        var formData = $("#myform").serializeArray();
@@ -22,9 +23,10 @@
              
          }
         console.log(jsonData)
+        
      });
 
-     
+     let response = "";
      
       $.ajax(
       {
@@ -33,24 +35,24 @@
           crossDomain: true,
           dataType: 'jsonp',
           data : jsonData,
-          complete: function(data) {
-            console.log(data.responseText);
-        },
-        success: function(data){
-          console.log(data);
-      },
+            success: function(data){
+            console.log(data);
+            response=data
+            },
+
           headers: {
             accept: "application/json",
             "Access-Control-Allow-Origin":"*"
             
         }
-          
+        
       });
       
       e.preventDefault();   
 
 
-
+      console.log("53 "+response);
       
   }); 
+  console.log("56 "+response);
   }); 
