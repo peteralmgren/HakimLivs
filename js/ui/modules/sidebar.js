@@ -5,7 +5,7 @@ export default class Sidebar extends UI {
     constructor(appendTo) {
         super(appendTo);
         this.container.addEventListener("click", async (e) => {
-          if(e.target.className == "list-group-item cat-selector px-3") window.location.reload(await new Products(".products").showAllProductsInCategory(e.target.dataset.categoryName));
+          if(e.target.className == "list-group-item cat-selector px-3") await new Products(".products").showAllProductsInCategory(e.target.dataset.categoryName);
           if(e.target.className == "show-all list-group-item cat-selector px-3") await new Products(".products").showProducts();
         });
         this.showCategories();
