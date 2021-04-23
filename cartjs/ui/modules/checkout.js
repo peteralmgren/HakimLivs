@@ -357,9 +357,15 @@ async injectRowItemsInCart() {
 
 
 sendOrder(e){
-  alert("Tack för din order!");
-  localStorage.clear();
-  location.replace("index.html");
+  if(!localStorage.numberInCart || localStorage.numberInCart == 0){
+    alert("Din varukorg är tom");
+  }
+  else{
+    alert("Tack för din order!");
+    localStorage.clear();
+    location.replace("index.html");
+  }
+ 
 }
 
 }
