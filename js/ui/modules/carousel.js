@@ -52,7 +52,7 @@ export default class Carousel extends UI {
           };
         })(jQuery);
         
-        console.log($.rand(products.length));
+        console.log($.rand(products));
         let random1= $.rand(products)
         let random2= $.rand(products)
         let random3= $.rand(products)
