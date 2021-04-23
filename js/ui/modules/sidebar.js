@@ -4,14 +4,26 @@ import Products from "./products.js";
 export default class Sidebar extends UI {
     constructor(appendTo) {
         super(appendTo);
+        this.products = new Products(".products");
+        this.products.showProducts("all");
         this.container.addEventListener("click", async (e) => {
-          if(e.target.className == "list-group-item cat-selector px-3") await new Products(".products").showAllProductsInCategory(e.target.dataset.categoryName);
-          if(e.target.className == "show-all list-group-item cat-selector px-3") await new Products(".products").showProducts();
+          if(e.target.className == "list-group-item cat-selector px-3") await this.products.showProducts(e.target.dataset.categoryName);
+          if(e.target.className == "show-all list-group-item cat-selector px-3") await this.products.showProducts("all");
         });
+        
+        let input = document.getElementById("inputlg");
+        input.addEventListener("keyup", async (e) =>{
+          if(input.value != null) await this.products.showProducts(input.value);
+        })
+        let searchbutton = document.getElementById("search-button");
+          searchbutton.addEventListener("click", async(e) =>{
+        if(input.value != null) await this.products.showProducts(input.value);
+        });
+
         this.showCategories();
     }
 
-    async showCategories() {
+    async showCategories() { 
       let uniqueCat = []; 
       let tempArray = [];
       let html = `

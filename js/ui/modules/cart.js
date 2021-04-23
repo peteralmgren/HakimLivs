@@ -3,7 +3,6 @@ import UI from "../ui.js";
 export default class Cart extends UI {
   constructor(appendTo) {
     super(appendTo);
-    // this.getAllProducts();
     this.html = `
         <div class="modal fade" id="shopping-cart" tabindex="-1">
             <!-- Modal, varukorg START -->
@@ -86,7 +85,7 @@ export default class Cart extends UI {
       if (e.target.className == "trashcan pe-1") this.deleteRowInCart(e);
       if (e.target.className == "minus") this.decreaseItemsInCartWithOne(e);
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
-      this.checkOutBtnText.innerText = this.sum;
+      this.checkOutBtnText.innerText = this.sum.toFixed(2).replace(".", ":") +" kr";
     });
     
     this.injectRowItemsInCart();
