@@ -9,8 +9,8 @@ export default class Products extends UI {
         location.reload();
       } 
       if (e.target.className == "plus"){
+        console.log(e.target);
         this.increaseItemsInCartWithOne(e);
-        location.reload();
       
       }
       if(e.target.classList.contains("btn") && e.target.dataset.productId) {
@@ -41,6 +41,7 @@ export default class Products extends UI {
   New array is used to paint products to html page
   */
   async showProducts(value) {
+    
     let ProductsArray = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
     ProductsArray = JSON.parse(ProductsArray);
     
