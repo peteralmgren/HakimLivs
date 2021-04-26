@@ -20,13 +20,16 @@ export default class Products extends UI {
         super.addToCart(e.target.dataset.productId);
         this.showProducts(localStorage.getItem("choice"));
       };
-      await this.cart.injectRowItemsInCart();      
+      this.cart.injectRowItemsInCart();      
 
 
     });
 
     if(!localStorage.getItem("cart")){
       this.addToCart(0);
+    }
+    if(!localStorage.getItem("choice")){
+      localStorage.setItem("choice", "all");
     }
 
 

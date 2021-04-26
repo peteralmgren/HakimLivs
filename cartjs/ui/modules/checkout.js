@@ -356,11 +356,14 @@ async injectRowItemsInCart() {
  // }
 //}
 
+
+//BUGGIG: När man skickas tillbaka till index så fungerar inte sidan som den ska
 clearCart(){
   localStorage.clear("cart");
   alert("Du tömde varukorgen. Lämnar kassan...")
   location.replace("index.html");
 }
+
 
 
 sendOrder(e){
