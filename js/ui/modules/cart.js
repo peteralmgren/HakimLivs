@@ -19,24 +19,22 @@ export default class Cart extends UI {
 
                     <div class="row bg-white mt-1 py-2 align-items-center border rounded" id="">
                       <div class="col-1 p-1">
-                        <img class="img-fluid" src="./images/fruit/apples-490474_640.jpg" alt="Produktbild">
                       </div>
                       <div class="col-4">
                         <div>
-                          <p class="brand m-0">AXA</p>
-                          <h5 class="fw-bold m-0 title">Havregryn</h5>
+                        
                         </div>
                       </div>
                       <div class="col-3 text-end px-0">
                         <div class="flex">
                           <img class="minus" src="./icons/minus.png" alt="minus" width="20px"> <button
-                            class="border border-secondary bg-white px-2 rounded" id="amount-of-product">1</button> <img
+                            class="border border-secondary bg-white px-2 rounded" id="amount-of-product"></button> <img
                             class="plus" src="./icons/plus.png" alt="plus" width="20px">
                         </div>
                       </div>
                       <div class="col-3 px-0">
                         <div class="d-flex justify-content-end">
-                          <div class="price fw-bold px-0 mx-0">15</div>
+                          <div class="price fw-bold px-0 mx-0"></div>
                           <div class="px-0 ms-1">kr</div>
                         </div>
                       </div>
@@ -79,13 +77,11 @@ export default class Cart extends UI {
             </div>
           </div><!-- Modal, varukorg SLUT --></div>
           `;
-    this.checkOutBtnText = document.getElementById("Cart-button").childNodes[3];
     super.container.innerHTML = this.html;
     super.container.addEventListener("click", async (e) => {
       if (e.target.className == "trashcan pe-1") this.deleteRowInCart(e);
       if (e.target.className == "minus") this.decreaseItemsInCartWithOne(e);
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
-      this.checkOutBtnText.innerText = this.sum.toFixed(2).replace(".", ":") +" kr";
     });
     
     this.injectRowItemsInCart();
@@ -155,7 +151,7 @@ async injectRowItemsInCart() {
     `;
 
     document.getElementsByClassName("container-fluid")[0].innerHTML = row;
-    this.checkOutBtnText.innerText = this.sum.toFixed(2).replace(".", ",") +" kr";
+
 } 
 
   
