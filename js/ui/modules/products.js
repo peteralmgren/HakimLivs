@@ -1,23 +1,27 @@
 import UI from "../ui.js";
+import Cart from "./cart.js";
 
 export default class Products extends UI {
   constructor(appendTo) {
     super(appendTo);
+    this.cart = new Cart(".cart");
     super.container.addEventListener("click", async (e) => {
       if (e.target.className == "minus"){
         this.decreaseItemsInCartWithOne(e);
-        location.reload();
+        this.showProducts(localStorage.getItem("choice"));
       } 
       if (e.target.className == "plus"){
         console.log(e.target);
         this.increaseItemsInCartWithOne(e);
+        this.showProducts(localStorage.getItem("choice"));
       
       }
       if(e.target.classList.contains("btn") && e.target.dataset.productId) {
-        
         super.addToCart(e.target.dataset.productId);
-        window.location.reload(); 
+        this.showProducts(localStorage.getItem("choice"));
       };
+      await this.cart.injectRowItemsInCart();      
+
 
     });
 
@@ -85,47 +89,47 @@ export default class Products extends UI {
           <div class="card h-100 rounded">
             <div class="card-body text-center">
               <img class="card-img-top" src="${allProductsArray[index2].image}">
-              <p class="card-text">Pris ${(allProductsArray[index2].price.toFixed(2)).replace(".", ",")} kr</p>
-              <h6 class="card-title">${allProductsArray[index2].title}</h6>
-              <button class="buy-btn btn btn-primary" data-product-id="${allProductsArray[index2].id}">Lägg till varukorg</button>
               <a class="btn btn-outline-secondary" data-bs-toggle="modal" href="#modal${index2}" role="button">Info</a>
-              <br>
-              <br>
-              <img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="20px"> 
-              <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${value}</button>
-              <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="20px">
-      
+              <p class="card-text">Pris ${(allProductsArray[index2].price.toFixed(2)).replace(".", ",")} kr</p>
+              <h6 class="card-title">${allProductsArray[index2].title}</h6>`
+
+              if (value == 0){
+                output += `<button class="buy-btn btn btn-primary" data-product-id="${allProductsArray[index2].id}">Lägg till varukorg</button>
+                `
+              }
+              else{
+                output += `<img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="30px"> 
+                <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${value}</button>
+                <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="30px">`
+              }
               
-            </div>
-          </div>
-        </div>
-        <div class="modal fade" id="modal${index2}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="card h-100 rounded">
-                <div class="card-body text-center">
-                  <h6 class="card-title">${allProductsArray[index2].title}</h6>
-                    <img class="card-img-top" src="${allProductsArray[index2].image}">
-                  <h6>Pris: ${(allProductsArray[index2].price.toFixed(2)).replace(".", ",")} kr</h6>
-                    <p class="card-text"><br>
-                      ${allProductsArray[index2].description}"              
-                    </p>
-                            
-                  <button class="buy-btn btn btn-primary" data-product-id="${allProductsArray[index2].id}">Lägg till varukorg</button>
-                </div>
-              </div>
-            <div class="modal-footer">
-              <div class="col-3 text-end px-0">
-                <div class="flex">
-                  <img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="20px"> 
-                  <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${value}</button>
-                  <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="20px">
-                </div>
+              output += `</div>
               </div>
             </div>
+            <div class="modal fade" id="modal${index2}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="card h-100 rounded">
+                    <div class="card-body text-center">
+                      <h6 class="card-title">${allProductsArray[index2].title}</h6>
+                        <img class="card-img-top" src="${allProductsArray[index2].image}">
+                      <h6>Pris: ${(allProductsArray[index2].price.toFixed(2)).replace(".", ",")} kr</h6>
+                        <p class="card-text"><br>
+                          ${allProductsArray[index2].description}" 
+                          <br>
+                          <hr>
+                          Styckpris: 
+                          <br>
+                          Jämförpris:             
+                        </p>
+                    </div>
+                  </div>
+            </div>
           </div>
-        </div>
-      </div>`;
+        </div>`;
+                
+                
+                
 
       if (counter == 4) {
         output += "</div>";

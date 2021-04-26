@@ -1,9 +1,9 @@
+import Products from "../../../js/ui/modules/products.js";
 import UI from "../ui.js";
 
 export default class Checkout extends UI {
   constructor(appendTo) {
-    super(appendTo);
-    // this.getAllProducts();
+    super(appendTo);    
     this.html = `
     <div class="container">
     <div class="row mr-2 p-3">
@@ -64,6 +64,7 @@ export default class Checkout extends UI {
               >
                 Bekräfta beställning
               </button>
+              <button class="btn btn-danger" id="clearCart">Rensa varukorg</button>
             </div>
           </div>
         </div>
@@ -94,6 +95,7 @@ export default class Checkout extends UI {
       if (e.target.className == "minus") this.decreaseItemsInCartWithOne(e);
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
       if (e.target.className == "purchase-button btn btn-primary btn-lg t-1 hover-shadow") this.sendOrder(e);
+      if (e.target.className == "btn btn-danger") this.clearCart();
     });
     
     this.injectRowItemsInCart();
@@ -354,6 +356,11 @@ async injectRowItemsInCart() {
  // }
 //}
 
+clearCart(){
+  localStorage.clear("cart");
+  alert("Du tömde varukorgen. Lämnar kassan...")
+  location.replace("index.html");
+}
 
 
 sendOrder(e){
@@ -362,7 +369,7 @@ sendOrder(e){
   }
   else{
     alert("Tack för din order!");
-    localStorage.clear();
+    
     location.replace("index.html");
   }
  
