@@ -4,25 +4,30 @@
         $('[data-toggle="tooltip"]').tooltip()
       })
     }); */
+    customerLoggingIn = []
 
 function validateUser(){
   var correctEmail = "hakim";
   var correctPassword = "hakim";
   var email = document.getElementById("email1").value;
   var password = document.getElementById("password1").value;
-  console.log("input email: " + email);
-  console.log("input password: " + password);
+  customerLoggingIn.push(email)
+  customerLoggingIn.push(password)
+  customerLoggingIn = JSON.stringify
+  console.log(customerLoggingIn);
+  /* console.log("input email: " + email);
+  console.log("input password: " + password); */
 
 
-  if(email == correctEmail && password == correctPassword){
+  /* if(email == correctEmail && password == correctPassword){
       console.log("Användarnamn och lösenord stämde!");
       window.location.replace("admin.html");
   }
   else{
       console.log("Felaktig adress. Användaren finns ej!");
-  }
+  }*/
         
-}
+} 
 let customer= [];
 customer = JSON.parse(localStorage.getItem("customer"));
 
