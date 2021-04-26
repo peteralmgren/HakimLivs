@@ -45,9 +45,9 @@ export default class Login extends UI {
                     placeholder="Ange lösenord..."
                   />
                 </div>
-              
+                
                 <button
-                  type="button"
+                  id="login-btn" type="button"
                   onclick="validateUser()"
                   class="btn btn-info btn-block btn-round"
                 >

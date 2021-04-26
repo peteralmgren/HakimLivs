@@ -5,16 +5,6 @@ let productIndex = 0;
 products = JSON.parse(localStorage.getItem("products"));
 
 
-  /* const xhr = new XMLHttpRequest();
-  xhr.open("POST", "http://localhost:8080/response/postbody");
-  
-  xhr.send("{\"firstName\" : \"John\", \"lastName\" : \"Smith\"}"); */
-  /* xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xhr.send(JSON.stringify({ "email": "hello@user.com", "response": { "name": "Tester" } })); */
-
-
-
-
 
 if (!products) {
   const xhr = new XMLHttpRequest();
@@ -31,11 +21,7 @@ if (!products) {
 }
 
 
-
-
-
 export default class Carousel extends UI {
-
 
     constructor(appendTo) {
         super(appendTo);

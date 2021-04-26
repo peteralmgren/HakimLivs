@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
   <link rel="stylesheet" href="css/admin.css" />
-  <script   src="https://code.jquery.com/jquery-3.6.0.min.js"   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="   crossorigin="anonymous"></script>
-  <script src=https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  
+      
+  
   <script src="/js/axios.js" defer></script>
   <title>Admin page</title>
 </head>
@@ -42,7 +42,8 @@
             <a id="customer-list" class="dropdown-item" href="#customers">Kundlistor</a>
             <a class="dropdown-item" href="#">Kontoinställningar</a>
             <a class="dropdown-item" href="#order">Kundordrar</a>
-            <a class="dropdown-item" href="#">Skapa ny produkt</a>
+            <a id="product-add"class="dropdown-item" href="#">Skapa ny produkt</a>
+            <a id="product-remove"class="dropdown-item" href="#">Ta bort produkt</a>
             <a class="dropdown-item" href="#footer">Ändra footer</a>
           </div>
         </li>
@@ -86,114 +87,10 @@
                   </div>
                 </section>
               </div>
-
-              
-              
-            <div class="col-md-7">
-                <div class="card">
-
-                  
-
-
-                  <div class="card-header text-secondary">
-                    <label class="bg-white" style="color:black;">Admin skapa produkt formulär
-
-                      
-
-                    </label>
-
-                    
-                  </div>
-                  <form id="myform" type="post">
-                  <div class="card-body">
-                    <div class="row mb-2 text-muted">
-                      <div class="col-md-6 text-left">
-                        <form class="form-inline">
-                          <div class="form-group">
-                            
-                            <div class="elements">
-                              
-                              <label for="category">Välj kategori</label>
-                              <select class="custom-select custom-select-sm" name="category_id">
-                                <option value="1">Frukt</option>
-                                <option value="2">Mejeri</option>
-                                
-                              </select>
-                            
-                            </div>
-                              
-                            <!-- </div> -->
-                            <!-- <div class="dropdown">
-                              <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Kategori
-                              </button>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" value="1" href="#">Frukt</a>
-                                <a class="dropdown-item" value="2" href="#">Mejeri</a>
-                              </div>
-                            </div> -->
-                            <!-- <div class="btn-group">
-                              <a id="category" name="category" value="" class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                                Kategori <span class="caret"></span>
-                              </a>
-                              
-                              <ul class="dropdown-menu">
-                                <input type="label"/>frukt
-                                <li id="frukt" value="1"><a href="#">Frukt</a></li>
-                                <li id="mejeri" value="2"><a href="#">Mejeri</a></li>
-                              </ul>
-                            </div> -->
-
-                            <div class="elements">
-                              <label for="title">Skriv i produktnamn</label>
-                              <!-- <input type="text" th:field="*{title}" /> -->
-                              <input id="title" required="required" type="text"  value="" name="title"  size="30"  />
-                            </div>
-                            <div class="elements">
-                              
-                              <label for="description">Skriv produktinfo</label>
-                              <textarea class="form-control" rows="3" required="required" type="text" value=""
-                               id="description" name="description"  size="40" ></textarea>
-                            </div>	
-                            <div class="elements">
-                              <label for="price">Skriv i pris</label>
-                              <input id="price" required="required" type="number"  value="" name="price"  size="10"  />
-                            </div>
-                            <div class="elements">
-                              <label for="image">Skriv i sökväg till bild</label>
-                              <input id="image" required="required" value="" name="image" type="text"  size="40"  />
-                            </div>
-                            <p><input id="add-btn" type="submit" value="Submit" /> 
-                              <input type="reset" value="Reset" /></p>
-                          </div>
-                        </form>
-                      </div> 
-                      <!-- <button class="btn btn-primary " type="button" id="getbtn" >
-                        getbutton
-                      </button>
-                      <button class="btn btn-primary " type="button" id="sendbtn" >
-                        sendbutton
-                      </button> -->
+                  <!-- Formulär för lägga till produkt begin-->
+                  <div class="col-md-7" id="admin-addrevome-form">
                     </div>
-
-                    <!-- onclick=SaveProduct() -->
-
-                    <!-- <div class="col-md-7 mb-1">
-                        <form class="md-form"> -->
-                          <!-- id="add-btn" -->
-                          
-                          <!-- <button type="submit" id="add-btn" class="btn btn-success mt-5">Lägg till vara</button>                   
-                          <button type="button" id="cancel-btn" class="btn btn-success mt-5" >Avbryt</button>  -->                     
-                        <!-- </form>       
-                      </div> -->
-                  </div>
-                </form>
-                <!-- <button id="send-order" type="button" class="btn btn-primary">sendorderAddOrderJS</button> -->
-
-                  <!-- <div class="card-footer text-muted">
-                </div> -->
-                </div>
-              </div>
+                    <!-- Formulär för lägga till produkt slutar-->
 
               <div>
                 <h2 style="text-align: center; padding-top:5rem">Kundorder</h2>
@@ -504,13 +401,10 @@
       </div> 
      
        
-
-                 
-
-      
-
-   
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+      <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+      <script   src="https://code.jquery.com/jquery-3.6.0.min.js"   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="   crossorigin="anonymous"></script>
+      <script src=https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js></script>
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
               <script src="./js/admin.js"></script>
               <script src="./js/addProduct.js"></script>
               <script src="./js/addOrder.js"></script>

@@ -46,7 +46,7 @@ export default class Header extends UI {
               </button>
             </div>
             <ul class="navbar-nav mr-auto mr-4 mt-lg-0">
-              <li class="nav-item">
+              <li id="customer-logged-in" class="nav-item">
                   <button
                     type="button"
                     id="Log-in-button"
