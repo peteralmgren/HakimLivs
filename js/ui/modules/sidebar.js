@@ -7,8 +7,14 @@ export default class Sidebar extends UI {
         this.products = new Products(".products");
         this.products.showProducts("all");
         this.container.addEventListener("click", async (e) => {
-          if(e.target.className == "list-group-item cat-selector px-3") await this.products.showProducts(e.target.dataset.categoryName);
-          if(e.target.className == "show-all list-group-item cat-selector px-3") await this.products.showProducts("all");
+          if(e.target.className == "list-group-item cat-selector px-3"){
+            localStorage.setItem("choice", e.target.dataset.categoryName);
+            await this.products.showProducts(e.target.dataset.categoryName);            
+          } 
+          if(e.target.className == "show-all list-group-item cat-selector px-3"){
+            localStorage.setItem("choice", "all");
+            await this.products.showProducts("all");
+          } 
         });
         
         let input = document.getElementById("inputlg");
@@ -27,7 +33,7 @@ export default class Sidebar extends UI {
       let uniqueCat = []; 
       let tempArray = [];
       let html = `
-      <div class="container-fluid">
+      <div class="container">
           <div class="row flex-nowrap">
           <ul class="list-group list-group-horizontal">
           <div class="col-4">
