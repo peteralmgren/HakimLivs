@@ -43,6 +43,12 @@ nav a{
   margin-top: -1.5rem;
 } */
 
+.pris-card{
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 
 .signup-section {
   padding: 0.3rem 0rem;

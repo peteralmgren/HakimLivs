@@ -95,7 +95,7 @@ export default class Products extends UI {
             <div class="card-body text-center">
               <img class="card-img-top" src="${allProductsArray[index2].image}">
               <a class="btn btn-outline-secondary" data-bs-toggle="modal" href="#modal${index2}" role="button">Info</a>
-              <p class="card-text">Pris ${(allProductsArray[index2].price.toFixed(2)).replace(".", ",")} kr</p>
+              <p class="pris-card card-text">${(allProductsArray[index2].price.toFixed(2)).replace(".", ":")}:-</p>
               <h6 class="card-title">${allProductsArray[index2].title}</h6>`
 
               if (value == 0){
@@ -118,14 +118,14 @@ export default class Products extends UI {
                     <div class="card-body text-center">
                       <h6 class="card-title">${allProductsArray[index2].title}</h6>
                         <img class="card-img-top" src="${allProductsArray[index2].image}">
-                      <h6>Pris: ${(allProductsArray[index2].price.toFixed(2)).replace(".", ",")} kr</h6>
+                      <h6 class="pris-card">${(allProductsArray[index2].price.toFixed(2)).replace(".", ":")}:-</h6>
                         <p class="card-text"><br>
                           ${allProductsArray[index2].description}" 
                           <br>
                           <hr>
-                          Styckpris: 
+                          Styckpris: ${allProductsArray[index2].price} kr/st
                           <br>
-                          Jämförpris:             
+                          Jämförpris: 20:50 kr/kg             
                         </p>
                     </div>
                   </div>

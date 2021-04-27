@@ -70,7 +70,10 @@ export default class Cart extends UI {
                         <button type="button" class="btn btn-success"><a class="text-decoration-none text-white"
                             href="Cart.html">Till kassan</a></button>
                       </div>
-                    </div>
+                      <div class="row">
+                      <button type="button" class="btn btn-danger">Töm varukorg</button>
+                      </div>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -82,6 +85,7 @@ export default class Cart extends UI {
       if (e.target.className == "trashcan pe-1") this.deleteRowInCart(e);
       if (e.target.className == "minus") this.decreaseItemsInCartWithOne(e);
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
+      if (e.target.className == "btn btn-danger") this.clearCart();
     });
     
     this.injectRowItemsInCart();
@@ -187,6 +191,11 @@ async injectRowItemsInCart() {
     orderRowSumElement.textContent = newOrderRowSum +"("+pricePerUnit.toFixed(2)+")";
     super.addToCart(e.target.dataset.productId);
     await super.countCost(e.target.dataset.productId, "+");
+    }
+
+    clearCart(){
+      localStorage.clear("cart");
+      window.location.reload();
     }
 
 }

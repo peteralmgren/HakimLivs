@@ -72,7 +72,7 @@ export default class Header extends UI {
                     <button
                       type="button"
                       id="Cart-button"
-                      class="btn btn-secondary btn-lg btn-block text-nowrap t-1 btn-space hover-shadow"
+                      class="cart-button btn btn-secondary btn-lg btn-block text-nowrap t-1 btn-space hover-shadow"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
