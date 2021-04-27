@@ -116,4 +116,17 @@ nav a{
   }
 } */
 
+@media only screen and (max-width: 320px) {
+  .price{
+    font-size: 12px;
+  }
+  .title{
+    font-size: 12px;
+  }
+
+  .fw-bold{
+    font-size: 13px;
+  }
+}
+
 

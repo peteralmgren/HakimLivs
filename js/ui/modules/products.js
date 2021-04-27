@@ -17,10 +17,10 @@ export default class Products extends UI {
       
       }
       if(e.target.classList.contains("btn") && e.target.dataset.productId) {
-        super.addToCart(e.target.dataset.productId);
+        this.increaseItemsInCartWithOne(e);
         this.showProducts(localStorage.getItem("choice"));
       };
-      this.cart.injectRowItemsInCart();      
+      await this.cart.injectRowItemsInCart();      
 
 
     });
@@ -31,10 +31,12 @@ export default class Products extends UI {
     if(!localStorage.getItem("choice")){
       localStorage.setItem("choice", "all");
     }
+    if(!localStorage.getItem("cost")){
+      localStorage.setItem("cost", 0);
+    }
 
+    super.countProductsInCart();
 
-
-    //this.showAllProductsInCategory("mejeri");
   }
 
   // jag kan göra en array med kategorier. En for-loop skapar upp nya event-
@@ -170,7 +172,7 @@ export default class Products extends UI {
 
   /** This for loop assigns event listeners to all minus sign icons. The anonymous function will do three things:
   *  decrease the number of items in the basket with one, decrease the order row sum with the price of one unit and decrease the total sum with the price of one unit */
-  decreaseItemsInCartWithOne(e) {
+  async decreaseItemsInCartWithOne(e) {
     const numberOfItemsNode = e.target.nextElementSibling;
     const oldNrOfItems = parseInt(numberOfItemsNode.textContent);
 
@@ -180,11 +182,12 @@ export default class Products extends UI {
     numberOfItemsNode.textContent = oldNrOfItems - 1;
 
     super.removeFromCart(e.target.dataset.productId);
+    await super.countCost(e.target.dataset.productId, "-");
   }
 
   /** This function will do three things:
   *  increase the number of items in the basket with one, increase the order row sum with the price of one unit and increase the total sum with the price of one unit */
-  increaseItemsInCartWithOne(e) {
+  async increaseItemsInCartWithOne(e) {
     console.log("lägger till")
   
     const numberOfItemsNode = e.target.previousElementSibling;
@@ -196,5 +199,6 @@ export default class Products extends UI {
 
     
     super.addToCart(e.target.dataset.productId);
+    await super.countCost(e.target.dataset.productId, "+");
   }
 }

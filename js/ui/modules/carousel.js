@@ -59,31 +59,41 @@ export default class Carousel extends UI {
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"  aria-label="Slide 5"></button>
             </div>
             <div class="carousel-inner">
-              <div class="carousel-item active">
+              <div class="carousel-item active text-center">
                 <img src="${random1.image}" class="d-block" alt="Slide 1">
                 <div class="carousel-caption d-none d-md-block text-dark">
                 </div>
+                ${random1.title.bold()} -
+                ${random1.price} kr
               </div>
-              <div class="carousel-item  ">
-                      <img src="${random2.image}">
+              <div class="carousel-item text-center">
+                      <img src="${random2.image}" class="d-block" alt="Slide 2">
                 <div class="carousel-caption d-none d-md-block text-dark">
                 </div>
+                ${random2.title.bold()} -
+                ${random2.price} kr
               </div>
 
-              <div class="carousel-item ">
-                <img src="${random3.image}">
+              <div class="carousel-item text-center">
+                <img src="${random3.image}" class="d-block" alt="Slide 3">
                 <div class="carousel-caption d-none d-md-block text-dark">
                 </div>
+                ${random3.title.bold()} - 
+                ${random3.price} kr
                 </div>
-                <div class="carousel-item ">
+                <div class="carousel-item text-center">
                 <img src="${random4.image}" class="d-block" alt="Slide 4">
                 <div class="carousel-caption d-none d-md-block text-dark">
                 </div>
+                ${random4.title.bold()} -
+                ${random4.price} kr
                 </div>
-                <div class="carousel-item ">
+                <div class="carousel-item text-center">
                 <img src="${random5.image}" class="d-block" alt="Slide 5">
                 <div class="carousel-caption d-none d-md-block text-dark">
                 </div>
+                ${random5.title.bold()} -
+                ${random5.price} kr
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
