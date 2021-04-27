@@ -165,7 +165,7 @@ $('#customer-list').click(function (e) {
     $.ajax(
     {
         url : 'https://grupp5hakimlivs.herokuapp.com/addproduct',
-        type: "GET",
+        type: "POST",
         crossDomain: true,
         dataType: 'jsonp',
         data : jsonData,
@@ -268,7 +268,7 @@ $('#customer-list').click(function (e) {
      $.ajax(
      {
          url : 'https://grupp5hakimlivs.herokuapp.com/removeproduct',
-         type: "GET",
+         type: "POST",
          crossDomain: true,
          dataType: 'jsonp',
          data : jsonData,
