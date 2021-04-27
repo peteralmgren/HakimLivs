@@ -189,9 +189,6 @@ $('#customer-list').click(function (e) {
       
     }); 
     
-    e.preventDefault(); 
-
-    
 });
 
   })
@@ -287,8 +284,6 @@ $('#customer-list').click(function (e) {
        }
        
      });
-     
-     e.preventDefault();   
      
  });
 }
