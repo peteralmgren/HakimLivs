@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/admin.css" />
+  
+      
+  
+  <script src="/js/axios.js" defer></script>
+  <title>Admin page</title>
+</head>
+<!-- Top Nav -->
+<nav class="py-3 px-4 navbar navbar-expand-lg auto-hiding-navbar fixed-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">  
+        <a class="navbar-brand" href="index.html">
+            <img  src="images/logo.png" alt="logo" class="logo"/>
+          </a>
+        <form class="search-form d-flex ml-auto mt-1 mb-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Sök vara" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Sök</button>
+      </form>
+          <a class="nav-link active" aria-current="page" href="index.html">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.5 10.995V14.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5V11c0-.25-.25-.5-.5-.5H7c-.25 0-.5.25-.5.495z"/>
+            <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+            </svg>
+          </a>
+        
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Hello Admin
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a id="customer-list" class="dropdown-item" href="#customers">Kundlistor</a>
+            <a class="dropdown-item" href="#">Kontoinställningar</a>
+            <a class="dropdown-item" href="#order">Kundordrar</a>
+            <a id="product-add"class="dropdown-item" href="#">Skapa ny produkt</a>
+            <a id="product-remove"class="dropdown-item" href="#">Ta bort produkt</a>
+            <a class="dropdown-item" href="#footer">Ändra footer</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>  
+  <!-- End Top Nav   -->
+
+
+<body>
+    <!-- <div class="row"> -->
+        
+        <div class="main col-10">
+            <div class="row first-row">
+              <div class="col-4">
+                <section id="recently-posted">
+                  <div class="card">
+                    <div class="card-header" style="text-align: center; color:black;">
+                      Kontrollpanel för produkt
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      
+                        <div class="card" style="width: auto;text-align: center;">Kategori
+                            <label id="cat-example" for="exampeltext" style="text-align: center; color:black;"></label>
+                            <div class="col text-center">
+                                <img class="card-img-top" src="images/mejeri/ost.jpg" style=" width:75%;" alt="Card image cap">
+                              </div>
+                                    <div class="card-body">
+                                      <h5 class="card-title"style="text-align: center; color:black;">Pris här</h5><br>
+                                        <h5 class="card-title"style="text-align: center; color:black;">Produktnamn här</h5>
+                                    <h5 class="card-text"style="text-align: center; color:black;">Produktinfo här</h5>
+                                    <div class="col text-center">
+                                <button class="btn btn-primary">Lägg i varukorg</button>
+                              </div>
+                            </div>
+                         </div>
+                     </ul>
+                  </div>
+                </section>
+              </div>
+                  <!-- Formulär för lägga till produkt begin-->
+                  <div class="col-md-7" id="admin-addrevome-form">
+                    </div>
+                    <!-- Formulär för lägga till produkt slutar-->
+
+              <div>
+                <h2 style="text-align: center; padding-top:5rem">Kundorder</h2>
+              </div> 
+
+              <!-- Formulär för kundorder begin-->
+              
+              <div class="second-row">
+                
+                <div id="order" class="col-md-12">
+                  
+                  <div class="border border-dark">
+                    
+                    
+                    <div class="card" >
+                      
+                      
+                      <div id="order-card" class="card-header">
+                        <label id="order-number" class="label label-info" >Ordernr:</label>
+                        <label id="order-date" class="label label-info" style="padding-left: 10rem; padding-right:10rem;">Orderdatum:</label>
+                        <input class="form-check-input" type="checkbox" checked="checked"  value=""  id="defaultCheck1" style="border-radius: 5px; border-color: black; border-width: thin;" >
+                        <label class="form-check-label" for="defaultCheck1" >Order plockad</label>
+                      </input>
+                        <div class="form-check"></div>
+                        
+                        </div>
+                        <!-- <div class="form" style="align-content: center;">
+                          </div> -->
+                        
+                          </div>
+                        
+                      <!-- </div> -->
+                    
+                                        
+                      <table class="table table-bordered table-sm border border-top-0">
+                        <thead class="bg-light text-black">
+                          <th>Kundnr</th>
+                          <th>ProduktId</th>
+                          <th>Produktnamn</th>
+                          <th>Antal</th>
+                        </thead>
+                        <tbody>
+                          <!-- inject cart order -->
+                          <tr>
+                            <td id="kund-id">14</td>
+                            <td id="product-id">33123</td>
+                            <td  id="product-name">Gräddfil</td>
+                            <td id="product-amount">3</td>
+                          </tr>
+                          <tr>
+                            <td id="kund-id">14</td>
+                            <td id="product-id">33211</td>
+                            <td  id="product-name">Kiwi</td>
+                            <td id="product-amount">1</td>
+                          </tr>
+                          <thead id="order-end" class="bg-light text-bold">
+                            <th id="org-amount">Orinal summa:</th>
+                            <th >Efter rabatt:<label id="after-discount"><!-- inject summa efter rabatt --></label></th>
+                            <th id="total-sum">Att betala:</th>
+                            <td>
+                              <button id="print-btn" type="button" class="btn btn-primary" onclick="printDiv('order')" >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+                                  <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                                  <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
+                                </svg>
+                                Utskrift
+                              </button>
+                              
+                            </td>                           
+                          </thead>
+
+                        </table>
+                          
+                        <div id="shipping-info" class="container">
+
+                          <h1>Leveransinfo</h1>
+                        <div class="form">
+                            
+                          <div class="fields fields--2">
+                            <label class="form-control"style="color:black; border-color: black;">
+                              <span  class="field__label" for="firstname">Förnamn</span>  
+                              <label id="shipping-firstname" class="field__input" for="firstname"
+                                style="color:black; border-color: black;"></label>
+                            </label>
+                            <label class="form-control"style="color:black; border-color: black;" >
+                              <span class="field__label" for="lastname">Efternamn</span>
+                              <label id="shipping-lastname" class="field__input" type="text"style="color:black;"></label>
+                            </label>
+                          </div>
+                          
+                          <label class="form-control"style="color:black; border-color: black;">
+                            <span class="field__label" for="address">Adress</span>
+                            <label id="shipping-address" class="field__input" type="text"style="color:black;"></label>
+                          </label>
+                          
+                          <div class="fields fields--2">
+                            <label class="form-control"style="color:black; border-color: black;">
+                              <span class="field__label" for="zipcode">Postnr</span>
+                              <label id="shipping-zipcode" class="field__input" type="number"style="color:black;"></label>
+                            </label>
+                            <label class="form-control"style="color:black; border-color: black;">
+                              <span class="field__label" for="city">Ort</span>
+                              <label id="shipping-county" class="field__input" type="text"style="color:black;"></label>
+                            </label>
+                            <label class="form-control"style="color:black; border-color: black;">
+                              <span class="field__label" for="email">Epost</span>
+                              <label id="shipping-email" class="field__input" type="email"style="color:black;"></label>
+                               
+                              </input>
+                            </label>
+                          </div>  
+                          
+                          <div>
+                            <h2 class="display-6">Tack för att du handlat på</h2>
+                            <br>
+                            <a class="brand" href="index.html"
+                            ><img src="images/logo.png" alt=""
+                            /></a>
+                          </div>
+                          
+                        </div>
+                      <!-- </div> -->
+                      
+                    </div>  
+                    
+                  </div>
+                  
+                </div>  
+
+                <div>
+                  <h2 style="text-align: center;">Kundlistor</h2>
+                </div>  
+
+              <div class="row second-row">
+                <div class="col-12">
+                  <section id="customers" class="border border-dark">
+                    <div class="card">
+                      <div class="card-header">
+                        
+                        <!-- <div class="form-check" style="align-content: center;"> -->
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="border-radius: 5px; border-color: black; border-width: thin;">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Rabatt 5%
+                            </label>
+                          <!-- </div> -->
+                          <!-- <div class="form-check" style="align-content: center;"> -->
+                            <label class="form-check-label active" for="flexCheckDefault" style="padding-left: 5rem; padding-right:5rem;">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style=" border-radius: 5px; border-color: black; border-width: thin;">
+                            
+                              Rabatt 10%
+                            </label>
+                          <!-- </div> -->
+                          <!-- <div class="form-group"> -->
+                            <!-- <div class="col-xs-1 col-sm-1"> -->
+                              <label for="ex1">Rabatt valfri
+                              <input class="col-xs-2 col-sm-2" id="disount-free" type="number-float"step="any" min="0" max="100"
+                              style=" border-radius: 5px; border-color:black; border-width: thin;" onkeypress="return isNumber(event)">
+                            </label>
+                            
+                            <!-- </div> -->
+                        <!-- </div> -->
+                      </div>
+                      
+                      
+                      <table class="table table-bordered table-sm border border-top-0">
+                        <thead class="bg-light text-black">
+                          <th>#</th>
+                          <th>Kundnr</th>
+                          <th>Namn</th>
+                          <th>Adress</th>
+                          <th>Rabattsats</th>
+                          <th>Ordersumma</th>
+                          <th>Period/Datum</th>
+                          <th>Epost</th>
+                        </thead>
+                        <tbody id="DB-cursomers">
+                          
+                            <!--addera kundlista från JS output-->
+                        
+                        </tbody>
+                      </table>
+
+                    </section>
+                </div>
+              </div>
+
+              <!-- nytt test -->
+              <div>
+                <h2 style="text-align: center;">Ändra footer</h2>
+              </div>
+
+              <!-- Footer -->
+         <div id="footer" class="card" style="width: 100%; height: 200px;">    
+        <!-- <footer id="footer" class="bg-dark text-center text-white"> -->
+          <!-- Grid container -->
+          
+          <!-- </div> -->
+          <div class="card-body mh-50">
+            <!-- Section: Links -->
+            <section class="">
+              <!--Grid row-->
+              <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                  <h5 class="text-uppercase">Hitta hit</h5>
+                  <div class="map">
+                    <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2040.08524602615!2d18.229802415806603!3d59.248016124582044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f7edbc0553321%3A0x8e387ad4dddd3cbf!2zU2lrdsOkZ2VuIDUsIDEzNSA0MSBUeXJlc8O2!5e0!3m2!1ssv!2sse!4v1615047531478!5m2!1ssv!2sse"
+                    width="125"
+                    height="125"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy">
+                  </iframe>
+          
+                  </div>
+      
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#!" class="text-white">Link 1</a>
+                    </li>
+                  </ul>
+                </div>
+                <!--Grid column-->
+      
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                  <h6 class="text">Öppettider</h6>
+                  <h6 class="text">Vardagar 10-19</h6>
+                  <h6 class="text">Helger 10-18</h6>
+
+                  <section class="row col-12">
+                    <div>
+                      <label for="description">Ändra öppettider</label>
+                    <textarea class="form-control" rows="2" required="required" type="text" value=""
+                     id="description" name="product-info"  size="35" ></textarea>
+                    </div>
+                  <!-- <div class="elements">
+                              
+                    <label for="description">Ändra öppettider</label>
+                    <textarea class="form-control" rows="2" required="required" type="text" value=""
+                     id="description" name="product-info"  size="40" ></textarea>
+                  </div> -->
+      
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#!" class="text-white">Link 1</a>
+                    </li>
+      
+                  </ul>
+                </div>
+                <!--Grid column-->
+      
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                  <h5 class="text-uppercase">Om oss</h5>
+
+                  <div class="elements">
+                              
+                    <label for="description">Ändra Om oss</label>
+                    <textarea class="form-control" rows="2" required="required" type="text" value=""
+                     id="description" name="product-info"  size="40" ></textarea>
+                  </div>
+      
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#!" class="text-white">Link 1</a>
+                    </li>
+      
+                  </ul>
+                </div>
+                <!--Grid column-->
+      
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                  <h5 class="text-uppercase">Kontakt</h5>
+      
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#!" class="text-white">Link 1</a>
+                    </li>
+      
+                  </ul>
+                  <section class="row col-12">
+                    <div>
+                      <h1>test</h1>
+                    </div>
+                </div>
+                
+                <!--Grid column-->
+              </div>
+              <!--Grid row-->
+            </section>
+            
+
+            </section>
+            <!-- Section: Links -->
+          </div>
+          <!-- Grid container -->
+      
+          <!-- Copyright -->
+          <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2021 Copyright: Hakim Dev Team!
+      
+          </div>
+          <!-- Copyright -->
+        <!-- </footer> -->
+      </div> 
+     
+       
+      <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+      <script   src="https://code.jquery.com/jquery-3.6.0.min.js"   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="   crossorigin="anonymous"></script>
+      <script src=https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js></script>
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+              <script src="./js/admin.js"></script>
+              <script src="./js/addProduct.js"></script>
+              <script src="./js/addOrder.js"></script>
+</body>
+</html>

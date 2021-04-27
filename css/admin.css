@@ -1,0 +1,233 @@
+
+
+body {
+    background: #f6f6f6;
+    height: 100vh;
+  }
+  nav {
+    background-color: white;
+  }
+  .search-form {
+    width: 50%;
+  }
+  
+  .vertical-nav {
+    margin-top: 20vh;
+  }
+  
+  .logo {
+    max-height: 30px;
+    margin: 15px 25px;
+  }
+  
+  a.navbar-brand {
+    text-align: left;
+    width: 100%;
+    display: block;
+  }
+  section {
+    margin: 10px;
+  }
+  .main {
+    padding: 2rem;
+    padding-top: calc(4rem + 74px)
+  }
+  .main .first-row, .main .second-row {
+    padding-bottom: 3rem;
+  }
+  .main .row .card {
+    height: 100%;
+  }
+  .card {
+    border: 0;
+    box-shadow: 30px 0 10px rgba(0, 0, 0, .1);
+    max-height: 100%;
+  }
+  .card-header {
+    background: white;
+    font-weight: 700;
+    padding: 20px;
+  }
+  .card-body {
+    padding: 1rem;
+    font-size: 12px;
+  }
+  #recently-posted .card img {
+    padding-top: 0.5rem;
+  }
+  .stats .card-text {
+    padding-top: 5px;
+    padding-left: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+  }
+  
+  .img-container {
+    height: 120px;
+    width: 120px;
+    text-align: center;
+    margin: auto;
+    display: block;
+    margin-top: 20px;
+  }
+  .card-img-top {
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+  }
+  .badge {
+    font-size: 18px;
+  }
+  #site-changes{
+    width: 120%;
+  }
+  
+  #order{
+    text-align: center;
+  }
+  #order-end{
+    color: bold;
+  }
+
+/*   @import url("https://rsms.me/inter/inter.css");
+
+:root {
+  --color-gray: #737888;
+  --color-lighter-gray: #e3e5ed;
+  --color-light-gray: #f7f7fa;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+} */
+
+html {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: "Inter var", sans-serif;
+  }
+}
+
+/* body {
+  margin: 0;
+} */
+
+h1 {
+  margin-bottom: 1rem;
+}
+
+p {
+  color: var(--color-gray);
+}
+
+hr {
+  height: 1px;
+  width: 100%;
+  background-color: var(--color-light-gray);
+  border: 0;
+  margin: 2rem 0;
+}
+
+.container {
+  max-width: 40rem;
+  padding: 10vw 2rem 0;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.form {
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-gray);
+  padding: .5rem;
+  border-radius: .25rem;
+}
+
+.field__label {
+  color: var(--color-gray);
+  font-size: 0.6rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem
+}
+
+.field__input {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  font-weight: bold;
+  font-size: 1rem;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+}
+.field:focus-within {
+  border-color: #000;
+}
+
+.fields {
+  display: grid;
+  grid-gap: 1rem;
+}
+.fields--2 {
+  grid-template-columns: 1fr 1fr;
+}
+.fields--3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.button {
+  background-color: #000;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: block;
+  color: #fff;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  border: 0;
+  cursor: pointer;
+  outline: 0;
+}
+.button:focus-visible {
+  background-color: #333;
+}
+#myform {
+	margin:0 auto;
+	width:500px;
+	padding:14px;
+}
+.elements {
+	padding:10px;
+}
+label {
+	color:#34568B;
+  font-weight: bold;
+	/* vertical-align: middle; */
+}
+#map {
+  height: 125px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+}
+
+  
+  

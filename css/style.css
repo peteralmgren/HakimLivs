@@ -1,6 +1,18 @@
 /* selektor: htmltagg -------------------------------------------- Sorterat i bokstavsordning */
+body{
+  background-color: rgb(243, 242, 239) !important;
+}
+
+nav a{
+  text-decoration: none;
+}
+
+
 
 /* selektor: klass ----------------------------------------------- Sorterat i bokstavsordning */
+
+
+
 .brand {
   font-weight: bold;
   font-size: 10px;
@@ -8,6 +20,15 @@
 
 .btn-round {
   border-radius: 3rem;
+}
+
+.btn-space{
+  margin-left: 20px;
+}
+
+.card span{
+  float: right;
+  font-weight: bold;
 }
 
 .delimiter {
@@ -22,6 +43,7 @@
   margin-top: -1.5rem;
 } */
 
+
 .signup-section {
   padding: 0.3rem 0rem;
 }
@@ -31,16 +53,58 @@
 }
 
 /* selektor: id -------------------------------------------------- Sorterat i bokstavsordning */
-#button-shadow {
-  border-radius: 5px;
-  box-shadow: 2px 3px gray;
+.carousel {
+  width: auto;
+  margin-bottom: 20px;
+  height: 500px;
 }
 
-#button-shadow button:hover {
-  border-radius: 5px;
-  width: 105%;
-  height: auto;
-  box-shadow: 4px 5px gray;
+.carousel img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#Cart-body{
+  border-radius: 10px;
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+#Cart-button{
+  background-color: rgb(110, 44, 20);
+}
+
+.list-group-item{
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.list-group-item:hover{
+  background-color: rgb(226, 218, 218);
+}
+
+.list-group-item:active{
+ background-color: rgb(92, 32, 10);
+}
+
+#Total-summa{
+  font-weight: bold;
+}
+
+.card-img-top{
+  height: 14vw;
+  object-fit: contain;
+}
+
+.cat-selector{
+  text-transform: capitalize;
+}
+
+.cat-selector:hover{
+  text-decoration: underline;
+  color: grey;
+  cursor: pointer;
 }
 
 .card-img-top {
@@ -59,3 +123,5 @@
     padding: 1rem;
   }
 } */
+
+

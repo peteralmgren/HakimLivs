@@ -6,7 +6,7 @@ let data = JSON.parse(localStorage.getItem("products"));
 
 if (!data) {
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "produkter.JSON");
+  xhr.open("GET", "data/produkter.JSON");
   xhr.send();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
