@@ -20,6 +20,7 @@ export default class Products extends UI {
         this.increaseItemsInCartWithOne(e);
         this.showProducts(localStorage.getItem("choice"));
       };
+      
       await this.cart.injectRowItemsInCart();      
 
 
@@ -93,8 +94,7 @@ export default class Products extends UI {
         `<div class="col-lg-3 col-md-3 mb-3">
           <div class="card h-100 rounded">
             <div class="card-body text-center">
-              <img class="card-img-top" src="${allProductsArray[index2].image}">
-              <a class="btn btn-outline-secondary" data-bs-toggle="modal" href="#modal${index2}" role="button">Info</a>
+              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${index2}" role="button"><img class="card-img-top" src="${allProductsArray[index2].image}" data-product-id="${allProductsArray[index].id}"></a>
               <p class="pris-card card-text">${(allProductsArray[index2].price.toFixed(2)).replace(".", ":")}:-</p>
               <h6 class="card-title">${allProductsArray[index2].title}</h6>`
 
@@ -103,9 +103,9 @@ export default class Products extends UI {
                 `
               }
               else{
-                output += `<img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="30px"> 
+                output += `<img class="minus" data-product-id="${allProductsArray[index2].id}" src="./icons/minus.png" alt="minus" width="30px"> 
                 <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${value}</button>
-                <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="30px">`
+                <img class="plus" data-product-id="${allProductsArray[index2].id}" src="./icons/plus.png" alt="plus" width="30px">`
               }
               
               output += `</div>
