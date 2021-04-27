@@ -1,36 +1,9 @@
 
 
-let products = [];
-let customer= [];
+//let products = [];
+//let customer= [];
 let customerIndex = 0;
-customer = JSON.parse(localStorage.getItem("customer"));
 
-const xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/all");
-    xhr.send();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        products = JSON.parse(xhr.responseText);
-        //console.log(xhr.responseText);
-      }
-    };
-
-
-if (!customer) {
-  const xhr = new XMLHttpRequest();
-  xhr.open("POST", "https://grupp5hakimlivs.herokuapp.com/getcustomers");
-  xhr.send();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      customer = JSON.parse(xhr.responseText);
-      localStorage.setItem("customer", JSON.stringify(customer));
-      //addCustomerShippingInfo(12)
-    }
-  };
-
-}else{
-  //addCustomerShippingInfo(12)
-}
 
 function printDiv(divName) {
     var printContents = document.getElementById(divName).innerHTML;
@@ -65,49 +38,8 @@ function addCustomerShippingInfo(customerId){
     
     
 }
-var inputNumber=0;
-keypressAmount=1;
-function isNumber(evt) {
 
-  evt = (evt) ? evt : window.event;
-  var charCode = (evt.which) ? evt.which : evt.keyCode;
-  
-  if (charCode > 31 &&(charCode < 46 || charCode >57)) {
-      return false;
-  
-  }
-  return true;
-  
-}
-
-function exampelInput(event){
-  console.log(event);
-
-}
-function output(str) {
-  $('#output').text(str);
-}
-
-$.fn.getCursorPosition = function() {
-  var el = $(this).get(0);
-  var pos = 0;
-  var posEnd = 0;
-  if('selectionStart' in el) {
-      pos = el.selectionStart;
-      posEnd = el.selectionEnd;
-  } else if('selection' in document) {
-      el.focus();
-      var Sel = document.selection.createRange();
-      var SelLength = document.selection.createRange().text.length;
-      Sel.moveStart('character', -el.value.length);
-      pos = Sel.text.length - SelLength;
-      posEnd = Sel.text.length;
-  }
-  return [pos, posEnd];
-};
-
-
-function initMap() {
+/* function initMap() {
   // The location of Uluru
   const uluru = { lat: -25.344, lng: 131.036 };
   // The map, centered at Uluru
@@ -120,39 +52,42 @@ function initMap() {
     position: uluru,
     map: map,
   });
-}
+} */
 $('#customer-list').click(function (e) {
 
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/getcustomers");
+  xhr.send();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      let customer = JSON.parse(xhr.responseText);
+      
+  
   let output = ``;
 
   customer.forEach(customer =>{
-    id = customer.id;
-    firstname = customer.firstname;
-    lastname = customer.lastname;
-    email= customer.email;
     
     output += `
     <tr>
     <td></td>
-  <td>${id}</td>
-  <td>${firstname+" "+lastname}</td>
+  <td>${customer.id}</td>
+  <td>${customer.firstname+" "+customer.lastname}</td>
   <td>${customer.street}</td>
-  <td>5%</td>
-  <td>8432 SEK</td>
-  <td>Feb2021-April2021</td>
-  <td>${email}</td>
+  <td>${customer.email}</td>
   </tr>
   `;
   
   })
   document.getElementById("DB-cursomers").innerHTML=output;
-    
+}
+}
 
 });
 
 //$(document).ready(function() {
   $('#product-add').click(function () {
 
+    
     var output =""
       
     output +=`
@@ -204,7 +139,7 @@ $('#customer-list').click(function (e) {
     document.getElementById("admin-addrevome-form").innerHTML=output;
 
     $("#add-btn").click(function(e){
-      console.log("nu är vi i addproduct");
+      
      var jsonData = {};
      
      var formData = $("#myform").serializeArray();
@@ -227,17 +162,16 @@ $('#customer-list').click(function (e) {
       
    });
 
-   //let response;
-   
     $.ajax(
     {
         url : 'https://grupp5hakimlivs.herokuapp.com/addproduct',
-        type: "POST",
+        type: "GET",
         crossDomain: true,
         dataType: 'jsonp',
         data : jsonData,
         async: true,
          success : function(response) {
+           console.log(response);
             if (response.status == 'FAIL') {
             for ( var val in errMessages) {
             var $errorLabel = $.find('#' + val
@@ -253,7 +187,7 @@ $('#customer-list').click(function (e) {
           
       }
       
-    });
+    }); 
     
     e.preventDefault(); 
 
@@ -261,10 +195,18 @@ $('#customer-list').click(function (e) {
 });
 
   })
-  //})
+  
   
   $('#product-remove').click(function () {
 
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/all");
+    xhr.send();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        let products = JSON.parse(xhr.responseText);
+        
+  
     var output =""
       
     output +=`
@@ -296,24 +238,17 @@ $('#customer-list').click(function (e) {
 
     $('#product-list').click(function (e) {
 
-      
-      
       var output =""  
       
       products.forEach(element =>{output +=`<option id="product-element" value="${element.id}">${element.title}</option>`})
     
-      
       document.getElementById("product-list").innerHTML=output; 
     })
 
     $("#remove-btn").click(function(e){
       
       var jsonData = {};
-      
       var formData = $("#myform").serializeArray();
- 
-      
-      
      
     $.each(formData, function() {
          if (jsonData[this.name]) {
@@ -336,7 +271,7 @@ $('#customer-list').click(function (e) {
      $.ajax(
      {
          url : 'https://grupp5hakimlivs.herokuapp.com/removeproduct',
-         type: "POST",
+         type: "GET",
          crossDomain: true,
          dataType: 'jsonp',
          data : jsonData,
@@ -356,7 +291,8 @@ $('#customer-list').click(function (e) {
      e.preventDefault();   
      
  });
-      
+}
+};
 
   })
 
