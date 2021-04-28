@@ -34,55 +34,52 @@
       <div class="card-body">
         <h3>Skapa konto</h3>
         <div class="row">
-            <form id="myform" type="post">
+            <form id="myform" action="index.html" type="post">
                     <div class="form-group col-md-6">
                         <label for="firstname">Förnamn</label>
-                        <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Förnamn"value=""/>
+                        <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Förnamn"value="" required/>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="lastname">Efternamn</label>
-                        <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Efternamn" value=""/>
-                    </div>
+                        <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Efternamn" value="" required/>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword">Lösenord</label>
-                    <input type="password" class="form-control" name="password" id="inputPassword" placeholder="password..." value=""/>
+                    <input type="password" class="form-control" name="password" id="inputPassword" placeholder="password..." value="" required/>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control" name="email" id="inputEmail" placeholder="exempel@adress.se" value=""/>
+                    <input type="email" class="form-control" name="email" id="inputEmail" placeholder="exempel@adress.se" value="" required/>
                 </div>
                 <div class="form-group">
                     <label for="inputAddress5">Gatuaddress</label>
-                    <input type="text" class="form-control" name="street" id="inputStreet" placeholder="Address" value=""/>
+                    <input type="text" class="form-control" name="street" id="inputStreet" placeholder="Address" value="" required/>
                 </div>
                 <div class="form-group">
                     <label for="inputAddress5">Postkod</label>
-                    <input type="text" class="form-control" name="zipcode" id="inputZip" placeholder="Address" value=""/>
+                    <input type="text" class="form-control" name="zipcode" id="inputZip" placeholder="Address" value="" required/>
                 </div>
                 <div class="form-group">
                     <label for="inputAddress5">Ort</label>
-                    <input type="text" class="form-control" name="city" id="inputCity" placeholder="Address" value=""/>
+                    <input type="text" class="form-control" name="city" id="inputCity" placeholder="Address" value="" required/>
                 </div>
                 <div class="form-group">
                     <label for="inputPhone">Telefon</label>
-                    <input type="text" class="form-control" name="phone" id="inputPhone" placeholder="Phone" value=""/>
-                </div>
+                    <input type="text" class="form-control" name="phone" id="inputPhone" placeholder="Phone" value="" required/>
+                  <button id="createuser" class="purchase-button btn btn-primary btn-lg t-1 hover-shadow" type="submit"> Skapa konto</button>
+                   </div>
+           </form>
+
+               
+            </div>
           </div>
-          </div>
-        </div>
-        <button
-        type="button"
-        id="createuser"
-        class="purchase-button btn btn-primary btn-lg t-1 hover-shadow"
-        type="submit"
-      >
-        Skapa konto
-      </button>
+        </div> 
     </div>   
-    </form>
+  </div>
     
-              <!-- Footer -->
+             
+
+ <!-- Footer -->
               <div id="footer" class="card" style="width: 100%; height: 200px;">    
                 <!-- <footer id="footer" class="bg-dark text-center text-white"> -->
                   <!-- Grid container -->

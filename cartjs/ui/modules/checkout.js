@@ -265,20 +265,18 @@ async injectRowItemsInCart() {
   }
 
   printUser(){
-    let userInfo = JSON.parse(localStorage.getItem("customer"));
+    let userInfo = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
 
     console.log(userInfo);
 
+  
+        document.getElementById('firstname').value = userInfo.firstname;
+        document.getElementById('lastname').value = userInfo.lastname;
+        document.getElementById('inputEmail').value = userInfo.email;
+        document.getElementById('inputAddress').value = userInfo.street;
+        document.getElementById('inputPhone').value = userInfo.phone;
+      
     
-    for (let i in userInfo){
-      if(userInfo[i].id == 12){
-        document.getElementById('firstname').value = userInfo[i].firstname;
-        document.getElementById('lastname').value = userInfo[i].lastname;
-        document.getElementById('inputEmail').value = userInfo[i].email;
-        document.getElementById('inputAddress').value = userInfo[i].street;
-        document.getElementById('inputPhone').value = userInfo[i].phone;
-      }
-    }
   
     
     
