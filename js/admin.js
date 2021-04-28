@@ -6,7 +6,7 @@ let customerIndex = 0;
 
 
 
-  const xhr = new XMLHttpRequest();
+  /* const xhr = new XMLHttpRequest();
   xhr.open("POST", "https://grupp5hakimlivs.herokuapp.com/getcustomers");
   xhr.send();
   xhr.onreadystatechange = function () {
@@ -14,7 +14,7 @@ let customerIndex = 0;
       let customer = JSON.parse(xhr.responseText);
       
     }
-  };
+  }; */
 
 
 function printDiv(divName) {
@@ -137,6 +137,14 @@ $('#customer-list').click(function (e) {
                         <div class="elements">
                           <label for="image">Skriv i sökväg till bild</label>
                           <input id="image" required="required" value="" name="image" type="text"  size="40"  />
+                        </div>
+                        <div class="elements">
+                          <label for="price">Skriv i jämförelsepris</label>
+                          <input id="price" required="required" type="number"  value="" name="price"  size="10"  />
+                        </div>
+                        <div class="elements">
+                          <label for="price">Skriv i styckpris</label>
+                          <input id="price" required="required" type="number"  value="" name="price"  size="10"  />
                         </div>
                           <p><input id="add-btn" type="submit" value="Submit" /> 
                             <input type="reset" value="Reset" /></p>
