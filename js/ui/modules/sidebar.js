@@ -19,11 +19,17 @@ export default class Sidebar extends UI {
         
         let input = document.getElementById("inputlg");
         input.addEventListener("keyup", async (e) =>{
-          if(input.value != null) await this.products.showProducts(input.value);
+          if(input.value != null) {
+            localStorage.setItem("choice", input.value);
+            await this.products.showProducts(input.value);
+          } 
         })
         let searchbutton = document.getElementById("search-button");
           searchbutton.addEventListener("click", async(e) =>{
-        if(input.value != null) await this.products.showProducts(input.value);
+        if(input.value != null){
+          localStorage.setItem("choice", input.value);
+          await this.products.showProducts(input.value);
+        } 
         });
 
         this.showCategories();

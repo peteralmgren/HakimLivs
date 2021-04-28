@@ -1,20 +1,6 @@
 
 
-//let products = [];
-//let customer= [];
 let customerIndex = 0;
-
-
-
-  const xhr = new XMLHttpRequest();
-  xhr.open("POST", "https://grupp5hakimlivs.herokuapp.com/getcustomers");
-  xhr.send();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      let customer = JSON.parse(xhr.responseText);
-      
-    }
-  };
 
 
 function printDiv(divName) {
@@ -138,6 +124,14 @@ $('#customer-list').click(function (e) {
                           <label for="image">Skriv i sökväg till bild</label>
                           <input id="image" required="required" value="" name="image" type="text"  size="40"  />
                         </div>
+                        <div class="elements">
+                          <label for="compprice">Skriv i jämförelsepris</label>
+                          <input id="compprice" required="required" type="number"  value="" name="compprice"  size="10"  />
+                        </div>
+                        <div class="elements">
+                          <label for="perprice">Skriv i styckpris</label>
+                          <input id="perprice" required="required" type="number"  value="" name="perprice"  size="10"  />
+                        </div>
                           <p><input id="add-btn" type="submit" value="Submit" /> 
                             <input type="reset" value="Reset" /></p>
                   </div>
@@ -184,13 +178,6 @@ $('#customer-list').click(function (e) {
         async: true,
          success : function(response) {
            console.log(response);
-            if (response.status == 'FAIL') {
-            for ( var val in errMessages) {
-            var $errorLabel = $.find('#' + val
-                + 'ErrorLabel');
-                $errorLabel.html(errMessages[val]);
-                }
-             }
           },
           
         headers: {
@@ -200,7 +187,7 @@ $('#customer-list').click(function (e) {
       }
       
     }); 
-    
+    e.preventDefault();
 });
 
   })
