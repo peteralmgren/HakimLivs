@@ -45,7 +45,7 @@ export default class Header extends UI {
               </button>
             </div>
             <ul class="navbar-nav mr-auto mr-4 mt-lg-0">
-              <li class="nav-item">
+              <li id="customer-logged-in" class="nav-item">
                   <button
                     type="button"
                     id="Log-in-button"
@@ -72,7 +72,7 @@ export default class Header extends UI {
                     <button
                       type="button"
                       id="Cart-button"
-                      class="btn btn-secondary btn-lg btn-block text-nowrap t-1 btn-space hover-shadow"
+                      class="cart-button btn btn-secondary btn-lg btn-block text-nowrap t-1 btn-space hover-shadow"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -86,9 +86,11 @@ export default class Header extends UI {
                           d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
                         />
                       </svg>
-                      Till kassan 
-                    </button></a
-                  >
+                      Till kassan: 
+                      <span id="Cart-button span">${parseFloat(localStorage.getItem("cost")).toFixed(2)}</span>         
+                      kr           
+                    </button>
+                  </a>
               </li>
             </ul>
           </div>
