@@ -65,6 +65,8 @@ export default class Header extends UI {
                       type="button"
                       id="Cart-button"
                       class="cart-button btn btn-secondary btn-lg btn-block text-nowrap t-1 btn-space hover-shadow"
+                      ${!sessionStorage.getItem("loggedinCustomer") ? 'data-bs-toggle="modal" data-bs-target="#loginModal"':''}
+
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +99,7 @@ export default class Header extends UI {
       if (e.target.className == "logout"){
         sessionStorage.clear();
         localStorage.clear("cart");
-        window.location.reload()
+       window.location.reload()
       } 
 
     });
