@@ -50,7 +50,7 @@ export default class Products extends UI {
   Goes through array of product to find the ones where either title or category matches value and pushes the correct ones into new array
   New array is used to paint products to html page
   */
-  async showProducts(value) {
+  async showProducts(data) {
     
     let ProductsArray = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
     ProductsArray = JSON.parse(ProductsArray);
@@ -61,8 +61,8 @@ export default class Products extends UI {
 
   
     for(let i = 0; i < 14; i++ ){
-      if(ProductsArray[i].category.categoryName.toUpperCase() == value.toUpperCase() || ProductsArray[i].title.toUpperCase() == value.toUpperCase() || value == "all" || value == ""){
-        allProductsArray.push(ProductsArray[i]);
+        if(ProductsArray[i].category.categoryName.toUpperCase().includes(data.toUpperCase()) || ProductsArray[i].title.toUpperCase().includes(data.toUpperCase()) || data == "all" || data == ""){
+          allProductsArray.push(ProductsArray[i]);
       }
     } 
 

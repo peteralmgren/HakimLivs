@@ -60,7 +60,7 @@ export default class Header extends UI {
                 </button>
               </li>
               <li class="nav-item">
-                  <a href="Cart.html">
+              ${sessionStorage.getItem("loggedinCustomer") ? '<a href="Cart.html">':'<a href="#">'}
                     <button
                       type="button"
                       id="Cart-button"
