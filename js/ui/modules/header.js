@@ -96,6 +96,7 @@ export default class Header extends UI {
     super.container.addEventListener("click", async (e) => {
       if (e.target.className == "logout"){
         sessionStorage.clear();
+        localStorage.clear("cart");
        window.location.reload()
       } 
 
