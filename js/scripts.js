@@ -39,6 +39,7 @@ function validateUser() {
     console.log("Felaktig adress. Användaren finns ej!");
   }
 }
+
 let customer = [];
 customer = JSON.parse(localStorage.getItem("customer"));
 
@@ -53,3 +54,11 @@ if (!customer) {
     }
   };
 }
+  else{
+      console.log("Felaktig adress. Användaren finns ej!");
+  } 
+        
+
+
+
+

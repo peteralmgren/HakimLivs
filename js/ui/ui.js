@@ -65,6 +65,37 @@ export default class UI {
         document.querySelector(".nav-item #productCounter").textContent = numberOfProducts;
     }
 
+    async countCost(data, operator){
+        let allProductsArray = await this.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
+        allProductsArray = JSON.parse(allProductsArray);
+
+        let currentCost = parseFloat(localStorage.getItem("cost"));
+
+
+        console.log(operator);
+        console.log(data);
+
+        for (let index = 0; index < allProductsArray.length; index++){
+            if(allProductsArray[index].id == data){
+                if(operator == "+"){
+                    currentCost += allProductsArray[index].price;
+                    localStorage.setItem("cost", currentCost);
+                }
+                if(operator == "-"){
+                    currentCost -= allProductsArray[index].price;
+                    localStorage.setItem("cost", currentCost);
+                }           
+            }
+        }
+
+        if(typeof(operator) == "number"){
+            currentCost -= operator;
+            localStorage.setItem("cost", currentCost);
+        }
+
+        document.getElementById("Cart-button span").textContent = currentCost.toFixed(2);
+    }
+
     addToCart(data) {
         console.log("tillagd");
         let slot = "cart";

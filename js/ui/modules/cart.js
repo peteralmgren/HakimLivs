@@ -56,7 +56,7 @@ export default class Cart extends UI {
                       </div>
                       <div class="col-3 m-auto text-center">
                         <div class="d-flex justify-content-end">
-                          <div class="fw-bold px-0 mx-0" id="total-sum">15</div>
+                          <div class="fw-bold px-0 mx-0" id="total-sum"></div>
                           <div class="px-0 ms-1">kr</div>
                         </div>
                         <div class="col-1 m-auto text-end px-0" id="trash">
@@ -70,7 +70,10 @@ export default class Cart extends UI {
                         <button type="button" class="btn btn-success"><a class="text-decoration-none text-white"
                             href="Cart.html">Till kassan</a></button>
                       </div>
-                    </div>
+                      <div class="row">
+                      <button type="button" class="btn btn-danger">Töm varukorg</button>
+                      </div>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -82,6 +85,7 @@ export default class Cart extends UI {
       if (e.target.className == "trashcan pe-1") this.deleteRowInCart(e);
       if (e.target.className == "minus") this.decreaseItemsInCartWithOne(e);
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
+      if (e.target.className == "btn btn-danger") this.clearCart();
     });
     
     this.injectRowItemsInCart();
@@ -89,6 +93,8 @@ export default class Cart extends UI {
   }
 
 async injectRowItemsInCart() {
+  let cost = localStorage.getItem("cost");
+  cost = parseFloat(cost).toFixed(2);
     let allProducts = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
     allProducts = JSON.parse(allProducts);
     let cart = super.readStorage("cart");
@@ -100,29 +106,29 @@ async injectRowItemsInCart() {
         this.sum += allProducts[i].price * cart[allProducts[i].id];
         row += `
         <div class="row bg-white mt-1 py-2 align-items-center border rounded" id="">
-        <div class="col-1 p-1">
+        <div class="col-lg-1 p-1">
           <img class="img-fluid" src="${allProducts[i].image}" alt="Produktbild">
         </div>
-        <div class="col-4">
+        <div class="col-lg-4">
           <div>
             <p class="brand m-0">AXA</p>
-            <h5 class="fw-bold m-0 title">${allProducts[i].title}</h5>
+            <h6 class="title fw-bold m-0 title">${allProducts[i].title}</h6>
           </div>
         </div>
-        <div class="col-3 text-end px-0">
+        <div class="col-lg-3 text-end px-0">
           <div class="flex">
-            <img class="minus" data-product-id="${allProducts[i].id}" src="./icons/minus.png" alt="minus" width="20px"> 
+            <img class="minus" data-product-id="${allProducts[i].id}" src="./icons/minus.png" alt="minus" width="25px"> 
             <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${cart[allProducts[i].id]}</button>
-            <img class="plus" data-product-id="${allProducts[i].id}" src="./icons/plus.png" alt="plus" width="20px">
+            <img class="plus" data-product-id="${allProducts[i].id}" src="./icons/plus.png" alt="plus" width="25px">
           </div>
         </div>
-        <div class="col-3 px-0">
+        <div class="col-lg-3 px-0">
           <div class="d-flex justify-content-end">
-            <div class="price fw-bold px-0 mx-0">${(allProducts[i].price * cart[allProducts[i].id]).toFixed(2)}</div>
+            <div class="price fw-bold px-0 mx-0">${(allProducts[i].price * cart[allProducts[i].id]).toFixed(2)}(${allProducts[i].price})</div>
             <div class="px-0 ms-1">kr</div>
           </div>
         </div>
-        <div class="col-1 m-auto text-end px-0" id="trash">
+        <div class="col-lg-1 m-auto text-end px-0" id="trash">
           <img class="trashcan pe-1" data-product-id="${allProducts[i].id}" src="./icons/delete.png" alt="Soptunna" width="25px">
         </div>
       </div>
@@ -130,51 +136,25 @@ async injectRowItemsInCart() {
       }
     }
 
-    row += `
-    <div class="row bg-white mb-1 p-1 align-items-center border rounded">
-    <!-- Modal, totalsumma START -->
-    <div class="col-1 p-1"></div>
-    <div class="col-4"></div>
-    <div class="col-3 text-end">
-      <div>
-        <span class="fw-bold px-0 mx-0">Summa:</span>
-      </div>
-    </div>
-    <div class="col-3 m-auto text-center">
-      <div class="d-flex justify-content-end">
-        <div class="fw-bold px-0 mx-0" id="total-sum">${this.sum.toFixed(2)}</div>
-        <div class="px-0 ms-1">kr</div>
-      </div>
-      <div class="col-1 m-auto text-end px-0" id="trash">
-      </div>
-    </div>
-    `;
-
     document.getElementsByClassName("container-fluid")[0].innerHTML = row;
-
 } 
 
   
 
   /** This function will do two things:
    *  decrease the total sum with the order row sum and delete the order row from det shopping cart */
-  deleteRowInCart(e) {
-    const totalSumElement = document.getElementById('total-sum');
-    let totalSum = parseFloat(totalSumElement.textContent);
+  async deleteRowInCart(e) {
     const orderRowSum = parseFloat(e.target.parentNode.previousElementSibling.children[0].children[0].textContent);
-    totalSum = (totalSum - orderRowSum).toFixed(2);
-    totalSumElement.textContent = totalSum;
+    console.log(orderRowSum);
     e.target.parentNode.parentNode.remove();
-    this.sum = totalSum;
     super.clearFromCart(e.target.dataset.productId);
+    await super.countCost(e.target.dataset.productId, orderRowSum);
     
   }
 
   /** This for loop assigns event listeners to all minus sign icons. The anonymous function will do three things:
   *  decrease the number of items in the basket with one, decrease the order row sum with the price of one unit and decrease the total sum with the price of one unit */
-  decreaseItemsInCartWithOne(e) {
-    const totalSumElement = document.getElementById('total-sum');
-    let totalSum = parseFloat(totalSumElement.textContent);
+  async decreaseItemsInCartWithOne(e) {
     const numberOfItemsNode = e.target.nextElementSibling;
     const oldNrOfItems = parseInt(numberOfItemsNode.textContent);
 
@@ -188,20 +168,14 @@ async injectRowItemsInCart() {
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum - pricePerUnit).toFixed(2);
 
-    orderRowSumElement.textContent = newOrderRowSum;
-    totalSum = (totalSum - pricePerUnit).toFixed(2);
-    totalSumElement.textContent = totalSum;
-    this.sum = totalSum;
+    orderRowSumElement.textContent = newOrderRowSum +"("+pricePerUnit+")";
     super.removeFromCart(e.target.dataset.productId);
+    await super.countCost(e.target.dataset.productId, "-");
   }
 
   /** This function will do three things:
   *  increase the number of items in the basket with one, increase the order row sum with the price of one unit and increase the total sum with the price of one unit */
-  increaseItemsInCartWithOne(e) {
-    const totalSumElement = document.getElementById('total-sum');
-    let totalSum = parseFloat(totalSumElement.textContent);
-
-  
+  async increaseItemsInCartWithOne(e) {
     const numberOfItemsNode = e.target.previousElementSibling;
     const oldNrOfItems = parseInt(numberOfItemsNode.textContent);
     if (oldNrOfItems === 20) { return; }
@@ -214,12 +188,15 @@ async injectRowItemsInCart() {
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum + pricePerUnit).toFixed(2);
 
-    orderRowSumElement.textContent = newOrderRowSum;
-    totalSum = (totalSum + pricePerUnit).toFixed(2);
-    totalSumElement.textContent = totalSum;
-    this.sum = totalSum;
+    orderRowSumElement.textContent = newOrderRowSum +"("+pricePerUnit+")";
     super.addToCart(e.target.dataset.productId);
-  }
+    await super.countCost(e.target.dataset.productId, "+");
+    }
+
+    clearCart(){
+      localStorage.clear("cart");
+      window.location.reload();
+    }
 
 }
 
