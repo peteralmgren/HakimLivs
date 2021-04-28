@@ -192,13 +192,6 @@ $('#customer-list').click(function (e) {
         async: true,
          success : function(response) {
            console.log(response);
-            if (response.status == 'FAIL') {
-            for ( var val in errMessages) {
-            var $errorLabel = $.find('#' + val
-                + 'ErrorLabel');
-                $errorLabel.html(errMessages[val]);
-                }
-             }
           },
           
         headers: {
@@ -208,7 +201,7 @@ $('#customer-list').click(function (e) {
       }
       
     }); 
-    
+    e.preventDefault();
 });
 
   })
