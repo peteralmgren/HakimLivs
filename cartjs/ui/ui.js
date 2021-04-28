@@ -48,13 +48,56 @@ export default class UI {
         localStorage.setItem(slot, JSON.stringify(data));
     }
 
+    // Shows the number of products in the cart.
+    countProductsInCart(){
+        let numberOfProducts = 0;
+        let theCart = JSON.parse(localStorage.getItem("cart"));
+        let item = Object.values(theCart);
+        console.log(item);
+        for (let index = 0; index < item.length; index++) {
+           numberOfProducts += item[index];
+        }
+        localStorage.setItem("numberInCart", JSON.stringify(numberOfProducts));
+    }
+
+    async countCost(data, operator){
+        let allProductsArray = await this.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
+        allProductsArray = JSON.parse(allProductsArray);
+
+        let currentCost = parseFloat(localStorage.getItem("cost"));
+
+
+        console.log(operator);
+        console.log(data);
+
+        for (let index = 0; index < allProductsArray.length; index++){
+            if(allProductsArray[index].id == data){
+                if(operator == "+"){
+                    currentCost += allProductsArray[index].price;
+                    localStorage.setItem("cost", currentCost);
+                }
+                if(operator == "-"){
+                    currentCost -= allProductsArray[index].price;
+                    localStorage.setItem("cost", currentCost);
+                }           
+            }
+        }
+
+        if(typeof(operator) == "number"){
+            currentCost -= operator;
+            localStorage.setItem("cost", currentCost);
+        }
+    }
+
     addToCart(data) {
+        console.log("tillagd");
         let slot = "cart";
         let loaded = this.readStorage(slot);
         if(loaded == null) loaded = {};
         else if (loaded && !loaded[data]) loaded[data] = 1;
         else if (loaded && loaded[data]) loaded[data] += 1;
         this.writeStorage(slot, loaded);
+        this.countProductsInCart();
     }
 
     removeFromCart(data) {
@@ -64,6 +107,7 @@ export default class UI {
         else if(loaded && loaded[data] == 1) delete loaded[data];
         else if (loaded && loaded[data]) loaded[data] -= 1;
         this.writeStorage(slot, loaded);
+        this.countProductsInCart();
     }
 
     clearFromCart(data) {
@@ -72,6 +116,7 @@ export default class UI {
         let loaded = this.readStorage(slot);
         if(loaded && loaded[data]) delete loaded[data];
         this.writeStorage(slot, loaded);
+        this.countProductsInCart();
     }
 
 }

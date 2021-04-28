@@ -45,14 +45,18 @@ export default class Login extends UI {
                     placeholder="Ange lösenord..."
                   />
                 </div>
+                <a href="account.html" class="btn btn-info btn-block btn-round" id="createuser">
+               
+                  Skapa konto
                 
+                </a>
                 <button
-                  id="login-btn" type="button"
-                  onclick="validateUser()"
-                  class="btn btn-info btn-block btn-round"
-                >
-                  Logga in
-                </button>
+                type="button"
+                onclick="validateUser()"
+                class="btn btn-info btn-block btn-round"
+              >
+                Logga in
+              </button>
               </form>
             </div>
           </div>

@@ -43,6 +43,12 @@ nav a{
   margin-top: -1.5rem;
 } */
 
+.pris-card{
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 
 .signup-section {
   padding: 0.3rem 0rem;
@@ -115,5 +121,18 @@ nav a{
     padding: 1rem;
   }
 } */
+
+@media only screen and (max-width: 320px) {
+  .price{
+    font-size: 12px;
+  }
+  .title{
+    font-size: 12px;
+  }
+
+  .fw-bold{
+    font-size: 13px;
+  }
+}
 
 
