@@ -168,7 +168,7 @@ async injectRowItemsInCart() {
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum - pricePerUnit).toFixed(2);
 
-    orderRowSumElement.textContent = newOrderRowSum +"("+pricePerUnit.toFixed(2)+")";
+    orderRowSumElement.textContent = newOrderRowSum +"("+pricePerUnit+")";
     super.removeFromCart(e.target.dataset.productId);
     await super.countCost(e.target.dataset.productId, "-");
   }
@@ -188,7 +188,7 @@ async injectRowItemsInCart() {
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum + pricePerUnit).toFixed(2);
 
-    orderRowSumElement.textContent = newOrderRowSum +"("+pricePerUnit.toFixed(2)+")";
+    orderRowSumElement.textContent = newOrderRowSum +"("+pricePerUnit+")";
     super.addToCart(e.target.dataset.productId);
     await super.countCost(e.target.dataset.productId, "+");
     }
