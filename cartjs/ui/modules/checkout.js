@@ -361,15 +361,40 @@ clearCart(){
 
 
 sendOrder(e){
+/*
+  let cart = super.readStorage("cart");
+  console.log(cart);
+
+  const xhr = new XMLHttpRequest();
+  xhr.open(
+    "POST",
+    `https://grupp5hakimlivs.herokuapp.com/checkout}`
+  );
+  xhr.send(cart);
+  xhr.onreadystatechange = function () {
+    if (xhr.status === 500){
+        alert("Kontot hittades inte!");
+      }
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      let data = JSON.parse(xhr.responseText);
+      sessionStorage.setItem("loggedinCustomer", JSON.stringify(data));
+      console.log(data);
+      window.location.replace("index.html");
+      hideLogin()
+    }
+  };*/
+  
+
   if(!localStorage.numberInCart || localStorage.numberInCart == 0){
     alert("Din varukorg är tom");
   }
   else{
     alert("Tack för din order!");
-    
+     localStorage.clear("cart");
     location.replace("index.html");
   }
- 
+
+
 }
 
 }
