@@ -3,7 +3,7 @@ function validateUser() {
   var correctPassword = "hakim";
 
 
-  // Check the input 
+  // Check the input when logging in
 
   let email = document.getElementById("email1").value;
   let password = document.getElementById("password1").value;
@@ -29,7 +29,7 @@ function validateUser() {
 
   function hideLogin(){
     let btn = document.getElementById("Log-in-button");
-    btn.hidden = true;
+    btn.hidden ^= true;
   }
 
   if (email == correctEmail && password == correctPassword) {
