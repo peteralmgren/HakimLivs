@@ -139,11 +139,11 @@ $('#customer-list').click(function (e) {
                           <input id="image" required="required" value="" name="image" type="text"  size="40"  />
                         </div>
                         <div class="elements">
-                          <label for="price">Skriv i jämförelsepris</label>
+                          <label for="compprice">Skriv i jämförelsepris</label>
                           <input id="compprice" required="required" type="number"  value="" name="compprice"  size="10"  />
                         </div>
                         <div class="elements">
-                          <label for="price">Skriv i styckpris</label>
+                          <label for="perprice">Skriv i styckpris</label>
                           <input id="perprice" required="required" type="number"  value="" name="perprice"  size="10"  />
                         </div>
                           <p><input id="add-btn" type="submit" value="Submit" /> 
