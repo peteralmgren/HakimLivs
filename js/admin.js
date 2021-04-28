@@ -5,6 +5,18 @@
 let customerIndex = 0;
 
 
+
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "https://grupp5hakimlivs.herokuapp.com/getcustomers");
+  xhr.send();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      let customer = JSON.parse(xhr.responseText);
+      
+    }
+  };
+
+
 function printDiv(divName) {
     var printContents = document.getElementById(divName).innerHTML;
     var originalContents = document.body.innerHTML;

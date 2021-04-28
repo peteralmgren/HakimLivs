@@ -46,6 +46,7 @@ export default class Login extends UI {
                   />
                 </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 
                 <button
                   id="login-btn" type="button"
@@ -55,6 +56,8 @@ export default class Login extends UI {
                   Logga in
                 </button>
 =======
+=======
+>>>>>>> 863dd272730caecc6f0851e25ef0748acdc3ed6e
                 <a href="account.html" class="btn btn-info btn-block btn-round" id="createuser">
                
                   Skapa konto
@@ -67,7 +70,10 @@ export default class Login extends UI {
               >
                 Logga in
               </button>
+<<<<<<< HEAD
 >>>>>>> c299e31438d570b73cff9d9201f3197d18124f06
+=======
+>>>>>>> 863dd272730caecc6f0851e25ef0748acdc3ed6e
               </form>
             </div>
           </div>
