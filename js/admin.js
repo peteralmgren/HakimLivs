@@ -140,11 +140,11 @@ $('#customer-list').click(function (e) {
                         </div>
                         <div class="elements">
                           <label for="price">Skriv i jämförelsepris</label>
-                          <input id="price" required="required" type="number"  value="" name="price"  size="10"  />
+                          <input id="compprice" required="required" type="number"  value="" name="compprice"  size="10"  />
                         </div>
                         <div class="elements">
                           <label for="price">Skriv i styckpris</label>
-                          <input id="price" required="required" type="number"  value="" name="price"  size="10"  />
+                          <input id="perprice" required="required" type="number"  value="" name="perprice"  size="10"  />
                         </div>
                           <p><input id="add-btn" type="submit" value="Submit" /> 
                             <input type="reset" value="Reset" /></p>
