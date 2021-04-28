@@ -25,12 +25,11 @@ if (!customer) {
     if (xhr.readyState === 4 && xhr.status === 200) {
       customer = JSON.parse(xhr.responseText);
       localStorage.setItem("customer", JSON.stringify(customer));
-      addCustomerShippingInfo(12)
     }
   };
 
 }else{
-  addCustomerShippingInfo(12)
+  
 }
 
 function printDiv(divName) {
