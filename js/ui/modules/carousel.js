@@ -47,14 +47,14 @@ export default class Carousel extends UI {
               <div class="carousel-caption d-none d-md-block text-dark">
               </div>
               ${random1.title.bold()} -
-              ${random1.price} kr
+              ${random1.price.toFixed(2).replace(".", ",")} kr
             </div>
             <div class="carousel-item text-center">
                     <img src="${random2.image}" class="d-block" alt="Slide 2">
               <div class="carousel-caption d-none d-md-block text-dark">
               </div>
               ${random2.title.bold()} -
-              ${random2.price} kr
+              ${random2.price.toFixed(2).replace(".", ",")} kr
             </div>
 
             <div class="carousel-item text-center">
@@ -62,21 +62,21 @@ export default class Carousel extends UI {
               <div class="carousel-caption d-none d-md-block text-dark">
               </div>
               ${random3.title.bold()} - 
-              ${random3.price} kr
+              ${random3.price.toFixed(2).replace(".", ",")} kr
               </div>
               <div class="carousel-item text-center">
               <img src="${random4.image}" class="d-block" alt="Slide 4">
               <div class="carousel-caption d-none d-md-block text-dark">
               </div>
               ${random4.title.bold()} -
-              ${random4.price} kr
+              ${random4.price.toFixed(2).replace(".", ",")} kr
               </div>
               <div class="carousel-item text-center">
               <img src="${random5.image}" class="d-block" alt="Slide 5">
               <div class="carousel-caption d-none d-md-block text-dark">
               </div>
               ${random5.title.bold()} -
-              ${random5.price} kr
+              ${random5.price.toFixed(2).replace(".", ",")} kr
               </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">

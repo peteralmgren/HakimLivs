@@ -2,6 +2,8 @@ function validateUser() {
   var correctEmail = "hakim";
   var correctPassword = "hakim";
 
+  /* console.log("input email: " + email);
+  console.log("input password: " + password); */
 
   // Check the input when logging in
 

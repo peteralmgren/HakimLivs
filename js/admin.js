@@ -5,6 +5,32 @@
 let customerIndex = 0;
 
 
+  /* const xhr = new XMLHttpRequest();
+  xhr.open("POST", "http://localhost:8080/response/postbody");
+  
+  xhr.send("{\"firstName\" : \"John\", \"lastName\" : \"Smith\"}"); */
+  /* xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.send(JSON.stringify({ "email": "hello@user.com", "response": { "name": "Tester" } })); */
+
+
+
+
+
+if (!customer) {
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "https://grupp5hakimlivs.herokuapp.com/getcustomers");
+  xhr.send();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      customer = JSON.parse(xhr.responseText);
+      localStorage.setItem("customer", JSON.stringify(customer));
+    }
+  };
+
+}else{
+  
+}
+
 function printDiv(divName) {
     var printContents = document.getElementById(divName).innerHTML;
     var originalContents = document.body.innerHTML;
