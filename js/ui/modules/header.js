@@ -5,6 +5,13 @@ if (numberOfProducts == null)
     numberOfProducts = "";
 
 export default class Header extends UI { 
+
+  /* loggedIn = JSON.parse(sessionStorage.getItem("loggedIn"));
+
+  if (condition) {
+    
+  } */
+
     constructor(appendTo) {
         super(appendTo);
         this.html = `
