@@ -39,10 +39,6 @@ nav a{
   margin: -2rem 0rem 2rem;
 }
 
-/* .modal-header .close {
-  margin-top: -1.5rem;
-} */
-
 .pris-card{
   color: red;
   font-size: 20px;
@@ -113,14 +109,6 @@ nav a{
   cursor: pointer;
 }
 
-/* @media (min-width: 576px) {
-  .modal-dialog {
-    max-width: 400px;
-  }
-  .modal-dialog .modal-content {
-    padding: 1rem;
-  }
-} */
 
 @media only screen and (max-width: 320px) {
   .price{
