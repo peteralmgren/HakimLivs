@@ -390,8 +390,35 @@ sendOrder(e){
   }
   else{
     alert("Tack för din order!");
-     localStorage.clear("cart");
-    location.replace("index.html");
+
+      var test2 = {'customer_id':12}
+  
+       console.log(test2)
+       
+        $.ajax(
+        {
+            url : 'https://grupp5hakimlivs.herokuapp.com/addorder',
+            type: "POST",
+            crossDomain: true,
+            dataType: 'jsonp',
+            data : test2,
+            /* complete: function(data) {
+              console.log(data.responseText);
+          },
+          success: function(data){
+            console.log(data);
+        }, */
+            headers: {
+              accept: "application/json",
+              "Access-Control-Allow-Origin":"*"
+              
+          }
+            
+        });
+        e.preventDefault();
+    
+    /*localStorage.clear("cart");
+    location.replace("index.html");*/
   }
 
 
