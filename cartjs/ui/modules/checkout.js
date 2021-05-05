@@ -391,7 +391,8 @@ sendOrder(e){
   else{
     alert("Tack för din order!");
 
-      var test2 = {'customer_id':12}
+      var test2 = sessionStorage.getItem("loggedInCustomer").id;
+  
   
        console.log(test2)
        
