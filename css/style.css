@@ -77,6 +77,30 @@ nav a{
   background-color: rgb(110, 44, 20);
 }
 
+.row .list-group{
+  overflow-x: scroll;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(131, 131, 131);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 .list-group-item{
   padding-left: 4rem;
   padding-right: 4rem;
