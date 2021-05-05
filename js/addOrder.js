@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#send-order").click(function(e){
+    $("#Purchase").click(function(e){
        
        var jsonData = {}
 
@@ -7,7 +7,7 @@ $(document).ready(function() {
 
        var test = {'title':'jsontest','description':'json', 'price':4, 'image':'json', 'category_id':2}
 
-       var test2 = {'customer_id':12,'product_id':3, 'quantity':4}
+       var test2 = {'customer_id':12}
 
       
        /* $.each(formData, function() {
