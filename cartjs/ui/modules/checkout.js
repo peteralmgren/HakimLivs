@@ -481,10 +481,8 @@ async sendOrder(e){
       }, 2000);
       
       
-      
-    
-    /*localStorage.clear("cart");
-    location.replace("index.html");*/
+    localStorage.clear("cart");
+    location.replace("index.html");
   }
 
 
