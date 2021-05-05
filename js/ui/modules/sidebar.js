@@ -58,8 +58,6 @@ export default class Sidebar extends UI {
       for (let cat in tempArray) {
         console.log(tempArray[cat].category.categoryName);
         uniqueCat.push(tempArray[cat].category.categoryName);
-        
-          
       }
 
       uniqueCat = uniqueCat.filter((value, index, categoryArray) => categoryArray.indexOf(value) === index);
