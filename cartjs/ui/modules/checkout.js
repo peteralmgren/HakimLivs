@@ -397,7 +397,7 @@ sendOrder(e){
     alert("Tack för din order!");
 
       var test2 = JSON.parse(sessionStorage.getItem("loggedinCustomer")).id;
-      let cart = JSON.stringify(localStorage.getItem("cart"));
+      let cart = JSON.parse(localStorage.getItem("cart"));
       console.log(test2);
       let dataToSend = {'customer_id': test2, cart};
       
