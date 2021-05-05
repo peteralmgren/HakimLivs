@@ -354,8 +354,16 @@ async injectRowItemsInCart() {
 //BUGGIG: När man skickas tillbaka till index så fungerar inte sidan som den ska
 clearCart(){
   let test = JSON.parse(localStorage.getItem("cart"));
-  console.log(Object.keys(test))
-  console.log(Object.values(test))
+  console.log(test)
+  const temp = Object.entries(test);
+  let temp2 = JSON.stringify(temp);
+  console.log(temp2);
+  console.log(typeof temp2);
+  console.log(typeof temp);
+  for(let i = 0; i<temp.length; i++){
+    console.log(temp[i])
+  }  
+  
   /*
   localStorage.clear("cart");
   alert("Du tömde varukorgen. Lämnar kassan...")
@@ -398,8 +406,10 @@ sendOrder(e){
 
       var test2 = JSON.parse(sessionStorage.getItem("loggedinCustomer")).id;
       let cart = JSON.parse(localStorage.getItem("cart"));
+      
+
       console.log(test2);
-      let dataToSend = {'customer_id': test2, cart};
+      let dataToSend = {'customer_id': test2, 'products': cart};
       
        
         $.ajax(
