@@ -392,6 +392,7 @@ sendOrder(e){
     alert("Tack för din order!");
 
       var test2 = {'customer_id':12}
+      let dataToSend = JSON.stringify(test2);
   
        console.log(test2)
        
@@ -401,7 +402,7 @@ sendOrder(e){
             type: "POST",
             crossDomain: true,
             dataType: 'jsonp',
-            data : test2,
+            data : dataToSend,
             /* complete: function(data) {
               console.log(data.responseText);
           },
