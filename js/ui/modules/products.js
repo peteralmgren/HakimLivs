@@ -59,6 +59,7 @@ export default class Products extends UI {
 
     let allProductsArray = [];
 
+    console.log(ProductsArray);
   
     for(let i = 0; i < 14; i++ ){
         if(ProductsArray[i].category.categoryName.toUpperCase().includes(data.toUpperCase()) || ProductsArray[i].title.toUpperCase().includes(data.toUpperCase()) || data == "all" || data == ""){
