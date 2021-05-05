@@ -17,10 +17,11 @@ export default class Products extends UI {
       
       }
       if(e.target.classList.contains("btn") && e.target.dataset.productId) {
-        super.addToCart(e.target.dataset.productId);
+        this.increaseItemsInCartWithOne(e);
         this.showProducts(localStorage.getItem("choice"));
       };
-      this.cart.injectRowItemsInCart();      
+      
+      await this.cart.injectRowItemsInCart();      
 
 
     });
@@ -31,10 +32,12 @@ export default class Products extends UI {
     if(!localStorage.getItem("choice")){
       localStorage.setItem("choice", "all");
     }
+    if(!localStorage.getItem("cost")){
+      localStorage.setItem("cost", 0);
+    }
 
+    super.countProductsInCart();
 
-
-    //this.showAllProductsInCategory("mejeri");
   }
 
   // jag kan göra en array med kategorier. En for-loop skapar upp nya event-
@@ -47,7 +50,7 @@ export default class Products extends UI {
   Goes through array of product to find the ones where either title or category matches value and pushes the correct ones into new array
   New array is used to paint products to html page
   */
-  async showProducts(value) {
+  async showProducts(data) {
     
     let ProductsArray = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
     ProductsArray = JSON.parse(ProductsArray);
@@ -56,10 +59,12 @@ export default class Products extends UI {
 
     let allProductsArray = [];
 
+    console.log(ProductsArray);
   
-    for(let i = 0; i < 14; i++ ){
-      if(ProductsArray[i].category.categoryName.toUpperCase() == value.toUpperCase() || ProductsArray[i].title.toUpperCase() == value.toUpperCase() || value == "all" || value == ""){
-        allProductsArray.push(ProductsArray[i]);
+    for(let i = 0; i < ProductsArray.length; i++ ){
+      console.log(ProductsArray[i].category.categoryName)
+        if(ProductsArray[i].category.categoryName.toUpperCase().includes(data.toUpperCase()) || ProductsArray[i].title.toUpperCase().includes(data.toUpperCase()) || data == "all" || data == ""){
+          allProductsArray.push(ProductsArray[i]);
       }
     } 
 
@@ -91,9 +96,8 @@ export default class Products extends UI {
         `<div class="col-lg-3 col-md-3 mb-3">
           <div class="card h-100 rounded">
             <div class="card-body text-center">
-              <img class="card-img-top" src="${allProductsArray[index2].image}">
-              <a class="btn btn-outline-secondary" data-bs-toggle="modal" href="#modal${index2}" role="button">Info</a>
-              <p class="card-text">Pris ${(allProductsArray[index2].price.toFixed(2)).replace(".", ",")} kr</p>
+              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${index2}" role="button"><img class="card-img-top" src="${allProductsArray[index2].image}" data-product-id="${allProductsArray[index].id}"></a>
+              <p class="pris-card card-text">${(allProductsArray[index2].price.toFixed(2)).replace(".", ":")}:-</p>
               <h6 class="card-title">${allProductsArray[index2].title}</h6>`
 
               if (value == 0){
@@ -101,9 +105,9 @@ export default class Products extends UI {
                 `
               }
               else{
-                output += `<img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="30px"> 
+                output += `<img class="minus" data-product-id="${allProductsArray[index2].id}" src="./icons/minus.png" alt="minus" width="30px"> 
                 <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${value}</button>
-                <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="30px">`
+                <img class="plus" data-product-id="${allProductsArray[index2].id}" src="./icons/plus.png" alt="plus" width="30px">`
               }
               
               output += `</div>
@@ -116,14 +120,14 @@ export default class Products extends UI {
                     <div class="card-body text-center">
                       <h6 class="card-title">${allProductsArray[index2].title}</h6>
                         <img class="card-img-top" src="${allProductsArray[index2].image}">
-                      <h6>Pris: ${(allProductsArray[index2].price.toFixed(2)).replace(".", ",")} kr</h6>
+                      <h6 class="pris-card">${(allProductsArray[index2].price.toFixed(2)).replace(".", ":")}:-</h6>
                         <p class="card-text"><br>
                           ${allProductsArray[index2].description}" 
                           <br>
                           <hr>
-                          Styckpris: 
+                          Styckpris: ${allProductsArray[index2].perPrice}.00 kr/st
                           <br>
-                          Jämförpris:             
+                          Jämförpris: ${allProductsArray[index2].compPrice}.00 kr/kg             
                         </p>
                     </div>
                   </div>
@@ -170,7 +174,7 @@ export default class Products extends UI {
 
   /** This for loop assigns event listeners to all minus sign icons. The anonymous function will do three things:
   *  decrease the number of items in the basket with one, decrease the order row sum with the price of one unit and decrease the total sum with the price of one unit */
-  decreaseItemsInCartWithOne(e) {
+  async decreaseItemsInCartWithOne(e) {
     const numberOfItemsNode = e.target.nextElementSibling;
     const oldNrOfItems = parseInt(numberOfItemsNode.textContent);
 
@@ -180,11 +184,12 @@ export default class Products extends UI {
     numberOfItemsNode.textContent = oldNrOfItems - 1;
 
     super.removeFromCart(e.target.dataset.productId);
+    await super.countCost(e.target.dataset.productId, "-");
   }
 
   /** This function will do three things:
   *  increase the number of items in the basket with one, increase the order row sum with the price of one unit and increase the total sum with the price of one unit */
-  increaseItemsInCartWithOne(e) {
+  async increaseItemsInCartWithOne(e) {
     console.log("lägger till")
   
     const numberOfItemsNode = e.target.previousElementSibling;
@@ -196,5 +201,6 @@ export default class Products extends UI {
 
     
     super.addToCart(e.target.dataset.productId);
+    await super.countCost(e.target.dataset.productId, "+");
   }
 }

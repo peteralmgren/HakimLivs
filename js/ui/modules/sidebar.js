@@ -19,11 +19,17 @@ export default class Sidebar extends UI {
         
         let input = document.getElementById("inputlg");
         input.addEventListener("keyup", async (e) =>{
-          if(input.value != null) await this.products.showProducts(input.value);
+          if(input.value != null) {
+            localStorage.setItem("choice", input.value);
+            await this.products.showProducts(input.value);
+          } 
         })
         let searchbutton = document.getElementById("search-button");
           searchbutton.addEventListener("click", async(e) =>{
-        if(input.value != null) await this.products.showProducts(input.value);
+        if(input.value != null){
+          localStorage.setItem("choice", input.value);
+          await this.products.showProducts(input.value);
+        } 
         });
 
         this.showCategories();
@@ -44,7 +50,7 @@ export default class Sidebar extends UI {
       
       let categories = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
       categories = JSON.parse(categories);
-      for(let i = 0; i<14; i++){
+      for(let i = 0; i<categories.length; i++){
         tempArray.push(categories[i]);
       }
       
@@ -52,8 +58,6 @@ export default class Sidebar extends UI {
       for (let cat in tempArray) {
         console.log(tempArray[cat].category.categoryName);
         uniqueCat.push(tempArray[cat].category.categoryName);
-        
-          
       }
 
       uniqueCat = uniqueCat.filter((value, index, categoryArray) => categoryArray.indexOf(value) === index);

@@ -1,117 +1,66 @@
-/* $(document).ready(function() {             
-    $('#loginModal').modal('show');
-      $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-      })
-    }); */
+function validateUser() {
+  var correctEmail = "hakim";
+  var correctPassword = "hakim";
 
-    
-    let customer= [];
-    customer = JSON.parse(localStorage.getItem("customer"));
+  /* console.log("input email: " + email);
+  console.log("input password: " + password); */
 
-    if (!customer) {
-      const xhr = new XMLHttpRequest();
-      xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/getcustomers");
-      xhr.send();
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          customer = JSON.parse(xhr.responseText);
-          localStorage.setItem("customer", JSON.stringify(customer));
-          
-        }
-      };
-    
-    }
+  // Check the input when logging in
 
-
-
-function validateUser(){
-
-  let account =  [];
-  let output = ""
-  let loggedInCustomer = []
+  let email = document.getElementById("email1").value;
+  let password = document.getElementById("password1").value;
 
   const xhr = new XMLHttpRequest();
-      xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/login");
-      xhr.send();
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          account = JSON.parse(xhr.responseText);
-          
-          var email = document.getElementById("email1").value;
-      var password = document.getElementById("password1").value;
-
-      account.forEach(account => {
-          customer.forEach(customer => {
-            if(customer.email === email & account.password === password){
-              sessionStorage.setItem("loggedInCustomer", JSON.stringify(customer));
-              //document.getElementById('Log-in-button').hidden
-            }
-          })
-        
-      })
-      
-        }
-      };
-      loggedInCustomer = JSON.parse(sessionStorage.getItem('loggedInCustomer'))
-      /* let lastname = ""
-      
-      for (var i=0; i <loggedInCustomer.length; i++){
-        console.log(loggedInCustomer[i]);
+  xhr.open(
+    "GET",
+    `https://grupp5hakimlivs.herokuapp.com/login?email=${email}&password=${password}`
+  );
+  xhr.send();
+  xhr.onreadystatechange = function () {
+    if (xhr.status === 500){
+        alert("Kontot hittades inte!");
+      }
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      let data = JSON.parse(xhr.responseText);
+      sessionStorage.setItem("loggedinCustomer", JSON.stringify(data));
+      console.log(data);
+      window.location.replace("index.html");
+      hideLogin()
     }
-      
+  };
 
-      output +=`
-      <li id="customer-logged-in" class="nav-item">
-      <h3 >${lastname}</h3>
-              </li>
-              `
-
-       document.getElementById('customer-logged-in').innerHTML = output */
-      
-
-      /* $.ajax(
-        {
-            url : 'https://grupp5hakimlivs.herokuapp.com/login',
-            type: "GET",
-            crossDomain: true,
-            dataType: 'jsonp',
-            data : ,
-              success: function(data){
-              console.log(data);
-              response=data
-              },
-  
-            headers: {
-              accept: "application/json",
-              "Access-Control-Allow-Origin":"*"
-              
-          }
-          
-        }); */
-
-      
-      
-
-
-
-  /* var correctEmail = "hakim";
-  var correctPassword = "hakim";
-  var email = document.getElementById("email1").value;
-  var password = document.getElementById("password1").value;
-  console.log("input email: " + email);
-  console.log("input password: " + password);
-
-
-  if(email == correctEmail && password == correctPassword){
-      console.log("Användarnamn och lösenord stämde!");
-      window.location.replace("admin.html");
+  function hideLogin(){
+    let btn = document.getElementById("Log-in-button");
+    btn.hidden ^= true;
   }
+
+  if (email == correctEmail && password == correctPassword) {
+    console.log("Användarnamn och lösenord stämde!");
+    window.location.replace("admin.html");
+  } else {
+    console.log("Felaktig adress. Användaren finns ej!");
+  }
+}
+
+let customer = [];
+customer = JSON.parse(localStorage.getItem("customer"));
+
+if (!customer) {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/getcustomers");
+  xhr.send();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      customer = JSON.parse(xhr.responseText);
+      localStorage.setItem("customer", JSON.stringify(customer));
+    }
+  };
+}
   else{
       console.log("Felaktig adress. Användaren finns ej!");
-  } */
+  } 
         
-}
+
 
 
 
