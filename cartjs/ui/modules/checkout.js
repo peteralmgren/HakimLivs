@@ -417,7 +417,7 @@ sendOrder(e){
             url : 'https://grupp5hakimlivs.herokuapp.com/addorder',
             type: "POST",
             crossDomain: true,
-            dataType: 'jsonp',
+            dataType: 'application/json',
             data : dataToSend,
             /* complete: function(data) {
               console.log(data.responseText);
