@@ -399,7 +399,7 @@ sendOrder(e){
       var test2 = JSON.parse(sessionStorage.getItem("loggedinCustomer")).id;
       let cart = JSON.parse(localStorage.getItem("cart"));
       console.log(test2);
-      let dataToSend = {'customer_id': test2, 'payload': cart};
+      let dataToSend = {'customer_id': test2, cart};
       
        
         $.ajax(
