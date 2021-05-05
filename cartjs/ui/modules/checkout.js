@@ -93,7 +93,7 @@ export default class Checkout extends UI {
       if (e.target.className == "trashcan pe-1") this.deleteRowInCart(e);
       if (e.target.className == "minus") this.decreaseItemsInCartWithOne(e);
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
-      if (e.target.className == "purchase-button btn btn-primary btn-lg t-1 hover-shadow") this.sendOrder(e);
+      if (e.target.className == "purchase-button btn btn-primary btn-lg t-1 hover-shadow") await this.sendOrder(e);
       if (e.target.className == "btn btn-danger") this.clearCart();
     });
     
@@ -352,45 +352,17 @@ async injectRowItemsInCart() {
 
 
 //BUGGIG: När man skickas tillbaka till index så fungerar inte sidan som den ska
-clearCart(){
-  let cart = JSON.parse(localStorage.getItem("cart"));
-
-
-  let cartkeys = Object.keys(cart);
-  let cartvalues = Object.values(cart);
-  let data = "";
-  let data2 = "";
-
-  for(let i = 0; i < cartkeys.length; i++){
-    data = Number(cartkeys[i]);
-    data2 = cartvalues[i];
-      }
-
-  
-
-  console.log(data, typeof data)
-  console.log(data2, typeof data2)
-
-
-  var test2 = JSON.parse(sessionStorage.getItem("loggedinCustomer")).id;
-      
-      let temp = Object.entries(cart);
-     
-
-      console.log(test2);
-      let dataToSend = {'customer_id': test2, 'product_id': data, 'quantity': data2};
-      console.log(dataToSend)
-  
-  /*
+async clearCart(){
+    
   localStorage.clear("cart");
   alert("Du tömde varukorgen. Lämnar kassan...")
   location.replace("index.html");
-  */
+  
 }
 
 
 
-sendOrder(e){
+async sendOrder(e){
 /*
   let cart = super.readStorage("cart");
   console.log(cart);
@@ -413,7 +385,21 @@ sendOrder(e){
       hideLogin()
     }
   };*/
-  
+  let OrderArray = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/allOrders");
+  OrderArray = JSON.parse(OrderArray);
+
+  let OrderNumbers = [];
+
+  for(let i=0;i<OrderArray.length;i++){
+    OrderNumbers.push(OrderArray[i].id);
+    console.log(typeof OrderArray[i].id)
+  }
+  let newNumber = Math.max(...OrderNumbers);
+  if (!isFinite(newNumber)){
+    newNumber = 0;
+  }
+
+
 
   if(!localStorage.numberInCart || localStorage.numberInCart == 0){
     alert("Din varukorg är tom");
@@ -422,29 +408,12 @@ sendOrder(e){
     alert("Tack för din order!");
 
       var test2 = JSON.parse(sessionStorage.getItem("loggedinCustomer")).id;
-      let cart = JSON.parse(localStorage.getItem("cart"));
-      
-      let temp = Object.entries(cart);
 
-      let cartkeys = Object.keys(cart);
-      let cartvalues = Object.values(cart);
-
-      let data;
-      let data2;
-
-      for(let i = 0; i < cartkeys.length; i++){
-      data = Number(cartkeys[i]);
-      data2 = Number(cartvalues[i]);
-      }
-      
-
-      console.log(test2);
-      let dataToSend = {'customer_id': test2, 'product_id': data, 'quantity': data2};
+      let dataToSend = {'order_id': newNumber+1, 'customer_id': test2};
           
-       
         $.ajax(
         {
-            url : 'https://grupp5hakimlivs.herokuapp.com/addorder',
+            url : 'https://grupp5hakimlivs.herokuapp.com/neworder',
             type: "POST",
             crossDomain: true,
             dataType: 'jsonp',
@@ -461,8 +430,55 @@ sendOrder(e){
               
           }
             
+        });        
+
+      let cart = JSON.parse(localStorage.getItem("cart"));
+
+        cart = Object.entries(cart);
+     
+      for (let i = 0; i<cart.length; i++){
+      let cartkeys = Object.keys(cart[i]);
+      
+      let cartvalues = Object.values(cart[i]);
+
+      let data;
+      let data2;
+
+      for(let i = 0; i < cartkeys.length; i++){
+      data = Number(cartvalues[0]);
+      data2 = cartvalues[i];
+      }
+     
+      
+      let dataToSend2 = {'order_id': newNumber+1, 'product_id': data, 'quantity': data2};
+      console.log(dataToSend2)
+          
+       
+        $.ajax(
+        {
+            url : 'https://grupp5hakimlivs.herokuapp.com/addorder',
+            type: "POST",
+            crossDomain: true,
+            dataType: 'jsonp',
+            data : dataToSend2,
+            /* complete: function(data) {
+              console.log(data.responseText);
+          },
+          success: function(data){
+            console.log(data);
+        }, */
+            headers: {
+              accept: "application/json",
+              "Access-Control-Allow-Origin":"*"
+              
+          }
+            
         });
         e.preventDefault();
+
+      }
+      
+      
     
     /*localStorage.clear("cart");
     location.replace("index.html");*/
