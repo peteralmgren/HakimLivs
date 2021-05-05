@@ -50,7 +50,7 @@ export default class Sidebar extends UI {
       
       let categories = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
       categories = JSON.parse(categories);
-      for(let i = 0; i<14; i++){
+      for(let i = 0; i<categories.length; i++){
         tempArray.push(categories[i]);
       }
       
