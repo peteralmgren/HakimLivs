@@ -82,11 +82,21 @@ $('#customer-list').click(function (e) {
 
 });
 
+
 //$(document).ready(function() {
   $('#product-add').click(function () {
-
     
-    var output =""
+    
+
+                    let tempOutput = ``;        
+                    let uniqueCat = [];            
+                      const xhr = new XMLHttpRequest();
+                        xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/allCategories");
+                        xhr.send();
+                        xhr.onreadystatechange = function () {
+                          if (xhr.readyState === 4 && xhr.status === 200) {
+
+                            var output =""
       
     output +=`
     <div class="card">
@@ -103,8 +113,27 @@ $('#customer-list').click(function (e) {
                     <div class="elements">
                         <label for="category">Välj kategori</label>
                       <select class="custom-select custom-select-sm" name="category_id">
-                        <option value="1">Frukt</option>
-                        <option value="2">Mejeri</option>
+                      `
+                            let categories = JSON.parse(xhr.responseText);
+
+                            console.log(categories)
+
+                            
+                          
+                            for (let cat in categories) {
+                              uniqueCat.push(categories[cat].categoryName);
+                            }
+                      
+                            uniqueCat = uniqueCat.filter((value, index, categoryArray) => categoryArray.indexOf(value) === index);
+                                                    
+                            for (let i = 0; i<uniqueCat.length; i++) {
+                              tempOutput += `<option value="${i+1}">${uniqueCat[i]}</option>`;
+                              
+                            }
+                            console.log(uniqueCat)
+                            console.log(tempOutput)
+                            output += tempOutput;         
+                            output += `
                       </select>
                     </div>
                         <div class="elements">
@@ -140,9 +169,14 @@ $('#customer-list').click(function (e) {
             </div>
           </div>
         </form>
-      </div>`
+      </div>`             
+                            
+                            }
+                            document.getElementById("admin-addrevome-form").innerHTML=output;
+                            
+                      }
+                      
     
-    document.getElementById("admin-addrevome-form").innerHTML=output;
 
     $("#add-btn").click(function(e){
       
