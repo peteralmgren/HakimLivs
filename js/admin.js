@@ -173,61 +173,62 @@ $('#customer-list').click(function (e) {
                             
                             }
                             document.getElementById("admin-addrevome-form").innerHTML=output;
+
                             
+    $("#add-btn").click(function(e){
+      
+      var jsonData = {};
+      
+      var formData = $("#myform").serializeArray();
+ 
+      console.log(formData)
+ 
+    $.each(formData, function() {
+         if (jsonData[this.name]) {
+           
+            if (!jsonData[this.name].push) {
+             
+                jsonData[this.name] = [jsonData[this.name]];
+                
+            }
+            jsonData[this.name].push(this.value || '');
+            
+        } else {
+            jsonData[this.name] = this.value || '';
+            
+        }
+       console.log(jsonData)
+       
+    });
+ 
+    
+     $.ajax(
+       {
+           url : 'https://grupp5hakimlivs.herokuapp.com/addproduct',
+           type: "POST",
+           crossDomain: true,
+           dataType: 'jsonp',
+           data : jsonData,
+           async: true,
+            success : function(response) {
+              console.log(response);
+             },
+             
+           headers: {
+             accept: "application/json",
+             "Access-Control-Allow-Origin":"*"
+             
+         }
+         
+       }); 
+       e.preventDefault();
+ 
+   
+ });
+                             
     }
                           
     
-
-    $("#add-btn").click(function(e){
-      
-     var jsonData = {};
-     
-     var formData = $("#myform").serializeArray();
-
-     console.log(formData)
-
-   $.each(formData, function() {
-        if (jsonData[this.name]) {
-          
-           if (!jsonData[this.name].push) {
-            
-               jsonData[this.name] = [jsonData[this.name]];
-               
-           }
-           jsonData[this.name].push(this.value || '');
-           
-       } else {
-           jsonData[this.name] = this.value || '';
-           
-       }
-      console.log(jsonData)
-      
-   });
-
-   
-    $.ajax(
-      {
-          url : 'https://grupp5hakimlivs.herokuapp.com/addproduct',
-          type: "POST",
-          crossDomain: true,
-          dataType: 'jsonp',
-          data : jsonData,
-          async: true,
-           success : function(response) {
-             console.log(response);
-            },
-            
-          headers: {
-            accept: "application/json",
-            "Access-Control-Allow-Origin":"*"
-            
-        }
-        
-      }); 
-      e.preventDefault();
-
-  
-});
 
   })
   
