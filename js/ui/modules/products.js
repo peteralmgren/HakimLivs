@@ -59,7 +59,7 @@ export default class Products extends UI {
 
     let allProductsArray = [];
 
-    console.log(ProductsArray);
+    
   
     for(let i = 0; i < ProductsArray.length; i++ ){
       console.log(ProductsArray[i].category.categoryName)
@@ -68,7 +68,7 @@ export default class Products extends UI {
       }
     } 
 
-    console.log(allProductsArray);
+    
     
     let randomProductsArray = [];
     randomProductsArray = this.randomizer();

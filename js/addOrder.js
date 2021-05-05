@@ -31,7 +31,7 @@ $(document).ready(function() {
      
       $.ajax(
       {
-          url : 'https://grupp5hakimlivs.herokuapp.com/order',
+          url : 'https://grupp5hakimlivs.herokuapp.com/addorder',
           type: "POST",
           crossDomain: true,
           dataType: 'jsonp',

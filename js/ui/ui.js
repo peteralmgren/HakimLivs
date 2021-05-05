@@ -97,7 +97,6 @@ export default class UI {
     }
 
     addToCart(data) {
-        console.log("tillagd");
         let slot = "cart";
         let loaded = this.readStorage(slot);
         if(loaded == null) loaded = {};
