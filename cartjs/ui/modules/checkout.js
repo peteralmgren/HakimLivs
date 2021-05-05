@@ -391,7 +391,7 @@ sendOrder(e){
   else{
     alert("Tack för din order!");
 
-      var test2 = JSON.parse(sessionStorage.getItem("loggedInCustomer"));
+      var test2 = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
       console.log(test2);
       let data = test2.id;
   
