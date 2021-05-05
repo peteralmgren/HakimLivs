@@ -96,7 +96,7 @@ export default class Products extends UI {
           <div class="card h-100 rounded">
             <div class="card-body text-center">
               <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${index2}" role="button"><img class="card-img-top" src="${allProductsArray[index2].image}" data-product-id="${allProductsArray[index].id}"></a>
-              <p class="pris-card card-text">${(allProductsArray[index2].price.toFixed(2)).replace(".", ":")}:-</p>
+              <p class="pris-card card-text">${(allProductsArray[index2].price.toFixed(2)).replace(".", ",")}:-</p>
               <h6 class="card-title">${allProductsArray[index2].title}</h6>`
 
               if (value == 0){
@@ -119,7 +119,7 @@ export default class Products extends UI {
                     <div class="card-body text-center">
                       <h6 class="card-title">${allProductsArray[index2].title}</h6>
                         <img class="card-img-top" src="${allProductsArray[index2].image}">
-                      <h6 class="pris-card">${(allProductsArray[index2].price.toFixed(2)).replace(".", ":")}:-</h6>
+                      <h6 class="pris-card">${(allProductsArray[index2].price.toFixed(2)).replace(".", ",")}:-</h6>
                         <p class="card-text"><br>
                           ${allProductsArray[index2].description}" 
                           <br>

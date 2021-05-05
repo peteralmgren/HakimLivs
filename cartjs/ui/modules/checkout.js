@@ -353,16 +353,33 @@ async injectRowItemsInCart() {
 
 //BUGGIG: När man skickas tillbaka till index så fungerar inte sidan som den ska
 clearCart(){
-  let test = JSON.parse(localStorage.getItem("cart"));
-  console.log(test)
-  const temp = Object.entries(test);
-  let temp2 = JSON.stringify(temp);
-  console.log(temp2);
-  console.log(typeof temp2);
-  console.log(typeof temp);
-  for(let i = 0; i<temp.length; i++){
-    console.log(temp[i])
-  }  
+  let cart = JSON.parse(localStorage.getItem("cart"));
+
+
+  let cartkeys = Object.keys(cart);
+  let cartvalues = Object.values(cart);
+  let data = "";
+  let data2 = "";
+
+  for(let i = 0; i < cartkeys.length; i++){
+    data = Number(cartkeys[i]);
+    data2 = cartvalues[i];
+      }
+
+  
+
+  console.log(data, typeof data)
+  console.log(data2, typeof data2)
+
+
+  var test2 = JSON.parse(sessionStorage.getItem("loggedinCustomer")).id;
+      
+      let temp = Object.entries(cart);
+     
+
+      console.log(test2);
+      let dataToSend = {'customer_id': test2, 'product_id': data, 'quantity': data2};
+      console.log(dataToSend)
   
   /*
   localStorage.clear("cart");
@@ -407,17 +424,30 @@ sendOrder(e){
       var test2 = JSON.parse(sessionStorage.getItem("loggedinCustomer")).id;
       let cart = JSON.parse(localStorage.getItem("cart"));
       
+      let temp = Object.entries(cart);
+
+      let cartkeys = Object.keys(cart);
+      let cartvalues = Object.values(cart);
+
+      let data;
+      let data2;
+
+      for(let i = 0; i < cartkeys.length; i++){
+      data = Number(cartkeys[i]);
+      data2 = Number(cartvalues[i]);
+      }
+      
 
       console.log(test2);
-      let dataToSend = {'customer_id': test2, 'products': cart};
-      
+      let dataToSend = {'customer_id': test2, 'product_id': data, 'quantity': data2};
+          
        
         $.ajax(
         {
             url : 'https://grupp5hakimlivs.herokuapp.com/addorder',
             type: "POST",
             crossDomain: true,
-            dataType: 'application/json',
+            dataType: 'jsonp',
             data : dataToSend,
             /* complete: function(data) {
               console.log(data.responseText);
