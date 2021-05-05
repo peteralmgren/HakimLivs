@@ -353,9 +353,14 @@ async injectRowItemsInCart() {
 
 //BUGGIG: När man skickas tillbaka till index så fungerar inte sidan som den ska
 clearCart(){
+  let test = JSON.parse(localStorage.getItem("cart"));
+  console.log(Object.keys(test))
+  console.log(Object.values(test))
+  /*
   localStorage.clear("cart");
   alert("Du tömde varukorgen. Lämnar kassan...")
   location.replace("index.html");
+  */
 }
 
 
@@ -392,8 +397,9 @@ sendOrder(e){
     alert("Tack för din order!");
 
       var test2 = JSON.parse(sessionStorage.getItem("loggedinCustomer")).id;
+      let cart = JSON.parse(localStorage.getItem("cart"));
       console.log(test2);
-      let dataToSend = {'customer_id': test2};
+      let dataToSend = {'customer_id': test2, 'payload': cart};
       
        
         $.ajax(
