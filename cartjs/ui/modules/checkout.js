@@ -391,12 +391,10 @@ sendOrder(e){
   else{
     alert("Tack för din order!");
 
-      var test2 = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
+      var test2 = JSON.parse(sessionStorage.getItem("loggedinCustomer")).id;
       console.log(test2);
-      let data = test2.id;
-  
-  
-       console.log(data)
+      let dataToSend = {'customer_id': test2};
+      
        
         $.ajax(
         {
@@ -404,7 +402,7 @@ sendOrder(e){
             type: "POST",
             crossDomain: true,
             dataType: 'jsonp',
-            data : data,
+            data : dataToSend,
             /* complete: function(data) {
               console.log(data.responseText);
           },
