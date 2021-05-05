@@ -436,47 +436,50 @@ async sendOrder(e){
 
         cart = Object.entries(cart);
      
-      for (let i = 0; i<cart.length; i++){
-      let cartkeys = Object.keys(cart[i]);
-      
-      let cartvalues = Object.values(cart[i]);
-
-      let data;
-      let data2;
-
-      for(let i = 0; i < cartkeys.length; i++){
-      data = Number(cartvalues[0]);
-      data2 = cartvalues[i];
-      }
-     
-      
-      let dataToSend2 = {'order_id': newNumber+1, 'product_id': data, 'quantity': data2};
-      console.log(dataToSend2)
+      setTimeout(() => {
+        for (let i = 0; i<cart.length; i++){
+          let cartkeys = Object.keys(cart[i]);
           
-       
-        $.ajax(
-        {
-            url : 'https://grupp5hakimlivs.herokuapp.com/addorder',
-            type: "POST",
-            crossDomain: true,
-            dataType: 'jsonp',
-            data : dataToSend2,
-            /* complete: function(data) {
-              console.log(data.responseText);
-          },
-          success: function(data){
-            console.log(data);
-        }, */
-            headers: {
-              accept: "application/json",
-              "Access-Control-Allow-Origin":"*"
-              
+          let cartvalues = Object.values(cart[i]);
+    
+          let data;
+          let data2;
+    
+          for(let i = 0; i < cartkeys.length; i++){
+          data = Number(cartvalues[0]);
+          data2 = cartvalues[i];
           }
-            
-        });
-        e.preventDefault();
-
-      }
+         
+          
+          let dataToSend2 = {'order_id': newNumber+1, 'product_id': data, 'quantity': data2};
+          console.log(dataToSend2)
+              
+           
+            $.ajax(
+            {
+                url : 'https://grupp5hakimlivs.herokuapp.com/addorder',
+                type: "POST",
+                crossDomain: true,
+                dataType: 'jsonp',
+                data : dataToSend2,
+                /* complete: function(data) {
+                  console.log(data.responseText);
+              },
+              success: function(data){
+                console.log(data);
+            }, */
+                headers: {
+                  accept: "application/json",
+                  "Access-Control-Allow-Origin":"*"
+                  
+              }
+                
+            });
+            e.preventDefault();
+    
+          }
+      }, 2000);
+      
       
       
     
