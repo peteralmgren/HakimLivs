@@ -59,6 +59,10 @@ $('#customer-list').click(function (e) {
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
       let customer = JSON.parse(xhr.responseText);
+
+  document.getElementById("admin-bottomheader").innerHTML = "Kundlista";
+  document.getElementById("customer-info1").innerHTML = "Adress";
+  document.getElementById("customer-info2").innerHTML = "Emailadress"
       
   
   let output = ``;
@@ -146,7 +150,7 @@ $('#show-orders').click(function (e) {
         <form id="myform" type="post">
           <div class="card-body">
             <div class="row mb-2 text-muted">
-              <div class="col-md-6 text-left">
+              
                 <form class="form-inline">
                   <div class="form-group">
                     <div class="elements">
@@ -177,41 +181,69 @@ $('#show-orders').click(function (e) {
                     </div>
                         <div class="elements">
                           <label for="title">Skriv i produktnamn</label>
-                          <input id="title" required="required" type="text"  value="" name="title"  size="30"  />
+                          <input id="title" required="required" type="text"  value="" name="title" />
                         </div>
                         <div class="elements">
-                          <label for="description">Skriv produktinfo</label>
+                          <label for="description">Produktinfo</label>
                           <textarea class="form-control" rows="3" required="required" type="text" value=""
-                          id="description" name="description"  size="40" ></textarea>
+                          id="description" name="description" ></textarea>
                         </div>	
                         <div class="elements">
-                          <label for="price">Skriv i pris</label>
-                          <input id="price" required="required" type="number"  value="" name="price"  size="10"  />
+                          <label for="price">Pris</label>
+                          <input id="price" required="required" type="text"  value="" name="price"  />
                         </div>
                         <div class="elements">
-                          <label for="image">Skriv i sökväg till bild</label>
-                          <input id="image" required="required" value="" name="image" type="text"  size="40"  />
+                          <label for="image">Sökväg till bild</label>
+                          <input id="image" required="required" value="" name="image" type="text" size=80  />
                         </div>
                         <div class="elements">
-                          <label for="compprice">Skriv i jämförelsepris</label>
-                          <input id="compprice" required="required" type="number"  value="" name="compprice"  size="10"  />
+                          <label for="compprice">Jämförelsepris</label>
+                          <input id="compprice" required="required" type="text"  value="" name="compprice"  />
                         </div>
                         <div class="elements">
-                          <label for="perprice">Skriv i styckpris</label>
-                          <input id="perprice" required="required" type="number"  value="" name="perprice"  size="10"  />
+                          <label for="perprice">Styckpris</label>
+                          <input id="perprice" required="required" type="text"  value="" name="perprice"  />
                         </div>
+                        <div class="elements">
+                          <label for="brand">Tillverkare</label>
+                          <input id="brand" required="required" type="text"  value="" name="brand"  />
+                        </div>
+                        <div class="elements">
+                          <label for="amount">Mängd</label>
+                          <input id="amount" required="required" type="text"  value="" name="amount"  />
+                        </div>
+                        
                           <p><input id="add-btn" type="submit" value="Submit" /> 
                             <input type="reset" value="Reset" /></p>
+                            <input id ="prev-btn" type="button" value="Preview"/>
                   </div>
                 </form>
-              </div> 
+              
             </div>
           </div>
         </form>
       </div>`             
                             
-                            }
-                            document.getElementById("admin-addrevome-form").innerHTML=output;
+    }
+    document.getElementById("admin-addrevome-form").innerHTML=output;
+
+    $("#prev-btn").click(function(e){
+      let price = document.getElementById("price").value;
+      let title = document.getElementById("title").value;
+      let desc = document.getElementById("description").value;
+      let imgsrc = document.getElementById("image").value;
+
+      document.getElementById("preview-price").innerHTML = price;
+      document.getElementById("preview-title").innerHTML = title;
+      document.getElementById("preview-desc").innerHTML = desc;
+      document.getElementById("preview-img").src = imgsrc;
+
+
+
+    });
+
+
+      
 
                             
     $("#add-btn").click(function(e){

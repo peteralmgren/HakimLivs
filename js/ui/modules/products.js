@@ -67,15 +67,11 @@ export default class Products extends UI {
       }
     } 
 
-    
-    
-    let randomProductsArray = [];
-    randomProductsArray = this.randomizer();
-
     let output = "";
     let counter = 1;
 
     for (let index = 0; index < allProductsArray.length; index++) {
+      console.log(allProductsArray[index])
       let value = cart[allProductsArray[index].id];
       if(value == undefined){
         value = 0;
@@ -83,9 +79,6 @@ export default class Products extends UI {
       if (counter == 5) {
         counter = 1;
       }
-
-      let index2 = 0;
-      index2 = randomProductsArray[index];
 
       if (counter == 1) {
         output += `<div class="row">`;
@@ -95,38 +88,40 @@ export default class Products extends UI {
         `<div class="col-lg-3 col-md-3 mb-3">
           <div class="card h-100 rounded">
             <div class="card-body text-center">
-              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${index2}" role="button"><img class="card-img-top" src="${allProductsArray[index2].image}" data-product-id="${allProductsArray[index].id}"></a>
-              <p class="pris-card card-text">${(allProductsArray[index2].price.toFixed(2)).replace(".", ",")}:-</p>
-              <h6 class="card-title">${allProductsArray[index2].title}</h6>`
+              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${index}" role="button"><img class="card-img-top" src="${allProductsArray[index].image}" data-product-id="${allProductsArray[index].id}"></a>
+              <p class="pris-card card-text">${(allProductsArray[index].price.toFixed(2)).replace(".", ",")}:-</p>
+              <h6 class="card-title">${allProductsArray[index].title}</h6>
+              <p>${allProductsArray[index].brand} | ${allProductsArray[index].amount}</p>`
 
               if (value == 0){
-                output += `<button class="buy-btn btn btn-primary" data-product-id="${allProductsArray[index2].id}">Lägg till varukorg</button>
+                output += `<button class="buy-btn btn btn-primary" data-product-id="${allProductsArray[index].id}">Lägg till varukorg</button>
                 `
               }
               else{
-                output += `<img class="minus" data-product-id="${allProductsArray[index2].id}" src="./icons/minus.png" alt="minus" width="30px"> 
+                output += `<img class="minus" data-product-id="${allProductsArray[index].id}" src="./icons/minus.png" alt="minus" width="30px"> 
                 <button class="border border-secondary bg-white px-2 rounded" id="amount-of-product">${value}</button>
-                <img class="plus" data-product-id="${allProductsArray[index2].id}" src="./icons/plus.png" alt="plus" width="30px">`
+                <img class="plus" data-product-id="${allProductsArray[index].id}" src="./icons/plus.png" alt="plus" width="30px">`
               }
               
               output += `</div>
               </div>
             </div>
-            <div class="modal fade" id="modal${index2}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+            <div class="modal fade" id="modal${index}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="card h-100 rounded">
                     <div class="card-body text-center">
-                      <h6 class="card-title">${allProductsArray[index2].title}</h6>
-                        <img class="card-img-top" src="${allProductsArray[index2].image}">
-                      <h6 class="pris-card">${(allProductsArray[index2].price.toFixed(2)).replace(".", ",")}:-</h6>
+                      <h4 class="card-title">${allProductsArray[index].title}</h4>
+                      <p>${allProductsArray[index].brand} | ${allProductsArray[index].amount}</p>
+                        <img class="card-img-top" src="${allProductsArray[index].image}">
+                      <h6 class="pris-card">${(allProductsArray[index].price.toFixed(2)).replace(".", ",")}:-</h6>
                         <p class="card-text"><br>
-                          ${allProductsArray[index2].description}" 
+                          ${allProductsArray[index].description}" 
                           <br>
                           <hr>
-                          Styckpris: ${allProductsArray[index2].perPrice}.00 kr/st
+                          Styckpris: ${allProductsArray[index].perPrice.replace(".", ":")}0 kr/st
                           <br>
-                          Jämförpris: ${allProductsArray[index2].compPrice}.00 kr/kg             
+                          Jämförpris: ${allProductsArray[index].compPrice.replace(".", ":")}0 kr/kg             
                         </p>
                     </div>
                   </div>
@@ -146,16 +141,6 @@ export default class Products extends UI {
     super.container.innerHTML = output;
   }
 
-  randomizer() {
-    let randomProducts = [];
-    let r = 0;
-    //random number 1-15 into an array
-    while (randomProducts.length < 15) {
-      if (randomProducts.indexOf(r) === -1) randomProducts.push(r);
-      r++;
-    }
-    return randomProducts;
-  }
 
     // /* This function will get all products from the "server" and then return them in a map with the productID as the key */
   // static getSpecificProduct(id) {
