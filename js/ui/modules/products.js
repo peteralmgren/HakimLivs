@@ -62,7 +62,7 @@ export default class Products extends UI {
     
   
     for(let i = 0; i < ProductsArray.length; i++ ){
-        if(ProductsArray[i].category.categoryName.toUpperCase().includes(data.toUpperCase()) || ProductsArray[i].title.toUpperCase().includes(data.toUpperCase()) || data == "all" || data == ""){
+        if(ProductsArray[i].category.categoryName.toUpperCase().includes(data.toUpperCase()) || ProductsArray[i].title.toUpperCase().includes(data.toUpperCase()) || data == "all" || data == "" ||ProductsArray[i].brand.toUpperCase().includes(data.toUpperCase())){
           allProductsArray.push(ProductsArray[i]);
       }
     } 
