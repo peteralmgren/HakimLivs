@@ -1,9 +1,5 @@
 function validateUser() {
-  var correctEmail = "hakim";
-  var correctPassword = "hakim";
-
-  /* console.log("input email: " + email);
-  console.log("input password: " + password); */
+  
 
   // Check the input when logging in
 
@@ -23,9 +19,13 @@ function validateUser() {
     if (xhr.readyState === 4 && xhr.status === 200) {
       let data = JSON.parse(xhr.responseText);
       sessionStorage.setItem("loggedinCustomer", JSON.stringify(data));
-      console.log(data);
+      if (data.email === "hakim@hakim") {
+        window.location.replace("admin.html");
+        
+      }else{
       window.location.replace("index.html");
       hideLogin()
+      }
     }
   };
 
@@ -34,12 +34,6 @@ function validateUser() {
     btn.hidden ^= true;
   }
 
-  if (email == correctEmail && password == correctPassword) {
-    console.log("Användarnamn och lösenord stämde!");
-    window.location.replace("admin.html");
-  } else {
-    console.log("Felaktig adress. Användaren finns ej!");
-  }
 }
 
 let customer = [];
