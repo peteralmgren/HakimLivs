@@ -483,7 +483,7 @@ async sendOrder(e){
     setTimeout(()=>{
       localStorage.clear("cart");
     location.replace("index.html");
-    }, 8000);
+    }, 5000);
     
   }
 

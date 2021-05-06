@@ -82,6 +82,45 @@ $('#customer-list').click(function (e) {
 
 });
 
+$('#show-orders').click(function (e) {
+
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/allOrders");
+  xhr.send();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      let orders = JSON.parse(xhr.responseText);
+
+      console.log(orders)
+
+  document.getElementById("admin-bottomheader").innerHTML = "Kundordrar";
+  document.getElementById("customer-info1").innerHTML = "Datum";
+  document.getElementById("customer-info2").innerHTML = "Orderstatus"
+      
+  
+  let output = ``;
+
+  orders.forEach(orders =>{
+    console.log(orders.timestamp)
+    console.log(typeof orders.timestamp)
+    
+    output += `
+    <tr>
+    <td>${orders.id}</td>
+  <td>${orders.customer.id}</td>
+  <td>${orders.customer.firstname} ${orders.customer.lastname}</td>
+  <td>${new Date(orders.timestamp)}</td>
+  <td>${orders.orderComplete?"skickad" : "väntar"}</td>
+  </tr>
+  `;
+  
+  })
+  document.getElementById("DB-cursomers").innerHTML=output;
+}
+}
+
+});
+
 
 //$(document).ready(function() {
   $('#product-add').click(function () {

@@ -37,7 +37,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a id="customer-list" class="dropdown-item" href="#customers">Kundlistor</a>
             <!-- <a class="dropdown-item" href="#">Kontoinställningar</a> -->
-            <!-- <a class="dropdown-item" href="#order">Kundordrar</a> -->
+            <a id="show-orders" class="dropdown-item" href="#order">Kundordrar</a>
             <a id="product-add"class="dropdown-item" href="#">Skapa ny produkt</a>
             <a id="product-remove"class="dropdown-item" href="#">Ta bort produkt</a>
             <!-- <a id="orders-list"class="dropdown-item" href="#">Hämta ordrar</a> -->
@@ -211,7 +211,7 @@
               
 
                 <div>
-                  <h2 style="text-align: center;">Kundlistor</h2>
+                  <h2 id="admin-bottomheader" style="text-align: center;">Kundlistor</h2>
                 </div>  
 
               <div class="row second-row">
@@ -250,11 +250,11 @@
                           <th>#</th>
                           <th>Kundnr</th>
                           <th>Namn</th>
-                          <th>Adress</th>
+                          <th id="customer-info1">Adress</th>
                           <!-- <th>Rabattsats</th> -->
                           <!-- <th>Ordersumma</th> -->
                           <!-- <th>Period/Datum</th> -->
-                          <th>Epost</th>
+                          <th id="customer-info2">Epost</th>
                         </thead>
                         <tbody id="DB-cursomers">
                           
