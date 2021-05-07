@@ -6,6 +6,7 @@ export default class Products extends UI {
     super(appendTo);
     this.cart = new Cart(".cart");
     super.container.addEventListener("click", async (e) => {
+      console.log(e.target)
       if (e.target.className == "minus"){
         this.decreaseItemsInCartWithOne(e);
         this.showProducts(localStorage.getItem("choice"));

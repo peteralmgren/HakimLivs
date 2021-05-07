@@ -373,61 +373,9 @@ $('#show-orders').click(function (e) {
 };
 
   })
-
-  $('#orders-list').click(function (e) {
-
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/orderInfo");
-    xhr.send();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        let orderInfo = JSON.parse(xhr.responseText);
-        console.log(orderInfo);
-
-        let currentOrder = []
-        if (orderInfo.orders.id =4) {
-          currentOrder.push(orderInfo.id)
-          currentOrder.push(orderInfo.customer.firstname)
-          
-        }
-        console.log(currentOrder);
-        
-    let output1 = ``;
-    let output2 = ``;
-  
-    orderInfo.forEach(orderinfo =>{
-      var date = new Date(orderinfo.orders.timestamp);
-      
-      
-      date=(date.getDate()+
-          "/"+(date.getMonth()+1)+
-          "/"+date.getFullYear()+
-          " "+date.getHours()+
-          ":"+date.getMinutes());
-
-      
-      output1 += `<tr>
-      <td id="kund-id">${orderinfo.orders.customer.id}</td>
-      <td id="product-id">${orderinfo.product.id}</td>
-      <td  id="product-name">${orderinfo.product.title}</td>
-      <td id="product-amount">${orderinfo.quantity}</td>
-    </tr>
-      
-    `;
-
-    /* output2 += `
-      
-    `; */
-    /* document.getElementById("order-number").innerHTML=orderinfo.orders.id; */
-    })
-    /* document.getElementById("order-products").innerHTML=output1; */
     
 
-    
-  }
-  }
-  
-  });
+
   
   
 
