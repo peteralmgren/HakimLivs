@@ -79,8 +79,6 @@ $('#show-orders').click(function (e) {
           " "+date.getHours()+
           ":"+date.getMinutes());
 
-    console.log(orders.timestamp)
-    console.log(typeof orders.timestamp)
     
     output += `
     <tr>
@@ -224,10 +222,7 @@ $('#show-orders').click(function (e) {
 
     });
 
-
-      
-
-                            
+           
     $("#add-btn").click(function(e){
       
       var jsonData = {};
@@ -249,11 +244,10 @@ $('#show-orders').click(function (e) {
         } else {
             jsonData[this.name] = this.value || '';
             
-        }
-       console.log(jsonData)
-       
+        }       
     });
  
+    console.log(jsonData)
     
      $.ajax(
        {
@@ -275,6 +269,7 @@ $('#show-orders').click(function (e) {
          
        }); 
        e.preventDefault();
+      
  
    
  });

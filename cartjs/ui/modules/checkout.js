@@ -478,12 +478,12 @@ async sendOrder(e){
             e.preventDefault();
     
           }
-      }, 2000);
+      }, 1500);
       
     setTimeout(()=>{
       localStorage.clear("cart");
     location.replace("index.html");
-    }, 5000);
+    }, 3000);
     
   }
 

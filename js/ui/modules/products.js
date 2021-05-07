@@ -118,9 +118,9 @@ export default class Products extends UI {
                           ${allProductsArray[index].description}" 
                           <br>
                           <hr>
-                          Styckpris: ${allProductsArray[index].perPrice.replace(".", ":")}0 kr/st
+                          Styckpris: ${allProductsArray[index].perPrice}0 kr/st
                           <br>
-                          Jämförpris: ${allProductsArray[index].compPrice.replace(".", ":")}0 kr/kg             
+                          Jämförpris: ${allProductsArray[index].compPrice}0 kr/kg             
                         </p>
                     </div>
                   </div>

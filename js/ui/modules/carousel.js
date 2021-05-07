@@ -62,9 +62,9 @@ export default class Carousel extends UI {
                           ${random1.description}" 
                           <br>
                           <hr>
-                          Styckpris: ${random1.perPrice.replace(".", ":")}0 kr/st
+                          Styckpris: ${random1.perPrice}0 kr/st
                           <br>
-                          Jämförpris: ${random1.compPrice.replace(".", ":")}0 kr/kg             
+                          Jämförpris: ${random1.compPrice}0 kr/kg             
                         </p>
                     </div>
                   </div>
@@ -91,9 +91,9 @@ export default class Carousel extends UI {
                           ${random2.description}" 
                           <br>
                           <hr>
-                          Styckpris: ${random2.perPrice.replace(".", ":")}0 kr/st
+                          Styckpris: ${random2.perPrice}0 kr/st
                           <br>
-                          Jämförpris: ${random2.compPrice.replace(".", ":")}0 kr/kg             
+                          Jämförpris: ${random2.compPrice}0 kr/kg             
                         </p>
                     </div>
                   </div>
@@ -116,14 +116,14 @@ export default class Carousel extends UI {
                       <h4 class="card-title">${random3.title}</h4>
                       <p>${random3.brand} | ${random3.amount}</p>
                         <img class="card-img-top" src="${random3.image}">
-                      <h6 class="pris-card">${(random3.price.toFixed(2)).replace(".", ",")}:-</h6>
+                      <h6 class="pris-card">${(random3.price.toFixed(2))}:-</h6>
                         <p class="card-text"><br>
                           ${random3.description}" 
                           <br>
                           <hr>
-                          Styckpris: ${random3.perPrice.replace(".", ":")}0 kr/st
+                          Styckpris: ${random3.perPrice}0 kr/st
                           <br>
-                          Jämförpris: ${random3.compPrice.replace(".", ":")}0 kr/kg             
+                          Jämförpris: ${random3.compPrice}0 kr/kg             
                         </p>
                     </div>
                   </div>
@@ -145,14 +145,14 @@ export default class Carousel extends UI {
                       <h4 class="card-title">${random4.title}</h4>
                       <p>${random4.brand} | ${random4.amount}</p>
                         <img class="card-img-top" src="${random4.image}">
-                      <h6 class="pris-card">${(random4.price.toFixed(2)).replace(".", ",")}:-</h6>
+                      <h6 class="pris-card">${(random4.price.toFixed(2))}:-</h6>
                         <p class="card-text"><br>
                           ${random4.description}" 
                           <br>
                           <hr>
-                          Styckpris: ${random4.perPrice.replace(".", ":")}0 kr/st
+                          Styckpris: ${random4.perPrice}0 kr/st
                           <br>
-                          Jämförpris: ${random4.compPrice.replace(".", ":")}0 kr/kg             
+                          Jämförpris: ${random4.compPrice}0 kr/kg             
                         </p>
                     </div>
                   </div>
@@ -173,14 +173,14 @@ export default class Carousel extends UI {
                       <h4 class="card-title">${random5.title}</h4>
                       <p>${random5.brand} | ${random5.amount}</p>
                         <img class="card-img-top" src="${random5.image}">
-                      <h6 class="pris-card">${(random5.price.toFixed(2)).replace(".", ",")}:-</h6>
+                      <h6 class="pris-card">${(random5.price.toFixed(2))}:-</h6>
                         <p class="card-text"><br>
                           ${random5.description}" 
                           <br>
                           <hr>
-                          Styckpris: ${random5.perPrice.replace(".", ":")}0 kr/st
+                          Styckpris: ${random5.perPrice}0 kr/st
                           <br>
-                          Jämförpris: ${random5.compPrice.replace(".", ":")}0 kr/kg             
+                          Jämförpris: ${random5.compPrice}0 kr/kg             
                         </p>
                     </div>
                   </div>
