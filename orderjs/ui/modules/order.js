@@ -21,9 +21,12 @@ async showOrder() {
 
   console.log(OrdersArray)
 
-  let selectedID = 0;
+  let selectedID = 10;
   let orderID = sessionStorage.getItem("order-id");
-  selectedID = orderID.slice(-1);
+  let count = orderID.indexOf("#");
+  let newString = orderID.slice(0, count+1);
+  selectedID = orderID.slice(count+1)
+  console.log(newString)
   console.log(selectedID)
 
   let Orders = [];
@@ -100,7 +103,6 @@ async showOrder() {
             let summa = 0;
             for (let i = 0; i<Orders.length;i++){
               let tempPrice = Orders[i].product.price * Orders[i].quantity;
-              console.log(tempPrice)
               summa += tempPrice;
               output += `
               <tr>
