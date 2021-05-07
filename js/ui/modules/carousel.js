@@ -45,11 +45,11 @@ export default class Carousel extends UI {
             <div class="carousel-item active text-center">
               ${random1.title.bold()} -
               ${random1.price.toFixed(2).replace(".", ",")} kr
-              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${1}" role="button"><img src="${random1.image}" class="d-block" alt="Slide 1"></a>
+              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${random1}" role="button"><img src="${random1.image}" class="d-block" alt="Slide 1"></a>
               <div class="carousel-caption d-none d-md-block text-dark">
               </div>
             </div>
-            <div class="modal fade" id="modal${1}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+            <div class="modal fade" id="modal${random1}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="card h-100 rounded">
@@ -74,11 +74,11 @@ export default class Carousel extends UI {
             <div class="carousel-item text-center">
               ${random2.title.bold()} -
               ${random2.price.toFixed(2).replace(".", ",")} kr
-              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${2}" role="button"><img src="${random2.image}" class="d-block" alt="Slide 2"></a>
+              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${random2}" role="button"><img src="${random2.image}" class="d-block" alt="Slide 2"></a>
               <div class="carousel-caption d-none d-md-block text-dark">
               </div>
             </div>
-            <div class="modal fade" id="modal${2}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+            <div class="modal fade" id="modal${random2}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="card h-100 rounded">
@@ -104,11 +104,11 @@ export default class Carousel extends UI {
             <div class="carousel-item text-center">
               ${random3.title.bold()} - 
               ${random3.price.toFixed(2).replace(".", ",")} kr
-              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${3}" role="button"><img src="${random3.image}" class="d-block" alt="Slide 3"></a>
+              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${random3}" role="button"><img src="${random3.image}" class="d-block" alt="Slide 3"></a>
               <div class="carousel-caption d-none d-md-block text-dark">
               </div>
               </div>
-              <div class="modal fade" id="modal${3}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+              <div class="modal fade" id="modal${random3}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="card h-100 rounded">
@@ -133,11 +133,11 @@ export default class Carousel extends UI {
               <div class="carousel-item text-center">
               ${random4.title.bold()} -
               ${random4.price.toFixed(2).replace(".", ",")} kr
-              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${4}" role="button"><img src="${random4.image}" class="d-block" alt="Slide 4"></a>
+              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${random4}" role="button"><img src="${random4.image}" class="d-block" alt="Slide 4"></a>
               <div class="carousel-caption d-none d-md-block text-dark">
               </div>
               </div>
-              <div class="modal fade" id="modal${4}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+              <div class="modal fade" id="modal${random4}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="card h-100 rounded">
@@ -162,10 +162,10 @@ export default class Carousel extends UI {
               <div class="carousel-item text-center">
               ${random5.title.bold()} -
               ${random5.price.toFixed(2).replace(".", ",")} kr
-              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${5}" role="button"><img src="${random5.image}" class="d-block" alt="Slide 5"></a>
+              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${random5}" role="button"><img src="${random5.image}" class="d-block" alt="Slide 5"></a>
               <div class="carousel-caption d-none d-md-block text-dark">
               </div>
-              <div class="modal fade" id="modal${5}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+              <div class="modal fade" id="modal${random5}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="card h-100 rounded">

@@ -17,15 +17,21 @@ function validateUser() {
         alert("Kontot hittades inte!");
       }
     if (xhr.readyState === 4 && xhr.status === 200) {
-      let data = JSON.parse(xhr.responseText);
+      if(!xhr.responseText){
+        alert("Kontot hittades inte!")        
+      }
+      if(xhr.responseText){
+        let data = JSON.parse(xhr.responseText);
       sessionStorage.setItem("loggedinCustomer", JSON.stringify(data));
+     
       if (data.email === "hakim@hakim") {
         window.location.replace("admin.html");
-        
       }else{
       window.location.replace("index.html");
       hideLogin()
       }
+      }
+      
     }
   };
 
