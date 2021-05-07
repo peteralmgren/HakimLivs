@@ -38,7 +38,8 @@ $('#customer-list').click(function (e) {
   <td>${customer.id}</td>
   <td>${customer.firstname+" "+customer.lastname}</td>
   <td>${customer.street}</td>
-  <td>${customer.email}</td>
+  <td><a href="mailto:${customer.email}">${customer.email}</a></td>
+ 
   </tr>
   `;
   
