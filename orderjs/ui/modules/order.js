@@ -21,7 +21,10 @@ async showOrder() {
 
   console.log(OrdersArray)
 
-  let selectedID = 2;
+  let selectedID = 0;
+  let orderID = sessionStorage.getItem("order-id");
+  selectedID = orderID.slice(-1);
+  console.log(selectedID)
 
   let Orders = [];
   let customer; 

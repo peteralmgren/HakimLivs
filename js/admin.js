@@ -84,19 +84,23 @@ $('#show-orders').click(function (e) {
     
     output += `
     <tr>
-      <td><a id="saveOrderID" href="printOrder.html" data-order-id="${orders.id}" value="">${orders.id}</a></td>
+      <td><a id="saveOrderID${orders.id}" href="printOrder.html#${orders.id}" data-order-id="${orders.id}">${orders.id}</a></td>
       <td>${orders.customer.id}</td>
       <td>${orders.customer.firstname} ${orders.customer.lastname}</td>
       <td>${date}</td>
       <td>${orders.orderComplete?"skickad" : "väntar"}</td>
     </tr>
   `;
-  
+
   })
   document.getElementById("DB-cursomers").innerHTML=output;
-  document.getElementById("saveOrderID").addEventListener("click", function(e){
-        sessionStorage.setItem("order-id", e.value)
+  orders.forEach(orders =>{
+    document.getElementById("saveOrderID"+orders.id).addEventListener("click", function(e){
+      sessionStorage.setItem("order-id", e.target)
+    })
   })
+ 
+  
   e.preventDefault()
 }
 }
@@ -307,7 +311,10 @@ $('#show-orders').click(function (e) {
                 <form class="form-inline">
                   <div class="form-group">
                         <label for="category">Välj Produkt att ta bort</label>
-                      <select id="product-list" class="custom-select custom-select-sm" name="product_id">                       
+                      <select id="product-list" class="custom-select custom-select-sm" name="product_id">`
+
+                        products.forEach(products =>{output +=`<option id="product-element" value="${products.id}">${products.title}</option>`})       
+    output += `        
                       </select>
                           <p><input id="remove-btn" type="submit" value="Submit" /> 
                             <input type="reset" value="Reset" /></p>
@@ -320,15 +327,6 @@ $('#show-orders').click(function (e) {
       </div>`
     
     document.getElementById("admin-addrevome-form").innerHTML=output;
-
-    $('#product-list').click(function (e) {
-
-      var output =""  
-      
-      products.forEach(element =>{output +=`<option id="product-element" value="${element.id}">${element.title}</option>`})
-    
-      document.getElementById("product-list").innerHTML=output; 
-    })
 
     $("#remove-btn").click(function(e){
       
@@ -372,6 +370,7 @@ $('#show-orders').click(function (e) {
        }
        
      });
+     e.preventDefault();
      
  });
 }
