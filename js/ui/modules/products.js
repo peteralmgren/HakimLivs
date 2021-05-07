@@ -71,7 +71,6 @@ export default class Products extends UI {
     let counter = 1;
 
     for (let index = 0; index < allProductsArray.length; index++) {
-      console.log(allProductsArray[index])
       let value = cart[allProductsArray[index].id];
       if(value == undefined){
         value = 0;
