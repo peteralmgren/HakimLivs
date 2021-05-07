@@ -105,6 +105,16 @@ $('#show-orders').click(function (e) {
   let output = ``;
 
   orders.forEach(orders =>{
+
+    var date = new Date(orders.timestamp);
+      
+      
+      date=(date.getDate()+
+          "/"+(date.getMonth()+1)+
+          "/"+date.getFullYear()+
+          " "+date.getHours()+
+          ":"+date.getMinutes());
+
     console.log(orders.timestamp)
     console.log(typeof orders.timestamp)
     
@@ -113,7 +123,7 @@ $('#show-orders').click(function (e) {
     <td>${orders.id}</td>
   <td>${orders.customer.id}</td>
   <td>${orders.customer.firstname} ${orders.customer.lastname}</td>
-  <td>${new Date(orders.timestamp)}</td>
+  <td>${date}</td>
   <td>${orders.orderComplete?"skickad" : "väntar"}</td>
   </tr>
   `;
