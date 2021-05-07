@@ -100,6 +100,7 @@ $('#show-orders').click(function (e) {
   document.getElementById("admin-bottomheader").innerHTML = "Kundordrar";
   document.getElementById("customer-info1").innerHTML = "Datum";
   document.getElementById("customer-info2").innerHTML = "Orderstatus"
+  document.getElementById("order-id").innerHTML = "Order ID"
       
   
   let output = ``;
