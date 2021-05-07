@@ -43,40 +43,151 @@ export default class Carousel extends UI {
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active text-center">
-              <img src="${random1.image}" class="d-block" alt="Slide 1">
-              <div class="carousel-caption d-none d-md-block text-dark">
-              </div>
               ${random1.title.bold()} -
               ${random1.price.toFixed(2).replace(".", ",")} kr
-            </div>
-            <div class="carousel-item text-center">
-                    <img src="${random2.image}" class="d-block" alt="Slide 2">
+              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${1}" role="button"><img src="${random1.image}" class="d-block" alt="Slide 1"></a>
               <div class="carousel-caption d-none d-md-block text-dark">
               </div>
+            </div>
+            <div class="modal fade" id="modal${1}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="card h-100 rounded">
+                    <div class="card-body text-center">
+                      <h4 class="card-title">${random1.title}</h4>
+                      <p>${random1.brand} | ${random1.amount}</p>
+                        <img class="card-img-top" src="${random1.image}">
+                      <h6 class="pris-card">${(random1.price.toFixed(2)).replace(".", ",")}:-</h6>
+                        <p class="card-text"><br>
+                          ${random1.description}" 
+                          <br>
+                          <hr>
+                          Styckpris: ${random1.perPrice.replace(".", ":")}0 kr/st
+                          <br>
+                          Jämförpris: ${random1.compPrice.replace(".", ":")}0 kr/kg             
+                        </p>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            </div>
+            <div class="carousel-item text-center">
               ${random2.title.bold()} -
               ${random2.price.toFixed(2).replace(".", ",")} kr
+              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${2}" role="button"><img src="${random2.image}" class="d-block" alt="Slide 2"></a>
+              <div class="carousel-caption d-none d-md-block text-dark">
+              </div>
             </div>
+            <div class="modal fade" id="modal${2}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="card h-100 rounded">
+                    <div class="card-body text-center">
+                      <h4 class="card-title">${random2.title}</h4>
+                      <p>${random2.brand} | ${random2.amount}</p>
+                        <img class="card-img-top" src="${random2.image}">
+                      <h6 class="pris-card">${(random2.price.toFixed(2)).replace(".", ",")}:-</h6>
+                        <p class="card-text"><br>
+                          ${random2.description}" 
+                          <br>
+                          <hr>
+                          Styckpris: ${random2.perPrice.replace(".", ":")}0 kr/st
+                          <br>
+                          Jämförpris: ${random2.compPrice.replace(".", ":")}0 kr/kg             
+                        </p>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          </div>
 
             <div class="carousel-item text-center">
-              <img src="${random3.image}" class="d-block" alt="Slide 3">
-              <div class="carousel-caption d-none d-md-block text-dark">
-              </div>
               ${random3.title.bold()} - 
               ${random3.price.toFixed(2).replace(".", ",")} kr
-              </div>
-              <div class="carousel-item text-center">
-              <img src="${random4.image}" class="d-block" alt="Slide 4">
+              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${3}" role="button"><img src="${random3.image}" class="d-block" alt="Slide 3"></a>
               <div class="carousel-caption d-none d-md-block text-dark">
               </div>
+              </div>
+              <div class="modal fade" id="modal${3}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="card h-100 rounded">
+                    <div class="card-body text-center">
+                      <h4 class="card-title">${random3.title}</h4>
+                      <p>${random3.brand} | ${random3.amount}</p>
+                        <img class="card-img-top" src="${random3.image}">
+                      <h6 class="pris-card">${(random3.price.toFixed(2)).replace(".", ",")}:-</h6>
+                        <p class="card-text"><br>
+                          ${random3.description}" 
+                          <br>
+                          <hr>
+                          Styckpris: ${random3.perPrice.replace(".", ":")}0 kr/st
+                          <br>
+                          Jämförpris: ${random3.compPrice.replace(".", ":")}0 kr/kg             
+                        </p>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          </div>
+              <div class="carousel-item text-center">
               ${random4.title.bold()} -
               ${random4.price.toFixed(2).replace(".", ",")} kr
-              </div>
-              <div class="carousel-item text-center">
-              <img src="${random5.image}" class="d-block" alt="Slide 5">
+              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${4}" role="button"><img src="${random4.image}" class="d-block" alt="Slide 4"></a>
               <div class="carousel-caption d-none d-md-block text-dark">
               </div>
+              </div>
+              <div class="modal fade" id="modal${4}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="card h-100 rounded">
+                    <div class="card-body text-center">
+                      <h4 class="card-title">${random4.title}</h4>
+                      <p>${random4.brand} | ${random4.amount}</p>
+                        <img class="card-img-top" src="${random4.image}">
+                      <h6 class="pris-card">${(random4.price.toFixed(2)).replace(".", ",")}:-</h6>
+                        <p class="card-text"><br>
+                          ${random4.description}" 
+                          <br>
+                          <hr>
+                          Styckpris: ${random4.perPrice.replace(".", ":")}0 kr/st
+                          <br>
+                          Jämförpris: ${random4.compPrice.replace(".", ":")}0 kr/kg             
+                        </p>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          </div>
+              <div class="carousel-item text-center">
               ${random5.title.bold()} -
               ${random5.price.toFixed(2).replace(".", ",")} kr
+              <a class="btn btn-outline-light" data-bs-toggle="modal" href="#modal${5}" role="button"><img src="${random5.image}" class="d-block" alt="Slide 5"></a>
+              <div class="carousel-caption d-none d-md-block text-dark">
+              </div>
+              <div class="modal fade" id="modal${5}" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="card h-100 rounded">
+                    <div class="card-body text-center">
+                      <h4 class="card-title">${random5.title}</h4>
+                      <p>${random5.brand} | ${random5.amount}</p>
+                        <img class="card-img-top" src="${random5.image}">
+                      <h6 class="pris-card">${(random5.price.toFixed(2)).replace(".", ",")}:-</h6>
+                        <p class="card-text"><br>
+                          ${random5.description}" 
+                          <br>
+                          <hr>
+                          Styckpris: ${random5.perPrice.replace(".", ":")}0 kr/st
+                          <br>
+                          Jämförpris: ${random5.compPrice.replace(".", ":")}0 kr/kg             
+                        </p>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          </div>
+              
               </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
