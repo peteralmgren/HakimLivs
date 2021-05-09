@@ -62,9 +62,9 @@ export default class Carousel extends UI {
                           ${random1.description}" 
                           <br>
                           <hr>
-                          Styckpris: ${random1.perPrice}0 kr/st
+                          Styckpris: ${random1.perPrice} kr/st
                           <br>
-                          Jämförpris: ${random1.compPrice}0 kr/kg             
+                          Jämförpris: ${random1.compPrice} kr/kg             
                         </p>
                     </div>
                   </div>
