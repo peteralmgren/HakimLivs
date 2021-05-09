@@ -59,7 +59,7 @@ export default class Carousel extends UI {
                         <img class="card-img-top" src="${random1.image}">
                       <h6 class="pris-card">${(random1.price.toFixed(2)).replace(".", ",")}:-</h6>
                         <p class="card-text"><br>
-                          ${random1.description}" 
+                          ${random1.description}
                           <br>
                           <hr>
                           Styckpris: ${random1.perPrice} kr/st

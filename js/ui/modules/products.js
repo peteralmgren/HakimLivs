@@ -116,7 +116,7 @@ export default class Products extends UI {
                         <img class="card-img-top" src="${allProductsArray[index].image}">
                       <h6 class="pris-card">${(allProductsArray[index].price.toFixed(2)).replace(".", ",")}:-</h6>
                         <p class="card-text"><br>
-                          ${allProductsArray[index].description}" 
+                          ${allProductsArray[index].description}
                           <br>
                           <hr>
                           Styckpris: ${allProductsArray[index].perPrice} kr/st
