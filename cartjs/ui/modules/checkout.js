@@ -208,7 +208,7 @@ async injectRowItemsInCart() {
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum - pricePerUnit).toFixed(2);
 
-    orderRowSumElement.textContent = newOrderRowSum+"("+pricePerUnit+")";
+    orderRowSumElement.textContent = newOrderRowSum+"("+pricePerUnit.toFixed(2)+")";
     totalSum = (totalSum - pricePerUnit).toFixed(2);
     totalSumElement.textContent = totalSum;
     this.sum = totalSum;
@@ -234,7 +234,7 @@ async injectRowItemsInCart() {
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum + pricePerUnit).toFixed(2);
 
-    orderRowSumElement.textContent = newOrderRowSum+"("+pricePerUnit+")";
+    orderRowSumElement.textContent = newOrderRowSum+"("+pricePerUnit.toFixed(2)+")";
     totalSum = (totalSum + pricePerUnit).toFixed(2);
     totalSumElement.textContent = totalSum;
     this.sum = totalSum;
