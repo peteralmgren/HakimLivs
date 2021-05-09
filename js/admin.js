@@ -77,8 +77,8 @@ $('#show-orders').click(function (e) {
       date=(date.getDate()+
           "/"+(date.getMonth()+1)+
           "/"+date.getFullYear()+
-          " "+date.getHours()+
-          ":"+date.getMinutes());
+          " "+(date.getHours()<10?'0':'')+date.getHours()+
+          ":"+(date.getMinutes()<10?'0':'')+date.getMinutes());
 
     
     output += `
