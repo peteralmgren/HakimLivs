@@ -7,11 +7,20 @@ nav a{
   text-decoration: none;
 }
 
+#inputlg{
+  max-width: 500px;
+}
+
+#customer-logged-in{
+  margin-right: 10px;
+}
+
+#Modul-cart{
+  margin-right: 10px;
+}
 
 
 /* selektor: klass ----------------------------------------------- Sorterat i bokstavsordning */
-
-
 
 .brand {
   font-weight: bold;
