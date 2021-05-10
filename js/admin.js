@@ -171,7 +171,7 @@ $('#show-orders').click(function (e) {
                         </div>	
                         <div class="elements">
                           <label for="price">Pris</label>
-                          <input id="price" required="required" type="text"  value="" name="price"  />
+                          <input id="price" required="required" type="number"  value="" name="price"  />
                         </div>
                         <div class="elements">
                           <label for="image">Sökväg till bild</label>
@@ -179,11 +179,11 @@ $('#show-orders').click(function (e) {
                         </div>
                         <div class="elements">
                           <label for="compprice">Jämförelsepris</label>
-                          <input id="compprice" required="required" type="text"  value="" name="compprice"  />
+                          <input id="compprice" required="required" type="number"  value="" name="compprice"  />
                         </div>
                         <div class="elements">
                           <label for="perprice">Styckpris</label>
-                          <input id="perprice" required="required" type="text"  value="" name="perprice"  />
+                          <input id="perprice" required="required" type="number"  value="" name="perprice"  />
                         </div>
                         <div class="elements">
                           <label for="brand">Tillverkare</label>
