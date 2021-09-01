@@ -320,7 +320,7 @@ $('#show-orders').click(function (e) {
     output += `        
                       </select>
                           <p><input id="remove-btn" type="submit" value="Submit" /> 
-                            <input type="reset" value="Reset" /></p>
+                             <input id="edit-btn" type="button" value="Edit" /></p>
                   </div>
                 </form>
               </div> 
@@ -375,6 +375,37 @@ $('#show-orders').click(function (e) {
      });
      e.preventDefault();
  });
+
+
+ $("#edit-btn").click(function(e){
+
+    var jsonData = {};
+    var formData = $("#myform").serializeArray();
+    
+    $.each(formData, function() {
+      if (jsonData[this.name]) {
+        
+         if (!jsonData[this.name].push) {
+          
+             jsonData[this.name] = [jsonData[this.name]];
+             
+         }
+         jsonData[this.name].push(this.value || '');
+         
+     } else {
+         jsonData[this.name] = this.value || '';
+         
+     }
+    console.log(jsonData)
+    
+ });
+
+ 
+
+
+      
+  });
+
 }
 };
 
@@ -384,6 +415,11 @@ $('#show-orders').click(function (e) {
 
   
   
+
+
+
+
+
 
    
 
@@ -398,5 +434,175 @@ $('#show-orders').click(function (e) {
 
 
 
-
+  $('#product-edit').click(function () {
+      
+      
+  
+                      let tempOutput = ``;        
+                      let uniqueCat = [];            
+                        const xhr = new XMLHttpRequest();
+                          xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/allCategories");
+                          xhr.send();
+                          xhr.onreadystatechange = function () {
+                            if (xhr.readyState === 4 && xhr.status === 200) {
+  
+                              var output =""
+        
+      output +=`
+      <div class="card">
+        <div class="card-header text-secondary">
+          <label class="bg-white" style="color:black;">Admin skapa produkt formulär
+          </label>
+        </div>
+          <form id="myform" type="post">
+            <div class="card-body">
+              <div class="row mb-2 text-muted">
+                
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <div class="elements">
+                          <label for="category">Välj kategori</label>
+                        <select class="custom-select custom-select-sm" name="category_id">
+                        `
+                              let categories = JSON.parse(xhr.responseText);
+  
+                              console.log(categories)
+  
+                              
+                            
+                              for (let cat in categories) {
+                                uniqueCat.push(categories[cat].categoryName);
+                              }
+                        
+                              uniqueCat = uniqueCat.filter((value, index, categoryArray) => categoryArray.indexOf(value) === index);
+                                                      
+                              for (let i = 0; i<uniqueCat.length; i++) {
+                                tempOutput += `<option value="${i+1}">${uniqueCat[i]}</option>`;
+                                
+                              }
+                              console.log(uniqueCat)
+                              console.log(tempOutput)
+                              output += tempOutput;         
+                              output += `
+                        </select>
+                      </div>
+                          <div class="elements">
+                            <label for="title">Skriv i produktnamn</label>
+                            <input id="title" required="required" type="text"  value="" name="title" />
+                          </div>
+                          <div class="elements">
+                            <label for="description">Produktinfo</label>
+                            <textarea class="form-control" rows="3" required="required" type="text" value=""
+                            id="description" name="description" ></textarea>
+                          </div>	
+                          <div class="elements">
+                            <label for="price">Pris</label>
+                            <input id="price" required="required" type="number"  value="" name="price"  />
+                          </div>
+                          <div class="elements">
+                            <label for="image">Sökväg till bild</label>
+                            <input id="image" required="required" value="" name="image" type="text" size=80  />
+                          </div>
+                          <div class="elements">
+                            <label for="compprice">Jämförelsepris</label>
+                            <input id="compprice" required="required" type="number"  value="" name="compprice"  />
+                          </div>
+                          <div class="elements">
+                            <label for="perprice">Styckpris</label>
+                            <input id="perprice" required="required" type="number"  value="" name="perprice"  />
+                          </div>
+                          <div class="elements">
+                            <label for="brand">Tillverkare</label>
+                            <input id="brand" required="required" type="text"  value="" name="brand"  />
+                          </div>
+                          <div class="elements">
+                            <label for="amount">Mängd</label>
+                            <input id="amount" required="required" type="text"  value="" name="amount"  />
+                          </div>
+                          
+                            <p><input id="add-btn" type="submit" value="Submit" /> 
+                              <input type="reset" value="Reset" /></p>
+                              <input id ="prev-btn" type="button" value="Preview"/>
+                    </div>
+                  </form>
+                
+              </div>
+            </div>
+          </form>
+        </div>`             
+                              
+      }
+      document.getElementById("admin-addrevome-form").innerHTML=output;
+  
+      $("#prev-btn").click(function(e){
+        let price = document.getElementById("price").value;
+        let title = document.getElementById("title").value;
+        let desc = document.getElementById("description").value;
+        let imgsrc = document.getElementById("image").value;
+  
+        document.getElementById("preview-price").innerHTML = price;
+        document.getElementById("preview-title").innerHTML = title;
+        document.getElementById("preview-desc").innerHTML = desc;
+        document.getElementById("preview-img").src = imgsrc;
+  
+  
+  
+      });
+  
              
+      $("#add-btn").click(function(e){
+        
+        var jsonData = {};
+        
+        var formData = $("#myform").serializeArray();
+   
+        console.log(formData)
+   
+      $.each(formData, function() {
+           if (jsonData[this.name]) {
+             
+              if (!jsonData[this.name].push) {
+               
+                  jsonData[this.name] = [jsonData[this.name]];
+                  
+              }
+              jsonData[this.name].push(this.value || '');
+              
+          } else {
+              jsonData[this.name] = this.value || '';
+              
+          }       
+      });
+   
+      console.log(jsonData)
+      
+       $.ajax(
+         {
+             url : 'https://grupp5hakimlivs.herokuapp.com/addproduct',
+             type: "POST",
+             crossDomain: true,
+             dataType: 'jsonp',
+             data : jsonData,
+             async: true,
+              success : function(response) {
+                console.log(response);
+               },
+               
+             headers: {
+               accept: "application/json",
+               "Access-Control-Allow-Origin":"*"
+               
+           }
+           
+         }); 
+         e.preventDefault();
+        
+   
+     
+   });
+                               
+      }
+                            
+      
+  
+    })
