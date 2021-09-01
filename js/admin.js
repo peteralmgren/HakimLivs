@@ -377,7 +377,7 @@ $('#show-orders').click(function (e) {
  });
 
 
- $("#edit-btn").click(function(e){
+ $("#edit-btn").click(function(){
 
     var jsonData = {};
     var formData = $("#myform").serializeArray();
@@ -397,10 +397,179 @@ $('#show-orders').click(function (e) {
          
      }
     console.log(jsonData)
+    console.log(jsonData.product_id)
     
  });
 
+ let uniqueProd = [];
+
+ for (let prod in products) {
+   if(products[prod].id == jsonData.product_id){
+    uniqueProd.push(products[prod]);
+   }
+     
+}
+console.log(uniqueProd);
+console.log(uniqueProd[0].title)
+
+
+
+let tempOutput = ``;        
+let uniqueCat = []; 
+
+
+const xhr2 = new XMLHttpRequest();
+                        xhr2.open("GET", "https://grupp5hakimlivs.herokuapp.com/allCategories");
+                        xhr2.send();
+                        xhr2.onreadystatechange = function () {
+                          if (xhr2.readyState === 4 && xhr2.status === 200) {
+
+                            var output =""
+      
+    output +=`
+    <div class="card">
+      <div class="card-header text-secondary">
+        <label class="bg-white" style="color:black;">Admin skapa produkt formulär
+        </label>
+      </div>
+        <form id="editform" type="post">
+          <div class="card-body">
+            <div class="row mb-2 text-muted">
+              
+                <form class="form-inline">
+                  <div class="form-group">
+                    <div class="elements">
+                        <label for="category">Välj kategori</label>
+                      <select class="custom-select custom-select-sm" name="category_id">
+                      `
+                            let categories = JSON.parse(xhr2.responseText);
+
+                            console.log(categories)
+
+                            
+                          
+                            for (let cat in categories) {
+                              uniqueCat.push(categories[cat].categoryName);
+                            }
+                      
+                            uniqueCat = uniqueCat.filter((value, index, categoryArray) => categoryArray.indexOf(value) === index);
+                                                    
+                            for (let i = 0; i<uniqueCat.length; i++) {
+                              tempOutput += `<option value="${i+1}">${uniqueCat[i]}</option>`;
+                              
+                            }
+                            console.log(uniqueCat)
+                            console.log(tempOutput)
+                            output += tempOutput;         
+                            output += `
+                      </select>
+                    </div>
+                        <div class="elements">
+                          <label for="title">Skriv i produktnamn</label>
+                          <input id="title" required="required" type="text"  value="${uniqueProd[0].title}" name="title" placeholder="${uniqueProd[0].title}" />
+                        </div>
+                        <div class="elements">
+                          <label for="description">Produktinfo</label>
+                          <textarea class="form-control" rows="3" required="required" type="text" value=""
+                          id="description" name="description" placeholder="${uniqueProd[0].description}">${uniqueProd[0].description}</textarea>
+                        </div>	
+                        <div class="elements">
+                          <label for="price">Pris</label>
+                          <input id="price" required="required" type="number"  value="${uniqueProd[0].price}" name="price" placeholder="${uniqueProd[0].price}" />
+                        </div>
+                        <div class="elements">
+                          <label for="image">Sökväg till bild</label>
+                          <input id="image" required="required" value="${uniqueProd[0].image}" name="image" type="text" size=80 placeholder="${uniqueProd[0].image}" />
+                        </div>x
+                        <div class="elements">
+                          <label for="compprice">Jämförelsepris</label>
+                          <input id="compprice" required="required" type="number"  value="${uniqueProd[0].compPrice}" name="compprice" placeholder="${uniqueProd[0].compPrice}"  />
+                        </div>
+                        <div class="elements">
+                          <label for="perprice">Styckpris</label>
+                          <input id="perprice" required="required" type="number"  value="${uniqueProd[0].perPrice}" name="perprice" placeholder="${uniqueProd[0].perPrice}" />
+                        </div>
+                        <div class="elements">
+                          <label for="brand">Tillverkare</label>
+                          <input id="brand" required="required" type="text"  value="${uniqueProd[0].brand}" name="brand" placeholder="${uniqueProd[0].brand}" />
+                        </div>
+                        <div class="elements">
+                          <label for="amount">Mängd</label>
+                          <input id="amount" required="required" type="text"  value="${uniqueProd[0].amount}" name="amount" placeholder="${uniqueProd[0].amount}" />
+                        </div>
+                        
+                          <p><input id="add-btn" type="submit" value="Submit" /> 
+                            <input type="reset" value="Reset" /></p>
+                            <input id ="prev-btn" type="button" value="Preview"/>
+                  </div>
+                </form>
+              
+            </div>
+          </div>
+        </form>
+      </div>`             
+                            
+    }
+    document.getElementById("admin-addrevome-form").innerHTML=output;
+
+    $("#add-btn").click(function(e){
+      
+      var jsonData2 = {};
+      
+      var formData2 = $("#editform").serializeArray();
  
+      console.log(formData2)
+ 
+    $.each(formData2, function() {
+         if (jsonData2[this.name]) {
+           
+            if (!jsonData2[this.name].push) {
+             
+                jsonData2[this.name] = [jsonData2[this.name]];
+                
+            }
+            jsonData2[this.name].push(this.value || '');
+            
+        } else {
+            jsonData2[this.name] = this.value || '';
+            
+        }       
+    });
+ 
+    console.log(jsonData2)
+    
+     $.ajax(
+       {
+           url : 'https://grupp5hakimlivs.herokuapp.com/editproduct',
+           type: "POST",
+           crossDomain: true,
+           dataType: 'jsonp',
+           data : jsonData2,
+           async: true,
+            success : function(response) {
+              console.log(response);
+             },
+             
+           headers: {
+             accept: "application/json",
+             "Access-Control-Allow-Origin":"*"
+             
+         }
+         
+       }); 
+       e.preventDefault();
+      
+ 
+   
+ });
+
+                             
+    }
+                          
+    
+
+
+
 
 
       
@@ -411,198 +580,3 @@ $('#show-orders').click(function (e) {
 
   })
     
-
-
-  
-  
-
-
-
-
-
-
-   
-
-
-
-
-    
-  
-  
-
-
-
-
-
-  $('#product-edit').click(function () {
-      
-      
-  
-                      let tempOutput = ``;        
-                      let uniqueCat = [];            
-                        const xhr = new XMLHttpRequest();
-                          xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/allCategories");
-                          xhr.send();
-                          xhr.onreadystatechange = function () {
-                            if (xhr.readyState === 4 && xhr.status === 200) {
-  
-                              var output =""
-        
-      output +=`
-      <div class="card">
-        <div class="card-header text-secondary">
-          <label class="bg-white" style="color:black;">Admin skapa produkt formulär
-          </label>
-        </div>
-          <form id="myform" type="post">
-            <div class="card-body">
-              <div class="row mb-2 text-muted">
-                
-                  <form class="form-inline">
-                    <div class="form-group">
-                      <div class="elements">
-                          <label for="category">Välj kategori</label>
-                        <select class="custom-select custom-select-sm" name="category_id">
-                        `
-                              let categories = JSON.parse(xhr.responseText);
-  
-                              console.log(categories)
-  
-                              
-                            
-                              for (let cat in categories) {
-                                uniqueCat.push(categories[cat].categoryName);
-                              }
-                        
-                              uniqueCat = uniqueCat.filter((value, index, categoryArray) => categoryArray.indexOf(value) === index);
-                                                      
-                              for (let i = 0; i<uniqueCat.length; i++) {
-                                tempOutput += `<option value="${i+1}">${uniqueCat[i]}</option>`;
-                                
-                              }
-                              console.log(uniqueCat)
-                              console.log(tempOutput)
-                              output += tempOutput;         
-                              output += `
-                        </select>
-                      </div>
-                          <div class="elements">
-                            <label for="title">Skriv i produktnamn</label>
-                            <input id="title" required="required" type="text"  value="" name="title" />
-                          </div>
-                          <div class="elements">
-                            <label for="description">Produktinfo</label>
-                            <textarea class="form-control" rows="3" required="required" type="text" value=""
-                            id="description" name="description" ></textarea>
-                          </div>	
-                          <div class="elements">
-                            <label for="price">Pris</label>
-                            <input id="price" required="required" type="number"  value="" name="price"  />
-                          </div>
-                          <div class="elements">
-                            <label for="image">Sökväg till bild</label>
-                            <input id="image" required="required" value="" name="image" type="text" size=80  />
-                          </div>
-                          <div class="elements">
-                            <label for="compprice">Jämförelsepris</label>
-                            <input id="compprice" required="required" type="number"  value="" name="compprice"  />
-                          </div>
-                          <div class="elements">
-                            <label for="perprice">Styckpris</label>
-                            <input id="perprice" required="required" type="number"  value="" name="perprice"  />
-                          </div>
-                          <div class="elements">
-                            <label for="brand">Tillverkare</label>
-                            <input id="brand" required="required" type="text"  value="" name="brand"  />
-                          </div>
-                          <div class="elements">
-                            <label for="amount">Mängd</label>
-                            <input id="amount" required="required" type="text"  value="" name="amount"  />
-                          </div>
-                          
-                            <p><input id="add-btn" type="submit" value="Submit" /> 
-                              <input type="reset" value="Reset" /></p>
-                              <input id ="prev-btn" type="button" value="Preview"/>
-                    </div>
-                  </form>
-                
-              </div>
-            </div>
-          </form>
-        </div>`             
-                              
-      }
-      document.getElementById("admin-addrevome-form").innerHTML=output;
-  
-      $("#prev-btn").click(function(e){
-        let price = document.getElementById("price").value;
-        let title = document.getElementById("title").value;
-        let desc = document.getElementById("description").value;
-        let imgsrc = document.getElementById("image").value;
-  
-        document.getElementById("preview-price").innerHTML = price;
-        document.getElementById("preview-title").innerHTML = title;
-        document.getElementById("preview-desc").innerHTML = desc;
-        document.getElementById("preview-img").src = imgsrc;
-  
-  
-  
-      });
-  
-             
-      $("#add-btn").click(function(e){
-        
-        var jsonData = {};
-        
-        var formData = $("#myform").serializeArray();
-   
-        console.log(formData)
-   
-      $.each(formData, function() {
-           if (jsonData[this.name]) {
-             
-              if (!jsonData[this.name].push) {
-               
-                  jsonData[this.name] = [jsonData[this.name]];
-                  
-              }
-              jsonData[this.name].push(this.value || '');
-              
-          } else {
-              jsonData[this.name] = this.value || '';
-              
-          }       
-      });
-   
-      console.log(jsonData)
-      
-       $.ajax(
-         {
-             url : 'https://grupp5hakimlivs.herokuapp.com/addproduct',
-             type: "POST",
-             crossDomain: true,
-             dataType: 'jsonp',
-             data : jsonData,
-             async: true,
-              success : function(response) {
-                console.log(response);
-               },
-               
-             headers: {
-               accept: "application/json",
-               "Access-Control-Allow-Origin":"*"
-               
-           }
-           
-         }); 
-         e.preventDefault();
-        
-   
-     
-   });
-                               
-      }
-                            
-      
-  
-    })
