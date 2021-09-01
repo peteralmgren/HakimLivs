@@ -374,7 +374,7 @@ $('#show-orders').click(function (e) {
        
      });
      e.preventDefault();
-     
+     location.reload();
  });
 }
 };
