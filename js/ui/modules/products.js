@@ -111,7 +111,7 @@ export default class Products extends UI {
                 <div class="modal-content">
                   <div class="card h-100 rounded">
                     <div class="card-body text-center">
-                      <h4 class="card-title">${allProductsArray[index].title}</h4>
+                      <h3 class="card-title">${allProductsArray[index].title}</h3>
                       <p>${allProductsArray[index].brand} | ${allProductsArray[index].amount}</p>
                         <img class="card-img-top" src="${allProductsArray[index].image}">
                       <h6 class="pris-card">${(allProductsArray[index].price.toFixed(2)).replace(".", ",")}:-</h6>
