@@ -1,3 +1,10 @@
+console.log("test")
+
+if(!sessionStorage.getItem("loggedinCustomer") || JSON.parse(sessionStorage.getItem("loggedinCustomer")).id != 196){
+  location.replace("index.html")
+}
+
+let admin = JSON.parse(sessionStorage.getItem("loggedInCustomer"));
 
 
 /* function initMap() {
