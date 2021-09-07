@@ -288,7 +288,7 @@ async injectRowItemsInCart() {
               headers: {
                 accept: "application/json",
                 "Access-Control-Allow-Origin":"*",
-                "Authorization": StringToSend
+                "Authorization": StringToSend,
               }
               
           });        
