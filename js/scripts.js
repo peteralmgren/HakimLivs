@@ -13,7 +13,7 @@ function validateUser() {
     //`https://grupp5hakimlivs.herokuapp.com/login?email=${email}&password=${password}`
   );
   xhr.setRequestHeader("Content-type", "application/json");
-  xhr.send(dojo.toJson({username: email, password: password}));
+  xhr.send(JSON.stringify({username: email, password: password}));
   xhr.onreadystatechange = function () {
     if (xhr.status === 500){
         alert("Kontot hittades inte!");
