@@ -44,23 +44,6 @@ function validateUser() {
 
 }
 
-let customer = [];
-customer = JSON.parse(localStorage.getItem("customer"));
-
-if (!customer) {
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/getcustomers");
-  xhr.send();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      customer = JSON.parse(xhr.responseText);
-      localStorage.setItem("customer", JSON.stringify(customer));
-    }
-  };
-}
-  else{
-      console.log("Felaktig adress. Användaren finns ej!");
-  } 
         
 
 
