@@ -262,8 +262,30 @@ async injectRowItemsInCart() {
 
   printUser(){
     let userInfo = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
+    
+    const xhr = new XMLHttpRequest();
+      xhr.open(
+      "GET",
+      `https://grupp5hakimlivs.herokuapp.com/getCurrentCustomer`
+      );
+        xhr.setRequestHeader("Authorization", "Bearer "+userInfo.jwt);
+        xhr.send(userInfo.jwt);
+        xhr.onreadystatechange = function () {
+          if (xhr.status === 500){
+              alert("Serverfel");
+            }
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            if(!xhr.responseText){
+              alert("Kontot hittades inte!")        
+            }
+            if(xhr.responseText){
+              let data = JSON.parse(xhr.responseText);
+              console.log((data));
+            }
+          };
+        }
 
-    console.log(typeof(userInfo));
+    
   
         document.getElementById('firstname').value = userInfo.firstname;
         document.getElementById('lastname').value = userInfo.lastname;
