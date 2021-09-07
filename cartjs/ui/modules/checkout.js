@@ -260,42 +260,38 @@ async injectRowItemsInCart() {
     
   }
 
-  printUser(){
+  async printUser(){
     let userInfo = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
+    console.log(userInfo.jwt);
+    let StringToSend = "Bearer " +userInfo.jwt;
+    let StringToAuthorize = "jwt="+userInfo.jwt;
     
-    const xhr = new XMLHttpRequest();
-      xhr.open(
-      "GET",
-      `https://grupp5hakimlivs.herokuapp.com/getCurrentCustomer`
-      );
-        xhr.setRequestHeader("Authorization", "Bearer "+userInfo.jwt);
-        xhr.send(userInfo.jwt);
-        xhr.onreadystatechange = function () {
-          if (xhr.status === 500){
-              alert("Serverfel");
-            }
-          if (xhr.readyState === 4 && xhr.status === 200) {
-            if(!xhr.responseText){
-              alert("Kontot hittades inte!")        
-            }
-            if(xhr.responseText){
-              let data = JSON.parse(xhr.responseText);
-              console.log((data));
-            }
-          };
-        }
 
-    
-  
-        document.getElementById('firstname').value = userInfo.firstname;
-        document.getElementById('lastname').value = userInfo.lastname;
-        document.getElementById('inputEmail').value = userInfo.email;
-        document.getElementById('inputAddress').value = userInfo.street;
-        document.getElementById('inputPhone').value = userInfo.phone;
-      
-    
-  
-    
+
+        $.ajax(
+          {
+              url : 'https://grupp5hakimlivs.herokuapp.com/getCurrentCustomer',
+              type: "GET",
+              crossDomain: true,
+              dataType: 'json',
+              data : StringToAuthorize,
+              complete: function(data) {
+                console.log(data.responseText);
+            },
+            success: function(data){
+              document.getElementById('firstname').value = data.firstname;
+              document.getElementById('lastname').value = data.lastname;
+              document.getElementById('inputEmail').value = data.email;
+              document.getElementById('inputAddress').value = data.street;
+              document.getElementById('inputPhone').value = data.phone;              
+          }, 
+              headers: {
+                accept: "application/json",
+                "Access-Control-Allow-Origin":"*",
+                "Authorization": StringToSend
+              }
+              
+          });        
     
     
   }
