@@ -57,7 +57,6 @@ export default class UI {
         let numberOfProducts = 0;
         let theCart = JSON.parse(localStorage.getItem("cart"));
         let item = Object.values(theCart);
-        console.log(item);
         for (let index = 0; index < item.length; index++) {
            numberOfProducts += item[index];
         }
@@ -71,9 +70,6 @@ export default class UI {
 
         let currentCost = parseFloat(localStorage.getItem("cost"));
 
-
-        console.log(operator);
-        console.log(data);
 
         for (let index = 0; index < allProductsArray.length; index++){
             if(allProductsArray[index].id == data){

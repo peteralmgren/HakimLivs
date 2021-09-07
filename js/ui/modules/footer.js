@@ -5,7 +5,8 @@ export default class Footer extends UI {
         super(appendTo);
         this.html=`
         <!-- Footer -->
-        <div id="footer" class="card" style="width: 100%; height: 200px;">    
+        <div id="footer" class="card" style="width: 100%; height: 200px;">
+          <div class="container">    
                 <!-- <footer id="footer" class="bg-dark text-center text-white"> -->
                   <!-- Grid container -->
                   
@@ -91,6 +92,7 @@ export default class Footer extends UI {
                   <!-- Copyright -->
                 <!-- </footer> -->
               </div> 
+             </div> 
           
         </footer>
         <!-- Footer -->
