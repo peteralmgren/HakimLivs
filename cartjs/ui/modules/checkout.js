@@ -263,8 +263,7 @@ async injectRowItemsInCart() {
   printUser(){
     let userInfo = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
 
-    console.log(userInfo);
-
+    console.log(typeof(userInfo));
   
         document.getElementById('firstname').value = userInfo.firstname;
         document.getElementById('lastname').value = userInfo.lastname;
