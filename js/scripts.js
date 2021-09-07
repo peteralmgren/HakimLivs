@@ -7,12 +7,12 @@ function validateUser() {
   let password = document.getElementById("password1").value;
 
   const xhr = new XMLHttpRequest();
-  xhr.setRequestHeader("Content-type", "application/json");
   xhr.open(
     "POST",
     `https://grupp5hakimlivs.herokuapp.com/authenticate?username=${email}&password=${password}`
     //`https://grupp5hakimlivs.herokuapp.com/login?email=${email}&password=${password}`
   );
+  xhr.setRequestHeader("Content-type", "application/json");
   xhr.send();
   xhr.onreadystatechange = function () {
     if (xhr.status === 500){
