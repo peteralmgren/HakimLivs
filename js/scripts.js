@@ -9,7 +9,7 @@ function validateUser() {
   const xhr = new XMLHttpRequest();
   xhr.open(
     "POST",
-    `https://grupp5hakimlivs.herokuapp.com/authenticate?`
+    `https://grupp5hakimlivs.herokuapp.com/authenticate`
     //`https://grupp5hakimlivs.herokuapp.com/login?email=${email}&password=${password}`
   );
   xhr.setRequestHeader("Content-type", "application/json");
