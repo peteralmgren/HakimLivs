@@ -262,7 +262,6 @@ async injectRowItemsInCart() {
 
   async printUser(){
     let userInfo = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
-    console.log(userInfo.jwt);
     let StringToSend = "Bearer " +userInfo.jwt;
     let StringToAuthorize = "jwt="+userInfo.jwt;
     
@@ -276,7 +275,6 @@ async injectRowItemsInCart() {
               dataType: 'json',
               data : StringToAuthorize,
               complete: function(data) {
-                console.log(data.responseText);
             },
             success: function(data){
               document.getElementById('firstname').value = data.firstname;
