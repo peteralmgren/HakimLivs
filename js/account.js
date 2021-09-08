@@ -21,7 +21,7 @@ $(document).ready(function () {
     });
 
     $.ajax({
-      url: "https://hakimlivsgroup5.herokuapp.com/account",
+      url: "https://grupp5hakimlivs.herokuapp.com/account",
       type: "POST",
       crossDomain: true,
       dataType: "jsonp",

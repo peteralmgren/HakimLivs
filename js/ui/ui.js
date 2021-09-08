@@ -65,7 +65,7 @@ export default class UI {
     }
 
     async countCost(data, operator){
-        let allProductsArray = await this.loadData("GET", "https://hakimlivsgroup5.herokuapp.com/all");
+        let allProductsArray = await this.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
         allProductsArray = JSON.parse(allProductsArray);
 
         let currentCost = parseFloat(localStorage.getItem("cost"));

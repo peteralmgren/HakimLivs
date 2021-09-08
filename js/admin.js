@@ -24,7 +24,7 @@ let admin = JSON.parse(sessionStorage.getItem("loggedInCustomer"));
 $('#customer-list').click(function (e) {
 
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://hakimlivsgroup5.herokuapp.com/getcustomers");
+  xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/getcustomers");
   xhr.send();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
@@ -60,7 +60,7 @@ $('#customer-list').click(function (e) {
 $('#show-orders').click(function (e) {
 
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://hakimlivsgroup5.herokuapp.com/allOrders");
+  xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/allOrders");
   xhr.send();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
@@ -122,7 +122,7 @@ $('#show-orders').click(function (e) {
                     let tempOutput = ``;        
                     let uniqueCat = [];            
                       const xhr = new XMLHttpRequest();
-                        xhr.open("GET", "https://hakimlivsgroup5.herokuapp.com/allCategories");
+                        xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/allCategories");
                         xhr.send();
                         xhr.onreadystatechange = function () {
                           if (xhr.readyState === 4 && xhr.status === 200) {
@@ -259,7 +259,7 @@ $('#show-orders').click(function (e) {
     
      $.ajax(
        {
-           url : 'https://hakimlivsgroup5.herokuapp.com/addproduct',
+           url : 'https://grupp5hakimlivs.herokuapp.com/addproduct',
            type: "POST",
            crossDomain: true,
            dataType: 'jsonp',
@@ -292,7 +292,7 @@ $('#show-orders').click(function (e) {
   $('#product-remove').click(function () {
 
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://hakimlivsgroup5.herokuapp.com/all");
+    xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/all");
     xhr.send();
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
@@ -356,7 +356,7 @@ $('#show-orders').click(function (e) {
     
      $.ajax(
      {
-         url : 'https://hakimlivsgroup5.herokuapp.com/removeproduct',
+         url : 'https://grupp5hakimlivs.herokuapp.com/removeproduct',
          type: "POST",
          crossDomain: true,
          dataType: 'jsonp',
@@ -419,7 +419,7 @@ let uniqueCat = [];
 
 
 const xhr2 = new XMLHttpRequest();
-                        xhr2.open("GET", "https://hakimlivsgroup5.herokuapp.com/allCategories");
+                        xhr2.open("GET", "https://grupp5hakimlivs.herokuapp.com/allCategories");
                         xhr2.send();
                         xhr2.onreadystatechange = function () {
                           if (xhr2.readyState === 4 && xhr2.status === 200) {
@@ -540,7 +540,7 @@ const xhr2 = new XMLHttpRequest();
     
      $.ajax(
        {
-           url : 'https://hakimlivsgroup5.herokuapp.com/editproduct',
+           url : 'https://grupp5hakimlivs.herokuapp.com/editproduct',
            type: "POST",
            crossDomain: true,
            dataType: 'jsonp',
