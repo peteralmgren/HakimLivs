@@ -423,8 +423,7 @@ async sendOrder(e){
     alert("Din varukorg är tom");
   }
   else{
-    alert("Tack för din order!");
-
+    
       let dataToSend = {'order_id': newNumber+1, 'jwt': userInfo.jwt};
       console.log(StringToSend)
       console.log(dataToSend)
@@ -497,6 +496,8 @@ async sendOrder(e){
     
           }
       }, 1500);
+
+      alert("Tack för din order!");
       
     setTimeout(()=>{
       localStorage.clear("cart");
