@@ -378,6 +378,8 @@ async clearCart(){
 
 
 async sendOrder(e){
+    let userInfo = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
+    let StringToSend = "Bearer " +userInfo.jwt;
 /*
   let cart = super.readStorage("cart");
   console.log(cart);
@@ -402,6 +404,7 @@ async sendOrder(e){
   };*/
   let OrderArray = await super.loadData("GET", "https://hakimlivsgroup5.herokuapp.com/allorders");
   OrderArray = JSON.parse(OrderArray);
+  console.log(OrderArray)
 
   let OrderNumbers = [];
 
@@ -422,27 +425,27 @@ async sendOrder(e){
   else{
     alert("Tack för din order!");
 
-      var test2 = JSON.parse(sessionStorage.getItem("loggedinCustomer")).id;
-
-      let dataToSend = {'order_id': newNumber+1, 'customer_id': test2};
+      let dataToSend = {'order_id': newNumber+1, 'jwt': userInfo.jwt};
+      console.log(StringToSend)
+      console.log(dataToSend)
           
         $.ajax(
         {
             url : 'https://hakimlivsgroup5.herokuapp.com/neworder',
             type: "POST",
             crossDomain: true,
-            dataType: 'jsonp',
+            dataType: 'json',
             data : dataToSend,
-            /* complete: function(data) {
+            complete: function(data) {
               console.log(data.responseText);
           },
           success: function(data){
             console.log(data);
-        }, */
+        },
             headers: {
               accept: "application/json",
-              "Access-Control-Allow-Origin":"*"
-              
+              "Access-Control-Allow-Origin":"*",
+              "Authorization": StringToSend,              
           }
             
         });        
@@ -475,19 +478,19 @@ async sendOrder(e){
                 url : 'https://hakimlivsgroup5.herokuapp.com/addorder',
                 type: "POST",
                 crossDomain: true,
-                dataType: 'jsonp',
+                dataType: 'json',
                 data : dataToSend2,
-                /* complete: function(data) {
+                complete: function(data) {
                   console.log(data.responseText);
               },
               success: function(data){
                 console.log(data);
-            }, */
-                headers: {
-                  accept: "application/json",
-                  "Access-Control-Allow-Origin":"*"
-                  
-              }
+            }, 
+            headers: {
+              accept: "application/json",
+              "Access-Control-Allow-Origin":"*",
+              "Authorization": StringToSend,              
+          }
                 
             });
             e.preventDefault();
