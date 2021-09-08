@@ -104,7 +104,7 @@ export default class Checkout extends UI {
   }
 
 async injectRowItemsInCart() {
-    let allProducts = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
+    let allProducts = await super.loadData("GET", "https://hakimlivsgroup5.herokuapp.com/all");
     allProducts = JSON.parse(allProducts);
     let cart = super.readStorage("cart");
     //let sum = 0;
@@ -269,7 +269,7 @@ async injectRowItemsInCart() {
 
         $.ajax(
           {
-              url : 'https://grupp5hakimlivs.herokuapp.com/getCurrentCustomer',
+              url : 'https://hakimlivsgroup5.herokuapp.com/getCurrentCustomer',
               type: "GET",
               crossDomain: true,
               dataType: 'json',
@@ -400,7 +400,7 @@ async sendOrder(e){
       hideLogin()
     }
   };*/
-  let OrderArray = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/allOrders");
+  let OrderArray = await super.loadData("GET", "https://hakimlivsgroup5.herokuapp.com/allOrders");
   OrderArray = JSON.parse(OrderArray);
 
   let OrderNumbers = [];
@@ -428,7 +428,7 @@ async sendOrder(e){
           
         $.ajax(
         {
-            url : 'https://grupp5hakimlivs.herokuapp.com/neworder',
+            url : 'https://hakimlivsgroup5.herokuapp.com/neworder',
             type: "POST",
             crossDomain: true,
             dataType: 'jsonp',
@@ -472,7 +472,7 @@ async sendOrder(e){
            
             $.ajax(
             {
-                url : 'https://grupp5hakimlivs.herokuapp.com/addorder',
+                url : 'https://hakimlivsgroup5.herokuapp.com/addorder',
                 type: "POST",
                 crossDomain: true,
                 dataType: 'jsonp',

@@ -18,7 +18,7 @@ export default class Carousel extends UI {
       let random5;
     
 
-    let ProductsArray = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
+    let ProductsArray = await super.loadData("GET", "https://hakimlivsgroup5.herokuapp.com/all");
     ProductsArray = JSON.parse(ProductsArray);
 
     for(let i = 0; i < 15; i++){

@@ -16,7 +16,7 @@ export default class Order extends UI {
   }
 
 async showOrder() {
-  let OrdersArray = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/orderInfo");
+  let OrdersArray = await super.loadData("GET", "https://hakimlivsgroup5.herokuapp.com/orderInfo");
   OrdersArray = JSON.parse(OrdersArray);
 
   console.log(OrdersArray)

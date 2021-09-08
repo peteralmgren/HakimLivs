@@ -53,7 +53,7 @@ export default class Products extends UI {
   */
   async showProducts(data) {
     
-    let ProductsArray = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
+    let ProductsArray = await super.loadData("GET", "https://hakimlivsgroup5.herokuapp.com/all");
     ProductsArray = JSON.parse(ProductsArray);
     
     let cart = super.readStorage("cart");
