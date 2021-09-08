@@ -400,7 +400,7 @@ async sendOrder(e){
       hideLogin()
     }
   };*/
-  let OrderArray = await super.loadData("GET", "https://hakimlivsgroup5.herokuapp.com/allOrders");
+  let OrderArray = await super.loadData("GET", "https://hakimlivsgroup5.herokuapp.com/allorders");
   OrderArray = JSON.parse(OrderArray);
 
   let OrderNumbers = [];
