@@ -65,13 +65,13 @@ export default class Checkout extends UI {
               >Bekräfta beställning
               </button>
               <button class="btn btn-danger" id="clearCart">Rensa varukorg</button>
-              <button
+              <!--<button
                 type="button"
                 id="Payment"
                 class="payment-button btn btn-primary btn-lg t-1 hover-shadow"
               >
                 Betala
-              </button>
+              </button>-->
             </div>
           </div>
         </div>
