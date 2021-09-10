@@ -64,6 +64,13 @@ export default class Checkout extends UI {
                 Bekräfta beställning
               </button>
               <button class="btn btn-danger" id="clearCart">Rensa varukorg</button>
+              <button
+                type="button"
+                id="Payment"
+                class="payment-button btn btn-primary btn-lg t-1 hover-shadow"
+              >
+                Betala
+              </button>
             </div>
           </div>
         </div>
@@ -94,6 +101,7 @@ export default class Checkout extends UI {
       if (e.target.className == "minus") this.decreaseItemsInCartWithOne(e);
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
       if (e.target.className == "purchase-button btn btn-primary btn-lg t-1 hover-shadow") await this.sendOrder(e);
+      if (e.target.className == "payment-button btn btn-primary btn-lg t-1 hover-shadow") await this.sendPayment(e);
       if (e.target.className == "btn btn-danger") this.clearCart();
     });
     
@@ -505,7 +513,85 @@ async sendOrder(e){
     
   }
 
+  
 
+
+}
+
+async sendPayment(e){
+  
+  let currency = '100 INR';
+  currency = currency.replace("INR", "").trim() ;
+  let accessToken = '';
+  
+  const dataDetail = {
+      "intent": "sale",
+      "payer": {
+          "payment_method": "paypal"
+      },
+      "transactions": [{
+          "amount": {
+              "total": currency,
+              "currency": "INR",
+              "details": {
+                  "subtotal": currency,
+                  "tax": "0",
+                  "shipping": "0",
+                  "handling_fee": "0",
+                  "shipping_discount": "0",
+                  "insurance": "0"
+              }
+          }
+      }],
+      "redirect_urls": {
+          "return_url": "https://example.com",
+          "cancel_url": "https://example.com"
+      }
+  }
+  
+  fetch('https://api.sandbox.paypal.com/v1/oauth2/token', { 
+      method: 'POST',
+      headers: { 
+           'Accept': 'application/json', 
+           'Accept-Language': 'en_US',
+           'Content-Type': 'application/x-www-form-urlencoded',
+           'Authorization': 'Basic ' + btoa('A5y5RODwrR8vjKxslhEoCROlzRDkA1NQAAZ.3C8KDJme0EMCZvy1iaqV')
+      },
+      body: 'grant_type=client_credentials'
+  }).then(response => response.json())
+    .then(async (data) => {
+        console.log(data.access_token)
+        accessToken=data.access_token
+  
+      // console.log(JSON.stringify(dataDetail))
+  
+      let createRequest = {
+          method: 'POST', 
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer '+(accessToken)
+          },
+          body:JSON.stringify(dataDetail)
+      }
+      console.log('Request body string',createRequest.body);
+      console.log('Request body (formatted)', JSON.stringify( JSON.parse(createRequest.body) ,null,4) );
+      fetch ('https://api.sandbox.paypal.com/v1/payments/payment',createRequest
+  )
+      .then(function(response) {
+          console.log('Response object', response);
+          return response.json()
+      })
+      .then(async(data) => {
+          console.log('Response data',data);
+          console.log('Response data (formatted)', JSON.stringify(data,null,4) );
+      }).catch(err => {
+          console.log({ ...err })
+      })
+  }).catch(function (error) {
+      let edata = error.message;
+      console.log('Error:', edata)
+  })
+  
 }
 
 }
