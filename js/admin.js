@@ -296,6 +296,12 @@ $('#show-orders').click(function (e) {
      $.ajax(
        {
            url : 'https://hakimlivsgroup5.herokuapp.com/addproduct',
+           headers: {
+            'Authorization': StringToSend,
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Mehtods':'GET, POST, DELETE'
+          },
            type: "POST",
            crossDomain: true,
            dataType: 'jsonp',
@@ -304,13 +310,7 @@ $('#show-orders').click(function (e) {
             success : function(response) {
               console.log(response);
              },
-             
-           headers: {
-             accept: "application/json",
-             "Access-Control-Allow-Origin":"*"
-             
-         }
-         
+                     
        }); 
        e.preventDefault();
       
@@ -388,6 +388,12 @@ $('#show-orders').click(function (e) {
      $.ajax(
      {
          url : 'https://hakimlivsgroup5.herokuapp.com/removeproduct',
+         headers: {
+          'Authorization': StringToSend,
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin':'*',
+          'Access-Control-Allow-Mehtods':'GET, POST, DELETE'
+        },
          type: "POST",
          crossDomain: true,
          dataType: 'jsonp',
@@ -396,12 +402,6 @@ $('#show-orders').click(function (e) {
            console.log(data);
            
            },
- 
-         headers: {
-           accept: "application/json",
-           "Access-Control-Allow-Origin":"*"
-           
-       }
        
      });
      e.preventDefault();
