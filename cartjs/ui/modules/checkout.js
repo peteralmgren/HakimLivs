@@ -490,7 +490,7 @@ async sendOrder(e){
               accept: "application/json",
               "Access-Control-Allow-Origin":"*",
               "Authorization": StringToSend,              
-          }
+            }
                 
             });
             e.preventDefault();

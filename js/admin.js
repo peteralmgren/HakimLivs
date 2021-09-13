@@ -1,8 +1,8 @@
 console.log("test")
-
+/*
 if(!sessionStorage.getItem("loggedinCustomer") || JSON.parse(sessionStorage.getItem("loggedinCustomer")).id != 196){
   location.replace("index.html")
-}
+}*/
 
 let admin = JSON.parse(sessionStorage.getItem("loggedInCustomer"));
 
@@ -23,93 +23,117 @@ let admin = JSON.parse(sessionStorage.getItem("loggedInCustomer"));
 } */
 $('#customer-list').click(function (e) {
 
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://hakimlivsgroup5.herokuapp.com/getcustomers");
-  xhr.send();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      let customer = JSON.parse(xhr.responseText);
+  let userInfo = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
+  let StringToSend = "Bearer " +userInfo.jwt;
+  console.log(StringToSend)
 
-  document.getElementById("admin-bottomheader").innerHTML = "Kundlista";
-  document.getElementById("customer-info1").innerHTML = "Adress";
-  document.getElementById("customer-info2").innerHTML = "Emailadress"
+  $.ajax(
+    {
+        url : 'http://localhost:8080/getusers',
+        headers: {
+          'Access-Control-Allow-Origin':'*',
+          'Authorization': StringToSend,
+          'Content-Type': 'application/json'          
+        },
+        type: "GET",
+        crossDomain: true,
+        crossOrigin: true,
+        dataType: 'json',
+        complete: function(data) {
+          
+      },
+      success: function(data){
+        console.log(data);  
+        document.getElementById("admin-bottomheader").innerHTML = "Kundlista";
+        document.getElementById("customer-info1").innerHTML = "Adress";
+        document.getElementById("customer-info2").innerHTML = "Emailadress"
+            
+        
+        let output = ``;
       
-  
-  let output = ``;
-
-  customer.forEach(customer =>{
-    
-    output += `
-    <tr>
-    <td></td>
-  <td>${customer.id}</td>
-  <td>${customer.firstname+" "+customer.lastname}</td>
-  <td>${customer.street}</td>
-  <td><a href="mailto:${customer.email}">${customer.email}</a></td>
- 
-  </tr>
-  `;
-  
-  })
-  document.getElementById("DB-cursomers").innerHTML=output;
-}
-}
+        data.forEach(data =>{
+          
+          output += `
+          <tr>
+          <td></td>
+        <td>${data.id}</td>
+        <td>${data.firstname+" "+data.lastname}</td>
+        <td>${data.street}</td>
+        <td><a href="mailto:${data.email}">${data.email}</a></td>
+       
+        </tr>
+        `;
+        
+        })
+        document.getElementById("DB-cursomers").innerHTML=output;
+      }   
+        
+    });
 
 });
 
 $('#show-orders').click(function (e) {
+  let userInfo = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
+  let StringToSend = "Bearer " +userInfo.jwt;
 
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://hakimlivsgroup5.herokuapp.com/allOrders");
-  xhr.send();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      let orders = JSON.parse(xhr.responseText);
+  $.ajax(
+    {
+        url : 'http://localhost:8080/allorders',
+        headers: {
+          'Authorization': StringToSend,
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin':'*',
+          'Access-Control-Allow-Mehtods':'GET, POST, DELETE'
+        },
+        type: "GET",
+        crossDomain: true,
+        dataType: 'json',
+        complete: function(data) {
+          
+      },
+      success: function(data){
+        console.log(data)
 
-      console.log(orders)
-
-  document.getElementById("admin-bottomheader").innerHTML = "Kundordrar";
-  document.getElementById("customer-info1").innerHTML = "Datum";
-  document.getElementById("customer-info2").innerHTML = "Orderstatus"
-  document.getElementById("order-id").innerHTML = "Order ID"
+        document.getElementById("admin-bottomheader").innerHTML = "Kundordrar";
+        document.getElementById("customer-info1").innerHTML = "Datum";
+        document.getElementById("customer-info2").innerHTML = "Orderstatus"
+        document.getElementById("order-id").innerHTML = "Order ID"
+            
+        
+        let output = ``;
       
-  
-  let output = ``;
-
-  orders.forEach(orders =>{
-
-    var date = new Date(orders.timestamp);
+        data.forEach(data =>{
       
+          var date = new Date(data.timestamp);
+            
+            
+            date=(date.getDate()+
+                "/"+(date.getMonth()+1)+
+                "/"+date.getFullYear()+
+                " "+(date.getHours()<10?'0':'')+date.getHours()+
+                ":"+(date.getMinutes()<10?'0':'')+date.getMinutes());
       
-      date=(date.getDate()+
-          "/"+(date.getMonth()+1)+
-          "/"+date.getFullYear()+
-          " "+(date.getHours()<10?'0':'')+date.getHours()+
-          ":"+(date.getMinutes()<10?'0':'')+date.getMinutes());
-
-    
-    output += `
-    <tr>
-      <td><a id="saveOrderID${orders.id}" href="printOrder.html#${orders.id}" data-order-id="${orders.id}">${orders.id}</a></td>
-      <td>${orders.customer.id}</td>
-      <td>${orders.customer.firstname} ${orders.customer.lastname}</td>
-      <td>${date}</td>
-      <td>${orders.orderComplete?"skickad" : "väntar"}</td>
-    </tr>
-  `;
-
-  })
-  document.getElementById("DB-cursomers").innerHTML=output;
-  orders.forEach(orders =>{
-    document.getElementById("saveOrderID"+orders.id).addEventListener("click", function(e){
-      sessionStorage.setItem("order-id", e.target)
-    })
-  })
- 
-  
-  e.preventDefault()
-}
-}
+          
+          output += `
+          <tr>
+            <td><a id="saveOrderID${data.id}" href="printOrder.html#${data.id}" data-order-id="${data.id}">${data.id}</a></td>
+            <td>${data.customer.id}</td>
+            <td>${data.customer.firstname} ${data.customer.lastname}</td>
+            <td>${date}</td>
+            <td>${data.orderComplete?"skickad" : "väntar"}</td>
+          </tr>
+        `;
+      
+        })
+        document.getElementById("DB-cursomers").innerHTML=output;
+        data.forEach(data =>{
+          document.getElementById("saveOrderID"+data.id).addEventListener("click", function(e){
+            sessionStorage.setItem("order-id", e.target)
+          })
+        })        
+      }   
+        
+    });
 
 });
 
