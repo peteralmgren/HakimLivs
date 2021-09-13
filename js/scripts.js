@@ -1,6 +1,6 @@
-import jwt_decode from 'jwt-decode';
-
 function validateUser() {
+
+  import jwt_decode from 'jwt-decode';
   
 
   // Check the input when logging in
