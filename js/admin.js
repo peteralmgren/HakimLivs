@@ -245,78 +245,80 @@ $('#show-orders').click(function (e) {
                       </div>`             
                             
           document.getElementById("admin-addrevome-form").innerHTML=output;
+
+          $("#prev-btn").click(function(){
+            let price = document.getElementById("price").value;
+            let title = document.getElementById("title").value;
+            let desc = document.getElementById("description").value;
+            let imgsrc = document.getElementById("image").value;
+      
+            document.getElementById("preview-price").innerHTML = price;
+            document.getElementById("preview-title").innerHTML = title;
+            document.getElementById("preview-desc").innerHTML = desc;
+            document.getElementById("preview-img").src = imgsrc;
+      
+      
+      
+          });
+      
+                 
+          $("#add-btn").click(function(e){
+            
+            var jsonData = {};
+            
+            var formData = $("#myform").serializeArray();
+       
+            console.log(formData)
+       
+          $.each(formData, function() {
+               if (jsonData[this.name]) {
+                 
+                  if (!jsonData[this.name].push) {
+                   
+                      jsonData[this.name] = [jsonData[this.name]];
+                      
+                  }
+                  jsonData[this.name].push(this.value || '');
+                  
+              } else {
+                  jsonData[this.name] = this.value || '';
+                  
+              }       
+          });
+       
+          console.log(jsonData)
+          
+           $.ajax(
+             {
+                 url : 'https://hakimlivsgroup5.herokuapp.com/addproduct',
+                 headers: {
+                  'Authorization': StringToSend,
+                  'Content-Type': 'application/json',
+                  'Access-Control-Allow-Origin':'*',
+                  'Access-Control-Allow-Mehtods':'GET, POST, DELETE'
+                },
+                 type: "POST",
+                 crossDomain: true,
+                 dataType: 'jsonp',
+                 data : jsonData,
+                 async: true,
+                  success : function(response) {
+                    console.log(response);
+                   },
+                           
+             }); 
+             e.preventDefault();
+            
+          });
             
         }   
           
       });
                          
         
-    $("#prev-btn").click(function(e){
-      let price = document.getElementById("price").value;
-      let title = document.getElementById("title").value;
-      let desc = document.getElementById("description").value;
-      let imgsrc = document.getElementById("image").value;
-
-      document.getElementById("preview-price").innerHTML = price;
-      document.getElementById("preview-title").innerHTML = title;
-      document.getElementById("preview-desc").innerHTML = desc;
-      document.getElementById("preview-img").src = imgsrc;
-
-
-
-    });
-
-           
-    $("#add-btn").click(function(e){
-      
-      var jsonData = {};
-      
-      var formData = $("#myform").serializeArray();
- 
-      console.log(formData)
- 
-    $.each(formData, function() {
-         if (jsonData[this.name]) {
-           
-            if (!jsonData[this.name].push) {
-             
-                jsonData[this.name] = [jsonData[this.name]];
-                
-            }
-            jsonData[this.name].push(this.value || '');
-            
-        } else {
-            jsonData[this.name] = this.value || '';
-            
-        }       
-    });
- 
-    console.log(jsonData)
     
-     $.ajax(
-       {
-           url : 'https://hakimlivsgroup5.herokuapp.com/addproduct',
-           headers: {
-            'Authorization': StringToSend,
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin':'*',
-            'Access-Control-Allow-Mehtods':'GET, POST, DELETE'
-          },
-           type: "POST",
-           crossDomain: true,
-           dataType: 'jsonp',
-           data : jsonData,
-           async: true,
-            success : function(response) {
-              console.log(response);
-             },
-                     
-       }); 
-       e.preventDefault();
-      
-    });
                              
-    });
+});
                           
   
   
