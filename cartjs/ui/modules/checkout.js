@@ -87,8 +87,6 @@ export default class Checkout extends UI {
       if (e.target.className == "trashcan pe-1") this.deleteRowInCart(e);
       if (e.target.className == "minus") this.decreaseItemsInCartWithOne(e);
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
-      if (e.target.className == "purchase-button btn btn-primary btn-lg t-1 hover-shadow") await this.sendOrder(e);
-      if (e.target.className == "payment-button btn btn-primary btn-lg t-1 hover-shadow") await this.sendPayment(e);
       if (e.target.className == "btn btn-danger") this.clearCart();
     });
     
