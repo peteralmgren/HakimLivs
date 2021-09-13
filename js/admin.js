@@ -146,7 +146,7 @@ $('#show-orders').click(function (e) {
                     let tempOutput = ``;        
                     let uniqueCat = [];            
                       const xhr = new XMLHttpRequest();
-                        xhr.open("GET", "https://hakimlivsgroup5.herokuapp.com/allCategories");
+                        xhr.open("GET", "https://hakimlivsgroup5.herokuapp.com/allcategories");
                         xhr.send();
                         xhr.onreadystatechange = function () {
                           if (xhr.readyState === 4 && xhr.status === 200) {
