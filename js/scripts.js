@@ -1,6 +1,4 @@
 function validateUser() {
-
-  import jwt_decode from 'jwt-decode';
   
 
   // Check the input when logging in
@@ -29,11 +27,6 @@ function validateUser() {
       let data = JSON.parse(xhr.responseText);
       sessionStorage.setItem("loggedinCustomer", JSON.stringify(data));
 
-      let token = JSON.stringify(data);
-
-      let decoded = jwt_decode(token);
-      console.log(decoded);
-     
       if (data.email === "hakim@hakim") {
         window.location.replace("admin.html");
       }else{
