@@ -1,4 +1,6 @@
 console.log("test")
+let userInfo = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
+let StringToSend = "Bearer " +userInfo.jwt;
 /*
 if(!sessionStorage.getItem("loggedinCustomer") || JSON.parse(sessionStorage.getItem("loggedinCustomer")).id != 196){
   location.replace("index.html")
