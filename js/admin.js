@@ -299,7 +299,7 @@ $('#show-orders').click(function (e) {
                 },
                  type: "POST",
                  crossDomain: true,
-                 dataType: 'json',
+                 contentType: 'json',
                  data : jsonData,
                  async: true,
                   success : function(response) {
