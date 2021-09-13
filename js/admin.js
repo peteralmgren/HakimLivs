@@ -29,7 +29,7 @@ $('#customer-list').click(function (e) {
 
   $.ajax(
     {
-        url : 'http://localhost:8080/getusers',
+        url : 'http://hakimlivsgroup5.herokuapp.com/getusers',
         headers: {
           'Access-Control-Allow-Origin':'*',
           'Authorization': StringToSend,
@@ -78,7 +78,7 @@ $('#show-orders').click(function (e) {
 
   $.ajax(
     {
-        url : 'http://localhost:8080/allorders',
+        url : 'http://hakimlivsgroup5.herokuapp.com/allorders',
         headers: {
           'Authorization': StringToSend,
           'Content-Type': 'application/json',
