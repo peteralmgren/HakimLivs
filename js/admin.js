@@ -140,105 +140,119 @@ $('#show-orders').click(function (e) {
 
 //$(document).ready(function() {
   $('#product-add').click(function () {
-    
-    
 
-                    let tempOutput = ``;        
-                    let uniqueCat = [];            
-                      const xhr = new XMLHttpRequest();
-                        xhr.open("GET", "https://hakimlivsgroup5.herokuapp.com/allcategories");
-                        xhr.send();
-                        xhr.onreadystatechange = function () {
-                          if (xhr.readyState === 4 && xhr.status === 200) {
 
-                            var output =""
-      
-    output +=`
-    <div class="card">
-      <div class="card-header text-secondary">
-        <label class="bg-white" style="color:black;">Admin skapa produkt formulär
-        </label>
-      </div>
-        <form id="myform" type="post">
-          <div class="card-body">
-            <div class="row mb-2 text-muted">
-              
-                <form class="form-inline">
-                  <div class="form-group">
-                    <div class="elements">
-                        <label for="category">Välj kategori</label>
-                      <select class="custom-select custom-select-sm" name="category_id">
-                      `
-                            let categories = JSON.parse(xhr.responseText);
+    $.ajax(
+      {
+          url : 'http://hakimlivsgroup5.herokuapp.com/allcategories',
+          headers: {
+            'Authorization': StringToSend,
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Mehtods':'GET, POST, DELETE'
+          },
+          type: "GET",
+          crossDomain: true,
+          dataType: 'json',
+          complete: function(data) {
+            
+        },
+        success: function(data){
 
-                            console.log(categories)
-
-                            
-                          
-                            for (let cat in categories) {
-                              uniqueCat.push(categories[cat].categoryName);
-                            }
-                      
-                            uniqueCat = uniqueCat.filter((value, index, categoryArray) => categoryArray.indexOf(value) === index);
-                                                    
-                            for (let i = 0; i<uniqueCat.length; i++) {
-                              tempOutput += `<option value="${i+1}">${uniqueCat[i]}</option>`;
+          let tempOutput = ``;        
+          let uniqueCat = [];   
+          
+          var output =""
+          output +=`
+                    <div class="card">
+                      <div class="card-header text-secondary">
+                        <label class="bg-white" style="color:black;">Admin skapa produkt formulär
+                        </label>
+                      </div>
+                        <form id="myform" type="post">
+                          <div class="card-body">
+                            <div class="row mb-2 text-muted">
                               
-                            }
-                            console.log(uniqueCat)
-                            console.log(tempOutput)
-                            output += tempOutput;         
-                            output += `
-                      </select>
-                    </div>
-                        <div class="elements">
-                          <label for="title">Skriv i produktnamn</label>
-                          <input id="title" required="required" type="text"  value="" name="title" />
-                        </div>
-                        <div class="elements">
-                          <label for="description">Produktinfo</label>
-                          <textarea class="form-control" rows="3" required="required" type="text" value=""
-                          id="description" name="description" ></textarea>
-                        </div>	
-                        <div class="elements">
-                          <label for="price">Pris</label>
-                          <input id="price" required="required" type="number"  value="" name="price"  />
-                        </div>
-                        <div class="elements">
-                          <label for="image">Sökväg till bild</label>
-                          <input id="image" required="required" value="" name="image" type="text" size=80  />
-                        </div>
-                        <div class="elements">
-                          <label for="compprice">Jämförelsepris</label>
-                          <input id="compprice" required="required" type="number"  value="" name="compprice"  />
-                        </div>
-                        <div class="elements">
-                          <label for="perprice">Styckpris</label>
-                          <input id="perprice" required="required" type="number"  value="" name="perprice"  />
-                        </div>
-                        <div class="elements">
-                          <label for="brand">Tillverkare</label>
-                          <input id="brand" required="required" type="text"  value="" name="brand"  />
-                        </div>
-                        <div class="elements">
-                          <label for="amount">Mängd</label>
-                          <input id="amount" required="required" type="text"  value="" name="amount"  />
-                        </div>
-                        
-                          <p><input id="add-btn" type="submit" value="Submit" /> 
-                            <input type="reset" value="Reset" /></p>
-                            <input id ="prev-btn" type="button" value="Preview"/>
-                  </div>
-                </form>
-              
-            </div>
-          </div>
-        </form>
-      </div>`             
-                            
-    }
-    document.getElementById("admin-addrevome-form").innerHTML=output;
+                                <form class="form-inline">
+                                  <div class="form-group">
+                                    <div class="elements">
+                                        <label for="category">Välj kategori</label>
+                                      <select class="custom-select custom-select-sm" name="category_id">
+                                      `
+                                            let categories = JSON.parse(xhr.responseText);
 
+                                            console.log(categories)
+
+                                            
+                                          
+                                            for (let cat in categories) {
+                                              uniqueCat.push(categories[cat].categoryName);
+                                            }
+                                      
+                                            uniqueCat = uniqueCat.filter((value, index, categoryArray) => categoryArray.indexOf(value) === index);
+                                                                    
+                                            for (let i = 0; i<uniqueCat.length; i++) {
+                                              tempOutput += `<option value="${i+1}">${uniqueCat[i]}</option>`;
+                                              
+                                            }
+                                            console.log(uniqueCat)
+                                            console.log(tempOutput)
+                                            output += tempOutput;         
+                                            output += `
+                                      </select>
+                                    </div>
+                                        <div class="elements">
+                                          <label for="title">Skriv i produktnamn</label>
+                                          <input id="title" required="required" type="text"  value="" name="title" />
+                                        </div>
+                                        <div class="elements">
+                                          <label for="description">Produktinfo</label>
+                                          <textarea class="form-control" rows="3" required="required" type="text" value=""
+                                          id="description" name="description" ></textarea>
+                                        </div>	
+                                        <div class="elements">
+                                          <label for="price">Pris</label>
+                                          <input id="price" required="required" type="number"  value="" name="price"  />
+                                        </div>
+                                        <div class="elements">
+                                          <label for="image">Sökväg till bild</label>
+                                          <input id="image" required="required" value="" name="image" type="text" size=80  />
+                                        </div>
+                                        <div class="elements">
+                                          <label for="compprice">Jämförelsepris</label>
+                                          <input id="compprice" required="required" type="number"  value="" name="compprice"  />
+                                        </div>
+                                        <div class="elements">
+                                          <label for="perprice">Styckpris</label>
+                                          <input id="perprice" required="required" type="number"  value="" name="perprice"  />
+                                        </div>
+                                        <div class="elements">
+                                          <label for="brand">Tillverkare</label>
+                                          <input id="brand" required="required" type="text"  value="" name="brand"  />
+                                        </div>
+                                        <div class="elements">
+                                          <label for="amount">Mängd</label>
+                                          <input id="amount" required="required" type="text"  value="" name="amount"  />
+                                        </div>
+                                        
+                                          <p><input id="add-btn" type="submit" value="Submit" /> 
+                                            <input type="reset" value="Reset" /></p>
+                                            <input id ="prev-btn" type="button" value="Preview"/>
+                                  </div>
+                                </form>
+                              
+                            </div>
+                          </div>
+                        </form>
+                      </div>`             
+                            
+          document.getElementById("admin-addrevome-form").innerHTML=output;
+            
+        }   
+          
+      });
+                         
+        
     $("#prev-btn").click(function(e){
       let price = document.getElementById("price").value;
       let title = document.getElementById("title").value;
@@ -302,15 +316,10 @@ $('#show-orders').click(function (e) {
        }); 
        e.preventDefault();
       
- 
-   
- });
+    });
                              
-    }
+    });
                           
-    
-
-  })
   
   
   $('#product-remove').click(function () {
