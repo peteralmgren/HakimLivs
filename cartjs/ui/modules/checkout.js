@@ -57,21 +57,7 @@ export default class Checkout extends UI {
               <div class="container-fluid"></div>
               <hr />
               <div id="paypal-button-container"></div>
-
-              <button
-              type="button"
-              id="Purchase"
-              class="purchase-button btn btn-primary btn-lg t-1 hover-shadow"
-              >Bekräfta beställning
-              </button>
               <button class="btn btn-danger" id="clearCart">Rensa varukorg</button>
-              <!--<button
-                type="button"
-                id="Payment"
-                class="payment-button btn btn-primary btn-lg t-1 hover-shadow"
-              >
-                Betala
-              </button>-->
             </div>
           </div>
         </div>
