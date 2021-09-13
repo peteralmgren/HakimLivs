@@ -119,8 +119,8 @@ $('#show-orders').click(function (e) {
           output += `
           <tr>
             <td><a id="saveOrderID${data.id}" href="printOrder.html#${data.id}" data-order-id="${data.id}">${data.id}</a></td>
-            <td>${data.customer.id}</td>
-            <td>${data.customer.firstname} ${data.customer.lastname}</td>
+            <td>${data.user.id}</td>
+            <td>${data.user.firstname} ${data.user.lastname}</td>
             <td>${date}</td>
             <td>${data.orderComplete?"skickad" : "väntar"}</td>
           </tr>
