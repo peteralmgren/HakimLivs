@@ -117,12 +117,12 @@ insertPayPalWidget() {
         // Successful capture! For dev/demo purposes:
           console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
           var transaction = orderData.purchase_units[0].payments.captures[0];
-          alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+          //alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
           parent.sendOrder();
         // When ready to go live, remove the alert and show a success message within this page. For example:
-        // var element = document.getElementById('paypal-button-container');
-        // element.innerHTML = '';
-        // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+        var element = document.getElementById('paypal-button-container');
+        element.innerHTML = '';
+        element.innerHTML = '<h3>Tack för din betalning!\n\nDin order är mottagen</h3>';
         // Or go to another URL:  actions.redirect('thank_you.html');
       });
     }
@@ -450,8 +450,7 @@ async sendOrder(){
     alert("Din varukorg är tom");
   }
   else{
-    alert("Tack för din order!");
-
+    
       let dataToSend = {'order_id': newNumber+1, 'jwt': userInfo.jwt};
       console.log(StringToSend)
       console.log(dataToSend)
@@ -528,7 +527,7 @@ async sendOrder(){
     setTimeout(()=>{
       localStorage.clear("cart");
     location.replace("index.html");
-    }, 3000);
+    }, 6000);
     
   }
 
