@@ -27,6 +27,8 @@ function validateUser() {
       let data = JSON.parse(xhr.responseText);
       sessionStorage.setItem("loggedinCustomer", JSON.stringify(data));
 
+      console.log(atob(data.split('.')[1]));
+
       if (data.email === "hakim@hakim") {
         window.location.replace("admin.html");
       }else{
