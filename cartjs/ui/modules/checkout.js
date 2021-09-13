@@ -93,17 +93,19 @@ export default class Checkout extends UI {
     this.injectRowItemsInCart();
     this.printUser();
     this.sum = 0;
+    this.totalSum = 0;
     this.insertPayPalWidget();
   }
 
 insertPayPalWidget() {
+  let parent = this;
   paypal.Buttons({   
     // Sets up the transaction when a payment button is clicked
     createOrder: function(data, actions) {
       return actions.order.create({
         purchase_units: [{
           amount: {
-            value: '77.44' // Can reference variables or functions. Example: \`value: document.getElementById('...').value\`
+            value: parent.totalSum // Can reference variables or functions. Example: \`value: document.getElementById('...').value\`
           }
         }]
       });
