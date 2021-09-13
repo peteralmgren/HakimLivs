@@ -271,10 +271,11 @@ async injectRowItemsInCart() {
   }
 
   updatePrice(){
-    console.log(this.sum);
+    console.log("Updated price:", this.sum);
     let moms = (this.sum * 0.12).toFixed(2); 
     moms = moms.replace(".", ",");
     let totalsum = (this.sum*1+50).toFixed(2);
+    this.totalSum = totalsum;
     totalsum = totalsum.replace(".", ",");
     let summavaror = +this.sum;
     
