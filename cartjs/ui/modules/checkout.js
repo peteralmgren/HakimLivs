@@ -320,77 +320,7 @@ async injectRowItemsInCart() {
     
     
   }
-  // /* async */ sendOrder (e){
-    
-       
-  //     var jsonData = {}
-
-       
-
-  //     var test = {'title':'jsontest','description':'json', 'price':4, 'image':'json', 'category_id':2}
-
-      
-
-  //   console.log(test2)
-
-    
-
-  //   let cart = JSON.parse(localStorage.getItem('cart'))
-  //   console.log(cart)
-
-  //   let customerInfo = "customer_id:12"
-
-  //   let cartkeys = Object.keys(cart);
-  //   let cartvalues = Object.values(cart);
-  //   console.log(cartkeys);
-  //   console.log(cartvalues);
-
-  //   let cartarray = []
-    
-  //   var test2 = {'customer_id':12,'product_id':cartkeys, 'quantity':cartvalues}
-
-
-
-  //   /* cartkeys.forEach(key => {
-  //     cartvalues.forEach(values => {
-  //       values=test2.cartvalues
-  //     cartarray.push(test2)
-  //     key=test2.cartkeys
-  //     cartarray.push(test2)
-  //     }})); */
-    
-  //   console.log(test2);
-
-    
-  //   /* cart.map((currentValue) => {'' } ) */
-
-
-    
-  //    /* $.ajax(
-  //    {
-  //        url : 'https://grupp5hakimlivs.herokuapp.com/order',
-  //        type: "POST",
-  //        crossDomain: true,
-  //        dataType: 'jsonp',
-  //        data : test2,
-  //        complete: function(data) {
-  //          console.log(data.responseText);
-  //      },
-  //      success: function(data){
-  //        console.log(data);
-  //    },
-  //         headers: {
-  //          accept: "application/json",
-  //          "Access-Control-Allow-Origin":"*"
-           
-  //      }
-         
-  //    }); */
-     
-    
- 
- // }
-//}
+  
 
 
 //BUGGIG: När man skickas tillbaka till index så fungerar inte sidan som den ska
@@ -403,32 +333,10 @@ async clearCart(){
 }
 
 
-
 async sendOrder(){
     let userInfo = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
     let StringToSend = "Bearer " +userInfo.jwt;
-/*
-  let cart = super.readStorage("cart");
-  console.log(cart);
 
-  const xhr = new XMLHttpRequest();
-  xhr.open(
-    "POST",
-    `https://grupp5hakimlivs.herokuapp.com/checkout}`
-  );
-  xhr.send(cart);
-  xhr.onreadystatechange = function () {
-    if (xhr.status === 500){
-        alert("Kontot hittades inte!");
-      }
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      let data = JSON.parse(xhr.responseText);
-      sessionStorage.setItem("loggedinCustomer", JSON.stringify(data));
-      console.log(data);
-      window.location.replace("index.html");
-      hideLogin()
-    }
-  };*/
   let OrderArray = await super.loadData("GET", "https://hakimlivsgroup5.herokuapp.com/allorders");
   OrderArray = JSON.parse(OrderArray);
   console.log(OrderArray)
@@ -443,8 +351,6 @@ async sendOrder(){
   if (!isFinite(newNumber)){
     newNumber = 0;
   }
-
-
 
   if(!localStorage.numberInCart || localStorage.numberInCart == 0){
     alert("Din varukorg är tom");
@@ -534,82 +440,6 @@ async sendOrder(){
   
 
 
-}
-
-async sendPayment(e){
-  
-  let currency = '100 INR';
-  currency = currency.replace("INR", "").trim() ;
-  let accessToken = '';
-  
-  const dataDetail = {
-      "intent": "sale",
-      "payer": {
-          "payment_method": "paypal"
-      },
-      "transactions": [{
-          "amount": {
-              "total": currency,
-              "currency": "INR",
-              "details": {
-                  "subtotal": currency,
-                  "tax": "0",
-                  "shipping": "0",
-                  "handling_fee": "0",
-                  "shipping_discount": "0",
-                  "insurance": "0"
-              }
-          }
-      }],
-      "redirect_urls": {
-          "return_url": "https://example.com",
-          "cancel_url": "https://example.com"
-      }
-  }
-  
-  fetch('https://api.sandbox.paypal.com/v1/oauth2/token', { 
-      method: 'POST',
-      headers: { 
-           'Accept': 'application/json', 
-           'Accept-Language': 'en_US',
-           'Content-Type': 'application/x-www-form-urlencoded',
-           'Authorization': 'Basic ' + btoa('A5y5RODwrR8vjKxslhEoCROlzRDkA1NQAAZ.3C8KDJme0EMCZvy1iaqV')
-      },
-      body: 'grant_type=client_credentials'
-  }).then(response => response.json())
-    .then(async (data) => {
-        console.log(data.access_token)
-        accessToken=data.access_token
-  
-      // console.log(JSON.stringify(dataDetail))
-  
-      let createRequest = {
-          method: 'POST', 
-          headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer '+(accessToken)
-          },
-          body:JSON.stringify(dataDetail)
-      }
-      console.log('Request body string',createRequest.body);
-      console.log('Request body (formatted)', JSON.stringify( JSON.parse(createRequest.body) ,null,4) );
-      fetch ('https://api.sandbox.paypal.com/v1/payments/payment',createRequest
-  )
-      .then(function(response) {
-          console.log('Response object', response);
-          return response.json()
-      })
-      .then(async(data) => {
-          console.log('Response data',data);
-          console.log('Response data (formatted)', JSON.stringify(data,null,4) );
-      }).catch(err => {
-          console.log({ ...err })
-      })
-  }).catch(function (error) {
-      let edata = error.message;
-      console.log('Error:', edata)
-  })
-  
 }
 
 }
