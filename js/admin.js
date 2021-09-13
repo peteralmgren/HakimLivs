@@ -181,14 +181,10 @@ $('#show-orders').click(function (e) {
                                         <label for="category">Välj kategori</label>
                                       <select class="custom-select custom-select-sm" name="category_id">
                                       `
-                                            let categories = JSON.parse(xhr.responseText);
-
-                                            console.log(categories)
-
-                                            
+                                                                                        
                                           
-                                            for (let cat in categories) {
-                                              uniqueCat.push(categories[cat].categoryName);
+                                            for (let cat in data) {
+                                              uniqueCat.push(data[cat].categoryName);
                                             }
                                       
                                             uniqueCat = uniqueCat.filter((value, index, categoryArray) => categoryArray.indexOf(value) === index);
