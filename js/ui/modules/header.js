@@ -122,10 +122,23 @@ export default class Header extends UI {
       } 
 
     });
+
+    super.container.addEventListener("keypress", async (e) => {
+      if (e.target.className == "searchform form-control search input-lg mr-3 p-2"){
+              var c = this.selectionStart,
+            r = /[^a-z0-9]/gi,
+            v = $(this).val();
+        if(r.test(v)) {
+          $(this).val(v.replace(r, ''));
+          c--;
+        }
+        this.setSelectionRange(c, c);
+      } 
+
+    });
   }
 
   
-
    
 }
 
