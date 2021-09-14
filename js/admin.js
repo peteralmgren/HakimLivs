@@ -153,7 +153,7 @@ $('#show-orders').click(function (e) {
             'Access-Control-Allow-Origin':'*',
             'Access-Control-Allow-Mehtods':'GET, POST, DELETE'
           },
-          type: "GET",
+          type: "POST",
           crossDomain: true,
           dataType: 'json',
           complete: function(data) {
