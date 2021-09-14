@@ -286,9 +286,11 @@ $('#show-orders').click(function (e) {
         }       
     });
  
-    console.log(jsonData)
+    console.log(jsonData);
 
-    console.log(formData);
+    jsonData.category_id = 7;
+
+    console.log(jsonData)
     
      $.ajax(
        {
