@@ -336,34 +336,9 @@ async clearCart(){
 async sendOrder(){
     let userInfo = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
     let StringToSend = "Bearer " +userInfo.jwt;
-<<<<<<< HEAD
-/*
-  let cart = super.readStorage("cart");
-  console.log(cart);
 
-  const xhr = new XMLHttpRequest();
-  xhr.open(
-    "POST",
-    `https://grupp5hakimlivs.herokuapp.com/checkout}`
-  );
-  xhr.send(cart);
-  xhr.onreadystatechange = function () {
-    if (xhr.status === 500){
-        alert("Kontot hittades inte!");
-      }
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      let data = JSON.parse(xhr.responseText);
-      sessionStorage.setItem("loggedinCustomer", JSON.stringify(data));
-      console.log(data);
-      window.location.replace("index.html");
-      hideLogin()
-    }
-  };*/
-  let OrderArray = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/allorders");
-=======
 
   let OrderArray = await super.loadData("GET", "https://hakimlivsgroup5.herokuapp.com/allorders");
->>>>>>> be8a3d5be1296254059bbaba9082d997aa592a61
   OrderArray = JSON.parse(OrderArray);
   console.log(OrderArray)
 

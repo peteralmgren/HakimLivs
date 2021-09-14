@@ -25,18 +25,6 @@ let admin = JSON.parse(sessionStorage.getItem("loggedInCustomer"));
 } */
 $('#customer-list').click(function (e) {
 
-<<<<<<< HEAD
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/getcustomers");
-  xhr.send();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      let customer = JSON.parse(xhr.responseText);
-
-  document.getElementById("admin-bottomheader").innerHTML = "Kundlista";
-  document.getElementById("customer-info1").innerHTML = "Adress";
-  document.getElementById("customer-info2").innerHTML = "Emailadress"
-=======
   let userInfo = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
   let StringToSend = "Bearer " +userInfo.jwt;
   console.log(StringToSend)
@@ -64,7 +52,6 @@ $('#customer-list').click(function (e) {
             
         
         let output = ``;
->>>>>>> be8a3d5be1296254059bbaba9082d997aa592a61
       
         data.forEach(data =>{
           
@@ -88,22 +75,6 @@ $('#customer-list').click(function (e) {
 });
 
 $('#show-orders').click(function (e) {
-<<<<<<< HEAD
-
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/allOrders");
-  xhr.send();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      let orders = JSON.parse(xhr.responseText);
-
-      console.log(orders)
-
-  document.getElementById("admin-bottomheader").innerHTML = "Kundordrar";
-  document.getElementById("customer-info1").innerHTML = "Datum";
-  document.getElementById("customer-info2").innerHTML = "Orderstatus"
-  document.getElementById("order-id").innerHTML = "Order ID"
-=======
   let userInfo = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
   let StringToSend = "Bearer " +userInfo.jwt;
 
@@ -132,7 +103,6 @@ $('#show-orders').click(function (e) {
             
         
         let output = ``;
->>>>>>> be8a3d5be1296254059bbaba9082d997aa592a61
       
         data.forEach(data =>{
       
@@ -173,16 +143,6 @@ $('#show-orders').click(function (e) {
 //$(document).ready(function() {
   $('#product-add').click(function () {
 
-<<<<<<< HEAD
-                    let tempOutput = ``;        
-                    let uniqueCat = [];            
-                      const xhr = new XMLHttpRequest();
-                        xhr.open("GET", "https://grupp5hakimlivs.herokuapp.com/allCategories");
-                        xhr.send();
-                        xhr.onreadystatechange = function () {
-                          if (xhr.readyState === 4 && xhr.status === 200) {
-=======
->>>>>>> be8a3d5be1296254059bbaba9082d997aa592a61
 
     $.ajax(
       {
@@ -330,9 +290,6 @@ $('#show-orders').click(function (e) {
     
      $.ajax(
        {
-<<<<<<< HEAD
-           url : 'https://grupp5hakimlivs.herokuapp.com/addproduct',
-=======
            url : 'https://hakimlivsgroup5.herokuapp.com/addproduct',
            headers: {
             'Authorization': StringToSend,
@@ -340,7 +297,6 @@ $('#show-orders').click(function (e) {
             'Access-Control-Allow-Origin':'*',
             'Access-Control-Allow-Mehtods':'GET, POST, DELETE'
           },
->>>>>>> be8a3d5be1296254059bbaba9082d997aa592a61
            type: "POST",
            crossDomain: true,
            dataType: 'jsonp',
@@ -433,9 +389,6 @@ $('#show-orders').click(function (e) {
     
      $.ajax(
      {
-<<<<<<< HEAD
-         url : 'https://grupp5hakimlivs.herokuapp.com/removeproduct',
-=======
          url : 'https://hakimlivsgroup5.herokuapp.com/removeproduct',
          headers: {
           'Authorization': StringToSend,
@@ -443,7 +396,6 @@ $('#show-orders').click(function (e) {
           'Access-Control-Allow-Origin':'*',
           'Access-Control-Allow-Mehtods':'GET, POST, DELETE'
         },
->>>>>>> be8a3d5be1296254059bbaba9082d997aa592a61
          type: "POST",
          crossDomain: true,
          dataType: 'jsonp',
