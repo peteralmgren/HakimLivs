@@ -35,6 +35,7 @@ export default class Header extends UI {
                 id="inputlg"
                 type="text"
                 maxlength = "30"
+                onkeyup="this.value=this.value.replace(/[^a-zA-Z0-9]/g, '')"
                 placeholder="Sök"
               />
               <button
