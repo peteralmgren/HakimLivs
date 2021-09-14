@@ -308,6 +308,7 @@ $('#show-orders').click(function (e) {
            async: true,
             success : function(response) {
               console.log(response);
+              alert("Produkten lades till!")
              },
                      
        }); 
@@ -406,6 +407,7 @@ $('#show-orders').click(function (e) {
          data : jsonData,
            success: function(data){
            console.log(data);
+           alert("Produkten togs bort!")
            
            },
        
