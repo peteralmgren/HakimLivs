@@ -337,6 +337,8 @@ async sendOrder(){
     let userInfo = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
     let StringToSend = "Bearer " +userInfo.jwt;
 
+    let order_id; 
+
 
   if(!localStorage.numberInCart || localStorage.numberInCart == 0){
     alert("Din varukorg är tom");
@@ -359,6 +361,7 @@ async sendOrder(){
           },
           success: function(data){
             console.log(data);
+            order_id = data;
         },
             headers: {
               accept: "application/json",
@@ -387,7 +390,7 @@ async sendOrder(){
           }
          
           
-          let dataToSend2 = {'order_id': newNumber+1, 'product_id': data, 'quantity': data2};
+          let dataToSend2 = {'order_id': order_id, 'product_id': data, 'quantity': data2};
           console.log(dataToSend2)
               
            
@@ -403,6 +406,7 @@ async sendOrder(){
               },
               success: function(data){
                 console.log(data);
+                
             }, 
             headers: {
               accept: "application/json",
