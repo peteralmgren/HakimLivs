@@ -56,13 +56,7 @@ export default class Checkout extends UI {
               <hr />
               <div class="container-fluid"></div>
               <hr />
-              <button
-                type="button"
-                id="Purchase"
-                class="purchase-button btn btn-primary btn-lg t-1 hover-shadow"
-              >
-                Bekräfta beställning
-              </button>
+              <div id="paypal-button-container"></div>
               <button class="btn btn-danger" id="clearCart">Rensa varukorg</button>
             </div>
           </div>
@@ -93,15 +87,47 @@ export default class Checkout extends UI {
       if (e.target.className == "trashcan pe-1") this.deleteRowInCart(e);
       if (e.target.className == "minus") this.decreaseItemsInCartWithOne(e);
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
-      if (e.target.className == "purchase-button btn btn-primary btn-lg t-1 hover-shadow") await this.sendOrder(e);
       if (e.target.className == "btn btn-danger") this.clearCart();
     });
     
     this.injectRowItemsInCart();
     this.printUser();
-    this.sum = 0;         
-    
+    this.sum = 0;
+    this.totalSum = 0;
+    this.insertPayPalWidget();
   }
+
+insertPayPalWidget() {
+  let parent = this;
+  paypal.Buttons({   
+    // Sets up the transaction when a payment button is clicked
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: parent.totalSum // Can reference variables or functions. Example: \`value: document.getElementById('...').value\`
+          }
+        }]
+      });
+    },
+
+    // Finalize the transaction after payer approval
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(orderData) {
+        // Successful capture! For dev/demo purposes:
+          console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+          var transaction = orderData.purchase_units[0].payments.captures[0];
+          //alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+          parent.sendOrder();
+        // When ready to go live, remove the alert and show a success message within this page. For example:
+        var element = document.getElementById('paypal-button-container');
+        element.innerHTML = '';
+        element.innerHTML = '<h3>Tack för din betalning!\n\nDin order är mottagen</h3>';
+        // Or go to another URL:  actions.redirect('thank_you.html');
+      });
+    }
+  }).render('#paypal-button-container');
+}
 
 async injectRowItemsInCart() {
     let allProducts = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/all");
@@ -245,10 +271,11 @@ async injectRowItemsInCart() {
   }
 
   updatePrice(){
-    console.log(this.sum);
+    console.log("Updated price:", this.sum);
     let moms = (this.sum * 0.12).toFixed(2); 
     moms = moms.replace(".", ",");
     let totalsum = (this.sum*1+50).toFixed(2);
+    this.totalSum = totalsum;
     totalsum = totalsum.replace(".", ",");
     let summavaror = +this.sum;
     
@@ -293,77 +320,7 @@ async injectRowItemsInCart() {
     
     
   }
-  // /* async */ sendOrder (e){
-    
-       
-  //     var jsonData = {}
-
-       
-
-  //     var test = {'title':'jsontest','description':'json', 'price':4, 'image':'json', 'category_id':2}
-
-      
-
-  //   console.log(test2)
-
-    
-
-  //   let cart = JSON.parse(localStorage.getItem('cart'))
-  //   console.log(cart)
-
-  //   let customerInfo = "customer_id:12"
-
-  //   let cartkeys = Object.keys(cart);
-  //   let cartvalues = Object.values(cart);
-  //   console.log(cartkeys);
-  //   console.log(cartvalues);
-
-  //   let cartarray = []
-    
-  //   var test2 = {'customer_id':12,'product_id':cartkeys, 'quantity':cartvalues}
-
-
-
-  //   /* cartkeys.forEach(key => {
-  //     cartvalues.forEach(values => {
-  //       values=test2.cartvalues
-  //     cartarray.push(test2)
-  //     key=test2.cartkeys
-  //     cartarray.push(test2)
-  //     }})); */
-    
-  //   console.log(test2);
-
-    
-  //   /* cart.map((currentValue) => {'' } ) */
-
-
-    
-  //    /* $.ajax(
-  //    {
-  //        url : 'https://grupp5hakimlivs.herokuapp.com/order',
-  //        type: "POST",
-  //        crossDomain: true,
-  //        dataType: 'jsonp',
-  //        data : test2,
-  //        complete: function(data) {
-  //          console.log(data.responseText);
-  //      },
-  //      success: function(data){
-  //        console.log(data);
-  //    },
-  //         headers: {
-  //          accept: "application/json",
-  //          "Access-Control-Allow-Origin":"*"
-           
-  //      }
-         
-  //    }); */
-     
-    
- 
- // }
-//}
+  
 
 
 //BUGGIG: När man skickas tillbaka till index så fungerar inte sidan som den ska
@@ -376,10 +333,10 @@ async clearCart(){
 }
 
 
-
-async sendOrder(e){
+async sendOrder(){
     let userInfo = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
     let StringToSend = "Bearer " +userInfo.jwt;
+<<<<<<< HEAD
 /*
   let cart = super.readStorage("cart");
   console.log(cart);
@@ -403,6 +360,10 @@ async sendOrder(e){
     }
   };*/
   let OrderArray = await super.loadData("GET", "https://grupp5hakimlivs.herokuapp.com/allorders");
+=======
+
+  let OrderArray = await super.loadData("GET", "https://hakimlivsgroup5.herokuapp.com/allorders");
+>>>>>>> be8a3d5be1296254059bbaba9082d997aa592a61
   OrderArray = JSON.parse(OrderArray);
   console.log(OrderArray)
 
@@ -416,8 +377,6 @@ async sendOrder(e){
   if (!isFinite(newNumber)){
     newNumber = 0;
   }
-
-
 
   if(!localStorage.numberInCart || localStorage.numberInCart == 0){
     alert("Din varukorg är tom");
@@ -489,10 +448,10 @@ async sendOrder(e){
               accept: "application/json",
               "Access-Control-Allow-Origin":"*",
               "Authorization": StringToSend,              
-          }
+            }
                 
             });
-            e.preventDefault();
+            //e.preventDefault();
     
           }
       }, 1500);
@@ -502,9 +461,11 @@ async sendOrder(e){
     setTimeout(()=>{
       localStorage.clear("cart");
     location.replace("index.html");
-    }, 3000);
+    }, 6000);
     
   }
+
+  
 
 
 }
