@@ -287,6 +287,8 @@ $('#show-orders').click(function (e) {
     });
  
     console.log(jsonData)
+
+    console.log(formData);
     
      $.ajax(
        {
@@ -398,7 +400,7 @@ $('#show-orders').click(function (e) {
         },
          type: "GET",
          crossDomain: true,
-         dataType: 'jsonp',
+         dataType: 'json',
          data : jsonData,
            success: function(data){
            console.log(data);
