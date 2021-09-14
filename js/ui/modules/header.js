@@ -34,6 +34,7 @@ export default class Header extends UI {
                 class="searchform form-control search input-lg mr-3 p-2"
                 id="inputlg"
                 type="text"
+                maxlength = "30"
                 placeholder="Sök"
               />
               <button
