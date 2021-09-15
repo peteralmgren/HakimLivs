@@ -26,6 +26,9 @@ $(document).ready(function () {
       crossDomain: true,
       dataType: "text/plain",
       data: jsonData,
+      complete: function(data){
+        console.log(data)
+      },
       success: function (data) {
         console.log(data);
         response = data;
