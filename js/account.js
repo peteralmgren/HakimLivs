@@ -2,7 +2,7 @@ $(document).ready(function () {
   let response = "";
   $("#myform").submit(function (e) {
     setTimeout(()=>{
-    location.replace("index.html");
+      alert(response);
     }, 2000);
   });
 
@@ -33,7 +33,7 @@ $(document).ready(function () {
       },
       success: function (data) {
         console.log(data);
-        response = data;
+        response = data.responseText;
         console.log(response);
       },
 
