@@ -1,9 +1,5 @@
 $(document).ready(function () {
   let response = "";
-  $("#myform").submit(function (e) {
-    alert("Kontot skapades, vänligen logga in!");
-    // e.preventDefault();
-  });
 
   $("#createuser").click(function (e) {
     var jsonData = {};
@@ -24,8 +20,11 @@ $(document).ready(function () {
       url: "https://hakimlivsgroup5.herokuapp.com/account",
       type: "POST",
       crossDomain: true,
-      dataType: "jsonp",
+      dataType: "text",
       data: jsonData,
+      complete: function(data){
+        
+      },
       success: function (data) {
         console.log(data);
         response = data;
