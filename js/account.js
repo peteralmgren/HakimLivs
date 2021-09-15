@@ -27,7 +27,8 @@ $(document).ready(function () {
       dataType: "text/plain",
       data: jsonData,
       complete: function(data){
-        console.log(data)
+        alert(data.responseText);
+        console.log(data.responseText)
       },
       success: function (data) {
         console.log(data);
