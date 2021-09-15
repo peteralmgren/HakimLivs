@@ -1,9 +1,8 @@
 $(document).ready(function () {
   let response = "";
   $("#myform").submit(function (e) {
-    setTimeout(()=>{
-      alert(response);
-    }, 2000);
+    alert("Väntar på servern...");
+    // e.preventDefault();
   });
 
   $("#createuser").click(function (e) {
@@ -33,7 +32,7 @@ $(document).ready(function () {
       },
       success: function (data) {
         console.log(data);
-        response = data.responseText;
+        response = data;
         console.log(response);
       },
 
