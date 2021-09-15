@@ -1,5 +1,9 @@
 $(document).ready(function () {
   let response = "";
+  $("#myform").submit(function (e) {
+    alert("Kontot skapades, vänligen logga in!");
+    // e.preventDefault();
+  });
 
   $("#createuser").click(function (e) {
     var jsonData = {};
@@ -20,11 +24,8 @@ $(document).ready(function () {
       url: "https://hakimlivsgroup5.herokuapp.com/account",
       type: "GET",
       crossDomain: true,
+      dataType: "jsonp",
       data: jsonData,
-      complete: function(data){
-        console.log(data);
-        alert(data);        
-      },
       success: function (data) {
         console.log(data);
         response = data;
@@ -36,10 +37,6 @@ $(document).ready(function () {
         "Access-Control-Allow-Origin": "*",
       },
     });
-
-    setTimeout(()=>{
-    location.replace("index.html");
-    }, 2000);
 
   
   });
