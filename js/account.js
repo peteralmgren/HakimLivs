@@ -24,7 +24,7 @@ $(document).ready(function () {
       url: "https://hakimlivsgroup5.herokuapp.com/account",
       type: "GET",
       crossDomain: true,
-      dataType: "jsonp",
+      dataType: "text/plain",
       data: jsonData,
       success: function (data) {
         console.log(data);
