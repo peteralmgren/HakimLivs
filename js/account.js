@@ -24,6 +24,10 @@ $(document).ready(function () {
       data: jsonData,
       complete: function(data){
         alert(data);        
+        setTimeout(()=>{
+          localStorage.clear("cart");
+        location.replace("index.html");
+        }, 2000);
       },
       success: function (data) {
         console.log(data);
