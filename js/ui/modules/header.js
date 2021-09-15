@@ -34,6 +34,8 @@ export default class Header extends UI {
                 class="searchform form-control search input-lg mr-3 p-2"
                 id="inputlg"
                 type="text"
+                maxlength = "30"
+                onkeyup="this.value=this.value.replace(/[^a-zA-Z0-9]/g, '')"
                 placeholder="Sök"
               />
               <button
@@ -48,8 +50,10 @@ export default class Header extends UI {
 
             if(sessionStorage.getItem("loggedinCustomer")){
               let user = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
-            console.log(user)
-            if(user.id == 196){
+            console.log(user.jwt)
+              user = user.jwt;
+              let decoded = (atob(user.split('.')[1]));
+            if(decoded.includes("ROLE_ADMIN")){
               console.log("test");
               this.html += `<li class="nav-item mr-1 p-2"><a href="admin.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
               <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
@@ -119,10 +123,23 @@ export default class Header extends UI {
       } 
 
     });
+
+    super.container.addEventListener("keypress", async (e) => {
+      if (e.target.className == "searchform form-control search input-lg mr-3 p-2"){
+              var c = this.selectionStart,
+            r = /[^a-z0-9]/gi,
+            v = $(this).val();
+        if(r.test(v)) {
+          $(this).val(v.replace(r, ''));
+          c--;
+        }
+        this.setSelectionRange(c, c);
+      } 
+
+    });
   }
 
   
-
    
 }
 

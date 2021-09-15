@@ -337,28 +337,22 @@ async sendOrder(){
     let userInfo = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
     let StringToSend = "Bearer " +userInfo.jwt;
 
+<<<<<<< HEAD
 
   let OrderArray = await super.loadData("GET", "https://hakimlivsgroup5.herokuapp.com/allorders");
   OrderArray = JSON.parse(OrderArray);
   console.log(OrderArray)
+=======
+    let order_id; 
+>>>>>>> 61a0345b3083a0827ef09c971a4859338001d0dd
 
-  let OrderNumbers = [];
-
-  for(let i=0;i<OrderArray.length;i++){
-    OrderNumbers.push(OrderArray[i].id);
-    console.log(typeof OrderArray[i].id)
-  }
-  let newNumber = Math.max(...OrderNumbers);
-  if (!isFinite(newNumber)){
-    newNumber = 0;
-  }
 
   if(!localStorage.numberInCart || localStorage.numberInCart == 0){
     alert("Din varukorg är tom");
   }
   else{
     
-      let dataToSend = {'order_id': newNumber+1, 'jwt': userInfo.jwt};
+      let dataToSend = {'jwt': userInfo.jwt};
       console.log(StringToSend)
       console.log(dataToSend)
           
@@ -374,6 +368,7 @@ async sendOrder(){
           },
           success: function(data){
             console.log(data);
+            order_id = data;
         },
             headers: {
               accept: "application/json",
@@ -402,7 +397,7 @@ async sendOrder(){
           }
          
           
-          let dataToSend2 = {'order_id': newNumber+1, 'product_id': data, 'quantity': data2};
+          let dataToSend2 = {'order_id': order_id, 'product_id': data, 'quantity': data2};
           console.log(dataToSend2)
               
            
@@ -418,6 +413,7 @@ async sendOrder(){
               },
               success: function(data){
                 console.log(data);
+                
             }, 
             headers: {
               accept: "application/json",

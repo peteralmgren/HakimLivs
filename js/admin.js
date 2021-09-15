@@ -286,7 +286,8 @@ $('#show-orders').click(function (e) {
         }       
     });
  
-    console.log(jsonData)
+    console.log(jsonData);
+
     
      $.ajax(
        {
@@ -297,13 +298,14 @@ $('#show-orders').click(function (e) {
             'Access-Control-Allow-Origin':'*',
             'Access-Control-Allow-Mehtods':'GET, POST, DELETE'
           },
-           type: "POST",
+           type: "GET",
            crossDomain: true,
-           dataType: 'jsonp',
+           dataType: 'json',
            data : jsonData,
            async: true,
             success : function(response) {
               console.log(response);
+              alert("Produkten lades till!")
              },
                      
        }); 
@@ -396,12 +398,13 @@ $('#show-orders').click(function (e) {
           'Access-Control-Allow-Origin':'*',
           'Access-Control-Allow-Mehtods':'GET, POST, DELETE'
         },
-         type: "POST",
+         type: "GET",
          crossDomain: true,
-         dataType: 'jsonp',
+         dataType: 'json',
          data : jsonData,
            success: function(data){
            console.log(data);
+           alert("Produkten togs bort!")
            
            },
        
