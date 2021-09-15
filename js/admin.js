@@ -288,9 +288,6 @@ $('#show-orders').click(function (e) {
  
     console.log(jsonData);
 
-    jsonData.category_id = "7";
-
-    console.log(jsonData)
     
      $.ajax(
        {
