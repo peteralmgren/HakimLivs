@@ -23,6 +23,7 @@ $(document).ready(function () {
       dataType: "text",
       data: jsonData,
       complete: function(data){
+        console.log(data);
         alert(data);        
       },
       success: function (data) {
