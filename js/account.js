@@ -1,9 +1,10 @@
 $(document).ready(function () {
   let response = "";
-  /*$("#myform").submit(function (e) {
-    alert("Kontot skapades, vänligen logga in!");
-    // e.preventDefault();
-  });*/
+  $("#myform").submit(function (e) {
+    setTimeout(()=>{
+    location.replace("index.html");
+    }, 2000);
+  });
 
   $("#createuser").click(function (e) {
     var jsonData = {};
