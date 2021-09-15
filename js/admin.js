@@ -31,7 +31,7 @@ $('#customer-list').click(function (e) {
 
   $.ajax(
     {
-        url : 'http://hakimlivsgroup5.herokuapp.com/getusers',
+        url : 'http://grupp5hakimlivs.herokuapp.com/getusers',
         headers: {
           'Access-Control-Allow-Origin':'*',
           'Authorization': StringToSend,
@@ -80,7 +80,7 @@ $('#show-orders').click(function (e) {
 
   $.ajax(
     {
-        url : 'http://hakimlivsgroup5.herokuapp.com/allorders',
+        url : 'http://grupp5hakimlivs.herokuapp.com/allorders',
         headers: {
           'Authorization': StringToSend,
           'Content-Type': 'application/json',
@@ -146,7 +146,7 @@ $('#show-orders').click(function (e) {
 
     $.ajax(
       {
-          url : 'http://hakimlivsgroup5.herokuapp.com/allcategories',
+          url : 'http://grupp5hakimlivs.herokuapp.com/allcategories',
           headers: {
             'Authorization': StringToSend,
             'Content-Type': 'application/json',
@@ -291,7 +291,7 @@ $('#show-orders').click(function (e) {
     
      $.ajax(
        {
-           url : 'https://hakimlivsgroup5.herokuapp.com/addproduct',
+           url : 'https://grupp5hakimlivs.herokuapp.com/addproduct',
            headers: {
             'Authorization': StringToSend,
             'Content-Type': 'application/json',
@@ -391,7 +391,7 @@ $('#show-orders').click(function (e) {
     
      $.ajax(
      {
-         url : 'https://hakimlivsgroup5.herokuapp.com/removeproduct',
+         url : 'https://grupp5hakimlivs.herokuapp.com/removeproduct',
          headers: {
           'Authorization': StringToSend,
           'Content-Type': 'application/json',
@@ -455,7 +455,7 @@ let uniqueCat = [];
 
 
 const xhr2 = new XMLHttpRequest();
-                        xhr2.open("GET", "https://grupp5hakimlivs.herokuapp.com/allCategories");
+                        xhr2.open("GET", "https://grupp5hakimlivs.herokuapp.com/allcategories");
                         xhr2.send();
                         xhr2.onreadystatechange = function () {
                           if (xhr2.readyState === 4 && xhr2.status === 200) {
