@@ -24,10 +24,6 @@ $(document).ready(function () {
       data: jsonData,
       complete: function(data){
         alert(data);        
-        setTimeout(()=>{
-          localStorage.clear("cart");
-        location.replace("index.html");
-        }, 2000);
       },
       success: function (data) {
         console.log(data);
@@ -40,6 +36,11 @@ $(document).ready(function () {
         "Access-Control-Allow-Origin": "*",
       },
     });
+
+    setTimeout(()=>{
+      localStorage.clear("cart");
+    location.replace("index.html");
+    }, 2000);
 
   
   });
