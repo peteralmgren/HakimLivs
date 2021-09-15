@@ -18,9 +18,8 @@ $(document).ready(function () {
 
     $.ajax({
       url: "https://hakimlivsgroup5.herokuapp.com/account",
-      type: "POST",
+      type: "GET",
       crossDomain: true,
-      dataType: "text",
       data: jsonData,
       complete: function(data){
         console.log(data);
