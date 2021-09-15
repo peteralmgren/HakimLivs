@@ -337,14 +337,7 @@ async sendOrder(){
     let userInfo = JSON.parse(sessionStorage.getItem("loggedinCustomer"));
     let StringToSend = "Bearer " +userInfo.jwt;
 
-<<<<<<< HEAD
-
-  let OrderArray = await super.loadData("GET", "https://hakimlivsgroup5.herokuapp.com/allorders");
-  OrderArray = JSON.parse(OrderArray);
-  console.log(OrderArray)
-=======
     let order_id; 
->>>>>>> 61a0345b3083a0827ef09c971a4859338001d0dd
 
 
   if(!localStorage.numberInCart || localStorage.numberInCart == 0){
