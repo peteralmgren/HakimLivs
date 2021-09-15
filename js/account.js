@@ -38,7 +38,6 @@ $(document).ready(function () {
     });
 
     setTimeout(()=>{
-      localStorage.clear("cart");
     location.replace("index.html");
     }, 2000);
 
