@@ -1,7 +1,7 @@
 $(document).ready(function () {
   let response = "";
   $("#myform").submit(function (e) {
-    alert("Vänta på servern. Stäng detta meddelande om tre sekunder :)")   
+    alert("Väntar på servern. Stäng detta meddelande om tre sekunder :)")   
     // e.preventDefault();
   });
 
