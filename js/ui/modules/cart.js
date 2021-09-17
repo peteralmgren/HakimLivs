@@ -88,7 +88,7 @@ export default class Cart extends UI {
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
       if (e.target.className == "btn btn-danger") this.clearCart();
       if (e.target.className == "to-cart btn btn-success") {
-        if(localStorage.getItem("cart").length > 2 && sessionStorage.getItem("loggedInCustomer")){
+        if(localStorage.getItem("cart").length > 2 && sessionStorage.getItem("loggedinCustomer")){
           location.replace("cart.html");
         }
       }
