@@ -4,6 +4,7 @@ function validateUser() {
   // Check the input when logging in
 
   let email = document.getElementById("email1").value;
+  email.toLowerCase();
   let password = document.getElementById("password1").value;
 
   const xhr = new XMLHttpRequest();
