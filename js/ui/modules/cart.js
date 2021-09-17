@@ -67,9 +67,9 @@ export default class Cart extends UI {
                   <div class="modal-footer">
                     <div class="container-fluid">
                       <div class="row">
-                        <button type="button" class="btn btn-success"><a class="text-decoration-none text-white"
-                        ${sessionStorage.getItem("loggedinCustomer") ? 'href="Cart.html"':'href="#"'}
-                            >Till kassan</a></button>
+                        <button type="button" class="to-cart btn btn-success">
+                        Till kassan
+                        </button>
                       </div>
                       <div class="row">
                       <button type="button" class="btn btn-danger">Töm varukorg</button>
@@ -87,6 +87,11 @@ export default class Cart extends UI {
       if (e.target.className == "minus") this.decreaseItemsInCartWithOne(e);
       if (e.target.className == "plus") this.increaseItemsInCartWithOne(e);
       if (e.target.className == "btn btn-danger") this.clearCart();
+      if (e.target.className == "to-cart btn btn-success") {
+        if(localStorage.getItem("cart").length > 2 && sessionStorage.getItem("loggedInCustomer")){
+          location.replace("cart.html");
+        }
+      }
     });
     
     this.injectRowItemsInCart();
@@ -113,7 +118,7 @@ async injectRowItemsInCart() {
         <div class="col-lg-4">
           <div>
             <p class="brand m-0">AXA</p>
-            <h6 class="title fw-bold m-0 title">${allProducts[i].title}(${allProducts[i].price})</h6>
+            <h6 class="title fw-bold m-0 title">${allProducts[i].title}(${allProducts[i].price}kr)</h6>
           </div>
         </div>
         <div class="col-lg-3 text-end px-0">
