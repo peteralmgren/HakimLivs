@@ -43,6 +43,8 @@ $(document).ready(function () {
       },
     });
 
+    tempAlert("Väntar på servern...", 2000);  
+
   
   });
 
