@@ -69,5 +69,10 @@ export default class Login extends UI {
       </div>
     </div>`
         super.container.innerHTML = this.html;
+        super.container.addEventListener("keyup", async (e) => {
+          if(e.keyCode == 13){
+            validateUser();
+          }
+        });
     }
 }
