@@ -113,7 +113,7 @@ async injectRowItemsInCart() {
         <div class="col-lg-4">
           <div>
             <p class="brand m-0">AXA</p>
-            <h6 class="title fw-bold m-0 title">${allProducts[i].title}</h6>
+            <h6 class="title fw-bold m-0 title">${allProducts[i].title}(${allProducts[i].price})</h6>
           </div>
         </div>
         <div class="col-lg-3 text-end px-0">
