@@ -11,7 +11,7 @@ export default class Header extends UI {
         this.html += `
         <header>
     <div class="shadow p-3 mb-5 bg-white rounded">
-      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
         <div class="container">
           <a class="navbar-brand" href="index.html"
             ><img src="images/logo.png" alt=""
