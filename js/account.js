@@ -1,8 +1,7 @@
 $(document).ready(function () {
   let response = "";
   $("#myform").submit(function (e) {
-    tempAlert("Väntar på servern...", 2000);  
-    //alert("Vänta på servern. Stäng detta meddelande om tre sekunder :)")   
+    alert("Vänta på servern. Stäng detta meddelande om tre sekunder :)")   
     // e.preventDefault();
   });
 
@@ -43,19 +42,8 @@ $(document).ready(function () {
       },
     });
 
-    tempAlert("Väntar på servern...", 2000);  
 
   
   });
 
-  function tempAlert(msg,duration)
-      {
-      var el = document.createElement("div");
-      el.setAttribute("style","position:absolute;top:40%;left:20%;background-color:white;");
-      el.innerHTML = msg;
-      setTimeout(function(){
-        el.parentNode.removeChild(el);
-      },duration);
-      document.body.appendChild(el);
-      }
 });
