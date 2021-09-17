@@ -37,15 +37,15 @@
             <form id="myform" action="index.html" type="post">
                     <div class="form-group col-md-6">
                         <label for="firstname">Förnamn</label>
-                        <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Förnamn"value="" required/>
+                        <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Förnamn" value="" onkeyup="this.value=this.value.replace(/[^a-zA-Z0-9]/g, '')" required/>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="lastname">Efternamn</label>
-                        <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Efternamn" value="" required/>
+                        <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Efternamn" onkeyup="this.value=this.value.replace(/[^a-zA-Z0-9]/g, '')" value="" required/>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword">Lösenord</label>
-                    <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Lösenord" value="" required/>
+                    <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Lösenord" onkeyup="this.value=this.value.replace(/[^a-zA-Z0-9]/g, '')" value="" required/>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail4">Email</label>
