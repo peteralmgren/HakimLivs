@@ -125,7 +125,7 @@ async injectRowItemsInCart() {
         </div>
         <div class="col-lg-3 px-0">
           <div class="d-flex justify-content-end">
-            <div class="price fw-bold px-0 mx-0">${(allProducts[i].price * cart[allProducts[i].id]).toFixed(2)}(${allProducts[i].price})</div>
+            <div class="price fw-bold px-0 mx-0">${(allProducts[i].price * cart[allProducts[i].id]).toFixed(2)}</div>
             <div class="px-0 ms-1">kr</div>
           </div>
         </div>
