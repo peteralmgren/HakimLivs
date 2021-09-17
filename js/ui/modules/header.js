@@ -80,12 +80,12 @@ export default class Header extends UI {
                 </button>
               </li>
               <li class="nav-item">
-              ${sessionStorage.getItem("loggedinCustomer") ? '<a href="Cart.html">':'<a href="#">'}
                     <button
                       type="button"
                       id="Cart-button"
                       class="cart-button btn btn-secondary btn-lg btn-block text-nowrap t-1 hover-shadow"
                       ${!sessionStorage.getItem("loggedinCustomer") ? 'data-bs-toggle="modal" data-bs-target="#loginModal"':''}
+                    
 
                     >
                       <svg
@@ -101,7 +101,7 @@ export default class Header extends UI {
                         />
                       </svg>
                       Till kassan: 
-                      <span id="Cart-button span">${parseFloat(localStorage.getItem("cost")).toFixed(2)}</span>         
+                      <span id="Cart-button span">${!localStorage.getItem("cost") ? "0.00"  : parseFloat(localStorage.getItem("cost")).toFixed(2)}</span>         
                       kr           
                     </button>
                   </a>
@@ -121,7 +121,11 @@ export default class Header extends UI {
         localStorage.clear("cart");
        window.location.reload()
       } 
-
+      if (e.target.className == 'cart-button btn btn-secondary btn-lg btn-block text-nowrap t-1 hover-shadow'){
+        if(localStorage.getItem("cart").length > 2){
+          window.location.replace("cart.html");
+        }
+      }
     });
 
     super.container.addEventListener("keypress", async (e) => {

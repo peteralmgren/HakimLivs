@@ -35,7 +35,7 @@ export default class Cart extends UI {
                       <div class="col-3 px-0">
                         <div class="d-flex justify-content-end">
                           <div class="price fw-bold px-0 mx-0"></div>
-                          <div class="px-0 ms-1">kr</div>
+                          <div class="const-price px-0 ms-1">kr</div>
                         </div>
                       </div>
                       <div class="col-1 m-auto text-end px-0" id="trash">
@@ -169,7 +169,7 @@ async injectRowItemsInCart() {
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum - pricePerUnit).toFixed(2);
 
-    orderRowSumElement.textContent = newOrderRowSum +"("+pricePerUnit+")";
+    orderRowSumElement.textContent = newOrderRowSum;
     super.removeFromCart(e.target.dataset.productId);
     await super.countCost(e.target.dataset.productId, "-");
   }
@@ -189,7 +189,7 @@ async injectRowItemsInCart() {
     const pricePerUnit = oldOrderRowSum / oldNrOfItems;
     const newOrderRowSum = (oldOrderRowSum + pricePerUnit).toFixed(2);
 
-    orderRowSumElement.textContent = newOrderRowSum +"("+pricePerUnit+")";
+    orderRowSumElement.textContent = newOrderRowSum;
     super.addToCart(e.target.dataset.productId);
     await super.countCost(e.target.dataset.productId, "+");
     }
