@@ -122,7 +122,7 @@ export default class Header extends UI {
        window.location.reload()
       } 
       if (e.target.className == 'cart-button btn btn-secondary btn-lg btn-block text-nowrap t-1 hover-shadow'){
-        if(localStorage.getItem("cart").length > 2){
+        if(localStorage.getItem("cart").length > 2 && sessionStorage.getItem("loggedinCustomer")){
           window.location.replace("cart.html");
         }
       }
