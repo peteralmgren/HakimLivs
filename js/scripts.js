@@ -19,6 +19,9 @@ function validateUser() {
     if (xhr.status === 500){
         alert("Kontot hittades inte!");
       }
+    if (xhr.status === 403){
+      alert("Felaktig inloggning!")
+    }
     if (xhr.readyState === 4 && xhr.status === 200) {
       if(!xhr.responseText){
         alert("Kontot hittades inte!")        
