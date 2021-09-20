@@ -91,6 +91,8 @@ export default class Cart extends UI {
         if(localStorage.getItem("cart").length > 2 && sessionStorage.getItem("loggedinCustomer")){
           location.replace("cart.html");
         }
+        else
+        alert("Lägg till varor i varukorgen eller logga in!")
       }
     });
     
